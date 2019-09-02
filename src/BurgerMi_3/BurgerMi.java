@@ -26,7 +26,7 @@ public class BurgerMi extends JFrame {
 	private ImageIcon quitButtonBasicImage = new ImageIcon(Main.class.getResource("../images/quitButtonBasic.png"));
 	
 	
-	private Image background = new ImageIcon(Main.class.getResource("../images/미림여자정보과학고등학교.jpg")).getImage();
+	private Image background = new ImageIcon(Main.class.getResource("../images/BurgerMi.png")).getImage();
 	private JLabel menuBar = new JLabel(new ImageIcon(Main.class.getResource("../images/menuBar.png")));
 	
 	private JButton exitButton = new JButton(exitButtonBasicImage);

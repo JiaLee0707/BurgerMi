@@ -35,35 +35,5 @@ public class KeyListener extends KeyAdapter {
 			BurgerMi.game.pressENTER();
 		}
 	}
-	@Override
-	public void keyReleased(KeyEvent e) {
-		if(BurgerMi.game == null) {
-			return;
-		}
-		if(e.getKeyCode() == KeyEvent.VK_S) {
-			BurgerMi.game.releaseS();
-		}
-		else if(e.getKeyCode() == KeyEvent.VK_W) {
-			BurgerMi.game.releaseW();
-		}
-		else if(e.getKeyCode() == KeyEvent.VK_A) {
-			BurgerMi.game.releaseA();
-		}
-		else if(e.getKeyCode() == KeyEvent.VK_D) {
-			BurgerMi.game.releaseD();
-		}
-		else if(e.getKeyCode() == KeyEvent.VK_Q) {
-			BurgerMi.game.releaseQ();
-		}
-		else if(e.getKeyCode() == KeyEvent.VK_E) {
-			BurgerMi.game.releaseE();
-		}
-		else if(e.getKeyCode() == KeyEvent.VK_SPACE) {
-			BurgerMi.game.releaseSPACE();
-		}
-		else if(e.getKeyCode() == KeyEvent.VK_ENTER) {
-			BurgerMi.game.releaseENTER();
-		}
-	}
 
 }

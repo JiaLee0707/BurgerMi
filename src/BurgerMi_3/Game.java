@@ -16,7 +16,7 @@ public class Game extends Thread{
 	private Image cheeseImage = new ImageIcon(Main.class.getResource("../images/ДЎБо.png")).getImage();
 	
 	public void screenDraw(Graphics g) {
-		g.drawImage(TrayImage, 440, 670, null);
+		g.drawImage(TrayImage, 440, 570, null);
 		g.drawImage(belowBreadImage, 595, 650, null);
 		g.drawImage(lettuceImage, 569, 610, null);
 		g.drawImage(pattyImage, 572, 632, null);
@@ -49,28 +49,28 @@ public class Game extends Thread{
 		new Music("203.mp3", false).start();
 	}
 	
-	public void releaseS() {
-		
-	}
-	public void releaseW() {
-		
-	}
-	public void releaseA() {
-		
-	}
-	public void releaseD() {
-		
-	}
-	public void releaseQ() {
-		
-	}
-	public void releaseE() {
-		
-	}
-	public void releaseSPACE() {
-		
-	}
-	public void releaseENTER() {
-		
-	}
+//	public void releaseS() {
+//		
+//	}
+//	public void releaseW() {
+//		
+//	}
+//	public void releaseA() {
+//		
+//	}
+//	public void releaseD() {
+//		
+//	}
+//	public void releaseQ() {
+//		
+//	}
+//	public void releaseE() {
+//		
+//	}
+//	public void releaseSPACE() {
+//		
+//	}
+//	public void releaseENTER() {
+//		
+//	}
 }
