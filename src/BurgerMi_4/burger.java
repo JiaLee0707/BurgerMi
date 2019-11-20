@@ -16,15 +16,48 @@ public class burger extends Thread{
 	private int x, y;
 	private String burgerType;
 	
-	public burger(int x, int y) {
+	public burger(int x, int y, String burgerType) {
 		this.x = x;
 		this.y = y;
 		this.burgerType = burgerType;
 	}
 	
-	public void screenDraw(Graphics2D g) {
+	public void screenDraw(Graphics g) {
+		System.out.println(burgerType);
 		if(burgerType.equals("belowBread")) {
-			g.drawImage
+			g.drawImage(belowBreadImage, x, y, null);
+		}
+		else if(burgerType.equals("topBread")) {
+			g.drawImage(topBreadImage, x, y, null);
+		}
+		else if(burgerType.equals("lettuce")) {
+			g.drawImage(lettuceImage, x, y, null);
+		}
+		else if(burgerType.equals("tomato")) {
+			g.drawImage(tomatoImage, x, y, null);
+		}
+		else if(burgerType.equals("patty")) {
+			g.drawImage(pattyImage, x, y, null);
+		}
+		else if(burgerType.equals("cheese")) {
+			g.drawImage(cheeseImage, x, y, null);
+		}
+	}
+	
+	public void drop() {
+		y += Main.BURGER_SPEED;
+//		System.out.println(y);
+	}
+	
+	@Override
+	public void run() {
+		try {
+			while(true) {
+				drop();	
+				Thread.sleep(Main.SLEEP_TIME);
+			}
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
 		}
 	}
 }

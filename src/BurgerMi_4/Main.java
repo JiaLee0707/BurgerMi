@@ -2,9 +2,11 @@ package BurgerMi_4;
 
 public class Main {
 
-	public static final int SCREEN_WIDTH = 1450;
-	public static final int SCREEN_HEIGHT = 900;
-	
+	public static final int SCREEN_WIDTH = 1280;
+	public static final int SCREEN_HEIGHT = 720;
+	public static final int BURGER_SPEED = 7;
+	public static final int SLEEP_TIME = 10;
+
 	public static void main(String[] args) {
 		
 		new BurgerMi();

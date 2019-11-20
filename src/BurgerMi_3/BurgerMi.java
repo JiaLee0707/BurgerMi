@@ -26,7 +26,7 @@ public class BurgerMi extends JFrame {
 	private ImageIcon quitButtonBasicImage = new ImageIcon(Main.class.getResource("../images/quitButtonBasic.png"));
 	
 	
-	private Image background = new ImageIcon(Main.class.getResource("../images/BurgerMi.png")).getImage();
+	private Image background = new ImageIcon(Main.class.getResource("../images/BurgerMi복사본.png")).getImage();
 	private JLabel menuBar = new JLabel(new ImageIcon(Main.class.getResource("../images/menuBar.png")));
 	
 	private JButton exitButton = new JButton(exitButtonBasicImage);
@@ -110,7 +110,7 @@ public class BurgerMi extends JFrame {
 				introMusic.close();
 				startButton.setVisible(false);
 				quitButton.setVisible(false);
-				background  = new ImageIcon(Main.class.getResource("../images/게임화면 (2).png")).getImage();
+				background  = new ImageIcon(Main.class.getResource("../images/GameBackground.png")).getImage();
 				isGameScreen = true;
 				setFocusable(true);
 			}
