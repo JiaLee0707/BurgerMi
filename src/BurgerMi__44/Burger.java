@@ -17,7 +17,9 @@ public class Burger extends Thread{
 	
 	int x, y;
 	Image ingredients;
-	
+	public Burger() {
+		System.out.println("Buger1");
+	}
 	Burger(int x, int y, String ingredients) {
 		this.x=x;
 		this.y=y;

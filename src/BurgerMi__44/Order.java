@@ -12,6 +12,7 @@ public class Order {
 	Order() {
 //		BurgerMi.game.revalidate();
 //		BurgerMi.game.repaint();
+		Burger burger1 = new Burger();
 		
 		System.out.println("order");
 		while(orderIngredients.size()!=5) {
@@ -19,28 +20,34 @@ public class Order {
 			switch (orderSheet) {
 			case 65: //∆–∆º
 				System.out.println("∆–∆º");
-				BurgerMi.game.burger.orderBurger(orderSheet);
-				orderIngredients.add(orderSheet); break;
+				burger1.orderBurger(orderSheet);
+				orderIngredients.add(orderSheet); 
+				break;
 			case 68: //ªÛ√ﬂ
 				System.out.println("ªÛ√ﬂ");
-				BurgerMi.game.burger.orderBurger(orderSheet);
-				orderIngredients.add(orderSheet); break;
+				burger1.orderBurger(orderSheet);
+				orderIngredients.add(orderSheet); 
+				break;
 			case 69: //ƒ°¡Ó
 				System.out.println("ƒ°¡Ó");
-				BurgerMi.game.burger.orderBurger(orderSheet);
-				orderIngredients.add(orderSheet); break;
+				burger1.orderBurger(orderSheet);
+				orderIngredients.add(orderSheet); 
+				break;
 			case 81: //≈‰∏∂≈‰
 				System.out.println("≈‰∏∂≈‰");
-				BurgerMi.game.burger.orderBurger(orderSheet);
-				orderIngredients.add(orderSheet); break;
+				burger1.orderBurger(orderSheet);
+				orderIngredients.add(orderSheet);
+				break;
 			case 83: //πÿªß
 				System.out.println("πÿªß");
-				BurgerMi.game.burger.orderBurger(orderSheet);
-				orderIngredients.add(orderSheet); break;
+				burger1.orderBurger(orderSheet);
+				orderIngredients.add(orderSheet); 
+				break;
 			case 87: //¿≠ªß
 				System.out.println("¿≠ªß");
-				BurgerMi.game.burger.orderBurger(orderSheet);
-				orderIngredients.add(orderSheet); break;
+				burger1.orderBurger(orderSheet);
+				orderIngredients.add(orderSheet); 
+				break;
 			}
 //			System.out.println(orderIngredients.get(i));
 		}
