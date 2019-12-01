@@ -7,7 +7,7 @@ import java.util.Random;
 
 import javax.swing.ImageIcon;
 
-public class Order {
+public class Order extends Thread {
 	// 만들때 사용하는 버거
 	private Image TrayImage = new ImageIcon("src/images/쟁반111.png").getImage();
 	private Image belowBreadImage = new ImageIcon("src/images/아래빵.png").getImage();
@@ -40,17 +40,19 @@ public class Order {
 	private Image guest4 = new ImageIcon("src/images/44.png").getImage();
 	private Image guest5 = new ImageIcon("src/images/55.png").getImage();
 	private Image guest6 = new ImageIcon("src/images/66.png").getImage();
-	
-	public Image[] guestArray = {guest1, guest2, guest3, guest4, guest5, guest6	};
-	public int guest;
-	
+
+	public Image[] guestArray = { guest1, guest2, guest3, guest4, guest5, guest6 };
+	public int guest, y = 100;
+	public boolean G = false;
+
 	Random random = new Random();
+
 	// 주문받은 버거
 	List<Object> orderBurger = new ArrayList<Object>();
 	// 만든 버거
 	List<Object> MakeBurger = new ArrayList<Object>();
-	
-//	public Guest g;
+
+	public List<Object> ingredients;
 
 	Order() {
 		System.out.println("order");
@@ -135,39 +137,34 @@ public class Order {
 				} // if
 			} // for
 		}
-
-		//손님
-		guest = (int) (Math.random() * 6);
-		
-//		g = new Guest();
-//		g.start();
 	}
-	
-//	class Guest extends Thread {
-////		public boolean G = false;
-//		int y=0;
-//		int guest;
-//		Guest() {
-//			//손님
-//			guest = (int) (Math.random() * 6);
-//			
-//		}
-//		public void run() {
-//			System.out.println("asdf");
-//			try {
-////				G = true;
-//				while(y!=136) {
-//					y+=1;
-//					BurgerMi.game.repaint();
-//					Thread.sleep(1);
-//				}
-////				G = false;
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-//		}
-//	}
 
+	
+
+	// 손님
+	public void Guest() {
+		guest = (int) (Math.random() * 6);
+	}
+
+	public void run() {
+//			System.out.println("asdf");
+		try {
+			G = true;
+			while (y != 136) {
+				y += 1;
+//				System.out.println(y);
+//				System.out.println(G);
+				BurgerMi.game.repaint();
+				Thread.sleep(10);
+			}
+			G = false;
+		} catch (Exception e) {
+//			e.printStackTrace();
+			e.getMessage();
+		}
+	}
+
+	// 햄버거 만들기
 	public void Make(String key) {
 		new Music("203.mp3", false).start();
 
@@ -221,4 +218,5 @@ public class Order {
 		BurgerMi.game.burger.start();
 
 	}
+
 }

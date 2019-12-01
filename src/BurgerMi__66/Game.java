@@ -19,8 +19,6 @@ public class Game extends JPanel {
 	private ImageIcon ImageNext = new ImageIcon("src/images/오른쪽버튼.png");
 	private Image ImageBackground = ImageRules;
 
-	private Image thssla = new ImageIcon("src/images/11.PNG").getImage();
-
 	public Burger burger;
 	public Order order;
 	public Score score = new Score();
@@ -127,11 +125,8 @@ public class Game extends JPanel {
 				OrderY = (int) ((List<Object>) order.orderBurger.get(i)).get(3);
 				g.drawImage(OrderImage, OrderX, OrderY, this);
 			}
-			g.drawImage(order.guestArray[order.guest], 553, 136, this);
+			g.drawImage(order.guestArray[order.guest], 553, order.y, this); //136
 		}
-
-//		if (order.g.G) {
-//		}
 
 		// 내려온 재료
 //		System.out.println(BurgerArray.size());
