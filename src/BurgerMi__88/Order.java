@@ -1,4 +1,4 @@
-package BurgerMi__77;
+package BurgerMi__88;
 
 import java.awt.Image;
 import java.util.ArrayList;
@@ -72,7 +72,7 @@ public class Order extends Thread {
 			ingredients.add(orderbelowBreadImage);// 햄버거 재료 이미지
 			
 			// x, y좌표 추가
-			ingredients.add(170);
+			ingredients.add(160);
 			ingredients.add(150);
 
 			orderBurger.add((List<Object>) ingredients);
@@ -90,7 +90,7 @@ public class Order extends Thread {
 			int orderSheet = (int) ((Math.random() * 86) + 65);
 
 			// 햄버거 재료 위치 초기화
-			int xx = 0, yy = 250;	
+			int xx = 0, yy = 160;	
 //			System.out.println(ii);
 			
 			for (i=0; i < keySheet.length; i++) {
@@ -105,37 +105,37 @@ public class Order extends Thread {
 						System.out.println("패티");
 						ingredients.add("patty"); // 햄버거 재료 이미지
 						ingredients.add(orderpattyImage); // 햄버거 재료 이미지
-						xx = 150; // 햄버거 재료 x좌표
+						xx = 140; // 햄버거 재료 x좌표
 						break;
 					case 68: // 상추
 						System.out.println("상추");
 						ingredients.add("lettuce"); // 햄버거 재료 이미지
 						ingredients.add(orderlettuceImage); // 햄버거 재료 이미지
-						xx = 145; // 햄버거 재료 x좌표
+						xx = 138; // 햄버거 재료 x좌표
 						break;
 					case 69: // 치즈
 						System.out.println("치즈");
 						ingredients.add("cheese"); // 햄버거 재료 이미지
 						ingredients.add(ordercheeseImage); // 햄버거 재료 이미지
-						xx = 145; // 햄버거 재료 x좌표
+						xx = 138; // 햄버거 재료 x좌표
 						break;
 					case 81: // 토마토
 						System.out.println("토마토");
 						ingredients.add("tomato"); // 햄버거 재료 이미지
 						ingredients.add(ordertomatoImage); // 햄버거 재료 이미지
-						xx = 170; // 햄버거 재료 x좌표
+						xx = 150; // 햄버거 재료 x좌표
 						break;
 					case 83: // 밑빵
 						System.out.println("밑빵");
 						ingredients.add("belowBread"); // 햄버거 재료 이미지
 						ingredients.add(orderbelowBreadImage);// 햄버거 재료 이미지
-						xx = 170; // 햄버거 재료 x좌표
+						xx = 160; // 햄버거 재료 x좌표
 						break;
 					case 87: // 윗빵
 						System.out.println("윗빵");
 						ingredients.add("topBread"); // 햄버거 재료 이미지
 						ingredients.add(ordertopBreadImage); // 햄버거 재료 이미지
-						xx = 150; // 햄버거 재료 x좌표
+						xx = 145; // 햄버거 재료 x좌표
 						break;
 					}
 
@@ -145,11 +145,11 @@ public class Order extends Thread {
 						// 토마토 또는 패티면 30 더 밑으로
 						if ((orderSheet == 81) || (orderSheet == 65)) {
 							// .equals("tomato") || ingredients.equals("patty")) {
-							yy = yy + 20;
+							yy = yy + 40;
 						}
-						// 윗빵이면 50 더 위로
+						// 윗빵이면 45 더 위로
 						else if (orderSheet == 87) {
-							yy = yy - 60;
+							yy = yy - 45;
 						}
 					}
 
@@ -171,8 +171,8 @@ public class Order extends Thread {
 			ingredients.add(ordertopBreadImage); // 햄버거 재료 이미지
 			
 			// x, y좌표 추가 
-			ingredients.add(150);
-			ingredients.add(90);
+			ingredients.add(145);
+			ingredients.add(30);
 
 			orderBurger.add((List<Object>) ingredients);
 			

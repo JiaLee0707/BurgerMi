@@ -1,16 +1,16 @@
-package BurgerMi__77;
+package BurgerMi__88888;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 class KeyListener extends KeyAdapter {
-	@Override
-	public void keyPressed(KeyEvent e) {
-		int keyCode = e.getKeyCode();
-		if(keyCode == KeyEvent.VK_ENTER) {
-		//	BurgerMi.game.th.bar.fill();
-		}
-	}
+//	@Override
+//	public void keyPressed(KeyEvent e) {
+//		int keyCode = e.getKeyCode();
+//		if(keyCode == KeyEvent.VK_ENTER) {
+//			BurgerMi.game.bar.fill();
+//		}
+//	}
 	
 	@Override
 	public void keyReleased(KeyEvent e) {

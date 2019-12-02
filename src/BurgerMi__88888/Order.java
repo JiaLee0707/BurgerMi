@@ -1,4 +1,4 @@
-package BurgerMi__77;
+package BurgerMi__88888;
 
 import java.awt.Image;
 import java.util.ArrayList;
@@ -72,7 +72,7 @@ public class Order extends Thread {
 			ingredients.add(orderbelowBreadImage);// ÇÜ¹ö°Å Àç·á ÀÌ¹ÌÁö
 			
 			// x, yÁÂÇ¥ Ãß°¡
-			ingredients.add(170);
+			ingredients.add(160);
 			ingredients.add(150);
 
 			orderBurger.add((List<Object>) ingredients);
@@ -90,7 +90,7 @@ public class Order extends Thread {
 			int orderSheet = (int) ((Math.random() * 86) + 65);
 
 			// ÇÜ¹ö°Å Àç·á À§Ä¡ ÃÊ±âÈ­
-			int xx = 0, yy = 250;	
+			int xx = 0, yy = 160;	
 //			System.out.println(ii);
 			
 			for (i=0; i < keySheet.length; i++) {
@@ -105,37 +105,37 @@ public class Order extends Thread {
 						System.out.println("ÆĞÆ¼");
 						ingredients.add("patty"); // ÇÜ¹ö°Å Àç·á ÀÌ¹ÌÁö
 						ingredients.add(orderpattyImage); // ÇÜ¹ö°Å Àç·á ÀÌ¹ÌÁö
-						xx = 150; // ÇÜ¹ö°Å Àç·á xÁÂÇ¥
+						xx = 140; // ÇÜ¹ö°Å Àç·á xÁÂÇ¥
 						break;
 					case 68: // »óÃß
 						System.out.println("»óÃß");
 						ingredients.add("lettuce"); // ÇÜ¹ö°Å Àç·á ÀÌ¹ÌÁö
 						ingredients.add(orderlettuceImage); // ÇÜ¹ö°Å Àç·á ÀÌ¹ÌÁö
-						xx = 145; // ÇÜ¹ö°Å Àç·á xÁÂÇ¥
+						xx = 138; // ÇÜ¹ö°Å Àç·á xÁÂÇ¥
 						break;
 					case 69: // Ä¡Áî
 						System.out.println("Ä¡Áî");
 						ingredients.add("cheese"); // ÇÜ¹ö°Å Àç·á ÀÌ¹ÌÁö
 						ingredients.add(ordercheeseImage); // ÇÜ¹ö°Å Àç·á ÀÌ¹ÌÁö
-						xx = 145; // ÇÜ¹ö°Å Àç·á xÁÂÇ¥
+						xx = 138; // ÇÜ¹ö°Å Àç·á xÁÂÇ¥
 						break;
 					case 81: // Åä¸¶Åä
 						System.out.println("Åä¸¶Åä");
 						ingredients.add("tomato"); // ÇÜ¹ö°Å Àç·á ÀÌ¹ÌÁö
 						ingredients.add(ordertomatoImage); // ÇÜ¹ö°Å Àç·á ÀÌ¹ÌÁö
-						xx = 170; // ÇÜ¹ö°Å Àç·á xÁÂÇ¥
+						xx = 150; // ÇÜ¹ö°Å Àç·á xÁÂÇ¥
 						break;
 					case 83: // ¹Ø»§
 						System.out.println("¹Ø»§");
 						ingredients.add("belowBread"); // ÇÜ¹ö°Å Àç·á ÀÌ¹ÌÁö
 						ingredients.add(orderbelowBreadImage);// ÇÜ¹ö°Å Àç·á ÀÌ¹ÌÁö
-						xx = 170; // ÇÜ¹ö°Å Àç·á xÁÂÇ¥
+						xx = 160; // ÇÜ¹ö°Å Àç·á xÁÂÇ¥
 						break;
 					case 87: // À­»§
 						System.out.println("À­»§");
 						ingredients.add("topBread"); // ÇÜ¹ö°Å Àç·á ÀÌ¹ÌÁö
 						ingredients.add(ordertopBreadImage); // ÇÜ¹ö°Å Àç·á ÀÌ¹ÌÁö
-						xx = 150; // ÇÜ¹ö°Å Àç·á xÁÂÇ¥
+						xx = 145; // ÇÜ¹ö°Å Àç·á xÁÂÇ¥
 						break;
 					}
 
@@ -145,11 +145,11 @@ public class Order extends Thread {
 						// Åä¸¶Åä ¶Ç´Â ÆĞÆ¼¸é 30 ´õ ¹ØÀ¸·Î
 						if ((orderSheet == 81) || (orderSheet == 65)) {
 							// .equals("tomato") || ingredients.equals("patty")) {
-							yy = yy + 20;
+							yy = yy + 40;
 						}
-						// À­»§ÀÌ¸é 50 ´õ À§·Î
+						// À­»§ÀÌ¸é 45 ´õ À§·Î
 						else if (orderSheet == 87) {
-							yy = yy - 60;
+							yy = yy - 45;
 						}
 					}
 
@@ -171,8 +171,8 @@ public class Order extends Thread {
 			ingredients.add(ordertopBreadImage); // ÇÜ¹ö°Å Àç·á ÀÌ¹ÌÁö
 			
 			// x, yÁÂÇ¥ Ãß°¡ 
-			ingredients.add(150);
-			ingredients.add(90);
+			ingredients.add(145);
+			ingredients.add(30);
 
 			orderBurger.add((List<Object>) ingredients);
 			
@@ -189,6 +189,7 @@ public class Order extends Thread {
 				y += 1;
 //				System.out.println(y);
 //				System.out.println(G);
+				BurgerMi.game.revalidate();
 				BurgerMi.game.repaint();
 				Thread.sleep(10);
 			}

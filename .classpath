@@ -4,5 +4,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="C:/Users/DELL/source/repos/java/jlayer1.0.1/JLayer1.0.1/jl1.0.1.jar"/>
 	<classpathentry kind="lib" path="lib/jl1.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/DELL/source/repos/java/mysql-connector-java-8.0.18/mysql-connector-java-8.0.18.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

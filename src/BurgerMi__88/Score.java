@@ -1,4 +1,4 @@
-package BurgerMi__77;
+package BurgerMi__88;
 
 import java.awt.Image;
 import java.util.List;
@@ -45,13 +45,13 @@ public class Score {
 
 		System.out.println("");
 
-		Enter = true;
+//		if (BurgerMi.game.order.obnoxious == 4) {
+//			Enter = true;
+//		}
 
 		// 화면 다시그리기
 		BurgerMi.game.revalidate();
 		BurgerMi.game.repaint();
-
-		Enter = false;
 
 		System.out.println("Order");
 		for (i = 0; i < BurgerMi.game.order.orderBurger.size(); i++) {
@@ -59,10 +59,12 @@ public class Score {
 		}
 		System.out.println("");
 
+		if(BurgerMi.game.order.obnoxious==4) {
+			Throw th = new Throw();
+			th.start();
+		}
 		BurgerMi.game.order = new Order();
 		BurgerMi.game.order.start();
-		Throw th = new Throw();
-		th.start();
 		System.out.println("");
 
 	}
