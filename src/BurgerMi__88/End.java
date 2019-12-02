@@ -16,30 +16,34 @@ public class End {
 	public Image EndGame = new ImageIcon("src/images/결과화면.png").getImage();
 	private ImageIcon ImageNext = new ImageIcon("src/images/오른쪽버튼.png");
 	private JButton r = new JButton(ImageNext);
-	public JLabel allGrade = new JLabel("총 : " + BurgerMi.game.score + "점");
+	public JLabel allGrade = new JLabel("총 : " + BurgerMi.game.score.score + "점");
 
 	End() {
 		BurgerMi.game.grade.setVisible(false);
 		BurgerMi.game.timer.time.setVisible(false);
 		
-		r.setBounds(10, 10, 1280, 720);
+		BurgerMi.game.gameStart = false;
+		
+		r.setBounds(10, 10, 500, 500);
 		r.setBorderPainted(false);
 		r.setContentAreaFilled(false);
 		r.setFocusPainted(false);
 		r.addMouseListener(new MouseListener());
-		r.setVisible(true);
+//		r.setVisible(true);
 		BurgerMi.game.add(r);
 		BurgerMi.game.End = true;
-
 		
 		allGrade.setFont(new Font("나눔스퀘어라운드 ExtraBold", Font.ITALIC, 50)); // 폰트 설정
-		allGrade.setSize(500, 500); // 크키 설정
+		allGrade.setSize(1000, 1000); // 크키 설정
 		allGrade.setLocation(500, 500); // 위치 설정
 		BurgerMi.game.add(allGrade);
 
-		r.setVisible(true);
+//		r.setVisible(true);
 		allGrade.setVisible(true);
+
+		BurgerMi.game.revalidate();
 		BurgerMi.game.repaint();
+		
 
 	}
 
@@ -63,8 +67,17 @@ public class End {
 //			new BurgerMi();
 //			BurgerMi(true);
 			button.setVisible(false);
-			BurgerMi.game.End = false;
+			r.setVisible(false);
 
+			BurgerMi.game.revalidate();
+			BurgerMi.game.repaint();
+			
+			BurgerMi.game.End = false;
+			BurgerMi.game.replay = true;
+			System.out.println("asdf");
+			BurgerMi.game.Game();
+		
+			
 //			BurgerMi.game.burger = null;
 //			BurgerMi.game.score = null;
 //			BurgerMi.game.timer = null;

@@ -102,6 +102,7 @@ public class BurgerMi extends JFrame{
 			background.setVisible(false);
 			game = new Game();
 			setContentPane(game);
+			game.Game();
 		}
 			
 		//버튼 위에 올리면

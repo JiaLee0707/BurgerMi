@@ -1,6 +1,5 @@
 package BurgerMi__88;
 
-import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -16,7 +15,7 @@ import javax.swing.JPanel;
 
 public class Game extends JPanel {
 	private Image ImageGame = new ImageIcon("src/images/GameBackground.png").getImage();
-	private Image ImageRules = new ImageIcon("src/images/GameRules.jpg").getImage();
+	private Image ImageRules = new ImageIcon("src/images/GameRules.png").getImage();
 	private ImageIcon ImageNext = new ImageIcon("src/images/오른쪽버튼.png");
 	private Image ImageBackground;
 
@@ -32,29 +31,35 @@ public class Game extends JPanel {
 
 	public Burger burger;
 	public Order order;
-	public Score score = new Score();
-	public Timer timer = new Timer();
+	public Score score;// = new Score();
+	public Timer timer;// = new Timer();
 	public Throw th;
-//	public End end;
 //	public MyLabel bar = new MyLabel(100); 
 
-	private boolean gameStart = false; // 게임 시작
+	public boolean gameStart = false; // 게임 시작
 	private boolean bool = false; // 내려오냐 안내려오냐
 	public boolean throwburger = false;
 	public boolean End = false;
-
+	public static boolean replay = false;
+	
 	private JButton NextBtn = new JButton(ImageNext);
-	public JLabel grade = new JLabel(score.score + "점");
+	public JLabel grade;
 
 	// 내려오는 버거 이미지, 좌표
 	private Image ingredients;
 	int Threadx, Thready;
+	
 
-	public Game() {
+	public void Game() {
 		System.out.println(End);
 		setLayout(null);
 		ImageBackground = ImageRules;
 
+//		if(replay) {
+//			score = new Score();
+//			timer = new Timer();
+//		}
+		
 		// 게임방범 확인버튼
 		NextBtn.setBounds(10, 350, 340, 120);
 		NextBtn.setBorderPainted(false);
@@ -66,12 +71,10 @@ public class Game extends JPanel {
 
 		this.setFocusable(true);
 
-		grade.setFont(new Font("나눔스퀘어라운드 ExtraBold", Font.ITALIC, 50)); // 폰트 설정
-		grade.setSize(500, 500); // 크키 설정
-		grade.setLocation(1160, -150); // 위치 설정
 
 		order = new Order();
 		order.start();
+		
 		System.out.println("");
 
 		this.addKeyListener(new KeyListener());
@@ -110,8 +113,21 @@ public class Game extends JPanel {
 
 			ImageBackground = ImageGame;
 			gameStart = true;
+			
+			score = new Score();
+			timer = new Timer();
+			
+			grade = new JLabel(score.score + "점");
+			grade.setFont(new Font("나눔스퀘어라운드 ExtraBold", Font.ITALIC, 50)); // 폰트 설정
+			grade.setSize(500, 500); // 크키 설정
+			grade.setLocation(1160, -150); // 위치 설정
+			
+			score = new Score();
+			timer = new Timer();
+			
 			add(grade);
 			add(timer.time);
+			
 			button.setVisible(false);
 			getParent().repaint();
 		}

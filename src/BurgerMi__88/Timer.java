@@ -5,7 +5,7 @@ import java.awt.Font;
 import javax.swing.JLabel;
 
 public class Timer extends Thread {
-	int[] Time = { 0, 5 };
+	int[] Time = { 2, 30 };
 
 	public JLabel time = new JLabel(Time[0] + ":" + Time[1]);
 
@@ -34,6 +34,7 @@ public class Timer extends Thread {
 				}
 				Thread.sleep(1000);
 			}
+			BurgerMi.game.setFocusable(true);
 			new End();
 		} catch (Exception e) {
 			e.printStackTrace();

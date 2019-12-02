@@ -1,9 +1,6 @@
 package BurgerMi__88;
 
-import java.awt.Image;
 import java.util.List;
-
-import javax.swing.ImageIcon;
 
 public class Score {
 	int score = 0;
@@ -30,7 +27,9 @@ public class Score {
 					|| !((((List<Object>) BurgerMi.game.order.orderBurger.get(i))
 							.get(0) == ((List<Object>) BurgerMi.game.order.MakeBurger.get(i)).get(0)))) {
 				System.out.println("실패");
-
+				if(BurgerMi.game.order.obnoxious == 4) {
+					score -= 50;
+				}
 				break;
 			} else if (((List<Object>) BurgerMi.game.order.orderBurger.get(i))
 					.get(0) == ((List<Object>) BurgerMi.game.order.MakeBurger.get(i)).get(0)) {
@@ -48,7 +47,7 @@ public class Score {
 //		if (BurgerMi.game.order.obnoxious == 4) {
 //			Enter = true;
 //		}
-
+		
 		// 화면 다시그리기
 		BurgerMi.game.revalidate();
 		BurgerMi.game.repaint();
