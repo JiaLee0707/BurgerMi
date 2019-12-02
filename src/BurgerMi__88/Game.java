@@ -153,14 +153,14 @@ public class Game extends JPanel {
 				g.drawImage(OrderImage, OrderX, OrderY, this);
 			}
 			g.drawImage(order.guestArray[order.guest], 553, order.y, this); // 136
+			// Àï¹Ý
+			int y = 450;
+			if (TrayBasicImage == ImageTray3) {
+				y = 400;
+			}
+			g.drawImage(TrayBasicImage, 400, y, this);
 		}
 
-		// Àï¹Ý
-		int y = 450;
-		if (TrayBasicImage == ImageTray3) {
-			y = 400;
-		}
-		g.drawImage(TrayBasicImage, 400, y, this);
 
 		// ´øÁö±â
 		if (throwburger) {

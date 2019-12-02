@@ -22,7 +22,7 @@ public class End {
 		BurgerMi.game.grade.setVisible(false);
 		BurgerMi.game.timer.time.setVisible(false);
 		
-		r.setBounds(10, 350, 340, 120);
+		r.setBounds(10, 10, 1280, 720);
 		r.setBorderPainted(false);
 		r.setContentAreaFilled(false);
 		r.setFocusPainted(false);
@@ -63,15 +63,17 @@ public class End {
 //			new BurgerMi();
 //			BurgerMi(true);
 			button.setVisible(false);
-			BurgerMi.background(true);
 			BurgerMi.game.End = false;
 
-			BurgerMi.game.burger = null;
-			BurgerMi.game.score = null;
-			BurgerMi.game.timer = null;
-			BurgerMi.game.th = null;
-//			BurgerMi.game.repaint();
-			BurgerMi.game = null;
+//			BurgerMi.game.burger = null;
+//			BurgerMi.game.score = null;
+//			BurgerMi.game.timer = null;
+//			BurgerMi.game.th = null;
+////			BurgerMi.game.repaint();
+//			BurgerMi.game = null;
+//			
+//			burgermi.revalidate();
+//			game.repaint();
 //			BurgerMi.game.getParent().repaint();
 //			BurgerMi.main.burgermi.setContentPane(BurgerMi.background);
 		}

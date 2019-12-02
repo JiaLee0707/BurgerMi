@@ -38,14 +38,6 @@ public class BurgerMi extends JFrame{
 		setLocationRelativeTo(null);
 	}
 	
-	public static void background(boolean b) {
-		if(b) {
-			game = new Game();
-//			BurgerMi.game.getParent().repaint();
-		}
-		
-	}
-	
 	//화면 내부클래스(Panel)
 	class Background extends JPanel {
 		Background() {
