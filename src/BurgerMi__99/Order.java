@@ -179,6 +179,8 @@ public class Order extends Thread {
 			
 		}
 //		System.out.println(orderBurger.size());
+		
+		return;
 	}
 
 	//¼Õ´Ô Thread
@@ -253,6 +255,7 @@ public class Order extends Thread {
 		BurgerMi.game.burger = new Burger(xx, yy, ingredients, key);
 		BurgerMi.game.burger.start();
 
+		return;
 	}
 
 }

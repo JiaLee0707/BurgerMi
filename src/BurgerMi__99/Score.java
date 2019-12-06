@@ -12,8 +12,6 @@ public class Score {
 		// 점수 계산
 		while (true) {
 			if (size == BurgerMi.game.order.orderBurger.size()) {
-				Music OX = new Music("tpir-sdclock.mp3", true);
-				OX.start();
 
 				if (BurgerMi.game.order.obnoxious == 4) {
 					score += 20;
@@ -22,6 +20,8 @@ public class Score {
 				}
 				BurgerMi.game.grade.setText(score + "점");
 				System.out.println("성공");
+				Music OX = new Music("tpir-sdclock.mp3", false);
+				OX.start();
 				break;
 			} else if ((BurgerMi.game.order.MakeBurger.size() != BurgerMi.game.order.orderBurger.size())
 					|| (((List<Object>) BurgerMi.game.order.orderBurger.get(i))

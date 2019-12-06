@@ -12,12 +12,12 @@ import javax.swing.JLabel;
 
 public class End {
 	public Image EndGame = new ImageIcon("src/images/결과화면.png").getImage();
-//	private ImageIcon ReplayBasicImage = new ImageIcon("src/images/replayButtonBasic.png");
-//	private ImageIcon ReplayEnteredImage = new ImageIcon("src/images/replayButtonEntered.png");
+	private ImageIcon ReplayBasicImage = new ImageIcon("src/images/replayButtonBasic.png");
+	private ImageIcon ReplayEnteredImage = new ImageIcon("src/images/replayButtonEntered.png");
 	private ImageIcon QuitBasicImage = new ImageIcon("src/images/quitButtonBasic.png");
 	private ImageIcon QuitEnteredImage = new ImageIcon("src/images/quitButtonEntered.png");
 	public JLabel allGrade = new JLabel("총 : " + BurgerMi.game.score.score + "점");
-//	private JButton replayBtn = new JButton(ReplayBasicImage);
+	private JButton replayBtn = new JButton(ReplayBasicImage);
 	private JButton QuitBtn = new JButton(QuitBasicImage);
 
 	End() {
@@ -26,13 +26,15 @@ public class End {
 
 		BurgerMi.game.gameStart = false;
 
-//		replayBtn.setBounds(10, 10, 500, 500);
-//		replayBtn.setBorderPainted(false);
-//		replayBtn.setContentAreaFilled(false);
-//		replayBtn.setFocusPainted(false);
-//		replayBtn.addMouseListener(new MouseListener(ReplayBasicImage, ReplayEnteredImage));
-////		replayBtn.setVisible(true);
-//		BurgerMi.game.add(replayBtn);
+		BurgerMi.game.gameMusic.close();
+		
+		replayBtn.setBounds(10, 10, 500, 500);
+		replayBtn.setBorderPainted(false);
+		replayBtn.setContentAreaFilled(false);
+		replayBtn.setFocusPainted(false);
+		replayBtn.addMouseListener(new MouseListener(ReplayBasicImage, ReplayEnteredImage));
+//		replayBtn.setVisible(true);
+		BurgerMi.game.add(replayBtn);
 
 		// 종료버튼
 		QuitBtn.setBounds(500, 470, 340, 120);
@@ -54,6 +56,8 @@ public class End {
 
 		BurgerMi.game.revalidate();
 		BurgerMi.game.repaint();
+		
+		return;
 	}
 
 	// 마우스 리스너
@@ -87,8 +91,9 @@ public class End {
 			}
 			
 			button.setVisible(false);
-//			replayBtn.setVisible(false);
+			replayBtn.setVisible(false);
 			QuitBtn.setVisible(false);
+			allGrade.setVisible(false);
 
 			BurgerMi.game.revalidate();
 			BurgerMi.game.repaint();

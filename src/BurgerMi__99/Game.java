@@ -41,6 +41,8 @@ public class Game extends JPanel {
 	public Image ThrowImage = ImageThrow[0];
 	public Image EndGame = new ImageIcon("src/images/결과화면.png").getImage();
 
+	public Music gameMusic;
+
 	public Burger burger;
 	public Order order;
 	public Score score;// = new Score();
@@ -85,6 +87,8 @@ public class Game extends JPanel {
 		System.out.println("");
 
 		this.addKeyListener(new KeyListener());
+		
+		return;
 
 		// 바
 //		bar.setBackground(Color.ORANGE);
@@ -124,7 +128,7 @@ public class Game extends JPanel {
 			gameStart = true;
 			BurgerMi.introMusic.close();
 			
-			Music gameMusic = new Music("요리.mp3", true);
+			gameMusic = new Music("요리.mp3", true);
 			gameMusic.start();
 
 			score = new Score();
