@@ -6,7 +6,7 @@ import javax.swing.JLabel;
 
 public class Timer extends Thread {
 //	int[] Time = { 0, 5 };
-	int[] Time = { 0, 20 };
+	int[] Time = { 0, 10 };
 //	int[] Time = { 1, 40 };
 
 	public JLabel time = new JLabel(Time[0] + ":" + Time[1]);
@@ -17,11 +17,7 @@ public class Timer extends Thread {
 		time.setSize(500, 500); // 크키 설정
 		time.setLocation(1140, -200); // 위치 설정
 
-//		BurgerMi.game.add(time);
 		this.start();
-//		if (Time[0] == 0 && Time[1] == 0) {
-//			BurgerMi.game.end = new End();
-//		}
 	}
 
 	public void run() {

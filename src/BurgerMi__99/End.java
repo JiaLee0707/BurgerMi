@@ -9,8 +9,9 @@ import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
-public class End {
+public class End{
 	public Image EndGame = new ImageIcon("src/images/결과화면.png").getImage();
 	private ImageIcon ReplayBasicImage = new ImageIcon("src/images/replayButtonBasic.png");
 	private ImageIcon ReplayEnteredImage = new ImageIcon("src/images/replayButtonEntered.png");
@@ -33,7 +34,7 @@ public class End {
 		replayBtn.setContentAreaFilled(false);
 		replayBtn.setFocusPainted(false);
 		replayBtn.addMouseListener(new MouseListener(ReplayBasicImage, ReplayEnteredImage));
-//		replayBtn.setVisible(true);
+		replayBtn.setVisible(true);
 		BurgerMi.game.add(replayBtn);
 
 		// 종료버튼
@@ -42,7 +43,7 @@ public class End {
 		QuitBtn.setContentAreaFilled(false);
 		QuitBtn.setFocusPainted(false);
 		QuitBtn.addMouseListener(new MouseListener(QuitBasicImage, QuitEnteredImage));
-//		QuitBtn.setVisible(true);
+		QuitBtn.setVisible(true);
 		BurgerMi.game.add(QuitBtn);
 
 		BurgerMi.game.End = true;
@@ -97,11 +98,13 @@ public class End {
 
 			BurgerMi.game.revalidate();
 			BurgerMi.game.repaint();
+			BurgerMi.game.getParent().repaint();
 			
 			BurgerMi.game.End = false;
 			BurgerMi.game.replay = true;
-			System.out.println("asdf");
+//			System.out.println("asdf");
 			BurgerMi.game.Game();
+			return;
 		}
 
 		// 버튼 위에 올리면

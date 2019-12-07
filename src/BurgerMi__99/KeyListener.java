@@ -4,13 +4,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 class KeyListener extends KeyAdapter {
-//	@Override
-//	public void keyPressed(KeyEvent e) {
-//		int keyCode = e.getKeyCode();
-//		if(keyCode == KeyEvent.VK_ENTER) {
-//			BurgerMi.game.bar.fill();
-//		}
-//	}
 	
 	@Override
 	public void keyReleased(KeyEvent e) {
@@ -40,10 +33,10 @@ class KeyListener extends KeyAdapter {
 			System.out.print("치즈");
 			BurgerMi.game.order.Make("cheese");
 			break;
-		case KeyEvent.VK_SPACE:
+//		case KeyEvent.VK_SPACE:
 //        	 order.Make(keyCode);
 //        	 BurgerMi.game.dropBurger(); 
-			break;
+//			break;
 		case KeyEvent.VK_ENTER:
 			System.out.println("\n엔터");
 //        	 System.out.println(keyCode);

@@ -15,7 +15,7 @@ public class Throw extends Thread{
 		try {
 			i=0;
 			while(Enter) {
-				BurgerMi.game.TrayBasicImage = BurgerMi.game.TrayImage[i];
+				BurgerMi.game.TrayBasicImage = BurgerMi.game.ImageTrayArray[i];
 				if(i==0) {
 					BurgerMi.game.throwburger=true;
 					BurgerMi.game.ThrowImage = BurgerMi.game.ImageThrow[i];

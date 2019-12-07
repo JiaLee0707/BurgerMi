@@ -13,49 +13,49 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import BurgerMi__99.BurgerMi.Background;
+
 public class Game extends JPanel {
+	//게임화면
 	private Image ImageGame = new ImageIcon("src/images/GameBackground.png").getImage();
 	private Image ImageRules = new ImageIcon("src/images/GameRules.png").getImage();
-//	private ImageIcon ImageNext = new ImageIcon("src/images/오른쪽버튼.png");
+	public Image EndGame = new ImageIcon("src/images/결과화면.png").getImage();
+	private Image ImageBackground;
 
+	//게임시작 버튼
 	private ImageIcon StartBasicImage = new ImageIcon("src/images/startButtonBasic.png");
 	private ImageIcon StartEnteredImage = new ImageIcon("src/images/startButtonEntered.png");
-	private ImageIcon QuitBasicImage = new ImageIcon("src/images/quitButtonBasic.png");
-	private ImageIcon QuitEnteredImage = new ImageIcon("src/images/quitButtonEntered.png");
-
 	private JButton StartBtn = new JButton(StartBasicImage);
-	private JButton QuitBtn = new JButton(QuitBasicImage);
-
-	private Image ImageBackground;
 
 	// 쟁반
 	public Image ImageTray = new ImageIcon("src/images/쟁반.png").getImage();
 	public Image ImageTray2 = new ImageIcon("src/images/쟁반2.png").getImage();
 	public Image ImageTray3 = new ImageIcon("src/images/쟁반3.png").getImage();
-	public Image[] TrayImage = { ImageTray2, ImageTray3, ImageTray };
-	public Image TrayBasicImage = TrayImage[2];
+	public Image[] ImageTrayArray = { ImageTray2, ImageTray3, ImageTray };
+	public Image TrayBasicImage = ImageTrayArray[2];
 
+	// 던지는 햄버거
 	public Image ImageThrowingBurger = new ImageIcon("src/images/ThrowBurger.png").getImage();
 	public Image ImageBrokenBurger = new ImageIcon("src/images/BrokenBurger.png").getImage();
 	public Image[] ImageThrow = { ImageThrowingBurger, ImageBrokenBurger };
 	public Image ThrowImage = ImageThrow[0];
-	public Image EndGame = new ImageIcon("src/images/결과화면.png").getImage();
-
+	
 	public Music gameMusic;
 
 	public Burger burger;
 	public Order order;
-	public Score score;// = new Score();
-	public Timer timer;// = new Timer();
+	public Score score;
+	public Timer timer;
 	public Throw th;
 //	public MyLabel bar = new MyLabel(100); 
 
-	private boolean bool = false; // 내려오냐 안내려오냐
-	public boolean throwburger = false;
-	public boolean End = false;
-	public static boolean replay = false;
-	public boolean gameStart = false;
- 
+	public boolean gameStart = false; // 게임 (시작 /끝)
+	private boolean bool = false; // 햄버거 재료 (내려옴/안내려옴)
+	public boolean throwburger = false; //햄버거 재료 (던짐/안던짐)
+	public boolean End = false; // 게임 (끝남/안끝남)
+	public static boolean replay = false; // 게임 (첫시작/처음시작)
+
+	// 점수
 	public JLabel grade;
 
 	// 내려오는 버거 이미지, 좌표
@@ -63,13 +63,9 @@ public class Game extends JPanel {
 	int Threadx, Thready;
 
 	public void Game() {
-		System.out.println(End);
 		setLayout(null);
 		ImageBackground = ImageRules;
 
-//		if(replay) {
-//		BurgerMi.game.timer.end.replayBtn.setVisible(false);
-//		}
 		// 시작버튼		
 		StartBtn.setBounds(915, 560, 340, 120);
 		StartBtn.setBorderPainted(false);
@@ -84,20 +80,11 @@ public class Game extends JPanel {
 		order = new Order();
 		order.start();
 
-		System.out.println("");
-
 		this.addKeyListener(new KeyListener());
-		
-		return;
 
-		// 바
-//		bar.setBackground(Color.ORANGE);
-//		bar.setOpaque(true);
-//		bar.setLocation(20,  50);
-//		bar.setSize(300, 20); 
-//		add(bar);
 	}
 
+	// 내려오는 햄버거 재료 초기화
 	public void Thread(Image image, int x, int y, boolean bool) {
 		this.ingredients = image;
 		Threadx = x;
@@ -105,7 +92,7 @@ public class Game extends JPanel {
 		this.bool = bool;
 	}
 
-	// 확인버튼 마우스리스너
+	// 확인버튼 마우스리스너 (내부 클래스)
 	class MouseListener extends MouseAdapter {
 
 		// 기본버튼
@@ -124,23 +111,23 @@ public class Game extends JPanel {
 			Music Button = new Music("buttonPressedMusic.mp3", false);
 			Button.start();
 
-			ImageBackground = ImageGame;
+			ImageBackground = ImageGame; // 게임방법 화면 -> 게임 화면
 			gameStart = true;
-			BurgerMi.introMusic.close();
+			BurgerMi.introMusic.close(); // 게임 인트로음악 종료
 			
+			// 게임 음악
 			gameMusic = new Music("요리.mp3", true);
 			gameMusic.start();
 
+			// 게임 점수, 시간 객체생성
 			score = new Score();
 			timer = new Timer();
 
+			// 게임 점수
 			grade = new JLabel(score.score + "점");
 			grade.setFont(new Font("나눔스퀘어라운드 ExtraBold", Font.ITALIC, 50)); // 폰트 설정
 			grade.setSize(500, 500); // 크키 설정
 			grade.setLocation(1160, -150); // 위치 설정
-
-			score = new Score();
-			timer = new Timer();
 
 			add(grade);
 			add(timer.time);
@@ -177,6 +164,7 @@ public class Game extends JPanel {
 		int MakeX;
 		int MakeY;
 
+		// 게임이 시작되면
 		if (gameStart) {
 			// 주문받은 버거 그리기
 			for (int i = 0; i < order.orderBurger.size(); i++) {
@@ -185,7 +173,8 @@ public class Game extends JPanel {
 				OrderY = (int) ((List<Object>) order.orderBurger.get(i)).get(3);
 				g.drawImage(OrderImage, OrderX, OrderY, this);
 			}
-			g.drawImage(order.guestArray[order.guest], 553, order.y, this); // 136
+			g.drawImage(order.guestArray[order.guest], 553, order.y, this);
+			
 			// 쟁반
 			int y = 450;
 			if (TrayBasicImage == ImageTray3) {
@@ -194,7 +183,7 @@ public class Game extends JPanel {
 			g.drawImage(TrayBasicImage, 400, y, this);
 		}
 
-		// 던지기
+		// 햄버거 던지기
 		if (throwburger) {
 			int x = 500, y = 290;
 			if (ThrowImage.equals(ImageThrow[1])) {
@@ -205,9 +194,7 @@ public class Game extends JPanel {
 		}
 
 		// 내려온 재료
-//		System.out.println(BurgerArray.size());
 		for (int i = 0; i < order.MakeBurger.size(); i++) {
-//			System.out.println("draw Order");
 			MakeImage = (Image) ((List<Object>) order.MakeBurger.get(i)).get(1);
 			MakeX = (Integer) ((List<Object>) order.MakeBurger.get(i)).get(2);
 			MakeY = (Integer) ((List<Object>) order.MakeBurger.get(i)).get(3);
@@ -219,9 +206,9 @@ public class Game extends JPanel {
 			g.drawImage(ingredients, Threadx, Thready, this);
 		}
 
+		// 게임이 끝나면
 		if (End) {
 			g.drawImage(EndGame, 0, 0, this);
 		}
-
 	}
 }

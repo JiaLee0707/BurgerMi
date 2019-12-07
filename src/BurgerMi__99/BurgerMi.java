@@ -23,8 +23,8 @@ public class BurgerMi extends JFrame {
 
 	public static Music introMusic;
 
+	public static Game game = new Game();
 	public Background background;
-	public static Game game;
 
 	public BurgerMi() {
 		setTitle("BurgerMi");
@@ -36,7 +36,6 @@ public class BurgerMi extends JFrame {
 		setLayout(null);
 		setVisible(true);
 		setLocationRelativeTo(null);
-
 	}
 
 	// 화면 내부클래스(Panel)
@@ -100,8 +99,8 @@ public class BurgerMi extends JFrame {
 			if (Entered.equals(QuitEnteredImage)) {
 				System.exit(0);
 			}
+			
 			background.setVisible(false);
-			game = new Game();
 			setContentPane(game);
 			game.Game();
 		}
