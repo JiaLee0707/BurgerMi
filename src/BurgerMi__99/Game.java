@@ -59,7 +59,7 @@ public class Game extends JPanel {
 	public JLabel grade;
 
 	// 내려오는 버거 이미지, 좌표
-	private Image ingredients;
+	public Image ingredients;
 	int Threadx, Thready;
 
 	public void Game() {

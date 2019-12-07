@@ -53,6 +53,7 @@ public class Score {
 		// 주문버거, 만든버거 clear
 		BurgerMi.game.order.orderBurger.clear();
 		BurgerMi.game.order.MakeBurger.clear();
+		BurgerMi.game.ingredients = null;
 
 		System.out.println("");
 		
@@ -70,14 +71,6 @@ public class Score {
 		// 화면 다시그리기
 		BurgerMi.game.revalidate();
 		BurgerMi.game.repaint();
-
-//		System.out.println("Order");
-//		for (int i = 0; i < BurgerMi.game.order.orderBurger.size(); i++) {
-//			System.out.println(BurgerMi.game.order.orderBurger.get(i));
-//		}
-//		System.out.println("");
-//
-//		System.out.println("");
 
 	}
 

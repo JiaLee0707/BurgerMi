@@ -29,7 +29,7 @@ public class End{
 
 		BurgerMi.game.gameMusic.close();
 		
-		replayBtn.setBounds(10, 10, 500, 500);
+		replayBtn.setBounds(10, 10, 340, 120);
 		replayBtn.setBorderPainted(false);
 		replayBtn.setContentAreaFilled(false);
 		replayBtn.setFocusPainted(false);
