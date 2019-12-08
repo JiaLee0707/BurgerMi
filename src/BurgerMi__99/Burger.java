@@ -27,7 +27,7 @@ public class Burger extends Thread {
 				i = i + 1;
 				BurgerMi.game.Thread(ingredients, x, i, bool);
 				BurgerMi.game.repaint();
-				Thread.sleep((long) 0.8);
+				Thread.sleep((long) 0.9);
 			}
 
 			// MakeBurger¿¡ Ãß°¡

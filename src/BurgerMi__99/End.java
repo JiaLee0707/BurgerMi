@@ -24,7 +24,13 @@ public class End{
 	End() {
 		BurgerMi.game.grade.setVisible(false);
 		BurgerMi.game.timer.time.setVisible(false);
-
+		
+		// 햄버거가 내려오던 중 끝났을 수도 있어서
+		// 한번 더 초기화
+		BurgerMi.game.order.orderBurger.clear();
+		BurgerMi.game.order.MakeBurger.clear();
+		BurgerMi.game.ingredients = null;
+		
 		BurgerMi.game.gameStart = false;
 
 		BurgerMi.game.gameMusic.close();
@@ -102,7 +108,6 @@ public class End{
 			
 			BurgerMi.game.End = false;
 			BurgerMi.game.replay = true;
-//			System.out.println("asdf");
 			BurgerMi.game.Game();
 			return;
 		}

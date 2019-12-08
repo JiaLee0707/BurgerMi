@@ -5,100 +5,31 @@ import java.awt.Graphics;
 
 import javax.swing.JLabel;
 
-public class Throw extends Thread{
-
-	boolean Enter = false;
-	public int i=0;
+public class Throw extends Thread {
 	public void run() {
-//		System.out.println("asdf");
-		Enter=true;
 		try {
-			i=0;
-			while(Enter) {
-				BurgerMi.game.TrayBasicImage = BurgerMi.game.ImageTrayArray[i];
-				if(i==0) {
-					BurgerMi.game.throwburger=true;
-					BurgerMi.game.ThrowImage = BurgerMi.game.ImageThrow[i];
-				} else if(i==1) {
-					BurgerMi.game.throwburger=true;
-					BurgerMi.game.ThrowImage = BurgerMi.game.ImageThrow[i];
+			int i = 0;	// 쟁반, (던져지는)햄버거 배열 인덱스변수
+			BurgerMi.game.throwburger = true;	//햄버거 던지기
+			while (i < 3) {	
+				BurgerMi.game.TrayBasicImage = BurgerMi.game.ImageTrayArray[i];	// 쟁반 이미지
+				if (i == 0) {
+					BurgerMi.game.ThrowImage = BurgerMi.game.ImageThrow[i];	// 햄버거 이미지
+				} else if (i == 1) {
+					BurgerMi.game.ThrowImage = BurgerMi.game.ImageThrow[i];	// 햄버거 이미지
 				}
-				BurgerMi.game.repaint();
-				if(i==2) {
-//					interrupt();
-//					join(); 
-//					break;
-//					return;
-					Enter=false;
-				}
+				BurgerMi.game.repaint();	// 화면 다시그리기
+
 				Thread.sleep(250);
 //				Thread.sleep(1000);
 				i++;
-				BurgerMi.game.throwburger=false;
-
 			}
-			BurgerMi.game.order = new Order();
-			BurgerMi.game.order.start();
+			BurgerMi.game.TrayBasicImage = BurgerMi.game.ImageTrayArray[2];	// 쟁반 이미지 초기화
+			BurgerMi.game.throwburger = false;	// 햄버거 던지기 끝
+			BurgerMi.game.order = new Order();	// 주문 다시받기
+			BurgerMi.game.order.start();	// 손님 쓰레드
 		} catch (Exception e) {
 //			e.printStackTrace();
 			e.getMessage();
 		}
 	}
 }
-
-//class MyLabel extends JLabel {
-//	int barSize = 0; // 바의 크기
-//	int maxBarSize;
-//	
-//	MyLabel(int maxBarSize) { 
-//		this.maxBarSize = maxBarSize;
-//	}
-//	
-//	public void paintComponent(Graphics g) {
-//		super.paintComponent(g);
-//		g.setColor(Color.MAGENTA);
-//		int width = (int)(((double)(this.getWidth()))
-//				/maxBarSize*barSize);
-//		if(width==0) return; 
-//		g.fillRect(0, 0, width, this.getHeight());
-//	}
-//	
-//	synchronized void fill() {
-//		if(barSize == maxBarSize) {
-//			try {
-//				wait(); 
-//			} catch (InterruptedException e) { return; }
-//		}
-//		barSize++;
-//		repaint(); // 바 다시 그리기
-//		notify(); 
-//	}
-//	synchronized void consume() {
-//		if(barSize == 0) {
-//			try {
-//				wait(); 
-//			} catch (InterruptedException e)
-//				 { return; }
-//		}
-//		barSize--;
-//		repaint(); // 바 다시 그리기
-//		notify(); 
-//	}	
-//}
-//
-//class ConsumerThread extends Thread {
-//	MyLabel bar;
-//	
-//	ConsumerThread(MyLabel bar) {
-//		this.bar = bar;
-//	}
-//	public void run() {
-//		while(true) {
-//			try {
-//				sleep(1);
-//				bar.consume(); 
-//			} catch (InterruptedException e)
-//			 { return; }
-//		}
-//	}
-//}

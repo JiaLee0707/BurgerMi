@@ -81,7 +81,6 @@ public class Game extends JPanel {
 		order.start();
 
 		this.addKeyListener(new KeyListener());
-
 	}
 
 	// 내려오는 햄버거 재료 초기화
