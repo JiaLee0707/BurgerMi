@@ -99,7 +99,7 @@ public class BurgerMi extends JFrame {
 			if (Entered.equals(QuitEnteredImage)) {
 				System.exit(0);
 			}
-			
+
 			background.setVisible(false);
 			setContentPane(game);
 			game.Game();

@@ -16,13 +16,13 @@ import javax.swing.JPanel;
 import BurgerMi__99.BurgerMi.Background;
 
 public class Game extends JPanel {
-	//게임화면
+	// 게임화면
 	private Image ImageGame = new ImageIcon("src/images/GameBackground.png").getImage();
 	private Image ImageRules = new ImageIcon("src/images/GameRules.png").getImage();
 	public Image EndGame = new ImageIcon("src/images/결과화면.png").getImage();
 	private Image ImageBackground;
 
-	//게임시작 버튼
+	// 게임시작 버튼
 	private ImageIcon StartBasicImage = new ImageIcon("src/images/startButtonBasic.png");
 	private ImageIcon StartEnteredImage = new ImageIcon("src/images/startButtonEntered.png");
 	private JButton StartBtn = new JButton(StartBasicImage);
@@ -39,7 +39,7 @@ public class Game extends JPanel {
 	public Image ImageBrokenBurger = new ImageIcon("src/images/BrokenBurger.png").getImage();
 	public Image[] ImageThrow = { ImageThrowingBurger, ImageBrokenBurger };
 	public Image ThrowImage = ImageThrow[0];
-	
+
 	public Music gameMusic;
 
 	public Burger burger;
@@ -51,7 +51,7 @@ public class Game extends JPanel {
 
 	public boolean gameStart = false; // 게임 (시작 /끝)
 	private boolean bool = false; // 햄버거 재료 (내려옴/안내려옴)
-	public boolean throwburger = false; //햄버거 재료 (던짐/안던짐)
+	public boolean throwburger = false; // 햄버거 재료 (던짐/안던짐)
 	public boolean End = false; // 게임 (끝남/안끝남)
 	public static boolean replay = false; // 게임 (첫시작/처음시작)
 
@@ -66,7 +66,7 @@ public class Game extends JPanel {
 		setLayout(null);
 		ImageBackground = ImageRules;
 
-		// 시작버튼		
+		// 시작버튼
 		StartBtn.setBounds(915, 560, 340, 120);
 		StartBtn.setBorderPainted(false);
 		StartBtn.setContentAreaFilled(false);
@@ -106,14 +106,14 @@ public class Game extends JPanel {
 		public void mouseClicked(MouseEvent e) {
 			JButton button = (JButton) e.getSource();
 			button.setIcon(StartEnteredImage);
-			
+
 			Music Button = new Music("buttonPressedMusic.mp3", false);
 			Button.start();
 
 			ImageBackground = ImageGame; // 게임방법 화면 -> 게임 화면
 			gameStart = true;
 			BurgerMi.introMusic.close(); // 게임 인트로음악 종료
-			
+
 			// 게임 음악
 			gameMusic = new Music("요리.mp3", true);
 			gameMusic.start();
@@ -173,7 +173,7 @@ public class Game extends JPanel {
 				g.drawImage(OrderImage, OrderX, OrderY, this);
 			}
 			g.drawImage(order.guestArray[order.guest], 553, order.y, this);
-			
+
 			// 쟁반
 			int y = 450;
 			if (TrayBasicImage == ImageTray3) {

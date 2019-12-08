@@ -19,7 +19,7 @@ public class Score {
 				// 진상손님이면 점수 +20
 				if (BurgerMi.game.order.obnoxious == 4) {
 					score += 20;
-				} 
+				}
 				// 일반손님이면 점수 +10
 				else {
 					score += 10;
@@ -27,7 +27,7 @@ public class Score {
 				BurgerMi.game.grade.setText(score + "점");
 				System.out.println("성공");
 				break;
-			} 
+			}
 			// 주문 버거와 만든 버거가 다르면
 			// size, 재료
 			else if ((BurgerMi.game.order.MakeBurger.size() != BurgerMi.game.order.orderBurger.size())
@@ -36,13 +36,13 @@ public class Score {
 				Music OX = new Music("띠-으-으.mp3", false);
 				OX.start();
 				// 진상손님이면 점수 -5
-				if(BurgerMi.game.order.obnoxious == 4) {
+				if (BurgerMi.game.order.obnoxious == 4) {
 					score -= 5;
 				}
 				BurgerMi.game.grade.setText(score + "점");
 				System.out.println("실패");
 				break;
-			} 
+			}
 			// 순서대로 햄버거 재료가 같으면 count++
 			else if (((List<Object>) BurgerMi.game.order.orderBurger.get(count))
 					.get(0) == ((List<Object>) BurgerMi.game.order.MakeBurger.get(count)).get(0)) {
@@ -56,9 +56,9 @@ public class Score {
 		BurgerMi.game.ingredients = null;
 
 		System.out.println("");
-		
+
 		// 진상손님이면 햄버거 던지기
-		if(BurgerMi.game.order.obnoxious==4) {
+		if (BurgerMi.game.order.obnoxious == 4) {
 			Throw th = new Throw();
 			th.start();
 		}
@@ -67,7 +67,7 @@ public class Score {
 			BurgerMi.game.order = new Order();
 			BurgerMi.game.order.start();
 		}
-		
+
 		// 화면 다시그리기
 		BurgerMi.game.revalidate();
 		BurgerMi.game.repaint();

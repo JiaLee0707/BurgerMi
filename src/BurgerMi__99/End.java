@@ -11,7 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class End{
+public class End {
 	public Image EndGame = new ImageIcon("src/images/결과화면.png").getImage();
 	private ImageIcon ReplayBasicImage = new ImageIcon("src/images/replayButtonBasic.png");
 	private ImageIcon ReplayEnteredImage = new ImageIcon("src/images/replayButtonEntered.png");
@@ -24,17 +24,17 @@ public class End{
 	End() {
 		BurgerMi.game.grade.setVisible(false);
 		BurgerMi.game.timer.time.setVisible(false);
-		
+
 		// 햄버거가 내려오던 중 끝났을 수도 있어서
 		// 한번 더 초기화
 		BurgerMi.game.order.orderBurger.clear();
 		BurgerMi.game.order.MakeBurger.clear();
 		BurgerMi.game.ingredients = null;
-		
+
 		BurgerMi.game.gameStart = false;
 
 		BurgerMi.game.gameMusic.close();
-		
+
 		replayBtn.setBounds(10, 10, 340, 120);
 		replayBtn.setBorderPainted(false);
 		replayBtn.setContentAreaFilled(false);
@@ -60,10 +60,9 @@ public class End{
 		BurgerMi.game.add(allGrade);
 		allGrade.setVisible(true);
 
-
 		BurgerMi.game.revalidate();
 		BurgerMi.game.repaint();
-		
+
 		return;
 	}
 
@@ -96,7 +95,7 @@ public class End{
 			if (Entered.equals(QuitEnteredImage)) {
 				System.exit(0);
 			}
-			
+
 			button.setVisible(false);
 			replayBtn.setVisible(false);
 			QuitBtn.setVisible(false);
@@ -105,7 +104,7 @@ public class End{
 			BurgerMi.game.revalidate();
 			BurgerMi.game.repaint();
 			BurgerMi.game.getParent().repaint();
-			
+
 			BurgerMi.game.End = false;
 			BurgerMi.game.replay = true;
 			BurgerMi.game.Game();

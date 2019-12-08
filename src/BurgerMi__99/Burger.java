@@ -19,7 +19,7 @@ public class Burger extends Thread {
 	}
 
 	public void run() {
-		int i = 0;
+		int i = 0; // 내려오는 재료의 y좌표
 		boolean bool = true; // 햄버거 내려오냐/안내려오냐
 		try {
 			// i가 y가 아닐때까지 스레드 실행
@@ -32,12 +32,12 @@ public class Burger extends Thread {
 			}
 
 			// MakeBurger에 추가
-			List<Object> BurgerArray = new ArrayList<Object>(); // 하나의 햄버거 이미지, 위치 List
+			List<Object> BurgerArray = new ArrayList<Object>(); // 햄버거 재료 하나의 이미지, 위치 List
 			BurgerArray.add(this.StringIngeredients);
 			BurgerArray.add(this.ingredients);
 			BurgerArray.add(this.x);
 			BurgerArray.add(this.y);
-			// 전체 햄버거에 재료 추가
+			// 햄버거에 재료 추가
 			BurgerMi.game.order.MakeBurger.add((List<Object>) BurgerArray);
 			System.out.println("");
 			bool = false; // 햄버거 내려오기 끝
