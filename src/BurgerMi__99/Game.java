@@ -13,8 +13,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import BurgerMi__99.BurgerMi.Background;
-
 public class Game extends JPanel {
 	// 게임화면
 	private Image ImageGame = new ImageIcon("src/images/GameBackground.png").getImage();
@@ -47,7 +45,6 @@ public class Game extends JPanel {
 	public Score score;
 	public Timer timer;
 	public Throw th;
-//	public MyLabel bar = new MyLabel(100); 
 
 	public boolean gameStart = false; // 게임 (시작 /끝)
 	private boolean bool = false; // 햄버거 재료 (내려옴/안내려옴)

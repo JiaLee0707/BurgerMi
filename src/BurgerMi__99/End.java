@@ -35,7 +35,7 @@ public class End {
 
 		BurgerMi.game.gameMusic.close();
 
-		replayBtn.setBounds(10, 10, 340, 120);
+		replayBtn.setBounds(280, 470, 340, 120);
 		replayBtn.setBorderPainted(false);
 		replayBtn.setContentAreaFilled(false);
 		replayBtn.setFocusPainted(false);
@@ -44,7 +44,7 @@ public class End {
 		BurgerMi.game.add(replayBtn);
 
 		// 종료버튼
-		QuitBtn.setBounds(500, 470, 340, 120);
+		QuitBtn.setBounds(620, 470, 340, 120);
 		QuitBtn.setBorderPainted(false);
 		QuitBtn.setContentAreaFilled(false);
 		QuitBtn.setFocusPainted(false);
@@ -56,7 +56,7 @@ public class End {
 
 		allGrade.setFont(new Font("나눔스퀘어라운드 ExtraBold", Font.ITALIC, 50)); // 폰트 설정
 		allGrade.setSize(700, 700); // 크키 설정
-		allGrade.setLocation(200, 200); // 위치 설정
+		allGrade.setLocation(540, 30); // 위치 설정
 		BurgerMi.game.add(allGrade);
 		allGrade.setVisible(true);
 

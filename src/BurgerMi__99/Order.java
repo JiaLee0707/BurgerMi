@@ -55,7 +55,7 @@ public class Order extends Thread {
 
 		// 진상손님이 아니면 (밑빵 추가)
 		if (obnoxious != 4) {
-			// 햄버거 재료 하나의 이미지, 좌표 (Vector)
+			// 햄버거 재료 하나의 이미지, 좌표 (ArrayList)
 			List<Object> ingredients = new ArrayList<Object>();
 			ingredients.add("belowBread"); // 햄버거 재료 이미지
 			ingredients.add(orderbelowBreadImage);// 햄버거 재료 이미지
@@ -75,7 +75,7 @@ public class Order extends Thread {
 		// 진상손님이면 햄버거 재료 5개 랜덤
 		// 진상손님이 아니면 // 이미 들어가 있는 윗빵 제외하여 4개가 될 때까지 랜덤
 		while (orderBurger.size() != 5 - ii) {
-			// 햄버거 재료 하나의 이미지, 좌표 (Vector)
+			// 햄버거 재료 하나의 이미지, 좌표 (ArrayList)
 			List<Object> ingredients = new ArrayList<Object>();
 			// 햄버거 재료 랜덤
 			int orderSheet = (int) ((Math.random() * 86) + 65);
@@ -157,7 +157,7 @@ public class Order extends Thread {
 
 		// 진상손님이 아니면 (윗빵 추가)
 		if (obnoxious != 4) {
-			// 햄버거 재료 하나의 이미지, 좌표 (Vector)
+			// 햄버거 재료 하나의 이미지, 좌표 (ArrayList)
 			List<Object> ingredients = new ArrayList<Object>();
 			ingredients.add("topBread"); // 햄버거 재료 이미지
 			ingredients.add(ordertopBreadImage); // 햄버거 재료 이미지
