@@ -55,8 +55,6 @@ public class Score {
 		BurgerMi.game.order.MakeBurger.clear();
 		BurgerMi.game.ingredients = null;
 
-		System.out.println("");
-
 		// 진상손님이면 햄버거 던지기
 		if (BurgerMi.game.order.obnoxious == 4) {
 			Throw th = new Throw();

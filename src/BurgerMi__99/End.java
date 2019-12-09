@@ -17,7 +17,7 @@ public class End {
 	private ImageIcon ReplayEnteredImage = new ImageIcon("src/images/replayButtonEntered.png");
 	private ImageIcon QuitBasicImage = new ImageIcon("src/images/quitButtonBasic.png");
 	private ImageIcon QuitEnteredImage = new ImageIcon("src/images/quitButtonEntered.png");
-	public JLabel allGrade = new JLabel("총 : " + BurgerMi.game.score.score + "점");
+	public JLabel allGrade = new JLabel("총점 : " + BurgerMi.game.score.score + "점");
 	private JButton replayBtn = new JButton(ReplayBasicImage);
 	private JButton QuitBtn = new JButton(QuitBasicImage);
 
@@ -106,9 +106,11 @@ public class End {
 			BurgerMi.game.getParent().repaint();
 
 			BurgerMi.game.End = false;
-			BurgerMi.game.replay = true;
-			BurgerMi.game.Game();
-			return;
+			BurgerMi.replay = true;
+			Main.burgermi.dispose();
+			Main.burgermi = new BurgerMi();
+//			BurgerMi.game.Game();
+//			return;
 		}
 
 		// 버튼 위에 올리면

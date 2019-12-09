@@ -24,18 +24,24 @@ public class BurgerMi extends JFrame {
 	public static Music introMusic;
 
 	public static Game game = new Game();
+	public static boolean replay = false; // 게임 (첫시작/처음시작)
 	public Background background;
 
 	public BurgerMi() {
 		setTitle("BurgerMi");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		background = new Background();
-		setContentPane(background);
-		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
-		setResizable(false);
-		setLayout(null);
-		setVisible(true);
-		setLocationRelativeTo(null);
+		if (replay) {
+			setContentPane(game);
+			game.Game();
+		} else {
+			background = new Background();
+			setContentPane(background);
+			setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
+			setResizable(false);
+			setLayout(null);
+			setVisible(true);
+			setLocationRelativeTo(null);
+		}
 	}
 
 	// 화면 내부클래스(Panel)

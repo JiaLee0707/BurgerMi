@@ -50,7 +50,6 @@ public class Game extends JPanel {
 	private boolean bool = false; // 햄버거 재료 (내려옴/안내려옴)
 	public boolean throwburger = false; // 햄버거 재료 (던짐/안던짐)
 	public boolean End = false; // 게임 (끝남/안끝남)
-	public static boolean replay = false; // 게임 (첫시작/처음시작)
 
 	// 점수
 	public JLabel grade;
