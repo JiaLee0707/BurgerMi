@@ -1,4 +1,4 @@
-package BurgerMi__99;
+package BurgerMi__1010;
 
 import java.awt.Cursor;
 import java.awt.Font;
