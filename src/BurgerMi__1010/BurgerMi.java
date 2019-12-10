@@ -31,6 +31,7 @@ public class BurgerMi extends JFrame {
 		setTitle("BurgerMi");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		if (replay) {
+			System.out.println("replay Game");
 			game = new Game();
 			setContentPane(game);
 			game.Game();

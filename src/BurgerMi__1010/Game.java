@@ -59,6 +59,12 @@ public class Game extends JPanel {
 	int Threadx, Thready;
 
 	public void Game() {
+		if (BurgerMi.replay) {
+			System.out.println("replay Game2");
+			BurgerMi.game.revalidate();
+			BurgerMi.game.repaint();
+			BurgerMi.game.getParent().repaint();
+		}
 		setLayout(null);
 		
 		gameStart = false; // 게임 (시작 /끝)

@@ -108,6 +108,7 @@ public class End {
 			BurgerMi.game.End = false;
 			BurgerMi.replay = true;
 //			Main.burgermi.dispose();
+			System.out.println("replay");
 			Main.burgermi = new BurgerMi();
 //			BurgerMi.game.Game();
 //			return;
