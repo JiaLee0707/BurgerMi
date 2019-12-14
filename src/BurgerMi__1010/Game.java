@@ -62,6 +62,10 @@ public class Game extends JPanel {
 		setLayout(null);
 		ImageBackground = ImageRules;
 		System.out.println(ImageBackground);
+		gameStart = false; // 게임 (시작 /끝)
+		bool = false; // 햄버거 재료 (내려옴/안내려옴)
+		throwburger = false; // 햄버거 재료 (던짐/안던짐)
+		End = false; // 게임 (끝남/안끝남)
 		if (BurgerMi.replay) {
 			ImageBackground = ImageRules;
 			System.out.println("replay Game2");
@@ -71,10 +75,6 @@ public class Game extends JPanel {
 			BurgerMi.game.getParent().repaint();
 		}
 		
-		gameStart = false; // 게임 (시작 /끝)
-		bool = false; // 햄버거 재료 (내려옴/안내려옴)
-		throwburger = false; // 햄버거 재료 (던짐/안던짐)
-		End = false; // 게임 (끝남/안끝남)
 		
 		// 시작버튼
 		StartBtn.setBounds(915, 560, 340, 120);
