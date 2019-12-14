@@ -62,7 +62,9 @@ public class Game extends JPanel {
 		ImageBackground = ImageRules;
 		System.out.println(ImageBackground);
 		if (BurgerMi.replay) {
+			ImageBackground = ImageRules;
 			System.out.println("replay Game2");
+			this.add(StartBtn);
 			BurgerMi.game.revalidate();
 			BurgerMi.game.repaint();
 			BurgerMi.game.getParent().repaint();
