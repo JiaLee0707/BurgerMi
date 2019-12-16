@@ -69,7 +69,16 @@ public class Game extends JPanel {
 		if (BurgerMi.replay) {
 			ImageBackground = ImageRules;
 			System.out.println("replay Game2");
+			
+			StartBtn.setBounds(915, 560, 340, 120);
+			StartBtn.setBorderPainted(false);
+			StartBtn.setContentAreaFilled(false);
+			StartBtn.setFocusPainted(false);
+			StartBtn.addMouseListener(new MouseListener());
+			StartBtn.setVisible(true);
 			this.add(StartBtn);
+			this.setFocusable(true);
+			
 			BurgerMi.game.revalidate();
 			BurgerMi.game.repaint();
 			BurgerMi.game.getParent().repaint();
