@@ -62,8 +62,6 @@ public class End {
 
 		BurgerMi.game.revalidate();
 		BurgerMi.game.repaint();
-
-		return;
 	}
 
 	// 마우스 리스너

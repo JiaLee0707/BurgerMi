@@ -66,24 +66,6 @@ public class Game extends JPanel {
 		bool = false; // 햄버거 재료 (내려옴/안내려옴)
 		throwburger = false; // 햄버거 재료 (던짐/안던짐)
 		End = false; // 게임 (끝남/안끝남)
-		if (BurgerMi.replay) {
-			ImageBackground = ImageRules;
-			System.out.println("replay Game2");
-			
-			StartBtn.setBounds(915, 560, 340, 120);
-			StartBtn.setBorderPainted(false);
-			StartBtn.setContentAreaFilled(false);
-			StartBtn.setFocusPainted(false);
-			StartBtn.addMouseListener(new MouseListener());
-			StartBtn.setVisible(true);
-			this.add(StartBtn);
-			this.setFocusable(true);
-			
-			BurgerMi.game.revalidate();
-			BurgerMi.game.repaint();
-			BurgerMi.game.getParent().repaint();
-		}
-		
 		
 		// 시작버튼
 		StartBtn.setBounds(915, 560, 340, 120);
@@ -95,11 +77,20 @@ public class Game extends JPanel {
 		this.add(StartBtn);
 
 		this.setFocusable(true);
+		
+		if (BurgerMi.replay) {
+			System.out.println("replay Game2");
+			
+			BurgerMi.game.revalidate();
+			BurgerMi.game.repaint();
+			BurgerMi.game.getParent().repaint();
+		}
 
 		order = new Order();
 		order.start();
 
 		this.addKeyListener(new KeyListener());
+		
 	}
 
 	// 내려오는 햄버거 재료 초기화
