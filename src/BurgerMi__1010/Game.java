@@ -84,6 +84,7 @@ public class Game extends JPanel {
 			BurgerMi.game.revalidate();
 			BurgerMi.game.repaint();
 			BurgerMi.game.getParent().repaint();
+			order = null;
 		}
 
 		order = new Order();
