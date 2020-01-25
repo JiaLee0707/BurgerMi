@@ -30,21 +30,17 @@ public class BurgerMi extends JFrame {
 	public BurgerMi() {
 		setTitle("BurgerMi");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		if (replay) {
-			System.out.println("replay Game");
-			game = new Game();
-			setContentPane(game);
-			game.Game();
-		} else {
-			background = new Background();
-			setContentPane(background);
-			setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
-			setResizable(false);
-			setLayout(null);
-			setVisible(true);
-			setLocationRelativeTo(null);
-		}
+		
+		background = new Background();
+		setContentPane(background);
+		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
+		setResizable(false);	//창 크기 변경X
+		setLayout(null);
+		setVisible(true);
+		setLocationRelativeTo(null);	//창위치 가운데
 	}
+	
+	
 
 	// 화면 내부클래스(Panel)
 	class Background extends JPanel {

@@ -78,14 +78,14 @@ public class Game extends JPanel {
 
 		this.setFocusable(true);
 		
-		if (BurgerMi.replay) {
-			System.out.println("replay Game2");
-			
-			BurgerMi.game.revalidate();
-			BurgerMi.game.repaint();
-			BurgerMi.game.getParent().repaint();
-			order = null;
-		}
+//		if (BurgerMi.replay) {
+//			System.out.println("replay Game2");
+//			
+//			BurgerMi.game.revalidate();
+//			BurgerMi.game.repaint();
+//			BurgerMi.game.getParent().repaint();
+//			order = null;
+//		}
 
 		order = new Order();
 		order.start();
@@ -161,7 +161,7 @@ public class Game extends JPanel {
 
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-
+		
 		// 배경화면 그리기
 		g.drawImage(ImageBackground, 0, 0, this);
 
