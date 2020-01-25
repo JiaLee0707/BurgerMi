@@ -40,7 +40,12 @@ public class BurgerMi extends JFrame {
 		setLocationRelativeTo(null);	//창위치 가운데
 	}
 	
-	
+	public void BurgerMi() {
+		System.out.println("aaaaa");
+		game = new Game();
+		setContentPane(game);
+		game.Game();
+	}
 
 	// 화면 내부클래스(Panel)
 	class Background extends JPanel {
