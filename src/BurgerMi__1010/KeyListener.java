@@ -39,6 +39,8 @@ class KeyListener extends KeyAdapter {
 //			break;
 		case KeyEvent.VK_ENTER:
 			System.out.println("\nø£≈Õ");
+			BurgerMi.game.ingredients = null;
+			BurgerMi.game.burger.interrupt();
 			BurgerMi.game.score.Score();
 			break;
 		}

@@ -41,8 +41,8 @@ public class Burger extends Thread {
 			BurgerMi.game.order.MakeBurger.add((List<Object>) BurgerArray);
 			System.out.println("");
 			bool = false; // 햄버거 내려오기 끝
-		} catch (Exception e) {
-			e.printStackTrace();
+		}catch (InterruptedException e) {
+		    return;
 		}
 	}
 }

@@ -105,12 +105,8 @@ public class End {
 
 			BurgerMi.game.End = false;
 			BurgerMi.replay = true;
-//			Main.burgermi.dispose();
 			System.out.println("replay");
-//			Main.burgermi = new BurgerMi();
 			Main.burgermi.BurgerMi();
-//			BurgerMi.game.Game();
-//			return;
 		}
 
 		// 버튼 위에 올리면

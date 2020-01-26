@@ -23,7 +23,7 @@ public class BurgerMi extends JFrame {
 
 	public static Music introMusic;
 
-	public static Game game = new Game();
+	public static Game game;
 	public static boolean replay = false; // 게임 (첫시작/처음시작)
 	public Background background;
 
@@ -41,15 +41,20 @@ public class BurgerMi extends JFrame {
 	}
 	
 	public void BurgerMi() {
-		System.out.println("aaaaa");
-		game = new Game();
-		setContentPane(game);
-		game.Game();
+		game = null;
+		background = new Background();
+		setContentPane(background);
+		
+		
+//		game = new Game();
+//		setContentPane(game);
+//		game.Game();
 	}
 
 	// 화면 내부클래스(Panel)
 	class Background extends JPanel {
 		Background() {
+			
 			introMusic = new Music("쾌활한 행복하고 이동 지중해 요리에 가장 적합한 악기 음악.mp3", true);
 			introMusic.start();
 
@@ -110,6 +115,7 @@ public class BurgerMi extends JFrame {
 			}
 
 			background.setVisible(false);
+			game = new Game();
 			setContentPane(game);
 			game.Game();
 		}

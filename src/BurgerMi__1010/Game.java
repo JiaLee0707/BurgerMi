@@ -77,15 +77,6 @@ public class Game extends JPanel {
 		this.add(StartBtn);
 
 		this.setFocusable(true);
-		
-//		if (BurgerMi.replay) {
-//			System.out.println("replay Game2");
-//			
-//			BurgerMi.game.revalidate();
-//			BurgerMi.game.repaint();
-//			BurgerMi.game.getParent().repaint();
-//			order = null;
-//		}
 
 		order = new Order();
 		order.start();
