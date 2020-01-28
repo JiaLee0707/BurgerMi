@@ -43,6 +43,9 @@ class KeyListener extends KeyAdapter {
 			BurgerMi.game.burger.interrupt();
 			BurgerMi.game.score.Score();
 			break;
-		}
+//		case KeyEvent.VK_ESCAPE:
+//			System.out.println("ESC");
+//			
+//		}
 	}
 }

@@ -11,6 +11,7 @@ public class Timer extends Thread {
 
 	public JLabel time = new JLabel(Time[0] + ":" + Time[1]);
 	public End end;
+//	public boolean pause = false;
 
 	Timer() {
 		time.setFont(new Font("나눔스퀘어라운드 ExtraBold", Font.ITALIC, 50)); // 폰트 설정
@@ -19,10 +20,11 @@ public class Timer extends Thread {
 
 		this.start();
 	}
-
+	
 	public void run() {
 		try {
 			while (true) {
+//				if()
 				Time[1] -= 1;
 				time.setText(Time[0] + ":" + Time[1]);
 				if (Time[1] == 0) {

@@ -12,14 +12,11 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class BurgerMi extends JFrame {
-	public Image ImageBackground = new ImageIcon("src/images/BurgerMi복사본.png").getImage();
+	private Image ImageBackground = new ImageIcon("src/images/BurgerMi복사본.png").getImage();
 	private ImageIcon StartBasicImage = new ImageIcon("src/images/startButtonBasic.png");
 	private ImageIcon StartEnteredImage = new ImageIcon("src/images/startButtonEntered.png");
 	private ImageIcon QuitBasicImage = new ImageIcon("src/images/quitButtonBasic.png");
 	private ImageIcon QuitEnteredImage = new ImageIcon("src/images/quitButtonEntered.png");
-
-	private JButton StartBtn = new JButton(StartBasicImage);
-	private JButton QuitBtn = new JButton(QuitBasicImage);
 
 	public static Music introMusic;
 
@@ -40,8 +37,7 @@ public class BurgerMi extends JFrame {
 		setLocationRelativeTo(null);	//창위치 가운데
 	}
 	
-	public void BurgerMi() {
-		game = null;
+	public void JPanelChange() {
 		background = new Background();
 		setContentPane(background);
 		
@@ -53,9 +49,13 @@ public class BurgerMi extends JFrame {
 
 	// 화면 내부클래스(Panel)
 	class Background extends JPanel {
+		private JButton StartBtn = new JButton(StartBasicImage);
+		private JButton QuitBtn = new JButton(QuitBasicImage);
+		
 		Background() {
+			setLayout(null);
 			
-			introMusic = new Music("쾌활한 행복하고 이동 지중해 요리에 가장 적합한 악기 음악.mp3", true);
+			introMusic = new Music("BurgerMi 타이틀 음악.mp3", true);
 			introMusic.start();
 
 			// 시작버튼
@@ -66,6 +66,7 @@ public class BurgerMi extends JFrame {
 			StartBtn.addMouseListener(new MouseListener(StartBasicImage, StartEnteredImage));
 			StartBtn.setVisible(true);
 			this.add(StartBtn);
+			
 
 			// 종료버튼
 			QuitBtn.setBounds(10, 470, 340, 120);

@@ -106,7 +106,7 @@ public class End {
 			BurgerMi.game.End = false;
 			BurgerMi.replay = true;
 			System.out.println("replay");
-			Main.burgermi.BurgerMi();
+			Main.burgermi.JPanelChange();
 		}
 
 		// 버튼 위에 올리면
