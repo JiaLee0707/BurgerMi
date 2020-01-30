@@ -21,6 +21,7 @@ public class BurgerMi extends JFrame {
 	public static Music introMusic;
 
 	public static Game game;
+	public static Ranking ranking = new Ranking();
 	public static boolean replay = false; // 게임 (첫시작/처음시작)
 	public Background background;
 

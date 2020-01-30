@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -52,8 +53,14 @@ public class End {
 		QuitBtn.setVisible(true);
 		BurgerMi.game.add(QuitBtn);
 
+		// 게임 종료
 		BurgerMi.game.End = true;
 
+		BurgerMi.ranking.insert.Insert(BurgerMi.game.score.score);
+		BurgerMi.ranking.update.Update();
+		
+		
+		// 총 점수 출력
 		allGrade.setFont(new Font("나눔스퀘어라운드 ExtraBold", Font.ITALIC, 50)); // 폰트 설정
 		allGrade.setSize(700, 700); // 크키 설정
 		allGrade.setLocation(540, 30); // 위치 설정
