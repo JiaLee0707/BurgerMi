@@ -112,6 +112,9 @@ public class Ranking {
 //				conn=DriverManager.getConnection("jdbc:mysql://localhost:3307/buregrmi", "root", "mirim2");
 //				System.out.println("DB 연결 완료");
 				
+				
+//				update ranking set ranking = ? where name = (select name from ranking order by score desc)
+				
 				String sql = "select * from ranking order by score desc;";
 				pstmt = conn.prepareStatement(sql);
 				ResultSet srs = pstmt.executeQuery();
