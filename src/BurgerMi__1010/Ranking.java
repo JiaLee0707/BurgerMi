@@ -91,7 +91,7 @@ public class Ranking {
 				pstmt = conn.prepareStatement(sql);
 				ResultSet srs = pstmt.executeQuery();
 				while(srs.next()) {
-					System.out.print(srs.getString("ranking")+" ");
+					System.out.print(srs.getString("rank")+" ");
 					System.out.print(srs.getString("name")+" ");
 					System.out.print(srs.getString("score")+" ");
 					System.out.println();
@@ -115,20 +115,27 @@ public class Ranking {
 				
 //				update ranking set ranking = ? where name = (select name from ranking order by score desc)
 				
-				String sql = "select * from ranking order by score desc;";
+				String sql = "select * from ranking order by score desc";
 				pstmt = conn.prepareStatement(sql);
 				ResultSet srs = pstmt.executeQuery();
 				int count = 0;
 				while(srs.next()) {
 					count++;
-					String sql2 = "update ranking set ranking = ? where name = ?";
+					
+					String sql2 = "update ranking set rank = ? where name = (select name from ranking order by score desc)";
+					pstmt = conn.prepareStatement(sql);
+//					ResultSet srs2 = pstmt.executeQuery();
+					
+					
+//					sql = "update ranking set ranking = ? where name = ?";
+//					sql = "update ranking set ranking = ? where name = (select name from ranking order by score desc)";
 					pstmt.setString(1, Integer.toString(count));
-					pstmt.setString(2, srs.getString("name"));
+//					pstmt.setString(2, srs.getString("name"));
 					pstmt.executeUpdate(); //실행시키는 거
 					
 					if(count <= 5) {
 						// 화면 출력
-						System.out.print(srs.getString("ranking")+" ");
+						System.out.print(srs.getString("rank")+" ");
 						System.out.print(srs.getString("name")+" ");
 						System.out.print(srs.getString("score")+" ");
 						System.out.println();
