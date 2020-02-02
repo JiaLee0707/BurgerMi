@@ -122,13 +122,13 @@ public class Ranking {
 				while(srs.next()) {
 					count++;
 					
-					String sql2 = "update ranking set rank = ? where name = (select name from (select * from ranking) as r order by score desc)";
+//					String sql2 = "update ranking set rank = ? where name = (select name from (select * from ranking) as r order by score desc)";
 					pstmt = conn.prepareStatement(sql);
 //					ResultSet srs2 = pstmt.executeQuery();
 					
 					
 //					sql = "update ranking set ranking = ? where name = ?";
-//					sql = "update ranking set ranking = ? where name = (select name from ranking order by score desc)";
+					sql = "update ranking set ranking = ? where name = (select name from ranking order by score desc)";
 					pstmt.setString(1, Integer.toString(count));
 //					pstmt.setString(2, srs.getString("name"));
 					pstmt.executeUpdate(); //실행시키는 거
