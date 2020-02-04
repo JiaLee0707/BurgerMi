@@ -206,7 +206,7 @@ public class Game extends JPanel {
 			g.drawImage(ingredients, Threadx, Thready, this);
 		}
 
-		// 게임이 끝나면
+		// 게임이 끝나면 or Esc(메뉴)를 누르면
 		if (BurgerMi.Menu) {
 			g.drawImage(BurgerMi.MenuImage, 0, 0, this);
 		}

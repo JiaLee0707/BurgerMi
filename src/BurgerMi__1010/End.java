@@ -36,6 +36,11 @@ public class End {
 
 		BurgerMi.game.gameMusic.close();
 
+
+		BurgerMi.ranking.insert.Insert(BurgerMi.game.score.score);
+		BurgerMi.ranking.update.Update();
+		
+		// 다시하기 버튼
 		replayBtn.setBounds(280, 470, 340, 120);
 		replayBtn.setBorderPainted(false);
 		replayBtn.setContentAreaFilled(false);
@@ -43,7 +48,7 @@ public class End {
 		replayBtn.addMouseListener(new MouseListener(ReplayBasicImage, ReplayEnteredImage));
 		replayBtn.setVisible(true);
 		BurgerMi.game.add(replayBtn);
-
+		
 		// 종료버튼
 		QuitBtn.setBounds(620, 470, 340, 120);
 		QuitBtn.setBorderPainted(false);
@@ -52,13 +57,10 @@ public class End {
 		QuitBtn.addMouseListener(new MouseListener(QuitBasicImage, QuitEnteredImage));
 		QuitBtn.setVisible(true);
 		BurgerMi.game.add(QuitBtn);
-
+		
 		// 게임 종료
 		BurgerMi.Menu = true;
 
-		BurgerMi.ranking.insert.Insert(BurgerMi.game.score.score);
-		BurgerMi.ranking.update.Update();
-		
 		JLabel GameResult = new JLabel("게임 결과");
 		GameResult.setFont(BurgerMi.font); // 폰트 설정
 		GameResult.setSize(800, 800); // 크키 설정
