@@ -47,6 +47,7 @@ class KeyListener extends KeyAdapter {
 		case KeyEvent.VK_ESCAPE:
 			System.out.println("ESC");
 			BurgerMi.Menu = !BurgerMi.Menu;
+			BurgerMi.game.timer.pause = !BurgerMi.game.timer.pause;
 			BurgerMi.game.revalidate();
 			BurgerMi.game.repaint();
 			BurgerMi.game.getParent().repaint();
