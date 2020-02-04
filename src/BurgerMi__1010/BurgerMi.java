@@ -1,6 +1,7 @@
 package BurgerMi__1010;
 
 import java.awt.Cursor;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
@@ -17,13 +18,18 @@ public class BurgerMi extends JFrame {
 	private ImageIcon StartEnteredImage = new ImageIcon("src/images/startButtonEntered.png");
 	private ImageIcon QuitBasicImage = new ImageIcon("src/images/quitButtonBasic.png");
 	private ImageIcon QuitEnteredImage = new ImageIcon("src/images/quitButtonEntered.png");
-
+	public static Image MenuImage = new ImageIcon("src/images/메뉴화면.png").getImage();
+	
 	public static Music introMusic;
 
 	public static Game game;
 	public static Ranking ranking = new Ranking();
 	public static boolean replay = false; // 게임 (첫시작/처음시작)
 	public Background background;
+	public static Font font = new Font("나눔스퀘어라운드 ExtraBold", Font.BOLD, 50); //ITALIC
+	
+
+	public static boolean Menu = false; // 메뉴
 
 	public BurgerMi() {
 		setTitle("BurgerMi");

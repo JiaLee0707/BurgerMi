@@ -13,7 +13,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class End {
-	public Image EndGame = new ImageIcon("src/images/결과화면.png").getImage();
 	private ImageIcon ReplayBasicImage = new ImageIcon("src/images/replayButtonBasic.png");
 	private ImageIcon ReplayEnteredImage = new ImageIcon("src/images/replayButtonEntered.png");
 	private ImageIcon QuitBasicImage = new ImageIcon("src/images/quitButtonBasic.png");
@@ -21,6 +20,7 @@ public class End {
 	public JLabel allGrade = new JLabel("총점 : " + BurgerMi.game.score.score + "점");
 	private JButton replayBtn = new JButton(ReplayBasicImage);
 	private JButton QuitBtn = new JButton(QuitBasicImage);
+	
 
 	End() {
 		BurgerMi.game.grade.setVisible(false);
@@ -54,14 +54,20 @@ public class End {
 		BurgerMi.game.add(QuitBtn);
 
 		// 게임 종료
-		BurgerMi.game.End = true;
+		BurgerMi.Menu = true;
 
 		BurgerMi.ranking.insert.Insert(BurgerMi.game.score.score);
 		BurgerMi.ranking.update.Update();
 		
+		JLabel GameResult = new JLabel("게임 결과");
+		GameResult.setFont(BurgerMi.font); // 폰트 설정
+		GameResult.setSize(800, 800); // 크키 설정
+		GameResult.setLocation(540, -280); // 위치 설정
+		BurgerMi.game.add(GameResult);
+		GameResult.setVisible(true);
 		
 		// 총 점수 출력
-		allGrade.setFont(new Font("나눔스퀘어라운드 ExtraBold", Font.ITALIC, 50)); // 폰트 설정
+		allGrade.setFont(BurgerMi.font); // 폰트 설정
 		allGrade.setSize(700, 700); // 크키 설정
 		allGrade.setLocation(540, 30); // 위치 설정
 		BurgerMi.game.add(allGrade);
@@ -110,7 +116,7 @@ public class End {
 			BurgerMi.game.repaint();
 			BurgerMi.game.getParent().repaint();
 
-			BurgerMi.game.End = false;
+			BurgerMi.Menu = false;
 			BurgerMi.replay = true;
 			System.out.println("replay");
 			Main.burgermi.JPanelChange();

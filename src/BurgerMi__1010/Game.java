@@ -49,7 +49,6 @@ public class Game extends JPanel {
 	public boolean gameStart; // 게임 (시작 /끝)
 	private boolean bool; // 햄버거 재료 (내려옴/안내려옴)
 	public boolean throwburger; // 햄버거 재료 (던짐/안던짐)
-	public boolean End; // 게임 (끝남/안끝남)
 
 	// 점수
 	public JLabel grade;
@@ -65,7 +64,6 @@ public class Game extends JPanel {
 		gameStart = false; // 게임 (시작 /끝)
 		bool = false; // 햄버거 재료 (내려옴/안내려옴)
 		throwburger = false; // 햄버거 재료 (던짐/안던짐)
-		End = false; // 게임 (끝남/안끝남)
 		
 		// 시작버튼
 		StartBtn.setBounds(915, 560, 340, 120);
@@ -209,8 +207,8 @@ public class Game extends JPanel {
 		}
 
 		// 게임이 끝나면
-		if (End) {
-			g.drawImage(EndGame, 0, 0, this);
+		if (BurgerMi.Menu) {
+			g.drawImage(BurgerMi.MenuImage, 0, 0, this);
 		}
 	}
 }
