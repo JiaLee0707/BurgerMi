@@ -46,7 +46,15 @@ class KeyListener extends KeyAdapter {
 			break;
 		case KeyEvent.VK_ESCAPE:
 			System.out.println("ESC");
+			
+			//메뉴 화면
 			BurgerMi.Menu = !BurgerMi.Menu;
+			
+			// 버튼 추가하기
+			// 계속하기
+			// 도움말
+			// 나가기
+			
 			BurgerMi.game.timer.pause = !BurgerMi.game.timer.pause;
 			BurgerMi.game.revalidate();
 			BurgerMi.game.repaint();
