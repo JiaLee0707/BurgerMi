@@ -4,6 +4,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		BurgerMi burgermi = new BurgerMi();
+		System.out.println("1111");
 	}
 
 }

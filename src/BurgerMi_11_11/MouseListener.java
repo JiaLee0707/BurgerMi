@@ -7,49 +7,58 @@ import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-public class MouseListener extends MouseAdapter{
-	ImageIcon Basic;
-	ImageIcon Entered;
+public class MouseListener{
+	ImageIcon StartBasicImage = new ImageIcon("src/images/startButtonBasic.png");
+	ImageIcon StartEnteredImage = new ImageIcon("src/images/startButtonEntered.png");
+	ImageIcon QuitBasicImage = new ImageIcon("src/images/quitButtonBasic.png");
+	ImageIcon QuitEnteredImage = new ImageIcon("src/images/quitButtonEntered.png");
+	
+	public MouseListener() {}
 
-	public MouseListener(ImageIcon BasicImageIcon, ImageIcon EnteredImageIcon) {
-		Basic = BasicImageIcon;
-		Entered = EnteredImageIcon;
-	}
+	class Listener extends MouseAdapter {
+		ImageIcon Basic;
+		ImageIcon Entered;
 
-	// 기본버튼
-	@Override
-	public void mouseExited(MouseEvent e) {
-		JButton button = (JButton) e.getSource();
-		button.setIcon(Basic);
-	}
-
-	// 클릭버튼
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		JButton button = (JButton) e.getSource();
-		button.setIcon(Entered);
-
-		Music Button = new Music("buttonPressedMusic.mp3", false);
-		Button.start();
-
-		if (Entered.equals(QuitEnteredImage)) {
-			System.exit(0);
+		public Listener(ImageIcon BasicImageIcon, ImageIcon EnteredImageIcon) {
+			Basic = BasicImageIcon;
+			Entered = EnteredImageIcon;
 		}
 
-		background.setVisible(false);
-		game = new Game();
-		setContentPane(game);
-		game.Game();
-	}
+		// 기본버튼
+		@Override
+		public void mouseExited(MouseEvent e) {
+			JButton button = (JButton) e.getSource();
+			button.setIcon(Basic);
+		}
 
-	// 버튼 위에 올리면
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		JButton button = (JButton) e.getSource();
-		button.setIcon(Entered);
-		button.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		// 클릭버튼
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			JButton button = (JButton) e.getSource();
+			button.setIcon(Entered);
 
-		Music Button = new Music("buttonEnteredMusic.mp3", false);
-		Button.start();
+			Music Button = new Music("buttonPressedMusic.mp3", false);
+			Button.start();
+
+			if (Entered.equals(QuitEnteredImage)) {
+				System.exit(0);
+			} else {
+				
+			}
+
+			
+		}
+
+		// 버튼 위에 올리면
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			JButton button = (JButton) e.getSource();
+			button.setIcon(Entered);
+			button.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
+			Music Button = new Music("buttonEnteredMusic.mp3", false);
+			Button.start();
+
+		}
 	}
 }
