@@ -7,7 +7,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-public class MouseListener{
+public class MouseListener{	
 	ImageIcon StartBasicImage = new ImageIcon("src/images/startButtonBasic.png");
 	ImageIcon StartEnteredImage = new ImageIcon("src/images/startButtonEntered.png");
 	ImageIcon QuitBasicImage = new ImageIcon("src/images/quitButtonBasic.png");
@@ -16,10 +16,12 @@ public class MouseListener{
 	public MouseListener() {}
 
 	class Listener extends MouseAdapter {
+		public BurgerMi burgermi;
 		ImageIcon Basic;
 		ImageIcon Entered;
 
-		public Listener(ImageIcon BasicImageIcon, ImageIcon EnteredImageIcon) {
+		public Listener(BurgerMi burgermi, ImageIcon BasicImageIcon, ImageIcon EnteredImageIcon) {
+			this.burgermi = burgermi;
 			Basic = BasicImageIcon;
 			Entered = EnteredImageIcon;
 		}
@@ -43,10 +45,9 @@ public class MouseListener{
 			if (Entered.equals(QuitEnteredImage)) {
 				System.exit(0);
 			} else {
-				
+				burgermi.JPanelChange("game");
 			}
 
-			
 		}
 
 		// 버튼 위에 올리면

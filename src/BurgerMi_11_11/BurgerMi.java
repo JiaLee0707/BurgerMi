@@ -9,15 +9,16 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class BurgerMi extends JFrame {
-
+	
+	public BurgerMi burgermi;
 	public Background background;
 	public Game game;
 
-	public BurgerMi() {
+	public BurgerMi() {	
 		setTitle("BurgerMi");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		background = new Background();
+		background = new Background(burgermi);
 		setContentPane(background);
 		setSize(1280, 720);
 		setResizable(false); // 창 크기 변경X
@@ -26,10 +27,16 @@ public class BurgerMi extends JFrame {
 		setLocationRelativeTo(null); // 창위치 가운데
 	}
 
+	public void BurgerMi(BurgerMi burgermi) {
+		this.burgermi = burgermi;
+	}
+	
 	public void JPanelChange(String panel) {
+		System.out.println("Change");
 		if(panel.equals("game")) {
+			System.out.println("game");
 			background.setVisible(false);
-			Game game = new Game();
+			game = new Game();
 
 			setContentPane(game);
 			game.Game();
@@ -41,6 +48,7 @@ public class BurgerMi extends JFrame {
 }
 
 class Background extends JPanel {
+	public BurgerMi burgermi;
 	MouseListener mouse = new MouseListener();
 	
 	private JButton StartBtn = new JButton(mouse.StartBasicImage);
@@ -50,7 +58,8 @@ class Background extends JPanel {
 	private Image MenuImage = new ImageIcon("src/images/메뉴화면.png").getImage();
 
 
-	public Background() {
+	public Background(BurgerMi burgermi) {
+		this.burgermi = burgermi;
 		setLayout(null);
 
 		Music introMusic = new Music("BurgerMi 타이틀 음악.mp3", true);
@@ -61,7 +70,7 @@ class Background extends JPanel {
 		StartBtn.setBorderPainted(false);
 		StartBtn.setContentAreaFilled(false);
 		StartBtn.setFocusPainted(false);
-		StartBtn.addMouseListener(mouse.new Listener(mouse.StartBasicImage, mouse.StartEnteredImage));
+		StartBtn.addMouseListener(mouse.new Listener(burgermi, mouse.StartBasicImage, mouse.StartEnteredImage));
 		StartBtn.setVisible(true);
 		this.add(StartBtn);
 
@@ -70,7 +79,7 @@ class Background extends JPanel {
 		QuitBtn.setBorderPainted(false);
 		QuitBtn.setContentAreaFilled(false);
 		QuitBtn.setFocusPainted(false);
-		QuitBtn.addMouseListener(mouse.new Listener(mouse.QuitBasicImage, mouse.QuitEnteredImage));
+		QuitBtn.addMouseListener(mouse.new Listener(burgermi, mouse.QuitBasicImage, mouse.QuitEnteredImage));
 		QuitBtn.setVisible(true);
 		this.add(QuitBtn);
 	}
