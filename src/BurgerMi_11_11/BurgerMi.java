@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 
 public class BurgerMi extends JFrame {
 	
-	public BurgerMi burgermi;
+	public static Music
 	public Background background;
 	public Game game;
 
@@ -18,17 +18,13 @@ public class BurgerMi extends JFrame {
 		setTitle("BurgerMi");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		background = new Background(burgermi);
+		background = new Background();
 		setContentPane(background);
 		setSize(1280, 720);
 		setResizable(false); // 창 크기 변경X
 		setLayout(null);
 		setVisible(true);
 		setLocationRelativeTo(null); // 창위치 가운데
-	}
-
-	public void BurgerMi(BurgerMi burgermi) {
-		this.burgermi = burgermi;
 	}
 	
 	public void JPanelChange(String panel) {
@@ -48,7 +44,6 @@ public class BurgerMi extends JFrame {
 }
 
 class Background extends JPanel {
-	public BurgerMi burgermi;
 	MouseListener mouse = new MouseListener();
 	
 	private JButton StartBtn = new JButton(mouse.StartBasicImage);
@@ -58,10 +53,9 @@ class Background extends JPanel {
 	private Image MenuImage = new ImageIcon("src/images/메뉴화면.png").getImage();
 
 
-	public Background(BurgerMi burgermi) {
-		this.burgermi = burgermi;
+	public Background() {
 		setLayout(null);
-
+		
 		Music introMusic = new Music("BurgerMi 타이틀 음악.mp3", true);
 		introMusic.start();
 
@@ -70,7 +64,7 @@ class Background extends JPanel {
 		StartBtn.setBorderPainted(false);
 		StartBtn.setContentAreaFilled(false);
 		StartBtn.setFocusPainted(false);
-		StartBtn.addMouseListener(mouse.new Listener(burgermi, mouse.StartBasicImage, mouse.StartEnteredImage));
+		StartBtn.addMouseListener(mouse.new Listener("Background", mouse.StartBasicImage, mouse.StartEnteredImage));
 		StartBtn.setVisible(true);
 		this.add(StartBtn);
 
@@ -79,7 +73,7 @@ class Background extends JPanel {
 		QuitBtn.setBorderPainted(false);
 		QuitBtn.setContentAreaFilled(false);
 		QuitBtn.setFocusPainted(false);
-		QuitBtn.addMouseListener(mouse.new Listener(burgermi, mouse.QuitBasicImage, mouse.QuitEnteredImage));
+		QuitBtn.addMouseListener(mouse.new Listener("Background", mouse.QuitBasicImage, mouse.QuitEnteredImage));
 		QuitBtn.setVisible(true);
 		this.add(QuitBtn);
 	}

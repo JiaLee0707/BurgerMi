@@ -1,11 +1,13 @@
 package BurgerMi_11_11;
 
 import java.awt.Cursor;
+import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 public class MouseListener{	
 	ImageIcon StartBasicImage = new ImageIcon("src/images/startButtonBasic.png");
@@ -16,12 +18,14 @@ public class MouseListener{
 	public MouseListener() {}
 
 	class Listener extends MouseAdapter {
-		public BurgerMi burgermi;
+		String panel;
 		ImageIcon Basic;
 		ImageIcon Entered;
+		
+		Game start = new Game();
 
-		public Listener(BurgerMi burgermi, ImageIcon BasicImageIcon, ImageIcon EnteredImageIcon) {
-			this.burgermi = burgermi;
+		public Listener(String panel, ImageIcon BasicImageIcon, ImageIcon EnteredImageIcon) {
+			this.panel = panel;
 			Basic = BasicImageIcon;
 			Entered = EnteredImageIcon;
 		}
@@ -42,12 +46,13 @@ public class MouseListener{
 			Music Button = new Music("buttonPressedMusic.mp3", false);
 			Button.start();
 
-			if (Entered.equals(QuitEnteredImage)) {
+			if (Entered.equals(QuitEnteredImage)) {	// 게임 끝
 				System.exit(0);
-			} else {
-				burgermi.JPanelChange("game");
+			} else if(panel.equals("Background") && Entered.equals(StartEnteredImage)) {	// 타이틀에서 게임 시작
+				Main.burgermi.JPanelChange("game");
+			} else if(panel.equals("Game") && Entered.equals(StartEnteredImage)) {	// 게임방법 이후 게임 시작
+				start.GameStart();
 			}
-
 		}
 
 		// 버튼 위에 올리면
