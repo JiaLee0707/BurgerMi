@@ -10,7 +10,6 @@ import javax.swing.JPanel;
 
 public class BurgerMi extends JFrame {
 	
-	public static Music
 	public Background background;
 	public Game game;
 
@@ -44,6 +43,7 @@ public class BurgerMi extends JFrame {
 }
 
 class Background extends JPanel {
+	Music introMusic;
 	MouseListener mouse = new MouseListener();
 	
 	private JButton StartBtn = new JButton(mouse.StartBasicImage);
@@ -56,7 +56,7 @@ class Background extends JPanel {
 	public Background() {
 		setLayout(null);
 		
-		Music introMusic = new Music("BurgerMi 타이틀 음악.mp3", true);
+		introMusic = new Music("BurgerMi 타이틀 음악.mp3", true);
 		introMusic.start();
 
 		// 시작버튼

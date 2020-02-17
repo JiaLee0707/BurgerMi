@@ -9,6 +9,8 @@ import javax.swing.JPanel;
 
 public class Game extends JPanel {
 	
+	Background background;
+	
 	// 게임화면
 	private Image ImageGame = new ImageIcon("src/images/GameBackground.png").getImage();
 	private Image ImageRules = new ImageIcon("src/images/GameRules.png").getImage();
@@ -35,7 +37,9 @@ public class Game extends JPanel {
 	
 	public void GameStart() {
 		ImageBackground =ImageGame;
-		
+		background.introMusic.close();
+		Music gameMusic = new Music("요리.mp3", true);
+		gameMusic.start();
 	}
 	
 	// 화면 그리기
