@@ -21,8 +21,6 @@ public class MouseListener{
 		String panel;
 		ImageIcon Basic;
 		ImageIcon Entered;
-		
-		Game start = new Game();
 
 		public Listener(String panel, ImageIcon BasicImageIcon, ImageIcon EnteredImageIcon) {
 			this.panel = panel;
@@ -51,7 +49,7 @@ public class MouseListener{
 			} else if(panel.equals("Background") && Entered.equals(StartEnteredImage)) {	// 타이틀에서 게임 시작
 				Main.burgermi.JPanelChange("game");
 			} else if(panel.equals("Game") && Entered.equals(StartEnteredImage)) {	// 게임방법 이후 게임 시작
-				start.GameStart();
+				Main.burgermi.game.GameStart();
 			}
 		}
 

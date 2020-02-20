@@ -5,11 +5,12 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Game extends JPanel {
 	
-	Background background;
+	private Order order = new Order();
 	
 	// 게임화면
 	private Image ImageGame = new ImageIcon("src/images/GameBackground.png").getImage();
@@ -24,6 +25,7 @@ public class Game extends JPanel {
 	public void Game() {
 		setLayout(null);
 		ImageBackground = ImageRules;
+		System.out.println(ImageBackground);
 		
 		// 시작버튼
 		StartBtn.setBounds(915, 560, 340, 120);
@@ -36,15 +38,29 @@ public class Game extends JPanel {
 	}
 	
 	public void GameStart() {
-		ImageBackground =ImageGame;
-		background.introMusic.close();
+		ImageBackground = ImageGame;
+		Main.burgermi.background.introMusic.close();
 		Music gameMusic = new Music("요리.mp3", true);
 		gameMusic.start();
+		
+		// 버튼 안보이게
+		StartBtn.setVisible(false);
+		
+		// 손님 Label
+		JLabel guestJLabel = new JLabel(order.guestArray[order.guest.who]);	
+		this.add(guestJLabel);	
+		order.Order(guestJLabel);
+		
+		
+	
 	}
 	
 	// 화면 그리기
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);	
+		
+		// 배경화면
 		g.drawImage(ImageBackground, 0, 0, this);
+//		g.drawImage(order.guestArray[order.guest.guest], 553, order.guest.y, this);
 	}
 }
