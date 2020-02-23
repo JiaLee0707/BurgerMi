@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 public class Game extends JPanel {
 	
 	private Order order = new Order();
+	private Order.Guest guest = order.new Guest();
 	
 	// 게임화면
 	private Image ImageGame = new ImageIcon("src/images/GameBackground.png").getImage();
@@ -48,11 +49,16 @@ public class Game extends JPanel {
 		
 		// 손님 Label
 		JLabel guestJLabel = new JLabel(order.guestArray[order.guest.who]);	
-		this.add(guestJLabel);	
-		order.Order(guestJLabel);
+		JLabel[] BurgerJLabel = new JLabel[5];
+		guest.Guest(guestJLabel);
+		this.add(guestJLabel);
 		
-		
-	
+		// 버거 Label
+		for(int i=0; i<5; i++) {
+			BurgerJLabel[i] = new JLabel(order.orderBurgerImageArray[order.orderBurgerArray[i]]);
+			order.Order(BurgerJLabel[i]);
+			this.add(BurgerJLabel[i]);				
+		}	
 	}
 	
 	// 화면 그리기
