@@ -42,39 +42,54 @@ public class Order{
 	int[] orderBurgerArray = new int[5];
 	JLabel BurgerJLabel;
 	
-	public void Order(JLabel BurgerJLabel) {
-		int orderBurger, i = 0;	// 주문 버거
-		
+	public Order() {
+		int orderBurger = 0, i = 0, random = 6;	// 주문 버거
+
 		// 주문받은 버거
 		if(guest.who != 4) {	//진상 손님이 아니라면
-			orderBurger = -2;
+			System.out.println("진상X");
 			i = 1;
-			orderBurgerArray[0] = 0;
-			orderBurgerArray[4] = 1;
-		} else {
-			orderBurger = 0;
+			random = 4;
+			orderBurgerArray[0] = 5;
+			orderBurgerArray[4] = 4;
 		}
 		
 		// 주문 랜덤
-		for(i = i; i < 5-orderBurger; i++) {
-				orderBurger += (int)(Math.random() * 6); 
-				orderBurgerArray[i] = orderBurger;
+		for(int j = i; j < 5-i; j++) {
+			orderBurger = (int)(Math.random() * random);
+			orderBurgerArray[j] = orderBurger;
 		}
-		
+	}
+	
+	public void Order(JLabel BurgerJLabel, int i) {
 		// 햄버거 재료 위치 조정
-		for(i = 0; i < 5; i++) {
-			switch(orderBurgerArray[i]) {
-			case 0:
-				BurgerJLabel.setBounds(553, 100, 175, 300);
-				break;
-			case 1: break;
-			case 2: break;
-			case 3: break;
-			case 4: break;
-			case 5: break;
-			}
+		int y = 160-25*(i+1);
+		switch(orderBurgerArray[i]) {
+		case 0:	// 치즈
+			BurgerJLabel.setBounds(135, y+10, 400, 300);
+			System.out.println("치즈");
+			break;
+		case 1:	// 패티
+			BurgerJLabel.setBounds(140, y+13, 400, 300);
+			System.out.println("패티");
+			break;
+		case 2:	// 토마토
+			BurgerJLabel.setBounds(140, y+8, 400, 300);
+			System.out.println("토마토");
+			break;
+		case 3: // 채소
+			BurgerJLabel.setBounds(138, y-3, 400, 300);
+			System.out.println("채소");
+			break;
+		case 4: // 윗빵
+			BurgerJLabel.setBounds(135, y-10, 400, 300);
+			System.out.println("윗빵");
+			break;
+		case 5: // 아랫빵
+			BurgerJLabel.setBounds(135, y, 400, 300);
+			System.out.println("아랫빵");
+			break;
 		}
-		
 	}
 	
 	//손님 클래스(쓰레드)
@@ -88,7 +103,7 @@ public class Order{
 
 			// 손님
 			guestJLabel.setBounds(553, 100, 175, 300);
-			guest.start();
+			this.start();
 			
 			System.out.println("guest");
 		}

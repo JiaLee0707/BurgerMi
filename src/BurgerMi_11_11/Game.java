@@ -49,16 +49,20 @@ public class Game extends JPanel {
 		
 		// 손님 Label
 		JLabel guestJLabel = new JLabel(order.guestArray[order.guest.who]);	
-		JLabel[] BurgerJLabel = new JLabel[5];
+//		JLabel[] BurgerJLabel = new JLabel[5];
 		guest.Guest(guestJLabel);
 		this.add(guestJLabel);
 		
 		// 버거 Label
-		for(int i=0; i<5; i++) {
-			BurgerJLabel[i] = new JLabel(order.orderBurgerImageArray[order.orderBurgerArray[i]]);
-			order.Order(BurgerJLabel[i]);
-			this.add(BurgerJLabel[i]);				
-		}	
+		for(int i=4; i>-1; i--) {
+			JLabel BurgerJLabel = new JLabel(order.orderBurgerImageArray[order.orderBurgerArray[i]]);
+			order.Order(BurgerJLabel, i);
+			this.add(BurgerJLabel);				
+		}
+		getParent().repaint();
+
+		this.setFocusable(true);
+		this.addKeyListener(new KeyListener());
 	}
 	
 	// 화면 그리기
