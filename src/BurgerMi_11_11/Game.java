@@ -1,5 +1,6 @@
 package BurgerMi_11_11;
 
+import java.awt.Container;
 import java.awt.Graphics;
 import java.awt.Image;
 
@@ -61,7 +62,8 @@ public class Game extends JPanel {
 		}
 		getParent().repaint();
 
-		this.setFocusable(true);
+//		this.setFocusable(true);
+		this.requestFocus(); // 컨텐트팬에 포커스 설정
 		this.addKeyListener(new KeyListener());
 	}
 	
