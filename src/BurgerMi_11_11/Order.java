@@ -20,14 +20,6 @@ public class Order{
 	private ImageIcon guest5 = new ImageIcon("src/images/55.png");
 	private ImageIcon guest6 = new ImageIcon("src/images/66.png");
 	public ImageIcon[] guestArray = { guest1, guest2, guest3, guest4, guest5, guest6 };
-	
-	// 만들때 사용하는 버거
-//	private ImageIcon belowBreadImage = new ImageIcon("src/images/아래빵.png");
-//	private ImageIcon topBreadImage = new ImageIcon("src/images/윗빵.png");
-//	private ImageIcon lettuceImage = new ImageIcon("src/images/채소.png");
-//	private ImageIcon tomatoImage = new ImageIcon("src/images/토마토.png");
-//	private ImageIcon pattyImage = new ImageIcon("src/images/패티.png");
-//	private ImageIcon cheeseImage = new ImageIcon("src/images/치즈.png");
 
 	// 주문받은 버거
 	private ImageIcon orderbelowBreadImage = new ImageIcon("src/images/Order아래빵.png");	// 5
@@ -40,7 +32,6 @@ public class Order{
 			orderpattyImage, ordertomatoImage, orderlettuceImage, ordertopBreadImage, orderbelowBreadImage};
 	
 	int[] orderBurgerArray = new int[5];
-	JLabel BurgerJLabel;
 	
 	public Order() {
 		int orderBurger = 0, i = 0, random = 6;	// 주문 버거

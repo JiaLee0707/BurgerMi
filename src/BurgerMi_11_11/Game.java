@@ -13,6 +13,7 @@ public class Game extends JPanel {
 	
 	private Order order = new Order();
 	private Order.Guest guest = order.new Guest();
+	private KeyListener keyListener = new KeyListener();
 	
 	// 게임화면
 	private Image ImageGame = new ImageIcon("src/images/GameBackground.png").getImage();
@@ -54,7 +55,7 @@ public class Game extends JPanel {
 		guest.Guest(guestJLabel);
 		this.add(guestJLabel);
 		
-		// 버거 Label
+		// 주문 버거 Label
 		for(int i=4; i>-1; i--) {
 			JLabel BurgerJLabel = new JLabel(order.orderBurgerImageArray[order.orderBurgerArray[i]]);
 			order.Order(BurgerJLabel, i);
@@ -64,7 +65,7 @@ public class Game extends JPanel {
 
 //		this.setFocusable(true);
 		this.requestFocus(); // 컨텐트팬에 포커스 설정
-		this.addKeyListener(new KeyListener());
+		this.addKeyListener(keyListener);
 	}
 	
 	// 화면 그리기
@@ -73,6 +74,5 @@ public class Game extends JPanel {
 		
 		// 배경화면
 		g.drawImage(ImageBackground, 0, 0, this);
-//		g.drawImage(order.guestArray[order.guest.guest], 553, order.guest.y, this);
 	}
 }
