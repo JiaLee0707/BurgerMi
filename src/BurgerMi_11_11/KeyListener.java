@@ -48,6 +48,7 @@ public class KeyListener extends KeyAdapter{
 			break;
 		case KeyEvent.VK_ESCAPE:
 			System.out.println("ESC");
+			break;
 		}
 	}
 }

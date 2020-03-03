@@ -28,27 +28,27 @@ public class Burger extends Thread{
 		switch(MakeBurgerArray.get(MakeBurgerArray.size()-1)) {
 		case 0:	// 치즈
 			MakerBurgerJLabel = new JLabel(MakeBurgerImageArray[0]);
-			MakerBurgerJLabel.setBounds(450, y+10, 400, 300);
+			MakerBurgerJLabel.setBounds(450, y-40, 400, 300);
 			System.out.println("치즈");
 			break;
 		case 1:	// 패티
 			MakerBurgerJLabel = new JLabel(MakeBurgerImageArray[1]);
-			MakerBurgerJLabel.setBounds(450, y+13, 400, 300);
+			MakerBurgerJLabel.setBounds(450, y-40, 400, 300);
 			System.out.println("패티");
 			break;
 		case 2:	// 토마토
 			MakerBurgerJLabel = new JLabel(MakeBurgerImageArray[2]);
-			MakerBurgerJLabel.setBounds(450, y+8, 400, 300);
+			MakerBurgerJLabel.setBounds(450, y-25, 400, 300);
 			System.out.println("토마토");
 			break;
 		case 3: // 채소
 			MakerBurgerJLabel = new JLabel(MakeBurgerImageArray[3]);
-			MakerBurgerJLabel.setBounds(450, y-3, 400, 300);
+			MakerBurgerJLabel.setBounds(450, y-50, 400, 300);
 			System.out.println("채소");
 			break;
 		case 4: // 윗빵
 			MakerBurgerJLabel = new JLabel(MakeBurgerImageArray[4]);
-			MakerBurgerJLabel.setBounds(450, y-10, 400, 300);
+			MakerBurgerJLabel.setBounds(450, y-95, 400, 300);
 			System.out.println("윗빵");
 			break;
 		case 5: // 아랫빵
@@ -58,6 +58,7 @@ public class Burger extends Thread{
 			break;
 		}
 		Main.burgermi.game.add(MakerBurgerJLabel);
+		Main.burgermi.game.setComponentZOrder(MakerBurgerJLabel, MakeBurgerArray.size()-1);	// JLabel의 앞뒤 위치를 설정할 수 있음
 		Main.burgermi.game.getParent().repaint();
 	}
 	
