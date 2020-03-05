@@ -104,7 +104,7 @@ public class Order{
 				while (y != 136) {
 					y += 1;
 					guestJLabel.setLocation(553, y);;
-					Main.burgermi.game.getParent().repaint();
+//					Main.burgermi.game.getParent().repaint();
 					Main.burgermi.game.revalidate();
 					Thread.sleep(10);
 				}

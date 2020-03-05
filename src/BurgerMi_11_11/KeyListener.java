@@ -9,35 +9,35 @@ import java.util.List;
 import javax.swing.JLabel;
 
 public class KeyListener extends KeyAdapter{
-	public Burger burger;
+	Burger burger = new Burger();
 	
 	public void keyReleased(KeyEvent e) {
 		int KeyCode = e.getKeyCode();
 		
 		switch(KeyCode) {
 		case KeyEvent.VK_S :
-			System.out.println("πÿªß");
-			burger = new Burger(5);
+//			System.out.println("πÿªß");
+			burger.Burger(5);
 			break;
 		case KeyEvent.VK_W :
-			System.out.println("¿≠ªß");
-			burger = new Burger(4);
+//			System.out.println("¿≠ªß");
+			burger.Burger(4);
 			break;
 		case KeyEvent.VK_A: // ∆–∆º
-			System.out.print("∆–∆º");
-			burger = new Burger(1);
+//			System.out.print("∆–∆º");
+			burger.Burger(1);
 			break;
 		case KeyEvent.VK_D: // ªÛ√ﬂ
-			System.out.print("ªÛ√ﬂ");
-			burger = new Burger(3);
+//			System.out.print("ªÛ√ﬂ");
+			burger.Burger(3);
 			break;
 		case KeyEvent.VK_Q: // ≈‰∏∂≈‰
-			System.out.print("≈‰∏∂≈‰");
-			burger = new Burger(2);
+//			System.out.print("≈‰∏∂≈‰");
+			burger.Burger(2);
 			break;
 		case KeyEvent.VK_E: // ƒ°¡Ó
-			System.out.print("ƒ°¡Ó");
-			burger = new Burger(0);
+//			System.out.print("ƒ°¡Ó");
+			burger.Burger(0);
 			break;
 //		case KeyEvent.VK_SPACE:
 //        	 order.Make(keyCode);
