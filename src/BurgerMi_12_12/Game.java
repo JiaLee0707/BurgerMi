@@ -1,4 +1,4 @@
-package BurgerMi_11_11;
+package BurgerMi_12_12;
 
 import java.awt.Container;
 import java.awt.Graphics;
@@ -25,6 +25,8 @@ public class Game extends JPanel {
 	// 게임시작 버튼
 	MouseListener mouse = new MouseListener();
 	private JButton StartBtn = new JButton(mouse.StartBasicImage);
+	
+	JLabel[] BurgerJLabel = new JLabel[5];
 		
 	public void Game() {
 		setLayout(null);
@@ -60,10 +62,13 @@ public class Game extends JPanel {
 		this.add(guestJLabel);
 		
 		// 주문 버거 Label
+		for(int i=0; i<5; i++) {
+			BurgerJLabel[i] = new JLabel(order.orderBurgerImageArray[order.orderBurgerArray[i]]);
+			order.Order(BurgerJLabel[i], i);
+//			this.setComponentZOrder(BurgerJLabel[i], i);	// JLabel의 앞뒤 위치를 설정할 수 있음
+		}
 		for(int i=4; i>-1; i--) {
-			JLabel BurgerJLabel = new JLabel(order.orderBurgerImageArray[order.orderBurgerArray[i]]);
-			order.Order(BurgerJLabel, i);
-			this.add(BurgerJLabel);				
+			this.add(BurgerJLabel[i]);
 		}
 		getParent().repaint();
 
