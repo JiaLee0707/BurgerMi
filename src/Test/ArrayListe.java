@@ -20,6 +20,7 @@ public class ArrayListe {
 		
 		System.out.println("Array");
 		Array.add(Array2);
+		Array.add(Array2);
 		for (int i=0; i<Array.size(); i++) {
 			System.out.println(Array.get(i));
 		}

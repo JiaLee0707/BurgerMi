@@ -12,7 +12,7 @@ public class KeyListener extends KeyAdapter{
 	Burger burger = new Burger();
 	Score score;
 	
-	KeyListener(Score score) {
+	public void KeyListener(Score score) {
 		this.score = score;
 	}
 	
@@ -44,12 +44,12 @@ public class KeyListener extends KeyAdapter{
 //			System.out.print("치즈");
 			burger.Burger(0);
 			break;
-//		case KeyEvent.VK_SPACE:
+		case KeyEvent.VK_SPACE:
 //        	 order.Make(keyCode);
 //        	 BurgerMi.game.dropBurger(); 
-//			break;
+			break;
 		case KeyEvent.VK_ENTER:
-//			System.out.println("\n엔터");
+			System.out.println("\n엔터");
 			score.Score(burger);
 			break;
 		case KeyEvent.VK_ESCAPE:

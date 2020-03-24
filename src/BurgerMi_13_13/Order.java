@@ -7,7 +7,6 @@ import javax.swing.ImageIcon;
 
 public class Order {
 	Random random = new Random();
-	Guest guest;
 
 	// 손님
 	private Image guest1 = new ImageIcon("src/images/11.png").getImage();
@@ -30,24 +29,17 @@ public class Order {
 			ordertopBreadImage, orderbelowBreadImage };
 
 	public List<Object> orderBurger = new LinkedList<Object>();
-	public List<Object> burgerIngredient = new LinkedList<Object>();
+	public List<Object> burgerIngredient;
 	
-	int[] orderBurgerArray = new int[5];
+	int[] orderBurgerArray;
+	int who, y;
 
 	public Order() {
-		
-		burgerIngredient.add(null);
-		burgerIngredient.add(0);
-		burgerIngredient.add(0);
-		
-		orderBurger.add(burgerIngredient);
-		
-		guest = new Guest();
-
+		orderBurgerArray = new int[5];
 		int orderBurger = 0, i = 0, random = 6; // 주문 버거
 
 		// 주문받은 버거
-		if (guest.who != 4) { // 진상 손님이 아니라면
+		if (who != 4) { // 진상 손님이 아니라면
 			System.out.println("진상X");
 			i = 1;
 			random = 4;
@@ -62,51 +54,52 @@ public class Order {
 		}
 	}
 
-	public void Order(int i) {		
+	public void Order(int i) {	
+		Guest guest = new Guest();
+		guest.Guest();
+		
+		burgerIngredient = new LinkedList<Object>();
 		// 햄버거 재료 위치 조정
-		int y = 160 - 25 * (i + 1);
-//		System.out.println("asdfafd"+ orderBurgerImageArray[orderBurgerArray[i]]);
+		int y = 160-25* i;
 		burgerIngredient.add(orderBurgerImageArray[orderBurgerArray[i]]);
 		switch (orderBurgerArray[i]) {
 		case 0: // 치즈
-			burgerIngredient.add(135);
-			burgerIngredient.add(y + 10);
-			System.out.println("치즈");
+			burgerIngredient.add(130);
+			burgerIngredient.add(y + 5);
+//			System.out.println("치즈");
 			break;
 		case 1: // 패티
-			burgerIngredient.add(140);
-			burgerIngredient.add(y + 13);
-			System.out.println("패티");
+			burgerIngredient.add(135);
+			burgerIngredient.add(y + 27);
+//			System.out.println("패티");
 			break;
 		case 2: // 토마토
-			burgerIngredient.add(140);
-			burgerIngredient.add(y + 8);
-			System.out.println("토마토");
+			burgerIngredient.add(146);
+			burgerIngredient.add(y + 28);
+//			System.out.println("토마토");
 			break;
 		case 3: // 채소
-			burgerIngredient.add(138);
-			burgerIngredient.add(y - 3);
-			System.out.println("채소");
+			burgerIngredient.add(131);
+			burgerIngredient.add(y - 10);
+//			System.out.println("채소");
 			break;
 		case 4: // 윗빵
-			burgerIngredient.add(135);
-			burgerIngredient.add(y - 10);
-			System.out.println("윗빵");
+			burgerIngredient.add(137);
+			burgerIngredient.add(y - 20);
+//			System.out.println("윗빵");
 			break;
 		case 5: // 아랫빵
-			burgerIngredient.add(135);
+			burgerIngredient.add(153);
 			burgerIngredient.add(y);
-			System.out.println("아랫빵");
+//			System.out.println("아랫빵");
 			break;
 		}
 		orderBurger.add((List<Object>) burgerIngredient);
-		System.out.println(orderBurger.get(i));
+//		System.out.println(orderBurger.get(i));
 
 	}
 
 	class Guest extends Thread {
-		int who, y;
-
 		public void Guest() {
 			who = (int) (Math.random() * 6); // 손님 랜덤
 			thisGuest = guestArray[who];
