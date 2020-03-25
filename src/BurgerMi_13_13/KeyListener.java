@@ -12,8 +12,8 @@ public class KeyListener extends KeyAdapter{
 	Burger burger = new Burger();
 	Score score;
 	
-	public void KeyListener(Score score) {
-		this.score = score;
+	public void KeyListener() {
+		score = Main.burgermi.game.score;
 	}
 	
 	public void keyReleased(KeyEvent e) {
@@ -50,7 +50,7 @@ public class KeyListener extends KeyAdapter{
 			break;
 		case KeyEvent.VK_ENTER:
 			System.out.println("\nø£≈Õ");
-			score.Score(burger);
+			score.Score();
 			break;
 		case KeyEvent.VK_ESCAPE:
 			System.out.println("ESC");

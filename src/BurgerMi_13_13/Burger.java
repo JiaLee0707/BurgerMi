@@ -18,35 +18,40 @@ public class Burger {
 	private Image cheeseImage = new ImageIcon("src/images/치즈.png").getImage();
 	public Image[] MakeBurgerImageArray = { cheeseImage, pattyImage, tomatoImage, lettuceImage, topBreadImage,
 			belowBreadImage };
-	
-	public LinkedList<Integer> MakeBurgerIntArray = new LinkedList<Integer>();
-	public LinkedList<Object> MakeBurgerObjectArray = new LinkedList<Object>();
-	public List<Object> burgerIngredient;
-	int x, y, i = 0; // 햄버거 x, y, i 좌표
-	
+
+	public LinkedList<Integer> MakeBurgerIntArray = new LinkedList<Integer>(); // 만드는 버거 int
+	public LinkedList<Object> MakeBurgerObjectArray = new LinkedList<Object>(); // 만드는 버거 이미지, 위치
+	public LinkedList<Object> burgerIngredient = new LinkedList<Object>(); // 내려오는 버거
+	public LinkedList<Object> Ingredient;
+	public LinkedList<Integer> i;
+	int x, y; // 햄버거 x, y, i 좌표
+
 	boolean key = false;
-	
+
 	public void Burger(int m) {
 		key = true;
-		
-		burgerIngredient = new LinkedList<Object>();
-		burgerIngredient.add(MakeBurgerImageArray[m]);
+
+		Ingredient = new LinkedList<Object>();
+		Ingredient.add(MakeBurgerImageArray[m]);
 		MakeBurgerIntArray.add(m);
-	
-		y = 550-25*(MakeBurgerIntArray.size());
-		
-		switch(m) {
-		case 0:	// 치즈
+		for (int i = 0; i < MakeBurgerIntArray.size(); i++) {
+			System.out.println(MakeBurgerIntArray.get(i));
+		}
+
+		y = 550 - 25 * (MakeBurgerIntArray.size());
+
+		switch (m) {
+		case 0: // 치즈
 			x = 485;
 			y -= 30;
 //			System.out.println("치즈");
 			break;
-		case 1:	// 패티
+		case 1: // 패티
 			x = 490;
 //			y -= 5;
 //			System.out.println("패티");
 			break;
-		case 2:	// 토마토
+		case 2: // 토마토
 			x = 503;
 //			y -= 5;
 //			System.out.println("토마토");
@@ -67,29 +72,36 @@ public class Burger {
 //			System.out.println("밑빵");
 			break;
 		}
-		burgerIngredient.add(x);
-		burgerIngredient.add(y);		
+		Ingredient.add(x);
+		Ingredient.add(y);
+		burgerIngredient.add(Ingredient);
 		BurgerThread thread = new BurgerThread();
 		thread.start();
 
 		Main.burgermi.game.getParent().repaint();
 	}
-	
+
 	class BurgerThread extends Thread {
 		public void run() {
-			i = 0;
+			i = new LinkedList<Integer>();
+			i.add(0);
 			try {
-				while (i != y) {
-					i += 1;
-					Main.burgermi.game.getParent().repaint();
-					Thread.sleep(1);
+				for (int j = 0; j < i.size(); j++) {
+					int index =  i.get(j);
+					int yy = ((LinkedList<Integer>) burgerIngredient.get(j)).get(2);
+					while (index != yy) {
+						index += 1;
+						i.set(j, index);
+						Main.burgermi.game.getParent().repaint();
+						Thread.sleep(1);
+					}
 				}
-
-				MakeBurgerObjectArray.add(burgerIngredient);
+				burgerIngredient.removeFirst();
+				i.removeFirst();
+				MakeBurgerObjectArray.add(Ingredient);
 			} catch (Exception e) {
 				e.getMessage();
 			}
-		}		
+		}
 	}
 }
-

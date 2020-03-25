@@ -12,7 +12,7 @@ public class Game extends JPanel {
 
 	public Order order = new Order();
 //	private Order.Guest guest = order.new Guest();
-	private Score score;
+	public Score score;
 	public KeyListener keyListener = new KeyListener();
 
 	// 게임화면
@@ -50,26 +50,26 @@ public class Game extends JPanel {
 
 		// 버튼 안보이게
 		StartBtn.setVisible(false);
-		
-		score = new Score(order);
-		keyListener.KeyListener(score);
+
+		score = new Score();
+		keyListener.KeyListener();
+		;
+
 		ReGame();
 
 		this.requestFocus(); // 컨텐트팬에 포커스 설정
 		this.addKeyListener(keyListener);
 	}
-	
+
 	public void ReGame() {
-		
-//		guest.Guest();
-//		order.orderBurger.clear();
-//		order.burgerIngredient.clear();
+		Order.Guest guest = order.new Guest();
+		order.Order();
 		for (int i = 0; i < order.orderBurgerArray.length; i++) {
-			order.Order(i);
+			order.Burger(i);
 		}
-		
+		guest.Guest();
+
 		getParent().repaint();
-		
 	}
 
 	// 화면 그리기
@@ -80,7 +80,6 @@ public class Game extends JPanel {
 		// 배경화면
 		g.drawImage(ImageBackground, 0, 0, this);
 
-
 		Image burgerIngredient = null;
 		int x = 0;
 		int y = 0;
@@ -88,20 +87,21 @@ public class Game extends JPanel {
 		Image MakeburgerIngredient = null;
 		int Makex = 0;
 		int Makey = 0;
-		
+
 		if (start) {
 			// 손님 그리기
 			g.drawImage(order.thisGuest, 553, order.y, this);
 
-			//			주문받은 버거
+			// 주문받은 버거
 			for (int i = 0; i < order.orderBurger.size(); i++) {
 				burgerIngredient = (Image) ((List<Object>) order.orderBurger.get(i)).get(0);
 				x = (int) ((List<Object>) order.orderBurger.get(i)).get(1);
 				y = (int) ((List<Object>) order.orderBurger.get(i)).get(2);
 				g.drawImage(burgerIngredient, x, y, this);
-			}			
+			}
 		}
 
+		// 만든 버거
 		for (int i = 0; i < keyListener.burger.MakeBurgerObjectArray.size(); i++) {
 			MakeburgerIngredient = (Image) ((List<Object>) keyListener.burger.MakeBurgerObjectArray.get(i)).get(0);
 			Makex = (int) ((List<Object>) keyListener.burger.MakeBurgerObjectArray.get(i)).get(1);
@@ -111,12 +111,13 @@ public class Game extends JPanel {
 
 		// 만드는 버거
 		if (keyListener.burger.key) {
-			Image MakeImage = (Image) keyListener.burger.burgerIngredient.get(0);
-			int MakeX = (int) keyListener.burger.burgerIngredient.get(1);
-			int MakeY = (int) keyListener.burger.i;
-			g.drawImage(MakeImage, MakeX, MakeY, this);
+			for (int i = 0; i < keyListener.burger.burgerIngredient.size(); i++) {
+				Image MakeImage = (Image) (((List<Object>) keyListener.burger.burgerIngredient.get(i)).get(0));
+				int MakeX = (int) (((List<Object>) keyListener.burger.burgerIngredient.get(i)).get(1));
+				int MakeY = (int) keyListener.burger.i.get(i);
+				g.drawImage(MakeImage, MakeX, MakeY, this);
+			}
 		}
-		
 
 	}
 

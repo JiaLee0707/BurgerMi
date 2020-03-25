@@ -30,11 +30,11 @@ public class Order {
 
 	public List<Object> orderBurger = new LinkedList<Object>();
 	public List<Object> burgerIngredient;
-	
+
 	int[] orderBurgerArray;
 	int who, y;
 
-	public Order() {
+	public void Order() {
 		orderBurgerArray = new int[5];
 		int orderBurger = 0, i = 0, random = 6; // ÁÖ¹® ¹ö°Å
 
@@ -54,13 +54,10 @@ public class Order {
 		}
 	}
 
-	public void Order(int i) {	
-		Guest guest = new Guest();
-		guest.Guest();
-		
+	public void Burger(int i) {
 		burgerIngredient = new LinkedList<Object>();
 		// ÇÜ¹ö°Å Àç·á À§Ä¡ Á¶Á¤
-		int y = 160-25* i;
+		int y = 160 - 25 * i;
 		burgerIngredient.add(orderBurgerImageArray[orderBurgerArray[i]]);
 		switch (orderBurgerArray[i]) {
 		case 0: // Ä¡Áî
@@ -100,12 +97,15 @@ public class Order {
 	}
 
 	class Guest extends Thread {
-		public void Guest() {
+		public Guest() {
 			who = (int) (Math.random() * 6); // ¼Õ´Ô ·£´ý
 			thisGuest = guestArray[who];
 			y = 100; // ¼Õ´Ô yÁÂÇ¥
+		}
 
+		public void Guest() {
 			this.start();
+
 		}
 
 		public void run() {
