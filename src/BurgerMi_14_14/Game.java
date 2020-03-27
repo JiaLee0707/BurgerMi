@@ -1,4 +1,4 @@
-package BurgerMi_13_13;
+package BurgerMi_14_14;
 
 import java.awt.Graphics;
 import java.awt.Image;
@@ -112,9 +112,9 @@ public class Game extends JPanel {
 		// 만드는 버거
 		if (keyListener.burger.key) {
 			for (int i = 0; i < keyListener.burger.burgerIngredient.size(); i++) {
-				Image MakeImage = (Image) (((List<Object>) keyListener.burger.burgerIngredient.get(i)).get(0));
-				int MakeX = (int) (((List<Object>) keyListener.burger.burgerIngredient.get(i)).get(1));
-				int MakeY = (int) keyListener.burger.iz;
+				Image MakeImage = (Image) keyListener.burger.burgerIngredient.get(0);
+				int MakeX = (int) keyListener.burger.burgerIngredient.get(1);
+				int MakeY = (int) keyListener.burger.i;
 				g.drawImage(MakeImage, MakeX, MakeY, this);
 			}
 		}

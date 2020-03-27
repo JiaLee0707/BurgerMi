@@ -1,4 +1,4 @@
-package BurgerMi_13_13;
+package BurgerMi_14_14;
 
 import java.awt.Image;
 import java.util.LinkedList;
@@ -21,18 +21,18 @@ public class Burger {
 
 	public LinkedList<Integer> MakeBurgerIntArray = new LinkedList<Integer>(); // 만드는 버거 int
 	public LinkedList<Object> MakeBurgerObjectArray = new LinkedList<Object>(); // 만드는 버거 이미지, 위치
-	public LinkedList<Object> burgerIngredient = new LinkedList<Object>(); // 내려오는 버거
-	public LinkedList<Object> Ingredient;
-	public LinkedList<Integer> i = new LinkedList<Integer>();;
-	int x, y; // 햄버거 x, y, i 좌표
+//	public LinkedList<Object> burgerIngredient = new LinkedList<Object>(); // 내려오는 버거
+	public LinkedList<Object> burgerIngredient;
+//	public LinkedList<Integer> i = new LinkedList<Integer>();;
+	int x, y, i; // 햄버거 x, y, i 좌표
 
 	boolean key = false;
 
 	public void Burger(int m) {
 		key = true;
 
-		Ingredient = new LinkedList<Object>();
-		Ingredient.add(MakeBurgerImageArray[m]);
+		burgerIngredient = new LinkedList<Object>();
+		burgerIngredient.add(MakeBurgerImageArray[m]);
 		MakeBurgerIntArray.add(m);
 		for (int i = 0; i < MakeBurgerIntArray.size(); i++) {
 			System.out.println(MakeBurgerIntArray.get(i));
@@ -72,9 +72,8 @@ public class Burger {
 //			System.out.println("밑빵");
 			break;
 		}
-		Ingredient.add(x);
-		Ingredient.add(y);
-		burgerIngredient.add(Ingredient);
+		burgerIngredient.add(x);
+		burgerIngredient.add(y);
 		BurgerThread thread = new BurgerThread();
 		thread.start();
 
@@ -83,21 +82,16 @@ public class Burger {
 
 	class BurgerThread extends Thread {
 		public void run() {
-			i.add(0);
 			try {
-				for (int j = 0; j < i.size(); j++) {
-					int index =  i.get(j);
-					int yy = ((LinkedList<Integer>) burgerIngredient.get(j)).get(2);
-					while (index != yy) {
-						index += 1;
-						i.set(j, index);
+			i=0;
+					while (i != y) {
+						i += 1;
 						Main.burgermi.game.getParent().repaint();
 						Thread.sleep(1);
 					}
-				}
 //				burgerIngredient.removeFirst();
 //				i.removeFirst();
-				MakeBurgerObjectArray.add(Ingredient);
+				MakeBurgerObjectArray.add(burgerIngredient);
 			} catch (Exception e) {
 				e.getMessage();
 			}
