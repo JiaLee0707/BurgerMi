@@ -2,29 +2,26 @@ package BurgerMi_14_14;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 
-import javax.swing.JLabel;
-
-public class KeyListener extends KeyAdapter{
+public class KeyListener extends KeyAdapter {
 	Burger burger = new Burger();
 	Score score;
-	
+	Order order;
+
 	public void KeyListener() {
 		score = Main.burgermi.game.score;
+		order = Main.burgermi.game.order;
 	}
-	
+
 	public void keyReleased(KeyEvent e) {
 		int KeyCode = e.getKeyCode();
-		
-		switch(KeyCode) {
-		case KeyEvent.VK_S :
+
+		switch (KeyCode) {
+		case KeyEvent.VK_S:
 //			System.out.println("关户");
 			burger.Burger(5);
 			break;
-		case KeyEvent.VK_W :
+		case KeyEvent.VK_W:
 //			System.out.println("拉户");
 			burger.Burger(4);
 			break;

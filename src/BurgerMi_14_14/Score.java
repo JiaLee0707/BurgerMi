@@ -45,7 +45,6 @@ public class Score {
 		musicOX.start();
 		
 		scoreLabel.setText(score + "Á¡");
-//		Main.burgermi.game.getParent().repaint();
 		
 		this.burger.MakeBurgerObjectArray.clear();
 		this.burger.MakeBurgerIntArray.clear();
@@ -55,8 +54,14 @@ public class Score {
 		this.burger.burgerIngredient.add(0);
 		order.orderBurgerArray = new int[5];;
 		
-		Main.burgermi.game.order = new Order();
-		Main.burgermi.game.ReGame();
+		
+		if (order.who == 4) {
+			Throw th = new Throw();
+			th.start();
+		} else {
+			Main.burgermi.game.order = new Order();			
+			Main.burgermi.game.ReGame();
+		}
 //		Main.burgermi.game.revalidate();
 //		Main.burgermi.game.repaint();
 		Main.burgermi.game.getParent().repaint();
