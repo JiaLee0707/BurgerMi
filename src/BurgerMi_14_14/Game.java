@@ -14,18 +14,20 @@ public class Game extends JPanel {
 //	private Order.Guest guest = order.new Guest();
 	public Score score;
 	public KeyListener keyListener = new KeyListener();
+	public Timer timer;
 
 	// 게임화면
 	private Image ImageGame = new ImageIcon("src/images/GameBackground.png").getImage();
 	private Image ImageRules = new ImageIcon("src/images/GameRules.png").getImage();
-	public Image EndGame = new ImageIcon("src/images/결과화면.png").getImage();
-	private Image ImageBackground;
+	public Image ImageBackground;
 
 	// 게임시작 버튼
 	MouseListener mouse = new MouseListener();
 	private JButton StartBtn = new JButton(mouse.StartBasicImage);
 
-	boolean start = false;
+	Music gameMusic = new Music("요리.mp3", true);
+
+	public boolean start = false;
 
 	public void Game() {
 		setLayout(null);
@@ -45,15 +47,14 @@ public class Game extends JPanel {
 		start = true;
 		ImageBackground = ImageGame;
 		Main.burgermi.background.introMusic.close();
-		Music gameMusic = new Music("요리.mp3", true);
 		gameMusic.start();
 
 		// 버튼 안보이게
 		StartBtn.setVisible(false);
 
 		score = new Score();
+		timer = new Timer();
 		keyListener.KeyListener();
-		;
 
 		ReGame();
 

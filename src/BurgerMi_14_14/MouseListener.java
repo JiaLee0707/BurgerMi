@@ -14,6 +14,8 @@ public class MouseListener{
 	ImageIcon StartEnteredImage = new ImageIcon("src/images/startButtonEntered.png");
 	ImageIcon QuitBasicImage = new ImageIcon("src/images/quitButtonBasic.png");
 	ImageIcon QuitEnteredImage = new ImageIcon("src/images/quitButtonEntered.png");
+	ImageIcon ReplayBasicImage = new ImageIcon("src/images/replayButtonBasic.png");
+	ImageIcon ReplayEnteredImage = new ImageIcon("src/images/replayButtonEntered.png");
 	
 	public MouseListener() {}
 
@@ -50,6 +52,8 @@ public class MouseListener{
 				Main.burgermi.JPanelChange("game");
 			} else if(panel.equals("Game") && Entered.equals(StartEnteredImage)) {	// 게임방법 이후 게임 시작
 				Main.burgermi.game.GameStart();
+			} else if(panel.equals("End") && Entered.equals(ReplayEnteredImage)) {
+				Main.burgermi.JPanelChange("replay");
 			}
 		}
 

@@ -36,6 +36,9 @@ public class BurgerMi extends JFrame {
 			setContentPane(game);
 			game.Game();
 		} else {
+			game.gameMusic.close();
+			game.setVisible(false);
+			
 			background = new Background();
 			setContentPane(background);
 		}

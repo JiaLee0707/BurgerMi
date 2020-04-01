@@ -5,17 +5,19 @@ import java.awt.Font;
 import javax.swing.JLabel;
 
 public class Timer extends Thread {
-//	int[] Time = { 0, 5 };
+	int[] Time = { 0, 5 };
 //	int[] Time = { 0, 30 };
-	int[] Time = { 1, 40 };
+//	int[] Time = { 1, 40 };
 
 	public JLabel time = new JLabel(Time[0] + ":" + Time[1]);
 	public boolean pause = false;
 
 	Timer() {
-		time.setFont(BurgerMi.font); // 폰트 설정
+		time.setFont(new Font("나눔스퀘어라운드 ExtraBold", Font.ITALIC, 50)); // 폰트 설정
 		time.setSize(500, 500); // 크키 설정
 		time.setLocation(1140, -200); // 위치 설정
+
+		Main.burgermi.game.add(time);
 
 		this.start();
 	}
@@ -35,8 +37,8 @@ public class Timer extends Thread {
 					Thread.sleep(1000);
 				}
 			}
-			BurgerMi.game.setFocusable(true);
-			new End();
+//			BurgerMi.game.setFocusable(true);
+			new End(time);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
