@@ -16,6 +16,8 @@ public class End {
 
 	Image EndGame = new ImageIcon("src/images/EndGame.png").getImage();
 
+	KeyListener keyListener = Main.burgermi.game.keyListener;
+	
 	// 게임시작 버튼
 	MouseListener mouse = new MouseListener();
 	private JButton replayBtn = new JButton(mouse.ReplayBasicImage);
@@ -24,6 +26,7 @@ public class End {
 	public JLabel allGrade = Main.burgermi.game.score.scoreLabel;
 
 	End(JLabel time) {
+		Main.burgermi.game.removeKeyListener(keyListener);
 		Main.burgermi.game.start = false;
 		Main.burgermi.game.ImageBackground = EndGame;
 		Main.burgermi.game.gameMusic.close();

@@ -40,7 +40,7 @@ public class Game extends JPanel {
 
 	Music gameMusic = new Music("요리.mp3", true);
 
-	int TrayY = 400;
+	int TrayY = 450;
 	public boolean start = false;
 	public boolean ThrowBurger = false;
 
@@ -141,9 +141,9 @@ public class Game extends JPanel {
 		// 만드는 버거
 		if (keyListener.burger.key) {
 			for (int i = 0; i < keyListener.burger.burgerIngredient.size(); i++) {
-				Image MakeImage = (Image) keyListener.burger.burgerIngredient.get(0);
-				int MakeX = (int) keyListener.burger.burgerIngredient.get(1);
-				int MakeY = (int) keyListener.burger.i;
+				Image MakeImage = (Image) ((List<Object>) keyListener.burger.burgerIngredient.get(i)).get(0);
+				int MakeX = (int) ((List<Object>) keyListener.burger.burgerIngredient.get(0)).get(1);
+				int MakeY = (int) keyListener.burger.i.get(i);
 				g.drawImage(MakeImage, MakeX, MakeY, this);
 			}
 		}
