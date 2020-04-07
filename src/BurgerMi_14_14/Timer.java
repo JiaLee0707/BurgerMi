@@ -25,7 +25,7 @@ public class Timer extends Thread {
 	public void run() {
 		try {
 			while (true) {
-				System.out.println(Time[0] + ":" + Time[1]);
+//				System.out.println(Time[0] + ":" + Time[1]);
 				if(!pause) {
 					time.setText(Time[0] + ":" + Time[1]);
 					Time[1] -= 1;

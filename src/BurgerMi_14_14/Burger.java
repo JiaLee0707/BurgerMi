@@ -75,28 +75,26 @@ public class Burger {
 		Ingredient.add(x);
 		Ingredient.add(y);
 		burgerIngredient.add(Ingredient);
-		BurgerThread thread = new BurgerThread(burgerIngredient.size());
+		BurgerThread thread = new BurgerThread();
 		thread.start();
 
 		Main.burgermi.game.getParent().repaint();
 	}
 
 	class BurgerThread extends Thread {
-		int j;
-		BurgerThread(int c) {
-			j=c-1;
-		}
+//		public BurgerThread() {
+//			i = new LinkedList<Integer>();
+//		}
 		public void run() {
-			i.add(0);
 			try {
-				//i = 0;
-				while (i.get(j) != y) {
-					i.set(j, i.get(j)+1);
-					Main.burgermi.game.getParent().repaint();
-					Thread.sleep(1);
+				i.add(0);
+				for (int j = 0; j < i.size(); j++) {
+					Integer ii = ((LinkedList<Integer>) burgerIngredient.get(j)).get(2);
+					while (i.get(j) != ii) {
+						i.set(0, i.get(j) + 1);
+						System.out.println(i.get(j));
+					}
 				}
-				MakeBurgerObjectArray.add(burgerIngredient.get(j));
-//				burgerIngredient.removeFirst();
 			} catch (Exception e) {
 				e.getMessage();
 			}

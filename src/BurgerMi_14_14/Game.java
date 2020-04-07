@@ -142,7 +142,7 @@ public class Game extends JPanel {
 		if (keyListener.burger.key) {
 			for (int i = 0; i < keyListener.burger.burgerIngredient.size(); i++) {
 				Image MakeImage = (Image) ((List<Object>) keyListener.burger.burgerIngredient.get(i)).get(0);
-				int MakeX = (int) ((List<Object>) keyListener.burger.burgerIngredient.get(0)).get(1);
+				int MakeX = (int) ((List<Object>) keyListener.burger.burgerIngredient.get(i)).get(1);
 				int MakeY = (int) keyListener.burger.i.get(i);
 				g.drawImage(MakeImage, MakeX, MakeY, this);
 			}
