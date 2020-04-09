@@ -89,10 +89,12 @@ public class Burger {
 			try {
 				i.add(0);
 				for (int j = 0; j < i.size(); j++) {
-					Integer ii = ((LinkedList<Integer>) burgerIngredient.get(j)).get(2);
+					int ii = (Integer) ((LinkedList<Integer>) burgerIngredient.get(j)).get(2);
 					while (i.get(j) != ii) {
-						i.set(0, i.get(j) + 1);
+						i.set(j, i.get(j) + 1);
 						System.out.println(i.get(j));
+						Main.burgermi.game.getParent().repaint();
+						Thread.sleep(1);
 					}
 				}
 			} catch (Exception e) {
