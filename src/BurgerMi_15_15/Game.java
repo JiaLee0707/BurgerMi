@@ -1,4 +1,4 @@
-package BurgerMi_13_13;
+package BurgerMi_15_15;
 
 import java.awt.Graphics;
 import java.awt.Image;
@@ -14,18 +14,35 @@ public class Game extends JPanel {
 //	private Order.Guest guest = order.new Guest();
 	public Score score;
 	public KeyListener keyListener = new KeyListener();
+	public Timer timer;
 
 	// 게임화면
 	private Image ImageGame = new ImageIcon("src/images/GameBackground.png").getImage();
 	private Image ImageRules = new ImageIcon("src/images/GameRules.png").getImage();
-	public Image EndGame = new ImageIcon("src/images/결과화면.png").getImage();
-	private Image ImageBackground;
+	public Image ImageBackground;
+
+	// 쟁반
+	public Image ImageTray = new ImageIcon("src/images/쟁반.png").getImage();
+	public Image ImageTray2 = new ImageIcon("src/images/쟁반2.png").getImage();
+	public Image ImageTray3 = new ImageIcon("src/images/쟁반3.png").getImage();
+	public Image[] ImageTrayArray = { ImageTray2, ImageTray3, ImageTray };
+	public Image TrayBasicImage = ImageTrayArray[2];
+
+	// 던지는 햄버거
+	public Image ImageThrowingBurger = new ImageIcon("src/images/ThrowBurger.png").getImage();
+	public Image ImageBrokenBurger = new ImageIcon("src/images/BrokenBurger.png").getImage();
+	public Image[] ImageThrow = { ImageThrowingBurger, ImageBrokenBurger };
+	public Image ThrowImage;
 
 	// 게임시작 버튼
 	MouseListener mouse = new MouseListener();
 	private JButton StartBtn = new JButton(mouse.StartBasicImage);
 
-	boolean start = false;
+	Music gameMusic = new Music("요리.mp3", true);
+
+	int TrayY = 450;
+	public boolean start = false;
+	public boolean ThrowBurger = false;
 
 	public void Game() {
 		setLayout(null);
@@ -45,15 +62,14 @@ public class Game extends JPanel {
 		start = true;
 		ImageBackground = ImageGame;
 		Main.burgermi.background.introMusic.close();
-		Music gameMusic = new Music("요리.mp3", true);
 		gameMusic.start();
 
 		// 버튼 안보이게
 		StartBtn.setVisible(false);
 
 		score = new Score();
+		timer = new Timer();
 		keyListener.KeyListener();
-		;
 
 		ReGame();
 
@@ -73,7 +89,6 @@ public class Game extends JPanel {
 	}
 
 	// 화면 그리기
-	@SuppressWarnings("unchecked")
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
@@ -99,6 +114,20 @@ public class Game extends JPanel {
 				y = (int) ((List<Object>) order.orderBurger.get(i)).get(2);
 				g.drawImage(burgerIngredient, x, y, this);
 			}
+
+			// 쟁반
+			g.drawImage(TrayBasicImage, 400, TrayY, this);
+
+			if (ThrowBurger) {
+				// 햄버거 던지기
+				int BurgerX = 500, BurgerY = 290;
+				if (ThrowImage != null && ThrowImage.equals(ImageThrow[1])) {
+					BurgerX = 545;
+					BurgerY = 180;
+				}
+				g.drawImage(ThrowImage, BurgerX, BurgerY, this);
+			}
+
 		}
 
 		// 만든 버거
@@ -112,9 +141,9 @@ public class Game extends JPanel {
 		// 만드는 버거
 		if (keyListener.burger.key) {
 			for (int i = 0; i < keyListener.burger.burgerIngredient.size(); i++) {
-				Image MakeImage = (Image) (((List<Object>) keyListener.burger.burgerIngredient.get(i)).get(0));
-				int MakeX = (int) (((List<Object>) keyListener.burger.burgerIngredient.get(i)).get(1));
-				int MakeY = (int) keyListener.burger.i;
+				Image MakeImage = (Image) ((List<Object>) keyListener.burger.burgerIngredient.get(i)).get(0);
+				int MakeX = (int) ((List<Object>) keyListener.burger.burgerIngredient.get(i)).get(1);
+				int MakeY = (int) keyListener.burger.i.get(i);
 				g.drawImage(MakeImage, MakeX, MakeY, this);
 			}
 		}
