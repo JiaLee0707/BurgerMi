@@ -75,27 +75,30 @@ public class Burger {
 		Ingredient.add(x);
 		Ingredient.add(y);
 		burgerIngredient.add(Ingredient);
-		BurgerThread thread = new BurgerThread();
+		i.add(0);
+		BurgerThread thread = new BurgerThread(Ingredient, i.size());
 		thread.start();
 
 		Main.burgermi.game.getParent().repaint();
 	}
 
 	class BurgerThread extends Thread {
-//		public BurgerThread() {
-//			i = new LinkedList<Integer>();
-//		}
+		LinkedList<Object> IngredientBurger;
+		int j;
+
+		public BurgerThread(LinkedList<Object> Ingredient, int i) {
+			IngredientBurger = Ingredient;
+			j = i-1;
+		}
+
 		public void run() {
 			try {
-				i.add(0);
-				for (int j = 0; j < i.size(); j++) {
-					int ii = (Integer) ((LinkedList<Integer>) burgerIngredient.get(j)).get(2);
-					while (i.get(j) != ii) {
-						i.set(j, i.get(j) + 1);
-						System.out.println(i.get(j));
-						Main.burgermi.game.getParent().repaint();
-						Thread.sleep(1);
-					}
+				int ii = (int) IngredientBurger.get(2);
+				while (i.get(j) != ii) {
+					i.set(j, i.get(j) + 1);
+//					System.out.println(i.get(j));
+					Main.burgermi.game.getParent().repaint();
+					Thread.sleep(1);
 				}
 			} catch (Exception e) {
 				e.getMessage();
