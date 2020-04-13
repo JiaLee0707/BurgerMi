@@ -20,7 +20,7 @@ public class Burger {
 			belowBreadImage };
 
 	public LinkedList<Integer> MakeBurgerIntArray = new LinkedList<Integer>(); // 만드는 버거 int
-	public LinkedList<Object> MakeBurgerObjectArray = new LinkedList<Object>(); // 만드는 버거 이미지, 위치
+//	public LinkedList<Object> MakeBurgerObjectArray = new LinkedList<Object>(); // 만드는 버거 이미지, 위치
 	public LinkedList<Object> burgerIngredient = new LinkedList<Object>(); // 내려오는 버거
 	public LinkedList<Object> Ingredient;
 	public LinkedList<Integer> i = new LinkedList<Integer>();

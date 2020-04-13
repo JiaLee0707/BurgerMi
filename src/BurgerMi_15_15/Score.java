@@ -46,12 +46,13 @@ public class Score {
 		
 		scoreLabel.setText(score + "Á¡");
 		
-		this.burger.MakeBurgerObjectArray.clear();
+		//this.burger.MakeBurgerObjectArray.clear();
 		this.burger.MakeBurgerIntArray.clear();
-		this.burger.burgerIngredient = new LinkedList<Object>();
-		this.burger.burgerIngredient.add(null);
-		this.burger.burgerIngredient.add(0);
-		this.burger.burgerIngredient.add(0);
+		this.burger.burgerIngredient.clear(); // = new LinkedList<Object>();
+		this.burger.i.clear();
+//		this.burger.burgerIngredient.add(null);
+//		this.burger.burgerIngredient.add(0);
+//		this.burger.burgerIngredient.add(0);
 		order.orderBurgerArray = new int[5];;
 		
 		
