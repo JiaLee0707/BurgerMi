@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class End {
@@ -17,6 +18,7 @@ public class End {
 	Image EndGame = new ImageIcon("src/images/EndGame.png").getImage();
 
 	KeyListener keyListener = Main.burgermi.game.keyListener;
+	Burger burger = Main.burgermi.game.keyListener.burger;
 	
 	// 게임시작 버튼
 	MouseListener mouse = new MouseListener();
@@ -26,10 +28,17 @@ public class End {
 	public JLabel allGrade = Main.burgermi.game.score.scoreLabel;
 
 	End(JLabel time) {
+		this.burger.MakeBurgerIntArray.clear();
+		this.burger.burgerIngredient.clear(); // = new LinkedList<Object>();
+		this.burger.i.clear();
+		
 		Main.burgermi.game.removeKeyListener(keyListener);
 		Main.burgermi.game.start = false;
-		Main.burgermi.game.ImageBackground = EndGame;
 		Main.burgermi.game.gameMusic.close();
+		Main.burgermi.game.ImageBackground = EndGame;
+		
+		DB db = new DB();
+		
 		time.setVisible(false);
 		allGrade.setBounds(540, -100, 800, 800);
 
