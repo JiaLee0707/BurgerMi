@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -36,22 +37,33 @@ public class DB {
 		// 사용자가 입력 없이 창을 닫으면 null 리턴
 
 		try {
-			String sql = "SELECT * FROM ranking order by score asc;";
+			String sql = "SELECT * FROM ranking ORDER BY score ASC;";
+			String columnCount = "SELECT COUNT(*) FROM ranking;";
+			
+			ResultSet rs = pstmt.executeQuery(columnCount);
+			ResultSetMetaData rsmd = rs.getMetaData();
+			String no = Integer.toString(rsmd.getColumnCount()+1);
+			
 			pstmt = conn.prepareStatement(sql);
 			ResultSet srs = pstmt.executeQuery();
 			while(srs.next()) {
 				int dbScore = Integer.parseInt((srs.getString("score")));
-				if(s >= dbScore) {
+				if (Integer.parseInt(no) <= 1) {
+					rank = "1";
+				} else if(s > dbScore) {
 					rank = Integer.toString(Integer.parseInt(srs.getString("rank"))-1);
 					break;
+				} else if (s == dbScore) {
+					rank = Integer.toString(Integer.parseInt(srs.getString("rank")));
 				}
 			}
-		
-			sql = "insert into ranking (rank, name, score) values(?, ?, ?)";
+			
+			sql = "insert into ranking (no, score, name, rank) values(?, ?, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, rank);
-			pstmt.setString(2, name);
-			pstmt.setString(3, score);
+			pstmt.setString(1, no);
+			pstmt.setString(2, score);
+			pstmt.setString(3, name);
+			pstmt.setString(4, rank);
 		
 			pstmt.executeUpdate();
 			
@@ -59,9 +71,10 @@ public class DB {
 			pstmt = conn.prepareStatement(sql);
 			srs = pstmt.executeQuery();
 			while(srs.next()) {
-				System.out.print(srs.getString("rank")+" ");
-				System.out.print(srs.getString("name")+" ");
+				System.out.print(srs.getString("no")+" ");
 				System.out.print(srs.getString("score")+" ");
+				System.out.print(srs.getString("name")+" ");
+				System.out.print(srs.getString("rank")+" ");
 				System.out.println();
 			}
 		}catch(SQLException ex) {
