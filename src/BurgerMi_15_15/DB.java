@@ -38,11 +38,15 @@ public class DB {
 
 		try {
 			String sql = "SELECT * FROM ranking ORDER BY score ASC;";
-			String columnCount = "SELECT COUNT(*) FROM ranking;";
 			
-			ResultSet rs = pstmt.executeQuery(columnCount);
-			ResultSetMetaData rsmd = rs.getMetaData();
-			String no = Integer.toString(rsmd.getColumnCount()+1);
+			int num = 0;
+			ResultSet rs = pstmt.executeQuery("SELECT COUNT(*) FROM test_tbl");
+	        if(rs.next()) {
+	        	num = rs.getInt(1);
+	        	System.out.println("Total rows : " + num);
+	        }
+	        	
+			String no = Integer.toString(num+1);
 			
 			pstmt = conn.prepareStatement(sql);
 			ResultSet srs = pstmt.executeQuery();
@@ -52,13 +56,15 @@ public class DB {
 					rank = "1";
 				} else if(s > dbScore) {
 					rank = Integer.toString(Integer.parseInt(srs.getString("rank"))-1);
-					break;
 				} else if (s == dbScore) {
 					rank = Integer.toString(Integer.parseInt(srs.getString("rank")));
 				}
+				break;
 			}
 			
-			sql = "insert into ranking (no, score, name, rank) values(?, ?, ?, ?)";
+			System.out.println(no + ", " + score + ", " + name + ", " + rank);
+			
+			sql = "insert into ranking (no, score, name, rank) values (?, ?, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, no);
 			pstmt.setString(2, score);
