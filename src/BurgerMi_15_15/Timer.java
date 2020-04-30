@@ -30,7 +30,10 @@ public class Timer extends Thread {
 					time.setText(Time[0] + ":" + Time[1]);
 					Time[1] -= 1;
 					if (Time[1] == 0) {
-						if (Time[0] == 0) break;
+						if (Time[0] == 0) {
+							time.setText(Time[0] + ":" + Time[1]);
+							break;
+						}
 						Time[0] -= 1;
 						Time[1] = 60;
 					}
