@@ -29,42 +29,46 @@ public class DB {
 	}
 
 	public void Insert(int s) {
-		String rank = "30";
+		String rank = null;
 		String score = Integer.toString(s);
 		
 		name = JOptionPane.showInputDialog("이름을 입력하세요.");
 		
 		try {
-//			String sql = "SELECT * FROM ranking ORDER BY score ASC;";
-//			
-//			int num = 0;
+			String sql = "SELECT * FROM ranking ORDER BY score ASC;";
+			
+			int num = 0;
 //			ResultSet rs = pstmt.executeQuery("SELECT COUNT(*) FROM test_tbl");
+			ResultSet rs = pstmt.executeQuery("SELECT * FROM ranking;");
 //	        if(rs.next()) {
 //	        	num = rs.getInt(1);
 //	        	System.out.println("Total rows : " + num);
 //	        }
-//	        	
-//			String no = Integer.toString(num+1);
-//			
-//			pstmt = conn.prepareStatement(sql);
-//			ResultSet srs = pstmt.executeQuery();
-//			while(srs.next()) {
-//				int dbScore = Integer.parseInt((srs.getString("score")));
-//				if (Integer.parseInt(no) <= 1) {
-//					rank = "1";
-//				} else if(s > dbScore) {
-//					rank = Integer.toString(Integer.parseInt(srs.getString("rank"))-1);
-//				} else if (s == dbScore) {
-//					rank = Integer.toString(Integer.parseInt(srs.getString("rank")));
-//				}
-//				break;
-//			}
-//			
-//			System.out.println(no + ", " + score + ", " + name + ", " + rank);
-//			
-			String sql = "insert into ranking (no, score, name, rank) values (?, ?, ?, ?)";
+			rs.last();
+			num = rs.getRow();
+	        	
+			String no = Integer.toString(num+1);
+			System.out.println(no);
+			
 			pstmt = conn.prepareStatement(sql);
-			String no = "1";
+			ResultSet srs = pstmt.executeQuery();
+			do {
+				int dbScore = Integer.parseInt((srs.getString("score")));
+				if (Integer.parseInt(no) <= 1) {
+					rank = "1";
+				} else if(s > dbScore) {
+					rank = Integer.toString(Integer.parseInt(srs.getString("rank"))-1);
+				} else if (s == dbScore) {
+					rank = Integer.toString(Integer.parseInt(srs.getString("rank")));
+				}
+				break;
+			}while(srs.next());
+			
+			System.out.println(no + ", " + score + ", " + name + ", " + rank);
+			
+			sql = "insert into ranking (no, score, name, rank) values (?, ?, ?, ?)";
+			pstmt = conn.prepareStatement(sql);
+//			String no = "1";
 			pstmt.setString(1, no);
 			pstmt.setString(2, score);
 			pstmt.setString(3, name);
@@ -74,7 +78,7 @@ public class DB {
 			
 			sql = "select * from ranking";
 			pstmt = conn.prepareStatement(sql);
-			ResultSet srs = pstmt.executeQuery();
+			srs = pstmt.executeQuery();
 			while(srs.next()) {
 				System.out.print(srs.getString("no")+" ");
 				System.out.print(srs.getString("score")+" ");
