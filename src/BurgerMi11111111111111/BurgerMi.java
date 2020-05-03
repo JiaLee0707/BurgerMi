@@ -6,35 +6,35 @@ import java.awt.event.MouseEvent;
 import java.util.*;
 import javax.swing.*;
 
-public class BurgerMi extends JFrame{
+public class BurgerMi extends JFrame {
 	private ImageIcon StartBasicImage = new ImageIcon(Main.class.getResource("../images/startButtonBasic.png"));
 	private ImageIcon StartEnteredImage = new ImageIcon(Main.class.getResource("../images/startButtonEntered.png"));
-	
-	public Image ImageBackground = new ImageIcon(Main.class.getResource("../images/BurgerMiº¹»çº».png"))	.getImage();
+
+	public Image ImageBackground = new ImageIcon(Main.class.getResource("../images/BurgerMië³µì‚¬ë³¸.png")).getImage();
 	private Image ScreenBackground;
 	private Graphics GraphicsBackground;
 
 	private JButton StartBtn = new JButton(StartBasicImage);
 
-	private Music introMusic = new Music("ÄèÈ°ÇÑ Çàº¹ÇÏ°í ÀÌµ¿ ÁöÁßÇØ ¿ä¸®¿¡ °¡Àå ÀûÇÕÇÑ ¾Ç±â À½¾Ç.mp3", true);
+	private Music introMusic = new Music("ì¾Œí™œí•œ í–‰ë³µí•˜ê³  ì´ë™ ì§€ì¤‘í•´ ìš”ë¦¬ì— ê°€ì¥ ì í•©í•œ ì•…ê¸° ìŒì•….mp3", true);
 	private boolean isGameScreen = false;
 
 	public static Game game = new Game();
-	
-	int x=0, y=0;
-	
+
+	int x = 0, y = 0;
+
 	public BurgerMi() {
 		setTitle("BurgerMi");
-		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);	
+		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
 		setResizable(false);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
-		
+
 		setLayout(null);
-		
+
 		introMusic.start();
-		
+
 		StartBtn.setBounds(40, 340, 550, 400);
 		StartBtn.setBorderPainted(false);
 		StartBtn.setContentAreaFilled(false);
@@ -42,34 +42,34 @@ public class BurgerMi extends JFrame{
 		StartBtn.addMouseListener(new MouseListener(StartBasicImage, StartEnteredImage));
 		StartBtn.setVisible(true);
 		this.add(StartBtn);
-		
+
 	}
 
-	class MouseListener extends MouseAdapter{
+	class MouseListener extends MouseAdapter {
 		ImageIcon Basic;
 		ImageIcon Entered;
-		
+
 		public MouseListener(ImageIcon BasicImageIcon, ImageIcon EnteredImageIcon) {
 			Basic = BasicImageIcon;
 			Entered = EnteredImageIcon;
 		}
-		
+
 		@Override
 		public void mouseExited(MouseEvent e) {
-			JButton button = (JButton)e.getSource();
+			JButton button = (JButton) e.getSource();
 			button.setIcon(Basic);
 		}
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			JButton button = (JButton)e.getSource();
+			JButton button = (JButton) e.getSource();
 			button.setIcon(Entered);
-			
+
 			Music Button = new Music("buttonPressedMusic.mp3", false);
 			Button.start();
 			introMusic.close();
-			
-			ImageBackground  = new ImageIcon(Main.class.getResource("../images/GameImage.png")).getImage();
+
+			ImageBackground = new ImageIcon(Main.class.getResource("../images/GameImage.png")).getImage();
 			StartBtn.setVisible(false);
 			isGameScreen = true;
 			requestFocus();
@@ -77,32 +77,31 @@ public class BurgerMi extends JFrame{
 			addKeyListener(new KeyListener());
 //			setFocusable(true);
 		}
-			
+
 		@Override
 		public void mouseEntered(MouseEvent e) {
-			JButton button = (JButton)e.getSource();
+			JButton button = (JButton) e.getSource();
 			button.setIcon(Entered);
 			button.setCursor(new Cursor(Cursor.HAND_CURSOR));
-			
+
 			Music Button = new Music("buttonEnteredMusic.mp3", false);
 			Button.start();
 		}
 	}
-	
+
 	public void paint(Graphics g) {
 		ScreenBackground = createImage(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
 		GraphicsBackground = ScreenBackground.getGraphics();
 		screenDraw(GraphicsBackground);
-		g.drawImage(ScreenBackground, 0, 0, null);	
+		g.drawImage(ScreenBackground, 0, 0, null);
 	}
 
 	public void screenDraw(Graphics g) {
 		g.drawImage(ImageBackground, x, y, null);
-		if(isGameScreen) {
+		if (isGameScreen) {
 			game.screenDraw(g);
 		}
 //		paintComponents(g);
 		this.repaint();
 	}
 }
-

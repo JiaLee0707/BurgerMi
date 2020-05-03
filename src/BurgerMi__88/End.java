@@ -13,17 +13,17 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class End {
-	public Image EndGame = new ImageIcon("src/images/°á°úÈ­¸é.png").getImage();
-	private ImageIcon ImageNext = new ImageIcon("src/images/¿À¸¥ÂÊ¹öÆ°.png");
+	public Image EndGame = new ImageIcon("src/images/ê²°ê³¼í™”ë©´.png").getImage();
+	private ImageIcon ImageNext = new ImageIcon("src/images/ì˜¤ë¥¸ìª½ë²„íŠ¼.png");
 	private JButton r = new JButton(ImageNext);
-	public JLabel allGrade = new JLabel("ÃÑ : " + BurgerMi.game.score.score + "Á¡");
+	public JLabel allGrade = new JLabel("ì´ : " + BurgerMi.game.score.score + "ì ");
 
 	End() {
 		BurgerMi.game.grade.setVisible(false);
 		BurgerMi.game.timer.time.setVisible(false);
-		
+
 		BurgerMi.game.gameStart = false;
-		
+
 		r.setBounds(10, 10, 500, 500);
 		r.setBorderPainted(false);
 		r.setContentAreaFilled(false);
@@ -32,10 +32,10 @@ public class End {
 //		r.setVisible(true);
 		BurgerMi.game.add(r);
 		BurgerMi.game.End = true;
-		
-		allGrade.setFont(new Font("³ª´®½ºÄù¾î¶ó¿îµå ExtraBold", Font.ITALIC, 50)); // ÆùÆ® ¼³Á¤
-		allGrade.setSize(1000, 1000); // Å©Å° ¼³Á¤
-		allGrade.setLocation(500, 500); // À§Ä¡ ¼³Á¤
+
+		allGrade.setFont(new Font("ë‚˜ëˆ”ìŠ¤í€˜ì–´ë¼ìš´ë“œ ExtraBold", Font.ITALIC, 50)); // í°íŠ¸ ì„¤ì •
+		allGrade.setSize(1000, 1000); // í¬í‚¤ ì„¤ì •
+		allGrade.setLocation(500, 500); // ìœ„ì¹˜ ì„¤ì •
 		BurgerMi.game.add(allGrade);
 
 //		r.setVisible(true);
@@ -43,20 +43,19 @@ public class End {
 
 		BurgerMi.game.revalidate();
 		BurgerMi.game.repaint();
-		
 
 	}
 
-	// È®ÀÎ¹öÆ° ¸¶¿ì½º¸®½º³Ê
+	// í™•ì¸ë²„íŠ¼ ë§ˆìš°ìŠ¤ë¦¬ìŠ¤ë„ˆ
 	class MouseListener extends MouseAdapter {
 
-		// ±âº»¹öÆ°
+		// ê¸°ë³¸ë²„íŠ¼
 		@Override
 		public void mouseExited(MouseEvent e) {
 			JButton button = (JButton) e.getSource();
 		}
 
-		// Å¬¸¯¹öÆ°
+		// í´ë¦­ë²„íŠ¼
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			JButton button = (JButton) e.getSource();
@@ -71,13 +70,12 @@ public class End {
 
 			BurgerMi.game.revalidate();
 			BurgerMi.game.repaint();
-			
+
 			BurgerMi.game.End = false;
 			BurgerMi.game.replay = true;
 			System.out.println("asdf");
 			BurgerMi.game.Game();
-		
-			
+
 //			BurgerMi.game.burger = null;
 //			BurgerMi.game.score = null;
 //			BurgerMi.game.timer = null;
@@ -91,8 +89,7 @@ public class End {
 //			BurgerMi.main.burgermi.setContentPane(BurgerMi.background);
 		}
 
-
-		// ¹öÆ° À§¿¡ ¿Ã¸®¸é
+		// ë²„íŠ¼ ìœ„ì— ì˜¬ë¦¬ë©´
 		@Override
 		public void mouseEntered(MouseEvent e) {
 			JButton button = (JButton) e.getSource();

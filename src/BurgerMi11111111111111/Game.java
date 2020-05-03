@@ -3,14 +3,15 @@ package BurgerMi11111111111111;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
-public class Game extends Thread{
+public class Game extends Thread {
 	Music Button = new Music("203.mp3", false);
-	
+
 	ArrayList<burger> burgerList = new ArrayList<burger>();
 //	burger burger = new burger(595, -20, "belowBread");
 	burger burger = new burger();
+
 	public Game() {
-		System.out.println("Game"+burger.Thready);
+		System.out.println("Game" + burger.Thready);
 //		pressS();
 //		pressW();
 //		pressA();
@@ -21,49 +22,58 @@ public class Game extends Thread{
 //		pressENTER();
 //		dropburger();
 	}
+
 	public void dropburger() {
-		System.out.println("drop"+burger.Thready);
+		System.out.println("drop" + burger.Thready);
 	}
-	public void pressS() {	//πÿªß
+
+	public void pressS() { // Î∞ëÎπµ
 //		burger = new burger(595, -20, "belowBread");
 		burger.burger(595, -20, "belowBread");
-		System.out.println("burgerS"+burger.Thready);
+		System.out.println("burgerS" + burger.Thready);
 		dropburger();
 //		Button.start();
 	}
-	public void pressW() {	//¿≠ªß
+
+	public void pressW() { // ÏúóÎπµ
 //		burger = new burger(595, -20, "topBread");
 		burger.burger(595, -20, "topBread");
 //		Button.start();
 		dropburger();
 	}
-	public void pressA() {	//∆–∆º
+
+	public void pressA() { // Ìå®Ìã∞
 //		burger = new burger(595, -20, "patty");
 		burger.burger(595, -20, "patty");
 //		Button.start();
 		dropburger();
 	}
-	public void pressD() {	//ªÛ√ﬂ
+
+	public void pressD() { // ÏÉÅÏ∂î
 //		burger = new burger(595, -20, "lettuce");
 		burger.burger(595, -20, "lettuce");
 //		Button.start();
 		dropburger();
 	}
-	public void pressQ() {	//≈‰∏∂≈‰
+
+	public void pressQ() { // ÌÜ†ÎßàÌÜ†
 //		burger = new burger(595, -20, "tomato");
 		burger.burger(595, -20, "tomato");
 //		Button.start();
 		dropburger();
 	}
-	public void pressE() {	//ƒ°¡Ó
+
+	public void pressE() { // ÏπòÏ¶à
 //		burger = new burger(595, -20, "cheese");
 		burger.burger(595, -20, "cheese");
 //		Button.start();
 		dropburger();
 	}
-	public void pressSPACE() {	
+
+	public void pressSPACE() {
 //		Button.start();	
 	}
+
 	public void pressENTER() {
 //		Button.start();
 	}
@@ -74,5 +84,4 @@ public class Game extends Thread{
 //		System.out.println("GameScreenDraw");
 	}
 
-	
 }

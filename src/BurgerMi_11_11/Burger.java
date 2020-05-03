@@ -5,86 +5,92 @@ import java.util.LinkedList;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-public class Burger{
-	
-	// ¸¸µé¶§ »ç¿ëÇÏ´Â ¹ö°Å
-	private ImageIcon belowBreadImage = new ImageIcon("src/images/¾Æ·¡»§.png");
-	private ImageIcon topBreadImage = new ImageIcon("src/images/À­»§.png");
-	private ImageIcon lettuceImage = new ImageIcon("src/images/Ã¤¼Ò.png");
-	private ImageIcon tomatoImage = new ImageIcon("src/images/Åä¸¶Åä.png");
-	private ImageIcon pattyImage = new ImageIcon("src/images/ÆĞÆ¼.png");
-	private ImageIcon cheeseImage = new ImageIcon("src/images/Ä¡Áî.png");
-	public ImageIcon[] MakeBurgerImageArray = { cheeseImage, 
-			pattyImage, tomatoImage, lettuceImage, topBreadImage, belowBreadImage};
-	
+public class Burger {
+
+	// ë§Œë“¤ë•Œ ì‚¬ìš©í•˜ëŠ” ë²„ê±°
+	private ImageIcon belowBreadImage = new ImageIcon("src/images/ì•„ë˜ë¹µ.png");
+	private ImageIcon topBreadImage = new ImageIcon("src/images/ìœ—ë¹µ.png");
+	private ImageIcon lettuceImage = new ImageIcon("src/images/ì±„ì†Œ.png");
+	private ImageIcon tomatoImage = new ImageIcon("src/images/í† ë§ˆí† .png");
+	private ImageIcon pattyImage = new ImageIcon("src/images/íŒ¨í‹°.png");
+	private ImageIcon cheeseImage = new ImageIcon("src/images/ì¹˜ì¦ˆ.png");
+	public ImageIcon[] MakeBurgerImageArray = { cheeseImage, pattyImage, tomatoImage, lettuceImage, topBreadImage,
+			belowBreadImage };
+
 	public LinkedList<Integer> MakeBurgerArray = new LinkedList<Integer>();
 	public JLabel MakerBurgerJLabel;
-	int x, y; // ÇÜ¹ö°Å x, y ÁÂÇ¥
+	int x, y; // í–„ë²„ê±° x, y ì¢Œí‘œ
 
 	public void Burger(int m) {
 		MakeBurgerArray.add(m);
-	
-		y = 495-25*(MakeBurgerArray.size());
-		
-		switch(MakeBurgerArray.get(MakeBurgerArray.size()-1)) {
-		case 0:	// Ä¡Áî
+
+		y = 495 - 25 * (MakeBurgerArray.size());
+
+		switch (MakeBurgerArray.get(MakeBurgerArray.size() - 1)) {
+		case 0: // ì¹˜ì¦ˆ
 			MakerBurgerJLabel = new JLabel(MakeBurgerImageArray[0]);
 			MakerBurgerJLabel.setBounds(445, 0, 400, 300);
 			x = 445;
 			y -= 10;
-			System.out.println("Ä¡Áî");
+			System.out.println("ì¹˜ì¦ˆ");
 			break;
-		case 1:	// ÆĞÆ¼
+		case 1: // íŒ¨í‹°
 			MakerBurgerJLabel = new JLabel(MakeBurgerImageArray[1]);
 			MakerBurgerJLabel.setBounds(448, 0, 400, 300);
 			x = 448;
 			y -= 10;
-			System.out.println("ÆĞÆ¼");
+			System.out.println("íŒ¨í‹°");
 			break;
-		case 2:	// Åä¸¶Åä
+		case 2: // í† ë§ˆí† 
 			MakerBurgerJLabel = new JLabel(MakeBurgerImageArray[2]);
 			MakerBurgerJLabel.setBounds(448, 0, 400, 300);
 			x = 448;
 			y -= 22;
-			System.out.println("Åä¸¶Åä");
+			System.out.println("í† ë§ˆí† ");
 			break;
-		case 3: // Ã¤¼Ò
+		case 3: // ì±„ì†Œ
 			MakerBurgerJLabel = new JLabel(MakeBurgerImageArray[3]);
 			MakerBurgerJLabel.setBounds(450, 0, 400, 300);
 			x = 450;
 			y -= 30;
-			System.out.println("Ã¤¼Ò");
+			System.out.println("ì±„ì†Œ");
 			break;
-		case 4: // À­»§
+		case 4: // ìœ—ë¹µ
 			MakerBurgerJLabel = new JLabel(MakeBurgerImageArray[4]);
 			MakerBurgerJLabel.setBounds(443, 0, 400, 300);
 			x = 443;
 			y -= 43;
-			System.out.println("À­»§");
+			System.out.println("ìœ—ë¹µ");
 			break;
-		case 5: // ¾Æ·§»§
+		case 5: // ì•„ë«ë¹µ
 			MakerBurgerJLabel = new JLabel(MakeBurgerImageArray[5]);
 			MakerBurgerJLabel.setBounds(444, 0, 400, 300);
 			x = 444;
 			y -= 20;
-			System.out.println("¹Ø»§");
+			System.out.println("ë°‘ë¹µ");
 			break;
 		}
 		Main.burgermi.game.add(MakerBurgerJLabel);
 		System.out.println(MakeBurgerArray.size());
-		Main.burgermi.game.setComponentZOrder(MakerBurgerJLabel, (MakeBurgerArray.size()+1)-MakeBurgerArray.size());	// JLabelÀÇ ¾ÕµÚ À§Ä¡¸¦ ¼³Á¤ÇÒ ¼ö ÀÖÀ½
+		Main.burgermi.game.setComponentZOrder(MakerBurgerJLabel, (MakeBurgerArray.size() + 1) - MakeBurgerArray.size()); // JLabelì˜
+																															// ì•ë’¤
+																															// ìœ„ì¹˜ë¥¼
+																															// ì„¤ì •í• 
+																															// ìˆ˜
+																															// ìˆìŒ
 //		Main.burgermi.game.getParent().repaint();
 		BurgerThread thread = new BurgerThread();
 		thread.start();
 	}
-	
+
 	class BurgerThread extends Thread {
 		public void run() {
 			try {
 				int i = 0;
 				while (i != y) {
 					i += 1;
-					MakerBurgerJLabel.setLocation(x, i);;
+					MakerBurgerJLabel.setLocation(x, i);
+					;
 //					Main.burgermi.game.getParent().repaint();
 					Main.burgermi.game.revalidate();
 					Thread.sleep(1);
@@ -92,6 +98,6 @@ public class Burger{
 			} catch (Exception e) {
 				e.getMessage();
 			}
-		}		
+		}
 	}
 }

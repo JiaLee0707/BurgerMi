@@ -16,29 +16,29 @@ public class Game extends JPanel {
 	public KeyListener keyListener = new KeyListener();
 	public Timer timer;
 
-	// °ÔÀÓÈ­¸é
+	// ê²Œì„í™”ë©´
 	private Image ImageGame = new ImageIcon("src/images/GameBackground.png").getImage();
 	private Image ImageRules = new ImageIcon("src/images/GameRules.png").getImage();
 	public Image ImageBackground;
 
-	// Àï¹İ
-	public Image ImageTray = new ImageIcon("src/images/Àï¹İ.png").getImage();
-	public Image ImageTray2 = new ImageIcon("src/images/Àï¹İ2.png").getImage();
-	public Image ImageTray3 = new ImageIcon("src/images/Àï¹İ3.png").getImage();
+	// ìŸë°˜
+	public Image ImageTray = new ImageIcon("src/images/ìŸë°˜.png").getImage();
+	public Image ImageTray2 = new ImageIcon("src/images/ìŸë°˜2.png").getImage();
+	public Image ImageTray3 = new ImageIcon("src/images/ìŸë°˜3.png").getImage();
 	public Image[] ImageTrayArray = { ImageTray2, ImageTray3, ImageTray };
 	public Image TrayBasicImage = ImageTrayArray[2];
 
-	// ´øÁö´Â ÇÜ¹ö°Å
+	// ë˜ì§€ëŠ” í–„ë²„ê±°
 	public Image ImageThrowingBurger = new ImageIcon("src/images/ThrowBurger.png").getImage();
 	public Image ImageBrokenBurger = new ImageIcon("src/images/BrokenBurger.png").getImage();
 	public Image[] ImageThrow = { ImageThrowingBurger, ImageBrokenBurger };
 	public Image ThrowImage;
 
-	// °ÔÀÓ½ÃÀÛ ¹öÆ°
+	// ê²Œì„ì‹œì‘ ë²„íŠ¼
 	MouseListener mouse = new MouseListener();
 	private JButton StartBtn = new JButton(mouse.StartBasicImage);
 
-	Music gameMusic = new Music("¿ä¸®.mp3", true);
+	Music gameMusic = new Music("ìš”ë¦¬.mp3", true);
 
 	int TrayY = 450;
 	public boolean start = false;
@@ -48,7 +48,7 @@ public class Game extends JPanel {
 		setLayout(null);
 		ImageBackground = ImageRules;
 
-		// ½ÃÀÛ¹öÆ°
+		// ì‹œì‘ë²„íŠ¼
 		StartBtn.setBounds(915, 560, 340, 120);
 		StartBtn.setBorderPainted(false);
 		StartBtn.setContentAreaFilled(false);
@@ -64,7 +64,7 @@ public class Game extends JPanel {
 		Main.burgermi.background.introMusic.close();
 		gameMusic.start();
 
-		// ¹öÆ° ¾Èº¸ÀÌ°Ô
+		// ë²„íŠ¼ ì•ˆë³´ì´ê²Œ
 		StartBtn.setVisible(false);
 
 		score = new Score();
@@ -73,7 +73,7 @@ public class Game extends JPanel {
 
 		ReGame();
 
-		this.requestFocus(); // ÄÁÅÙÆ®ÆÒ¿¡ Æ÷Ä¿½º ¼³Á¤
+		this.requestFocus(); // ì»¨í…íŠ¸íŒ¬ì— í¬ì»¤ìŠ¤ ì„¤ì •
 		this.addKeyListener(keyListener);
 	}
 
@@ -88,11 +88,11 @@ public class Game extends JPanel {
 		getParent().repaint();
 	}
 
-	// È­¸é ±×¸®±â
+	// í™”ë©´ ê·¸ë¦¬ê¸°
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
-		// ¹è°æÈ­¸é
+		// ë°°ê²½í™”ë©´
 		g.drawImage(ImageBackground, 0, 0, this);
 
 		Image burgerIngredient = null;
@@ -104,10 +104,10 @@ public class Game extends JPanel {
 		int Makey = 0;
 
 		if (start) {
-			// ¼Õ´Ô ±×¸®±â
+			// ì†ë‹˜ ê·¸ë¦¬ê¸°
 			g.drawImage(order.thisGuest, 553, order.y, this);
 
-			// ÁÖ¹®¹ŞÀº ¹ö°Å
+			// ì£¼ë¬¸ë°›ì€ ë²„ê±°
 			for (int i = 0; i < order.orderBurger.size(); i++) {
 				burgerIngredient = (Image) ((List<Object>) order.orderBurger.get(i)).get(0);
 				x = (int) ((List<Object>) order.orderBurger.get(i)).get(1);
@@ -115,11 +115,11 @@ public class Game extends JPanel {
 				g.drawImage(burgerIngredient, x, y, this);
 			}
 
-			// Àï¹İ
+			// ìŸë°˜
 			g.drawImage(TrayBasicImage, 400, TrayY, this);
 
 			if (ThrowBurger) {
-				// ÇÜ¹ö°Å ´øÁö±â
+				// í–„ë²„ê±° ë˜ì§€ê¸°
 				int BurgerX = 500, BurgerY = 290;
 				if (ThrowImage != null && ThrowImage.equals(ImageThrow[1])) {
 					BurgerX = 545;
@@ -130,7 +130,7 @@ public class Game extends JPanel {
 
 		}
 
-		// ¸¸µç ¹ö°Å
+		// ë§Œë“  ë²„ê±°
 //		for (int i = 0; i < keyListener.burger.MakeBurgerObjectArray.size(); i++) {
 //			MakeburgerIngredient = (Image) ((List<Object>) keyListener.burger.MakeBurgerObjectArray.get(i)).get(0);
 //			Makex = (int) ((List<Object>) keyListener.burger.MakeBurgerObjectArray.get(i)).get(1);
@@ -138,14 +138,14 @@ public class Game extends JPanel {
 //			g.drawImage(MakeburgerIngredient, Makex, Makey, this);
 //		}
 
-		// ¸¸µå´Â ¹ö°Å
+		// ë§Œë“œëŠ” ë²„ê±°
 //		if (keyListener.burger.key) {
-			for (int i = 0; i < keyListener.burger.burgerIngredient.size(); i++) {
-				MakeburgerIngredient = (Image) ((List<Object>) keyListener.burger.burgerIngredient.get(i)).get(0);
-				Makex = (int) ((List<Object>) keyListener.burger.burgerIngredient.get(i)).get(1);
-				Makey = (int) keyListener.burger.i.get(i);
-				g.drawImage(MakeburgerIngredient, Makex, Makey, this);
-			}
+		for (int i = 0; i < keyListener.burger.burgerIngredient.size(); i++) {
+			MakeburgerIngredient = (Image) ((List<Object>) keyListener.burger.burgerIngredient.get(i)).get(0);
+			Makex = (int) ((List<Object>) keyListener.burger.burgerIngredient.get(i)).get(1);
+			Makey = (int) keyListener.burger.i.get(i);
+			g.drawImage(MakeburgerIngredient, Makex, Makey, this);
+		}
 //		}
 
 	}

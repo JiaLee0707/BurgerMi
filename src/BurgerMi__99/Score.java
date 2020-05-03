@@ -9,64 +9,64 @@ public class Score {
 	public void Score() {
 		int count = 0;
 
-		// Á¡¼ö °è»ê
+		// ì ìˆ˜ ê³„ì‚°
 		while (true) {
-			// ¹ö°Å size°¡ °°À¸¸é (¼º°ø)
+			// ë²„ê±° sizeê°€ ê°™ìœ¼ë©´ (ì„±ê³µ)
 			if (count == BurgerMi.game.order.orderBurger.size()) {
 				Music OX = new Music("tpir-sdclock.mp3", false);
 				OX.start();
 
-				// Áø»ó¼Õ´ÔÀÌ¸é Á¡¼ö +20
+				// ì§„ìƒì†ë‹˜ì´ë©´ ì ìˆ˜ +20
 				if (BurgerMi.game.order.obnoxious == 4) {
 					score += 20;
 				}
-				// ÀÏ¹İ¼Õ´ÔÀÌ¸é Á¡¼ö +10
+				// ì¼ë°˜ì†ë‹˜ì´ë©´ ì ìˆ˜ +10
 				else {
 					score += 10;
 				}
-				BurgerMi.game.grade.setText(score + "Á¡");
-				System.out.println("¼º°ø");
+				BurgerMi.game.grade.setText(score + "ì ");
+				System.out.println("ì„±ê³µ");
 				break;
 			}
-			// ÁÖ¹® ¹ö°Å¿Í ¸¸µç ¹ö°Å°¡ ´Ù¸£¸é
-			// size, Àç·á
+			// ì£¼ë¬¸ ë²„ê±°ì™€ ë§Œë“  ë²„ê±°ê°€ ë‹¤ë¥´ë©´
+			// size, ì¬ë£Œ
 			else if ((BurgerMi.game.order.MakeBurger.size() != BurgerMi.game.order.orderBurger.size())
 					|| (((List<Object>) BurgerMi.game.order.orderBurger.get(count))
 							.get(0) != ((List<Object>) BurgerMi.game.order.MakeBurger.get(count)).get(0))) {
-				Music OX = new Music("¶ì-À¸-À¸.mp3", false);
+				Music OX = new Music("ë -ìœ¼-ìœ¼.mp3", false);
 				OX.start();
-				// Áø»ó¼Õ´ÔÀÌ¸é Á¡¼ö -5
+				// ì§„ìƒì†ë‹˜ì´ë©´ ì ìˆ˜ -5
 				if (BurgerMi.game.order.obnoxious == 4) {
 					score -= 5;
 				}
-				BurgerMi.game.grade.setText(score + "Á¡");
-				System.out.println("½ÇÆĞ");
+				BurgerMi.game.grade.setText(score + "ì ");
+				System.out.println("ì‹¤íŒ¨");
 				break;
 			}
-			// ¼ø¼­´ë·Î ÇÜ¹ö°Å Àç·á°¡ °°À¸¸é count++
+			// ìˆœì„œëŒ€ë¡œ í–„ë²„ê±° ì¬ë£Œê°€ ê°™ìœ¼ë©´ count++
 			else if (((List<Object>) BurgerMi.game.order.orderBurger.get(count))
 					.get(0) == ((List<Object>) BurgerMi.game.order.MakeBurger.get(count)).get(0)) {
 				count++;
 			}
 		}
 
-		// ÁÖ¹®¹ö°Å, ¸¸µç¹ö°Å clear
+		// ì£¼ë¬¸ë²„ê±°, ë§Œë“ ë²„ê±° clear
 		BurgerMi.game.order.orderBurger.clear();
 		BurgerMi.game.order.MakeBurger.clear();
 		BurgerMi.game.ingredients = null;
 
-		// Áø»ó¼Õ´ÔÀÌ¸é ÇÜ¹ö°Å ´øÁö±â
+		// ì§„ìƒì†ë‹˜ì´ë©´ í–„ë²„ê±° ë˜ì§€ê¸°
 		if (BurgerMi.game.order.obnoxious == 4) {
 			Throw th = new Throw();
 			th.start();
 		}
-		// ÀÏ¹İ¼Õ´ÔÀÌ¸é »õ·Î¿î ¼Õ´Ô ºÎ¸£±â
+		// ì¼ë°˜ì†ë‹˜ì´ë©´ ìƒˆë¡œìš´ ì†ë‹˜ ë¶€ë¥´ê¸°
 		else {
 			BurgerMi.game.order = new Order();
 			BurgerMi.game.order.start();
 		}
 
-		// È­¸é ´Ù½Ã±×¸®±â
+		// í™”ë©´ ë‹¤ì‹œê·¸ë¦¬ê¸°
 		BurgerMi.game.revalidate();
 		BurgerMi.game.repaint();
 

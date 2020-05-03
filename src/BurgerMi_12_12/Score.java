@@ -11,38 +11,40 @@ public class Score {
 
 	int score = 0;
 	int scoreArray[] = { 10, 20, -5 };
-	public JLabel scoreLabel = new JLabel(score + "Á¡");
+	public JLabel scoreLabel = new JLabel(score + "ì ");
 	Music musicOX;
 
 	Score(Order order) {
 		this.order = order;
-		scoreLabel.setFont(new Font("³ª´®½ºÄù¾î¶ó¿îµå ExtraBold", Font.ITALIC, 50)); // ÆùÆ® ¼³Á¤
-		scoreLabel.setSize(500, 500); // Å©Å° ¼³Á¤
-		scoreLabel.setLocation(1160, -150); // À§Ä¡ ¼³Á¤
+		scoreLabel.setFont(new Font("ë‚˜ëˆ”ìŠ¤í€˜ì–´ë¼ìš´ë“œ ExtraBold", Font.ITALIC, 50)); // í°íŠ¸ ì„¤ì •
+		scoreLabel.setSize(500, 500); // í¬í‚¤ ì„¤ì •
+		scoreLabel.setLocation(1160, -150); // ìœ„ì¹˜ ì„¤ì •
 		Main.burgermi.game.add(scoreLabel);
 	}
+
 	public void Score(Burger burger) {
 		this.burger = burger;
-		
+
 		boolean OX = Discriminate();
-		
-		//Á¡¼ö °è»ê
-		if(OX == true) {
+
+		// ì ìˆ˜ ê³„ì‚°
+		if (OX == true) {
 			musicOX = new Music("tpir-sdclock.mp3", false);
-			if(order.guest.who == 4) {
+			if (order.guest.who == 4) {
 				score += scoreArray[1];
-			} else score += scoreArray[0];
+			} else
+				score += scoreArray[0];
 		} else {
-			musicOX = new Music("¶ì-À¸-À¸.mp3", false);
-			if(order.guest.who == 4) {
+			musicOX = new Music("ë -ìœ¼-ìœ¼.mp3", false);
+			if (order.guest.who == 4) {
 				score += scoreArray[2];
 			}
 		}
 		musicOX.start();
-		
-		scoreLabel.setText(score + "Á¡");
-		
-		for(int i=0; i<5; i++) {
+
+		scoreLabel.setText(score + "ì ");
+
+		for (int i = 0; i < 5; i++) {
 			Main.burgermi.game.BurgerJLabel[i] = null;
 		}
 		Main.burgermi.game.keyListener.burger.MakeBurgerArray = new LinkedList<Integer>();
@@ -54,24 +56,24 @@ public class Score {
 
 	public boolean Discriminate() {
 		boolean OX = true;
-		
+
 		int orderSize = order.orderBurgerArray.length;
 		int makeSize = burger.MakeBurgerArray.size();
 
-		// ¹ö°Å »çÀÌÁî ºñ±³
+		// ë²„ê±° ì‚¬ì´ì¦ˆ ë¹„êµ
 		if (orderSize != makeSize) {
 			OX = false;
 		} else {
-			// ¹ö°Å Àç·á ºñ±³
+			// ë²„ê±° ì¬ë£Œ ë¹„êµ
 			for (int i = 0; i < orderSize; i++) {
-				// ¹ö°Å Àç·á°¡ ´Ù¸£¸é
+				// ë²„ê±° ì¬ë£Œê°€ ë‹¤ë¥´ë©´
 				if (order.orderBurgerArray[i] != burger.MakeBurgerArray.get(i)) {
 					OX = false;
 					break;
 				}
 			}
 		}
-		
+
 		return OX;
 	}
 

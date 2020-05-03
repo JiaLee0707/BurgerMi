@@ -13,59 +13,57 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class BurgerMi extends JFrame {
-	private Image ImageBackground = new ImageIcon("src/images/BurgerMiº¹»çº».png").getImage();
+	private Image ImageBackground = new ImageIcon("src/images/BurgerMië³µì‚¬ë³¸.png").getImage();
 	private ImageIcon StartBasicImage = new ImageIcon("src/images/startButtonBasic.png");
 	private ImageIcon StartEnteredImage = new ImageIcon("src/images/startButtonEntered.png");
 	private ImageIcon QuitBasicImage = new ImageIcon("src/images/quitButtonBasic.png");
 	private ImageIcon QuitEnteredImage = new ImageIcon("src/images/quitButtonEntered.png");
-	public static Image MenuImage = new ImageIcon("src/images/¸Ş´ºÈ­¸é.png").getImage();
-	
+	public static Image MenuImage = new ImageIcon("src/images/ë©”ë‰´í™”ë©´.png").getImage();
+
 	public static Music introMusic;
 
 	public static Game game;
 	public static Ranking ranking = new Ranking();
-	public static boolean replay = false; // °ÔÀÓ (Ã¹½ÃÀÛ/Ã³À½½ÃÀÛ)
+	public static boolean replay = false; // ê²Œì„ (ì²«ì‹œì‘/ì²˜ìŒì‹œì‘)
 	public Background background;
-	public static Font font = new Font("³ª´®½ºÄù¾î¶ó¿îµå ExtraBold", Font.BOLD, 50); //ITALIC
-	
+	public static Font font = new Font("ë‚˜ëˆ”ìŠ¤í€˜ì–´ë¼ìš´ë“œ ExtraBold", Font.BOLD, 50); // ITALIC
 
-	public static boolean Menu = false; // ¸Ş´º
+	public static boolean Menu = false; // ë©”ë‰´
 
 	public BurgerMi() {
 		setTitle("BurgerMi");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+
 		background = new Background();
 		setContentPane(background);
 		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
-		setResizable(false);	//Ã¢ Å©±â º¯°æX
+		setResizable(false); // ì°½ í¬ê¸° ë³€ê²½X
 		setLayout(null);
 		setVisible(true);
-		setLocationRelativeTo(null);	//Ã¢À§Ä¡ °¡¿îµ¥
+		setLocationRelativeTo(null); // ì°½ìœ„ì¹˜ ê°€ìš´ë°
 	}
-	
+
 	public void JPanelChange() {
 		background = new Background();
 		setContentPane(background);
-		
-		
+
 //		game = new Game();
 //		setContentPane(game);
 //		game.Game();
 	}
 
-	// È­¸é ³»ºÎÅ¬·¡½º(Panel)
+	// í™”ë©´ ë‚´ë¶€í´ë˜ìŠ¤(Panel)
 	class Background extends JPanel {
 		private JButton StartBtn = new JButton(StartBasicImage);
 		private JButton QuitBtn = new JButton(QuitBasicImage);
-		
+
 		Background() {
 			setLayout(null);
-			
-			introMusic = new Music("BurgerMi Å¸ÀÌÆ² À½¾Ç.mp3", true);
+
+			introMusic = new Music("BurgerMi íƒ€ì´í‹€ ìŒì•….mp3", true);
 			introMusic.start();
 
-			// ½ÃÀÛ¹öÆ°
+			// ì‹œì‘ë²„íŠ¼
 			StartBtn.setBounds(10, 350, 340, 120);
 			StartBtn.setBorderPainted(false);
 			StartBtn.setContentAreaFilled(false);
@@ -73,9 +71,8 @@ public class BurgerMi extends JFrame {
 			StartBtn.addMouseListener(new MouseListener(StartBasicImage, StartEnteredImage));
 			StartBtn.setVisible(true);
 			this.add(StartBtn);
-			
 
-			// Á¾·á¹öÆ°
+			// ì¢…ë£Œë²„íŠ¼
 			QuitBtn.setBounds(10, 470, 340, 120);
 			QuitBtn.setBorderPainted(false);
 			QuitBtn.setContentAreaFilled(false);
@@ -85,14 +82,14 @@ public class BurgerMi extends JFrame {
 			this.add(QuitBtn);
 		}
 
-		// È­¸é ±×¸®±â
+		// í™”ë©´ ê·¸ë¦¬ê¸°
 		public void paintComponent(Graphics g) {
 			super.paintComponent(g);
 			g.drawImage(ImageBackground, 0, 0, this);
 		}
 	}
 
-	// ¸¶¿ì½º ¸®½º³Ê
+	// ë§ˆìš°ìŠ¤ ë¦¬ìŠ¤ë„ˆ
 	class MouseListener extends MouseAdapter {
 		ImageIcon Basic;
 		ImageIcon Entered;
@@ -102,14 +99,14 @@ public class BurgerMi extends JFrame {
 			Entered = EnteredImageIcon;
 		}
 
-		// ±âº»¹öÆ°
+		// ê¸°ë³¸ë²„íŠ¼
 		@Override
 		public void mouseExited(MouseEvent e) {
 			JButton button = (JButton) e.getSource();
 			button.setIcon(Basic);
 		}
 
-		// Å¬¸¯¹öÆ°
+		// í´ë¦­ë²„íŠ¼
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			JButton button = (JButton) e.getSource();
@@ -128,7 +125,7 @@ public class BurgerMi extends JFrame {
 			game.Game();
 		}
 
-		// ¹öÆ° À§¿¡ ¿Ã¸®¸é
+		// ë²„íŠ¼ ìœ„ì— ì˜¬ë¦¬ë©´
 		@Override
 		public void mouseEntered(MouseEvent e) {
 			JButton button = (JButton) e.getSource();

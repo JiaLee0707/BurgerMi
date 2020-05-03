@@ -24,7 +24,7 @@ public class Burger extends Thread {
 		int i = 0;
 		boolean bool = true;
 		try {
-			// i°¡ x°¡ ¾Æ´Ò¶§±îÁö ½º·¹µå ½ÇÇà
+			// iê°€ xê°€ ì•„ë‹ë•Œê¹Œì§€ ìŠ¤ë ˆë“œ ì‹¤í–‰
 			while (i != y) {
 				i = i + 1;
 //				System.out.println(i);
@@ -34,8 +34,8 @@ public class Burger extends Thread {
 				Thread.sleep(1);
 			}
 
-			// MakeBurger¿¡ Ãß°¡
-			List<Object> BurgerArray = new ArrayList<Object>(); // ÇÏ³ªÀÇ ÇÜ¹ö°Å ÀÌ¹ÌÁö, À§Ä¡ List
+			// MakeBurgerì— ì¶”ê°€
+			List<Object> BurgerArray = new ArrayList<Object>(); // í•˜ë‚˜ì˜ í–„ë²„ê±° ì´ë¯¸ì§€, ìœ„ì¹˜ List
 			BurgerArray.add(this.StringIngeredients);
 			BurgerArray.add(this.ingredients);
 			BurgerArray.add(this.x);

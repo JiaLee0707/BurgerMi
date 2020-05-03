@@ -8,7 +8,7 @@ public class Main {
 	public static final int SLEEP_TIME = 10;
 
 	public static void main(String[] args) {
-		
+
 		new BurgerMi();
 	}
 

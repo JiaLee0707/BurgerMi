@@ -8,40 +8,40 @@ import java.util.List;
 
 import javax.swing.JLabel;
 
-public class KeyListener extends KeyAdapter{
+public class KeyListener extends KeyAdapter {
 	Burger burger = new Burger();
 	Score score;
-	
+
 	KeyListener(Score score) {
 		this.score = score;
 	}
-	
+
 	public void keyReleased(KeyEvent e) {
 		int KeyCode = e.getKeyCode();
-		
-		switch(KeyCode) {
-		case KeyEvent.VK_S :
-//			System.out.println("¹Ø»§");
+
+		switch (KeyCode) {
+		case KeyEvent.VK_S:
+//			System.out.println("ë°‘ë¹µ");
 			burger.Burger(5);
 			break;
-		case KeyEvent.VK_W :
-//			System.out.println("À­»§");
+		case KeyEvent.VK_W:
+//			System.out.println("ìœ—ë¹µ");
 			burger.Burger(4);
 			break;
-		case KeyEvent.VK_A: // ÆĞÆ¼
-//			System.out.print("ÆĞÆ¼");
+		case KeyEvent.VK_A: // íŒ¨í‹°
+//			System.out.print("íŒ¨í‹°");
 			burger.Burger(1);
 			break;
-		case KeyEvent.VK_D: // »óÃß
-//			System.out.print("»óÃß");
+		case KeyEvent.VK_D: // ìƒì¶”
+//			System.out.print("ìƒì¶”");
 			burger.Burger(3);
 			break;
-		case KeyEvent.VK_Q: // Åä¸¶Åä
-//			System.out.print("Åä¸¶Åä");
+		case KeyEvent.VK_Q: // í† ë§ˆí† 
+//			System.out.print("í† ë§ˆí† ");
 			burger.Burger(2);
 			break;
-		case KeyEvent.VK_E: // Ä¡Áî
-//			System.out.print("Ä¡Áî");
+		case KeyEvent.VK_E: // ì¹˜ì¦ˆ
+//			System.out.print("ì¹˜ì¦ˆ");
 			burger.Burger(0);
 			break;
 //		case KeyEvent.VK_SPACE:
@@ -49,7 +49,7 @@ public class KeyListener extends KeyAdapter{
 //        	 BurgerMi.game.dropBurger(); 
 //			break;
 		case KeyEvent.VK_ENTER:
-//			System.out.println("\n¿£ÅÍ");
+//			System.out.println("\nì—”í„°");
 			score.Score(burger);
 			break;
 		case KeyEvent.VK_ESCAPE:

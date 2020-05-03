@@ -17,24 +17,24 @@ public class BurgerMi extends JFrame {
 
 	private Image screenImage;
 	private Graphics screenGraphic;
-	
+
 	private ImageIcon exitButtonEnteredImage = new ImageIcon(Main.class.getResource("../images/exitButtonEntered.png"));
 	private ImageIcon exitButtonBasicImage = new ImageIcon(Main.class.getResource("../images/exitButtonBasic.png"));
-	private ImageIcon startButtonEnteredImage = new ImageIcon(Main.class.getResource("../images/startButtonEntered.png"));
+	private ImageIcon startButtonEnteredImage = new ImageIcon(
+			Main.class.getResource("../images/startButtonEntered.png"));
 	private ImageIcon startButtonBasicImage = new ImageIcon(Main.class.getResource("../images/startButtonBasic.png"));
 	private ImageIcon quitButtonEnteredImage = new ImageIcon(Main.class.getResource("../images/quitButtonEntered.png"));
 	private ImageIcon quitButtonBasicImage = new ImageIcon(Main.class.getResource("../images/quitButtonBasic.png"));
-	
-	
-	private Image background = new ImageIcon(Main.class.getResource("../images/¹Ì¸²¿©ÀÚÁ¤º¸°úÇĞ°íµîÇĞ±³.jpg")).getImage();
+
+	private Image background = new ImageIcon(Main.class.getResource("../images/ë¯¸ë¦¼ì—¬ìì •ë³´ê³¼í•™ê³ ë“±í•™êµ.jpg")).getImage();
 	private JLabel menuBar = new JLabel(new ImageIcon(Main.class.getResource("../images/menuBar.png")));
-	
+
 	private JButton exitButton = new JButton(exitButtonBasicImage);
 	private JButton startButton = new JButton(startButtonBasicImage);
 	private JButton quitButton = new JButton(quitButtonBasicImage);
-	
+
 	private int mouseX, mouseY;
-	
+
 	public BurgerMi() {
 		setUndecorated(true);
 		setTitle("BurgerMi");
@@ -45,7 +45,7 @@ public class BurgerMi extends JFrame {
 		setVisible(true);
 		setBackground(new Color(0, 0, 0, 0));
 		setLayout(null);
-		
+
 		exitButton.setBounds(1413, 4, 30, 30);
 		exitButton.setBorderPainted(false);
 		exitButton.setContentAreaFilled(false);
@@ -58,11 +58,13 @@ public class BurgerMi extends JFrame {
 				Music buttonEnteredMusic = new Music("buttonEnteredMusic.mp3", false);
 				buttonEnteredMusic.start();
 			}
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				exitButton.setIcon(exitButtonBasicImage);
 				exitButton.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 			}
+
 			@Override
 			public void mousePressed(MouseEvent e) {
 				Music buttonEnteredMusic = new Music("buttonPressedMusic.mp3", false);
@@ -76,8 +78,7 @@ public class BurgerMi extends JFrame {
 			}
 		});
 		add(exitButton);
-		
-		
+
 		startButton.setBounds(40, 340, 400, 100);
 		startButton.setBorderPainted(false);
 		startButton.setContentAreaFilled(false);
@@ -90,23 +91,24 @@ public class BurgerMi extends JFrame {
 				Music buttonEnteredMusic = new Music("buttonEnteredMusic.mp3", false);
 				buttonEnteredMusic.start();
 			}
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				startButton.setIcon(startButtonBasicImage);
 				startButton.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 			}
+
 			@Override
 			public void mousePressed(MouseEvent e) {
 				Music buttonEnteredMusic = new Music("buttonPressedMusic.mp3", false);
 				buttonEnteredMusic.start();
 				startButton.setVisible(false);
 				quitButton.setVisible(false);
-				background  = new ImageIcon(Main.class.getResource("../images/°ÔÀÓÈ­¸é (2).png")).getImage();
+				background = new ImageIcon(Main.class.getResource("../images/ê²Œì„í™”ë©´ (2).png")).getImage();
 			}
 		});
 		add(startButton);
-		
-		
+
 		quitButton.setBounds(40, 450, 400, 100);
 		quitButton.setBorderPainted(false);
 		quitButton.setContentAreaFilled(false);
@@ -119,11 +121,13 @@ public class BurgerMi extends JFrame {
 				Music buttonEnteredMusic = new Music("buttonEnteredMusic.mp3", false);
 				buttonEnteredMusic.start();
 			}
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				quitButton.setIcon(quitButtonBasicImage);
 				quitButton.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 			}
+
 			@Override
 			public void mousePressed(MouseEvent e) {
 				Music buttonEnteredMusic = new Music("buttonPressedMusic.mp3", false);
@@ -137,10 +141,7 @@ public class BurgerMi extends JFrame {
 			}
 		});
 		add(quitButton);
-		
-		
-		
-		
+
 		menuBar.setBounds(0, 0, 1450, 35);
 		menuBar.addMouseListener(new MouseAdapter() {
 			@Override
@@ -158,22 +159,21 @@ public class BurgerMi extends JFrame {
 			}
 		});
 		add(menuBar);
-		
-		Music introMusic = new Music("ÄèÈ°ÇÑ Çàº¹ÇÏ°í ÀÌµ¿ ÁöÁßÇØ ¿ä¸®¿¡ °¡Àå ÀûÇÕÇÑ ¾Ç±â À½¾Ç.mp3", true);
+
+		Music introMusic = new Music("ì¾Œí™œí•œ í–‰ë³µí•˜ê³  ì´ë™ ì§€ì¤‘í•´ ìš”ë¦¬ì— ê°€ì¥ ì í•©í•œ ì•…ê¸° ìŒì•….mp3", true);
 		introMusic.start();
 	}
-	
+
 	public void paint(Graphics g) {
 		screenImage = createImage(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
 		screenGraphic = screenImage.getGraphics();
 		screenDraw(screenGraphic);
-		g.drawImage(screenImage, 0, 0, null);	
+		g.drawImage(screenImage, 0, 0, null);
 	}
-	
+
 	public void screenDraw(Graphics g) {
 		g.drawImage(background, 0, 0, null);
 		paintComponents(g);
 		this.repaint();
 	}
 }
-

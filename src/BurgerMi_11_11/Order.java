@@ -8,11 +8,11 @@ import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-public class Order{
+public class Order {
 	Random random = new Random();
 	Guest guest = new Guest();
-	
-	// ¼Õ´Ô
+
+	// ì†ë‹˜
 	private ImageIcon guest1 = new ImageIcon("src/images/11.png");
 	private ImageIcon guest2 = new ImageIcon("src/images/22.png");
 	private ImageIcon guest3 = new ImageIcon("src/images/33.png");
@@ -21,89 +21,90 @@ public class Order{
 	private ImageIcon guest6 = new ImageIcon("src/images/66.png");
 	public ImageIcon[] guestArray = { guest1, guest2, guest3, guest4, guest5, guest6 };
 
-	// ÁÖ¹®¹ŞÀº ¹ö°Å
-	private ImageIcon orderbelowBreadImage = new ImageIcon("src/images/Order¾Æ·¡»§.png");	// 5
-	private ImageIcon ordertopBreadImage = new ImageIcon("src/images/OrderÀ­»§.png");		// 4
-	private ImageIcon orderlettuceImage = new ImageIcon("src/images/OrderÃ¤¼Ò.png");		// 3
-	private ImageIcon ordertomatoImage = new ImageIcon("src/images/OrderÅä¸¶Åä.png");		// 2
-	private ImageIcon orderpattyImage = new ImageIcon("src/images/OrderÆĞÆ¼.png");			// 1
-	private ImageIcon ordercheeseImage = new ImageIcon("src/images/OrderÄ¡Áî.png");			// 0
-	public ImageIcon[] orderBurgerImageArray = { ordercheeseImage, 
-			orderpattyImage, ordertomatoImage, orderlettuceImage, ordertopBreadImage, orderbelowBreadImage};
-	
-	int[] orderBurgerArray = new int[5];
-	
-	public Order() {
-		int orderBurger = 0, i = 0, random = 6;	// ÁÖ¹® ¹ö°Å
+	// ì£¼ë¬¸ë°›ì€ ë²„ê±°
+	private ImageIcon orderbelowBreadImage = new ImageIcon("src/images/Orderì•„ë˜ë¹µ.png"); // 5
+	private ImageIcon ordertopBreadImage = new ImageIcon("src/images/Orderìœ—ë¹µ.png"); // 4
+	private ImageIcon orderlettuceImage = new ImageIcon("src/images/Orderì±„ì†Œ.png"); // 3
+	private ImageIcon ordertomatoImage = new ImageIcon("src/images/Orderí† ë§ˆí† .png"); // 2
+	private ImageIcon orderpattyImage = new ImageIcon("src/images/OrderíŒ¨í‹°.png"); // 1
+	private ImageIcon ordercheeseImage = new ImageIcon("src/images/Orderì¹˜ì¦ˆ.png"); // 0
+	public ImageIcon[] orderBurgerImageArray = { ordercheeseImage, orderpattyImage, ordertomatoImage, orderlettuceImage,
+			ordertopBreadImage, orderbelowBreadImage };
 
-		// ÁÖ¹®¹ŞÀº ¹ö°Å
-		if(guest.who != 4) {	//Áø»ó ¼Õ´ÔÀÌ ¾Æ´Ï¶ó¸é
-			System.out.println("Áø»óX");
+	int[] orderBurgerArray = new int[5];
+
+	public Order() {
+		int orderBurger = 0, i = 0, random = 6; // ì£¼ë¬¸ ë²„ê±°
+
+		// ì£¼ë¬¸ë°›ì€ ë²„ê±°
+		if (guest.who != 4) { // ì§„ìƒ ì†ë‹˜ì´ ì•„ë‹ˆë¼ë©´
+			System.out.println("ì§„ìƒX");
 			i = 1;
 			random = 4;
 			orderBurgerArray[0] = 5;
 			orderBurgerArray[4] = 4;
 		}
-		
-		// ÁÖ¹® ·£´ı
-		for(int j = i; j < 5-i; j++) {
-			orderBurger = (int)(Math.random() * random);
+
+		// ì£¼ë¬¸ ëœë¤
+		for (int j = i; j < 5 - i; j++) {
+			orderBurger = (int) (Math.random() * random);
 			orderBurgerArray[j] = orderBurger;
 		}
 	}
-	
+
 	public void Order(JLabel BurgerJLabel, int i) {
-		// ÇÜ¹ö°Å Àç·á À§Ä¡ Á¶Á¤
-		int y = 160-25*(i+1);
-		switch(orderBurgerArray[i]) {
-		case 0:	// Ä¡Áî
-			BurgerJLabel.setBounds(135, y+10, 400, 300);
-			System.out.println("Ä¡Áî");
+		// í–„ë²„ê±° ì¬ë£Œ ìœ„ì¹˜ ì¡°ì •
+		int y = 160 - 25 * (i + 1);
+		switch (orderBurgerArray[i]) {
+		case 0: // ì¹˜ì¦ˆ
+			BurgerJLabel.setBounds(135, y + 10, 400, 300);
+			System.out.println("ì¹˜ì¦ˆ");
 			break;
-		case 1:	// ÆĞÆ¼
-			BurgerJLabel.setBounds(140, y+13, 400, 300);
-			System.out.println("ÆĞÆ¼");
+		case 1: // íŒ¨í‹°
+			BurgerJLabel.setBounds(140, y + 13, 400, 300);
+			System.out.println("íŒ¨í‹°");
 			break;
-		case 2:	// Åä¸¶Åä
-			BurgerJLabel.setBounds(140, y+8, 400, 300);
-			System.out.println("Åä¸¶Åä");
+		case 2: // í† ë§ˆí† 
+			BurgerJLabel.setBounds(140, y + 8, 400, 300);
+			System.out.println("í† ë§ˆí† ");
 			break;
-		case 3: // Ã¤¼Ò
-			BurgerJLabel.setBounds(138, y-3, 400, 300);
-			System.out.println("Ã¤¼Ò");
+		case 3: // ì±„ì†Œ
+			BurgerJLabel.setBounds(138, y - 3, 400, 300);
+			System.out.println("ì±„ì†Œ");
 			break;
-		case 4: // À­»§
-			BurgerJLabel.setBounds(135, y-10, 400, 300);
-			System.out.println("À­»§");
+		case 4: // ìœ—ë¹µ
+			BurgerJLabel.setBounds(135, y - 10, 400, 300);
+			System.out.println("ìœ—ë¹µ");
 			break;
-		case 5: // ¾Æ·§»§
+		case 5: // ì•„ë«ë¹µ
 			BurgerJLabel.setBounds(135, y, 400, 300);
-			System.out.println("¾Æ·§»§");
+			System.out.println("ì•„ë«ë¹µ");
 			break;
 		}
 	}
-	
-	//¼Õ´Ô Å¬·¡½º(¾²·¹µå)
-	class Guest extends Thread {		
-		int who = (int)(Math.random() * 6);	// ¼Õ´Ô ·£´ı
-		int y = 100; // ¼Õ´Ô yÁÂÇ¥
+
+	// ì†ë‹˜ í´ë˜ìŠ¤(ì“°ë ˆë“œ)
+	class Guest extends Thread {
+		int who = (int) (Math.random() * 6); // ì†ë‹˜ ëœë¤
+		int y = 100; // ì†ë‹˜ yì¢Œí‘œ
 		JLabel guestJLabel;
-		
+
 		public void Guest(JLabel guestJLabel) {
 			this.guestJLabel = guestJLabel;
 
-			// ¼Õ´Ô
+			// ì†ë‹˜
 			guestJLabel.setBounds(553, 100, 175, 300);
 			this.start();
-			
+
 			System.out.println("guest");
 		}
-			
+
 		public void run() {
 			try {
 				while (y != 136) {
 					y += 1;
-					guestJLabel.setLocation(553, y);;
+					guestJLabel.setLocation(553, y);
+					;
 //					Main.burgermi.game.getParent().repaint();
 					Main.burgermi.game.revalidate();
 					Thread.sleep(10);

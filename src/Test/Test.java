@@ -8,20 +8,19 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-
-public class Test extends JFrame{
+public class Test extends JFrame {
 	Panel p = new Panel();
+
 	Test() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setContentPane(p);
 		setVisible(true);
 	}
-	
+
 	public static void main(String[] args) {
 		Test test = new Test();
 	}
-	
-	
+
 	class Panel extends JPanel {
 		Panel() {
 			JLabel label = new JLabel("Panel 1");
@@ -30,11 +29,11 @@ public class Test extends JFrame{
 			add(label);
 			add(but);
 		}
-		
-		class MouseListener extends MouseAdapter{
+
+		class MouseListener extends MouseAdapter {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JButton button = (JButton)e.getSource();
+				JButton button = (JButton) e.getSource();
 				button.setVisible(false);
 				e ee = new e();
 				setContentPane(ee);
@@ -42,6 +41,7 @@ public class Test extends JFrame{
 		}
 	}
 }
+
 class e extends JPanel {
 	e() {
 		JLabel label = new JLabel("Panel 2");

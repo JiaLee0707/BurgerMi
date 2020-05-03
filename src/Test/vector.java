@@ -8,47 +8,46 @@ public class vector {
 
 	public static void main(String[] args) {
 		List<Integer> a = new ArrayList<Integer>();
-		
+
 //		System.out.println(a.size());
 		int i = (int) (Math.random() * 6);
-		for(int ii=0; ii<5; ii++) {
+		for (int ii = 0; ii < 5; ii++) {
 			a.add(0);
-		}		
-		System.out.println("0ÃÊ±âÈ­");
-		for(int ii=0; ii<a.size(); ii++) {
+		}
+		System.out.println("0ì´ˆê¸°í™”");
+		for (int ii = 0; ii < a.size(); ii++) {
 			System.out.println(a.get(ii));
 		}
 		System.out.println("\n\n\n");
-		if(i!=4) {
+		if (i != 4) {
 			a.set(0, 4);
 			a.set(4, 4);
-			System.out.println("4³ª¿È(4Ãß°¡)");
-			for(int ii=0; ii<a.size(); ii++) {
+			System.out.println("4ë‚˜ì˜´(4ì¶”ê°€)");
+			for (int ii = 0; ii < a.size(); ii++) {
 				System.out.println(a.get(ii));
 			}
 			System.out.println("\n\n\n");
-			
-			System.out.println("³ª¸ÓÁö¹æ 1Ãß°¡");
-			for(int ii=1; ii<4; ii++) {
+
+			System.out.println("ë‚˜ë¨¸ì§€ë°© 1ì¶”ê°€");
+			for (int ii = 1; ii < 4; ii++) {
 				a.set(ii, 1);
 			}
 			System.out.println("\n\n\n");
-			
-			System.out.println("ÃÑ ¹æ");
-			for(int ii=0; ii<a.size(); ii++) {
-				System.out.println(ii+"¹øÂ° ¹æ : "+a.get(ii));
+
+			System.out.println("ì´ ë°©");
+			for (int ii = 0; ii < a.size(); ii++) {
+				System.out.println(ii + "ë²ˆì§¸ ë°© : " + a.get(ii));
 			}
-		}
-		else {
-			for(int ii=0; ii<5; ii++) {
+		} else {
+			for (int ii = 0; ii < 5; ii++) {
 				a.add(ii);
 			}
-			System.out.println("4¾È³ª¿È");
-			for(int ii=0; ii<a.size(); ii++) {
+			System.out.println("4ì•ˆë‚˜ì˜´");
+			for (int ii = 0; ii < a.size(); ii++) {
 				System.out.println(a.get(ii));
 			}
 		}
-		
+
 //		for(int ii=0; ii<a.size(); ii++) {
 //			System.out.println(a.get(ii));
 //		}

@@ -8,7 +8,7 @@ import javax.swing.ImageIcon;
 public class Order {
 	Random random = new Random();
 
-	// ¼Õ´Ô
+	// ì†ë‹˜
 	private Image guest1 = new ImageIcon("src/images/11.png").getImage();
 	private Image guest2 = new ImageIcon("src/images/22.png").getImage();
 	private Image guest3 = new ImageIcon("src/images/33.png").getImage();
@@ -18,13 +18,13 @@ public class Order {
 	private Image[] guestArray = { guest1, guest2, guest3, guest4, guest5, guest6 };
 	public Image thisGuest = null;
 
-	// ÁÖ¹®¹ŞÀº ¹ö°Å
-	private Image orderbelowBreadImage = new ImageIcon("src/images/Order¾Æ·¡»§.png").getImage(); // 5
-	private Image ordertopBreadImage = new ImageIcon("src/images/OrderÀ­»§.png").getImage(); // 4
-	private Image orderlettuceImage = new ImageIcon("src/images/OrderÃ¤¼Ò.png").getImage(); // 3
-	private Image ordertomatoImage = new ImageIcon("src/images/OrderÅä¸¶Åä.png").getImage(); // 2
-	private Image orderpattyImage = new ImageIcon("src/images/OrderÆĞÆ¼.png").getImage(); // 1
-	private Image ordercheeseImage = new ImageIcon("src/images/OrderÄ¡Áî.png").getImage(); // 0
+	// ì£¼ë¬¸ë°›ì€ ë²„ê±°
+	private Image orderbelowBreadImage = new ImageIcon("src/images/Orderì•„ë˜ë¹µ.png").getImage(); // 5
+	private Image ordertopBreadImage = new ImageIcon("src/images/Orderìœ—ë¹µ.png").getImage(); // 4
+	private Image orderlettuceImage = new ImageIcon("src/images/Orderì±„ì†Œ.png").getImage(); // 3
+	private Image ordertomatoImage = new ImageIcon("src/images/Orderí† ë§ˆí† .png").getImage(); // 2
+	private Image orderpattyImage = new ImageIcon("src/images/OrderíŒ¨í‹°.png").getImage(); // 1
+	private Image ordercheeseImage = new ImageIcon("src/images/Orderì¹˜ì¦ˆ.png").getImage(); // 0
 	public Image[] orderBurgerImageArray = { ordercheeseImage, orderpattyImage, ordertomatoImage, orderlettuceImage,
 			ordertopBreadImage, orderbelowBreadImage };
 
@@ -36,18 +36,18 @@ public class Order {
 
 	public void Order() {
 		orderBurgerArray = new int[5];
-		int orderBurger = 0, i = 0, random = 6; // ÁÖ¹® ¹ö°Å
+		int orderBurger = 0, i = 0, random = 6; // ì£¼ë¬¸ ë²„ê±°
 
-		// ÁÖ¹®¹ŞÀº ¹ö°Å
-		if (who != 4) { // Áø»ó ¼Õ´ÔÀÌ ¾Æ´Ï¶ó¸é
-			System.out.println("Áø»óX");
+		// ì£¼ë¬¸ë°›ì€ ë²„ê±°
+		if (who != 4) { // ì§„ìƒ ì†ë‹˜ì´ ì•„ë‹ˆë¼ë©´
+			System.out.println("ì§„ìƒX");
 			i = 1;
 			random = 4;
 			orderBurgerArray[0] = 5;
 			orderBurgerArray[4] = 4;
 		}
 
-		// ÁÖ¹® ·£´ı
+		// ì£¼ë¬¸ ëœë¤
 		for (int j = i; j < 5 - i; j++) {
 			orderBurger = (int) (Math.random() * random);
 			orderBurgerArray[j] = orderBurger;
@@ -56,39 +56,39 @@ public class Order {
 
 	public void Burger(int i) {
 		burgerIngredient = new LinkedList<Object>();
-		// ÇÜ¹ö°Å Àç·á À§Ä¡ Á¶Á¤
+		// í–„ë²„ê±° ì¬ë£Œ ìœ„ì¹˜ ì¡°ì •
 		int y = 160 - 25 * i;
 		burgerIngredient.add(orderBurgerImageArray[orderBurgerArray[i]]);
 		switch (orderBurgerArray[i]) {
-		case 0: // Ä¡Áî
+		case 0: // ì¹˜ì¦ˆ
 			burgerIngredient.add(130);
 			burgerIngredient.add(y + 5);
-//			System.out.println("Ä¡Áî");
+//			System.out.println("ì¹˜ì¦ˆ");
 			break;
-		case 1: // ÆĞÆ¼
+		case 1: // íŒ¨í‹°
 			burgerIngredient.add(135);
 			burgerIngredient.add(y + 27);
-//			System.out.println("ÆĞÆ¼");
+//			System.out.println("íŒ¨í‹°");
 			break;
-		case 2: // Åä¸¶Åä
+		case 2: // í† ë§ˆí† 
 			burgerIngredient.add(146);
 			burgerIngredient.add(y + 28);
-//			System.out.println("Åä¸¶Åä");
+//			System.out.println("í† ë§ˆí† ");
 			break;
-		case 3: // Ã¤¼Ò
+		case 3: // ì±„ì†Œ
 			burgerIngredient.add(131);
 			burgerIngredient.add(y - 10);
-//			System.out.println("Ã¤¼Ò");
+//			System.out.println("ì±„ì†Œ");
 			break;
-		case 4: // À­»§
+		case 4: // ìœ—ë¹µ
 			burgerIngredient.add(137);
 			burgerIngredient.add(y - 20);
-//			System.out.println("À­»§");
+//			System.out.println("ìœ—ë¹µ");
 			break;
-		case 5: // ¾Æ·§»§
+		case 5: // ì•„ë«ë¹µ
 			burgerIngredient.add(153);
 			burgerIngredient.add(y);
-//			System.out.println("¾Æ·§»§");
+//			System.out.println("ì•„ë«ë¹µ");
 			break;
 		}
 		orderBurger.add((List<Object>) burgerIngredient);
@@ -98,9 +98,9 @@ public class Order {
 
 	class Guest extends Thread {
 		public Guest() {
-			who = (int) (Math.random() * 6); // ¼Õ´Ô ·£´ı
+			who = (int) (Math.random() * 6); // ì†ë‹˜ ëœë¤
 			thisGuest = guestArray[who];
-			y = 100; // ¼Õ´Ô yÁÂÇ¥
+			y = 100; // ì†ë‹˜ yì¢Œí‘œ
 		}
 
 		public void Guest() {

@@ -10,24 +10,24 @@ import javax.swing.ImageIcon;
 public class Order extends Thread {
 	Random random = new Random();
 
-	// ¸¸µé¶§ »ç¿ëÇÏ´Â ¹ö°Å
-	private Image belowBreadImage = new ImageIcon("src/images/¾Æ·¡»§.png").getImage();
-	private Image topBreadImage = new ImageIcon("src/images/À­»§.png").getImage();
-	private Image lettuceImage = new ImageIcon("src/images/Ã¤¼Ò.png").getImage();
-	private Image tomatoImage = new ImageIcon("src/images/Åä¸¶Åä.png").getImage();
-	private Image pattyImage = new ImageIcon("src/images/ÆĞÆ¼.png").getImage();
-	private Image cheeseImage = new ImageIcon("src/images/Ä¡Áî.png").getImage();
+	// ë§Œë“¤ë•Œ ì‚¬ìš©í•˜ëŠ” ë²„ê±°
+	private Image belowBreadImage = new ImageIcon("src/images/ì•„ë˜ë¹µ.png").getImage();
+	private Image topBreadImage = new ImageIcon("src/images/ìœ—ë¹µ.png").getImage();
+	private Image lettuceImage = new ImageIcon("src/images/ì±„ì†Œ.png").getImage();
+	private Image tomatoImage = new ImageIcon("src/images/í† ë§ˆí† .png").getImage();
+	private Image pattyImage = new ImageIcon("src/images/íŒ¨í‹°.png").getImage();
+	private Image cheeseImage = new ImageIcon("src/images/ì¹˜ì¦ˆ.png").getImage();
 
-	// ÁÖ¹®¹ŞÀº ¹ö°Å
-	private Image orderTrayImage = new ImageIcon("src/images/Order¾Æ·¡»§.png").getImage();
-	private Image orderbelowBreadImage = new ImageIcon("src/images/Order¾Æ·¡»§.png").getImage();
-	private Image ordertopBreadImage = new ImageIcon("src/images/OrderÀ­»§.png").getImage();
-	private Image orderlettuceImage = new ImageIcon("src/images/OrderÃ¤¼Ò.png").getImage();
-	private Image ordertomatoImage = new ImageIcon("src/images/OrderÅä¸¶Åä.png").getImage();
-	private Image orderpattyImage = new ImageIcon("src/images/OrderÆĞÆ¼.png").getImage();
-	private Image ordercheeseImage = new ImageIcon("src/images/OrderÄ¡Áî.png").getImage();
+	// ì£¼ë¬¸ë°›ì€ ë²„ê±°
+	private Image orderTrayImage = new ImageIcon("src/images/Orderì•„ë˜ë¹µ.png").getImage();
+	private Image orderbelowBreadImage = new ImageIcon("src/images/Orderì•„ë˜ë¹µ.png").getImage();
+	private Image ordertopBreadImage = new ImageIcon("src/images/Orderìœ—ë¹µ.png").getImage();
+	private Image orderlettuceImage = new ImageIcon("src/images/Orderì±„ì†Œ.png").getImage();
+	private Image ordertomatoImage = new ImageIcon("src/images/Orderí† ë§ˆí† .png").getImage();
+	private Image orderpattyImage = new ImageIcon("src/images/OrderíŒ¨í‹°.png").getImage();
+	private Image ordercheeseImage = new ImageIcon("src/images/Orderì¹˜ì¦ˆ.png").getImage();
 
-	// ¼Õ´Ô
+	// ì†ë‹˜
 	private Image guest1 = new ImageIcon("src/images/11.png").getImage();
 	private Image guest2 = new ImageIcon("src/images/22.png").getImage();
 	private Image guest3 = new ImageIcon("src/images/33.png").getImage();
@@ -36,118 +36,118 @@ public class Order extends Thread {
 	private Image guest6 = new ImageIcon("src/images/66.png").getImage();
 	public Image[] guestArray = { guest1, guest2, guest3, guest4, guest5, guest6 };
 
-	public int guest, y = 100; // (·£´ı)¼Õ´Ô ÀÌ¹ÌÁö, ¼Õ´Ô yÁÂÇ¥
-	public boolean G = false; // ¼Õ´Ô ÀÔÀå(boolean)
-	int obnoxious; // (·£´ı)Áø»ó ¼Õ´Ô
+	public int guest, y = 100; // (ëœë¤)ì†ë‹˜ ì´ë¯¸ì§€, ì†ë‹˜ yì¢Œí‘œ
+	public boolean G = false; // ì†ë‹˜ ì…ì¥(boolean)
+	int obnoxious; // (ëœë¤)ì§„ìƒ ì†ë‹˜
 
-	List<Object> orderBurger = new ArrayList<Object>(); // ÁÖ¹®¹ŞÀº ¹ö°Å
-	List<Object> MakeBurger = new ArrayList<Object>(); // ¸¸µç ¹ö°Å
+	List<Object> orderBurger = new ArrayList<Object>(); // ì£¼ë¬¸ë°›ì€ ë²„ê±°
+	List<Object> MakeBurger = new ArrayList<Object>(); // ë§Œë“  ë²„ê±°
 
 	Order() {
 		int keySheet[] = { 65, 68, 69, 81, 83, 87 };
 
-		// ¼Õ´Ô ÀÌ¹ÌÁö ·£´ı
+		// ì†ë‹˜ ì´ë¯¸ì§€ ëœë¤
 		guest = (int) (Math.random() * 6);
-		// Áø»ó¼Õ´Ô ·£´ı
+		// ì§„ìƒì†ë‹˜ ëœë¤
 		obnoxious = (int) (Math.random() * 6);
 
-		int ii = 0; // ÇÜ¹ö°Å Àç·á °³¼ö Á¶Àı(0 or 1)
+		int ii = 0; // í–„ë²„ê±° ì¬ë£Œ ê°œìˆ˜ ì¡°ì ˆ(0 or 1)
 
-		// Áø»ó¼Õ´ÔÀÌ ¾Æ´Ï¸é (¹Ø»§ Ãß°¡)
+		// ì§„ìƒì†ë‹˜ì´ ì•„ë‹ˆë©´ (ë°‘ë¹µ ì¶”ê°€)
 		if (obnoxious != 4) {
-			// ÇÜ¹ö°Å Àç·á ÇÏ³ªÀÇ ÀÌ¹ÌÁö, ÁÂÇ¥ (ArrayList)
+			// í–„ë²„ê±° ì¬ë£Œ í•˜ë‚˜ì˜ ì´ë¯¸ì§€, ì¢Œí‘œ (ArrayList)
 			List<Object> ingredients = new ArrayList<Object>();
-			ingredients.add("belowBread"); // ÇÜ¹ö°Å Àç·á ÀÌ¹ÌÁö
-			ingredients.add(orderbelowBreadImage);// ÇÜ¹ö°Å Àç·á ÀÌ¹ÌÁö
+			ingredients.add("belowBread"); // í–„ë²„ê±° ì¬ë£Œ ì´ë¯¸ì§€
+			ingredients.add(orderbelowBreadImage);// í–„ë²„ê±° ì¬ë£Œ ì´ë¯¸ì§€
 
-			// x, yÁÂÇ¥ Ãß°¡
+			// x, yì¢Œí‘œ ì¶”ê°€
 			ingredients.add(160);
 			ingredients.add(150);
-			System.out.println("¹Ø»§");
+			System.out.println("ë°‘ë¹µ");
 
-			// ÇÜ¹ö°Å¿¡ Àç·á ÀÌ¹ÌÁö, ÁÂÇ¥ Ãß°¡
+			// í–„ë²„ê±°ì— ì¬ë£Œ ì´ë¯¸ì§€, ì¢Œí‘œ ì¶”ê°€
 			orderBurger.add((List<Object>) ingredients);
 
 			ii = 1;
 		}
 
-		// ÇÜ¹ö°Å Àç·á°¡ 5°³°¡ µÉ¶§±îÁö ¹İº¹
-		// Áø»ó¼Õ´ÔÀÌ¸é ÇÜ¹ö°Å Àç·á 5°³ ·£´ı
-		// Áø»ó¼Õ´ÔÀÌ ¾Æ´Ï¸é // ÀÌ¹Ì µé¾î°¡ ÀÖ´Â À­»§ Á¦¿ÜÇÏ¿© 4°³°¡ µÉ ¶§±îÁö ·£´ı
+		// í–„ë²„ê±° ì¬ë£Œê°€ 5ê°œê°€ ë ë•Œê¹Œì§€ ë°˜ë³µ
+		// ì§„ìƒì†ë‹˜ì´ë©´ í–„ë²„ê±° ì¬ë£Œ 5ê°œ ëœë¤
+		// ì§„ìƒì†ë‹˜ì´ ì•„ë‹ˆë©´ // ì´ë¯¸ ë“¤ì–´ê°€ ìˆëŠ” ìœ—ë¹µ ì œì™¸í•˜ì—¬ 4ê°œê°€ ë  ë•Œê¹Œì§€ ëœë¤
 		while (orderBurger.size() != 5 - ii) {
-			// ÇÜ¹ö°Å Àç·á ÇÏ³ªÀÇ ÀÌ¹ÌÁö, ÁÂÇ¥ (ArrayList)
+			// í–„ë²„ê±° ì¬ë£Œ í•˜ë‚˜ì˜ ì´ë¯¸ì§€, ì¢Œí‘œ (ArrayList)
 			List<Object> ingredients = new ArrayList<Object>();
-			// ÇÜ¹ö°Å Àç·á ·£´ı
+			// í–„ë²„ê±° ì¬ë£Œ ëœë¤
 			int orderSheet = (int) ((Math.random() * 86) + 65);
 
-			// ÇÜ¹ö°Å Àç·á À§Ä¡ ÃÊ±âÈ­
+			// í–„ë²„ê±° ì¬ë£Œ ìœ„ì¹˜ ì´ˆê¸°í™”
 			int xx = 0, yy = 160;
 
-			// ÇÜ¹ö°Å Àç·á ·£´ı
+			// í–„ë²„ê±° ì¬ë£Œ ëœë¤
 			for (int i = 0; i < keySheet.length; i++) {
-				// Áø»ó¼Õ´ÔÀÌ ¾Æ´Ï¸é ÇÜ¹ö°Å ¹Ø»§,À­»§ Á¦¿Ü
+				// ì§„ìƒì†ë‹˜ì´ ì•„ë‹ˆë©´ í–„ë²„ê±° ë°‘ë¹µ,ìœ—ë¹µ ì œì™¸
 				if (obnoxious != 4 && ((orderSheet == 83) || (orderSheet == 87))) {
 					break;
 				}
-				// ·£´ı¿¡ ÇÜ¹ö°Å Àç·á°¡ ÀÖÀ¸¸é
+				// ëœë¤ì— í–„ë²„ê±° ì¬ë£Œê°€ ìˆìœ¼ë©´
 				if (orderSheet == keySheet[i]) {
 					switch (orderSheet) {
-					case 65: // ÆĞÆ¼
-						System.out.println("ÆĞÆ¼");
-						ingredients.add("patty"); // ÇÜ¹ö°Å Àç·á
-						ingredients.add(orderpattyImage); // ÇÜ¹ö°Å Àç·á ÀÌ¹ÌÁö
-						xx = 140; // ÇÜ¹ö°Å Àç·á xÁÂÇ¥
+					case 65: // íŒ¨í‹°
+						System.out.println("íŒ¨í‹°");
+						ingredients.add("patty"); // í–„ë²„ê±° ì¬ë£Œ
+						ingredients.add(orderpattyImage); // í–„ë²„ê±° ì¬ë£Œ ì´ë¯¸ì§€
+						xx = 140; // í–„ë²„ê±° ì¬ë£Œ xì¢Œí‘œ
 						break;
-					case 68: // »óÃß
-						System.out.println("»óÃß");
-						ingredients.add("lettuce"); // ÇÜ¹ö°Å Àç·á
-						ingredients.add(orderlettuceImage); // ÇÜ¹ö°Å Àç·á ÀÌ¹ÌÁö
-						xx = 138; // ÇÜ¹ö°Å Àç·á xÁÂÇ¥
+					case 68: // ìƒì¶”
+						System.out.println("ìƒì¶”");
+						ingredients.add("lettuce"); // í–„ë²„ê±° ì¬ë£Œ
+						ingredients.add(orderlettuceImage); // í–„ë²„ê±° ì¬ë£Œ ì´ë¯¸ì§€
+						xx = 138; // í–„ë²„ê±° ì¬ë£Œ xì¢Œí‘œ
 						break;
-					case 69: // Ä¡Áî
-						System.out.println("Ä¡Áî");
-						ingredients.add("cheese"); // ÇÜ¹ö°Å Àç·á
-						ingredients.add(ordercheeseImage); // ÇÜ¹ö°Å Àç·á ÀÌ¹ÌÁö
-						xx = 138; // ÇÜ¹ö°Å Àç·á xÁÂÇ¥
+					case 69: // ì¹˜ì¦ˆ
+						System.out.println("ì¹˜ì¦ˆ");
+						ingredients.add("cheese"); // í–„ë²„ê±° ì¬ë£Œ
+						ingredients.add(ordercheeseImage); // í–„ë²„ê±° ì¬ë£Œ ì´ë¯¸ì§€
+						xx = 138; // í–„ë²„ê±° ì¬ë£Œ xì¢Œí‘œ
 						break;
-					case 81: // Åä¸¶Åä
-						System.out.println("Åä¸¶Åä");
-						ingredients.add("tomato"); // ÇÜ¹ö°Å Àç·á
-						ingredients.add(ordertomatoImage); // ÇÜ¹ö°Å Àç·á ÀÌ¹ÌÁö
-						xx = 150; // ÇÜ¹ö°Å Àç·á xÁÂÇ¥
+					case 81: // í† ë§ˆí† 
+						System.out.println("í† ë§ˆí† ");
+						ingredients.add("tomato"); // í–„ë²„ê±° ì¬ë£Œ
+						ingredients.add(ordertomatoImage); // í–„ë²„ê±° ì¬ë£Œ ì´ë¯¸ì§€
+						xx = 150; // í–„ë²„ê±° ì¬ë£Œ xì¢Œí‘œ
 						break;
-					case 83: // ¹Ø»§
-						System.out.println("¹Ø»§");
-						ingredients.add("belowBread"); // ÇÜ¹ö°Å Àç·á
-						ingredients.add(orderbelowBreadImage);// ÇÜ¹ö°Å Àç·á ÀÌ¹ÌÁö
-						xx = 160; // ÇÜ¹ö°Å Àç·á xÁÂÇ¥
+					case 83: // ë°‘ë¹µ
+						System.out.println("ë°‘ë¹µ");
+						ingredients.add("belowBread"); // í–„ë²„ê±° ì¬ë£Œ
+						ingredients.add(orderbelowBreadImage);// í–„ë²„ê±° ì¬ë£Œ ì´ë¯¸ì§€
+						xx = 160; // í–„ë²„ê±° ì¬ë£Œ xì¢Œí‘œ
 						break;
-					case 87: // À­»§
-						System.out.println("À­»§");
-						ingredients.add("topBread"); // ÇÜ¹ö°Å Àç·á
-						ingredients.add(ordertopBreadImage); // ÇÜ¹ö°Å Àç·á ÀÌ¹ÌÁö
-						xx = 145; // ÇÜ¹ö°Å Àç·á xÁÂÇ¥
+					case 87: // ìœ—ë¹µ
+						System.out.println("ìœ—ë¹µ");
+						ingredients.add("topBread"); // í–„ë²„ê±° ì¬ë£Œ
+						ingredients.add(ordertopBreadImage); // í–„ë²„ê±° ì¬ë£Œ ì´ë¯¸ì§€
+						xx = 145; // í–„ë²„ê±° ì¬ë£Œ xì¢Œí‘œ
 						break;
 					}
 
-					// Àç·á ¼ø¼­¿¡ µû¸¥ yÁÂÇ¥
+					// ì¬ë£Œ ìˆœì„œì— ë”°ë¥¸ yì¢Œí‘œ
 					if (orderBurger.size() + 1 > 1) {
 						yy = yy - (20 * (orderBurger.size() + 1));
-						// Åä¸¶Åä ¶Ç´Â ÆĞÆ¼¸é 40 ´õ ¹ØÀ¸·Î
+						// í† ë§ˆí†  ë˜ëŠ” íŒ¨í‹°ë©´ 40 ë” ë°‘ìœ¼ë¡œ
 						if ((orderSheet == 81) || (orderSheet == 65)) {
 							yy = yy + 40;
 						}
-						// À­»§ÀÌ¸é 45 ´õ À§·Î
+						// ìœ—ë¹µì´ë©´ 45 ë” ìœ„ë¡œ
 						else if (orderSheet == 87) {
 							yy = yy - 45;
 						}
 					}
 
-					// x, yÁÂÇ¥ Ãß°¡
+					// x, yì¢Œí‘œ ì¶”ê°€
 					ingredients.add(xx);
 					ingredients.add(yy);
 
-					// ÇÜ¹ö°Å Àç·á ÀÌ¹ÌÁö, ÁÂÇ¥¿¡ Ãß°¡
+					// í–„ë²„ê±° ì¬ë£Œ ì´ë¯¸ì§€, ì¢Œí‘œì— ì¶”ê°€
 					orderBurger.add((List<Object>) ingredients);
 
 					break;
@@ -155,25 +155,25 @@ public class Order extends Thread {
 			} // for
 		} // while
 
-		// Áø»ó¼Õ´ÔÀÌ ¾Æ´Ï¸é (À­»§ Ãß°¡)
+		// ì§„ìƒì†ë‹˜ì´ ì•„ë‹ˆë©´ (ìœ—ë¹µ ì¶”ê°€)
 		if (obnoxious != 4) {
-			// ÇÜ¹ö°Å Àç·á ÇÏ³ªÀÇ ÀÌ¹ÌÁö, ÁÂÇ¥ (ArrayList)
+			// í–„ë²„ê±° ì¬ë£Œ í•˜ë‚˜ì˜ ì´ë¯¸ì§€, ì¢Œí‘œ (ArrayList)
 			List<Object> ingredients = new ArrayList<Object>();
-			ingredients.add("topBread"); // ÇÜ¹ö°Å Àç·á ÀÌ¹ÌÁö
-			ingredients.add(ordertopBreadImage); // ÇÜ¹ö°Å Àç·á ÀÌ¹ÌÁö
-			System.out.println("À­»§");
+			ingredients.add("topBread"); // í–„ë²„ê±° ì¬ë£Œ ì´ë¯¸ì§€
+			ingredients.add(ordertopBreadImage); // í–„ë²„ê±° ì¬ë£Œ ì´ë¯¸ì§€
+			System.out.println("ìœ—ë¹µ");
 
-			// x, yÁÂÇ¥ Ãß°¡
+			// x, yì¢Œí‘œ ì¶”ê°€
 			ingredients.add(145);
 			ingredients.add(30);
 
-			// ÇÜ¹ö°Å Àç·á ÀÌ¹ÌÁö, ÁÂÇ¥¿¡ Ãß°¡
+			// í–„ë²„ê±° ì¬ë£Œ ì´ë¯¸ì§€, ì¢Œí‘œì— ì¶”ê°€
 			orderBurger.add((List<Object>) ingredients);
 
 		}
 	}
 
-	// ¼Õ´Ô Thread
+	// ì†ë‹˜ Thread
 	public void run() {
 		try {
 			G = true;
@@ -189,58 +189,58 @@ public class Order extends Thread {
 		}
 	}
 
-	// ÇÜ¹ö°Å ¸¸µé±â
+	// í–„ë²„ê±° ë§Œë“¤ê¸°
 	public void Make(String key) {
 		new Music("203.mp3", false).start();
 
-		// ÇÜ¹ö°Å Àç·á À§Ä¡ ÃÊ±âÈ­
+		// í–„ë²„ê±° ì¬ë£Œ ìœ„ì¹˜ ì´ˆê¸°í™”
 		int xx = 0, yy = 500;
 		Image ingredients = null;
 
-		// ÇÜ¹ö°Å Àç·á xÁÂÇ¥, ÀÌ¹ÌÁö
+		// í–„ë²„ê±° ì¬ë£Œ xì¢Œí‘œ, ì´ë¯¸ì§€
 		switch (key) {
-		case "belowBread": // ¹Ø»§
+		case "belowBread": // ë°‘ë¹µ
 			xx = 500;
 			ingredients = belowBreadImage;
 			break;
-		case "topBread": // À­»§
+		case "topBread": // ìœ—ë¹µ
 			xx = 480;
 			ingredients = topBreadImage;
 			break;
-		case "lettuce": // »óÃß
+		case "lettuce": // ìƒì¶”
 			xx = 475;
 			ingredients = lettuceImage;
 			break;
-		case "tomato": // Åä¸¶Åä
+		case "tomato": // í† ë§ˆí† 
 			xx = 490;
 			ingredients = tomatoImage;
 			break;
-		case "patty": // ÆĞÆ¼
+		case "patty": // íŒ¨í‹°
 			xx = 480;
 			ingredients = pattyImage;
 			break;
-		case "cheese": // Ä¡Áî
+		case "cheese": // ì¹˜ì¦ˆ
 			xx = 475;
 			ingredients = cheeseImage;
 			break;
 		}
 
-		// Àç·á ¼ø¼­¿¡ µû¸¥ yÁÂÇ¥
+		// ì¬ë£Œ ìˆœì„œì— ë”°ë¥¸ yì¢Œí‘œ
 		if (MakeBurger.size() + 1 > 1) {
 			yy = yy - (20 * (MakeBurger.size() + 1));
-			// Åä¸¶Åä ¶Ç´Â ÆĞÆ¼¸é 30 ´õ ¹ØÀ¸·Î
+			// í† ë§ˆí†  ë˜ëŠ” íŒ¨í‹°ë©´ 30 ë” ë°‘ìœ¼ë¡œ
 			if (key.equals("tomato") || key.equals("patty")) {
 				yy = yy + 30;
 			}
-			// À­»§ÀÌ¸é 50 ´õ À§·Î
+			// ìœ—ë¹µì´ë©´ 50 ë” ìœ„ë¡œ
 			else if (key.equals("topBread")) {
 				yy = yy - 50;
 			}
 		}
 
-		// ÇÜ¹ö°Å Àç·á, ÁÂÇ¥ ÃÊ±âÈ­
+		// í–„ë²„ê±° ì¬ë£Œ, ì¢Œí‘œ ì´ˆê¸°í™”
 		BurgerMi.game.burger = new Burger(xx, yy, ingredients, key);
-		BurgerMi.game.burger.start(); // ÇÜ¹ö°Å ³»·Á¿À´Â ¾²·¹µå
+		BurgerMi.game.burger.start(); // í–„ë²„ê±° ë‚´ë ¤ì˜¤ëŠ” ì“°ë ˆë“œ
 
 		return;
 	}

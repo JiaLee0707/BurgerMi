@@ -6,60 +6,67 @@ import java.util.List;
 
 import javax.swing.ImageIcon;
 
-public class Burger extends Thread{
-	private Image TrayImage = new ImageIcon("src/images/Àï¹İ111.png").getImage();
-	private Image belowBreadImage = new ImageIcon("src/images/¾Æ·¡»§.png").getImage();
-	private Image topBreadImage = new ImageIcon("src/images/À­»§.png").getImage();
-	private Image lettuceImage = new ImageIcon("src/images/Ã¤¼Ò.png").getImage();
-	private Image tomatoImage = new ImageIcon("src/images/Åä¸¶Åä.png").getImage();
-	private Image pattyImage = new ImageIcon("src/images/ÆĞÆ¼.png").getImage();
-	private Image cheeseImage = new ImageIcon("src/images/Ä¡Áî.png").getImage();
-	
+public class Burger extends Thread {
+	private Image TrayImage = new ImageIcon("src/images/ìŸë°˜111.png").getImage();
+	private Image belowBreadImage = new ImageIcon("src/images/ì•„ë˜ë¹µ.png").getImage();
+	private Image topBreadImage = new ImageIcon("src/images/ìœ—ë¹µ.png").getImage();
+	private Image lettuceImage = new ImageIcon("src/images/ì±„ì†Œ.png").getImage();
+	private Image tomatoImage = new ImageIcon("src/images/í† ë§ˆí† .png").getImage();
+	private Image pattyImage = new ImageIcon("src/images/íŒ¨í‹°.png").getImage();
+	private Image cheeseImage = new ImageIcon("src/images/ì¹˜ì¦ˆ.png").getImage();
+
 	int x, y;
 	Image ingredients;
-	
+
 	Burger(int x, int y, String ingredients) {
-		this.x=x;
-		this.y=y;
+		this.x = x;
+		this.y = y;
 //		System.out.println(x+","+y);
-		
-		switch(ingredients) {
+
+		switch (ingredients) {
 		case "belowBread":
-			this.ingredients=belowBreadImage; break;
+			this.ingredients = belowBreadImage;
+			break;
 		case "topBread":
-			this.ingredients=topBreadImage; break;
+			this.ingredients = topBreadImage;
+			break;
 		case "lettuce":
-			this.ingredients=lettuceImage; break;
+			this.ingredients = lettuceImage;
+			break;
 		case "tomato":
-			this.ingredients=tomatoImage; break;
+			this.ingredients = tomatoImage;
+			break;
 		case "patty":
-			this.ingredients=pattyImage; break;
+			this.ingredients = pattyImage;
+			break;
 		case "cheese":
-			this.ingredients=cheeseImage; break;
+			this.ingredients = cheeseImage;
+			break;
 		}
 	}
+
 	public void run() {
 //		System.out.println("run : "+x+","+y);
-		int i=0;
+		int i = 0;
 		boolean bool = true;
 		try {
-			//i°¡ x°¡ ¾Æ´Ò¶§±îÁö ½º·¹µå ½ÇÇà
-			while(i!=y) {
-				i=i+1;
+			// iê°€ xê°€ ì•„ë‹ë•Œê¹Œì§€ ìŠ¤ë ˆë“œ ì‹¤í–‰
+			while (i != y) {
+				i = i + 1;
 //				System.out.println(i);
 				BurgerMi.game.Thread(ingredients, x, i, bool);
 //				System.out.println(ingredients);
 				BurgerMi.game.repaint();
 				Thread.sleep(1);
 			}
-		
-			//BurgerArray¿¡ Ãß°¡
+
+			// BurgerArrayì— ì¶”ê°€
 			List<Object> Array = new ArrayList<Object>();
 			Array.add(this.ingredients);
 			Array.add(this.x);
 			Array.add(this.y);
 			BurgerMi.game.BurgerArray.add((List<Object>) Array);
-			for(i=0; i<BurgerMi.game.BurgerArray.size(); i++) {
+			for (i = 0; i < BurgerMi.game.BurgerArray.size(); i++) {
 				System.out.println(BurgerMi.game.BurgerArray.get(i));
 			}
 			System.out.println("");

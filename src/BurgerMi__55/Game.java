@@ -16,26 +16,26 @@ import javax.swing.JPanel;
 public class Game extends JPanel {
 	private Image ImageGame = new ImageIcon("src/images/GameBackground.png").getImage();
 	private Image ImageRules = new ImageIcon("src/images/GameRules.jpg").getImage();
-	private ImageIcon ImageNext = new ImageIcon("src/images/¿À¸¥ÂÊ¹öÆ°.png");
+	private ImageIcon ImageNext = new ImageIcon("src/images/ì˜¤ë¥¸ìª½ë²„íŠ¼.png");
 	private Image ImageBackground = ImageRules;
 
 	public Burger burger;
 	public Order order;
 	public Score score = new Score();
 
-	private boolean gameStart = false; // °ÔÀÓ ½ÃÀÛ
-	private boolean bool = false; // ³»·Á¿À³Ä ¾È³»·Á¿À³Ä
+	private boolean gameStart = false; // ê²Œì„ ì‹œì‘
+	private boolean bool = false; // ë‚´ë ¤ì˜¤ëƒ ì•ˆë‚´ë ¤ì˜¤ëƒ
 
 	private JButton NextBtn = new JButton(ImageNext);
-	public JLabel grade = new JLabel(score.score + "Á¡");
-	// ³»·Á¿À´Â ¹ö°Å ÀÌ¹ÌÁö, ÁÂÇ¥
+	public JLabel grade = new JLabel(score.score + "ì ");
+	// ë‚´ë ¤ì˜¤ëŠ” ë²„ê±° ì´ë¯¸ì§€, ì¢Œí‘œ
 	private Image ingredients;
 	int Threadx, Thready;
 
 	public Game() {
 		setLayout(null);
 
-		// °ÔÀÓ¹æ¹ü È®ÀÎ¹öÆ°
+		// ê²Œì„ë°©ë²” í™•ì¸ë²„íŠ¼
 		NextBtn.setBounds(10, 350, 340, 120);
 		NextBtn.setBorderPainted(false);
 		NextBtn.setContentAreaFilled(false);
@@ -46,10 +46,9 @@ public class Game extends JPanel {
 
 		this.setFocusable(true);
 
-		grade.setFont(new Font("³ª´®½ºÄù¾î¶ó¿îµå ExtraBold", Font.ITALIC, 50)); // ÆùÆ® ¼³Á¤
-		grade.setSize(500, 500); // Å©Å° ¼³Á¤
-		grade.setLocation(1150, -200); // À§Ä¡ ¼³Á¤
-
+		grade.setFont(new Font("ë‚˜ëˆ”ìŠ¤í€˜ì–´ë¼ìš´ë“œ ExtraBold", Font.ITALIC, 50)); // í°íŠ¸ ì„¤ì •
+		grade.setSize(500, 500); // í¬í‚¤ ì„¤ì •
+		grade.setLocation(1150, -200); // ìœ„ì¹˜ ì„¤ì •
 
 		order = new Order();
 		System.out.println("");
@@ -64,16 +63,16 @@ public class Game extends JPanel {
 		this.bool = bool;
 	}
 
-	// È®ÀÎ¹öÆ° ¸¶¿ì½º¸®½º³Ê
+	// í™•ì¸ë²„íŠ¼ ë§ˆìš°ìŠ¤ë¦¬ìŠ¤ë„ˆ
 	class MouseListener extends MouseAdapter {
 
-		// ±âº»¹öÆ°
+		// ê¸°ë³¸ë²„íŠ¼
 		@Override
 		public void mouseExited(MouseEvent e) {
 			JButton button = (JButton) e.getSource();
 		}
 
-		// Å¬¸¯¹öÆ°
+		// í´ë¦­ë²„íŠ¼
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			JButton button = (JButton) e.getSource();
@@ -88,7 +87,7 @@ public class Game extends JPanel {
 			getParent().repaint();
 		}
 
-		// ¹öÆ° À§¿¡ ¿Ã¸®¸é
+		// ë²„íŠ¼ ìœ„ì— ì˜¬ë¦¬ë©´
 		@Override
 		public void mouseEntered(MouseEvent e) {
 			JButton button = (JButton) e.getSource();
@@ -102,15 +101,15 @@ public class Game extends JPanel {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
-		// ¹è°æÈ­¸é ±×¸®±â
+		// ë°°ê²½í™”ë©´ ê·¸ë¦¬ê¸°
 		g.drawImage(ImageBackground, 0, 0, this);
 
-		// ÁÖ¹® ¹ŞÀº ÇÜ¹ö°Å Àç·á(ÀÌ¹ÌÁö, xÁÂÇ¥, yÁÂÇ¥)
+		// ì£¼ë¬¸ ë°›ì€ í–„ë²„ê±° ì¬ë£Œ(ì´ë¯¸ì§€, xì¢Œí‘œ, yì¢Œí‘œ)
 		Image OrderImage;
 		int OrderX;
 		int OrderY;
 
-		// ³»·Á¿Â(¸¸µç) ¹ö°ÅÀç·á(ÀÌ¹ÌÁö, xÁÂÇ¥, yÁÂÇ¥)
+		// ë‚´ë ¤ì˜¨(ë§Œë“ ) ë²„ê±°ì¬ë£Œ(ì´ë¯¸ì§€, xì¢Œí‘œ, yì¢Œí‘œ)
 		Image MakeImage;
 		int MakeX;
 		int MakeY;
@@ -118,7 +117,7 @@ public class Game extends JPanel {
 //		g.drawImage(order.ordertomatoImage, 0,0,this);
 
 		if (gameStart) {
-			// ÁÖ¹®¹ŞÀº ¹ö°Å ±×¸®±â
+			// ì£¼ë¬¸ë°›ì€ ë²„ê±° ê·¸ë¦¬ê¸°
 			for (int i = 0; i < order.orderBurger.size(); i++) {
 				OrderImage = (Image) ((List<Object>) order.orderBurger.get(i)).get(1);
 				OrderX = (int) ((List<Object>) order.orderBurger.get(i)).get(2);
@@ -127,7 +126,7 @@ public class Game extends JPanel {
 			}
 		}
 
-		// ³»·Á¿Â Àç·á
+		// ë‚´ë ¤ì˜¨ ì¬ë£Œ
 //		System.out.println(BurgerArray.size());
 		for (int i = 0; i < order.MakeBurger.size(); i++) {
 //			System.out.println("draw Order");
@@ -137,7 +136,7 @@ public class Game extends JPanel {
 			g.drawImage(MakeImage, MakeX, MakeY, this);
 		}
 
-		// ³»·Á¿À´Â Àç·á
+		// ë‚´ë ¤ì˜¤ëŠ” ì¬ë£Œ
 		if (this.bool) {
 			g.drawImage(ingredients, Threadx, Thready, this);
 		}

@@ -9,22 +9,22 @@ import javax.swing.JLabel;
 
 public class Burger {
 
-	// ¸¸µé¶§ »ç¿ëÇÏ´Â ¹ö°Å
-	private Image belowBreadImage = new ImageIcon("src/images/¾Æ·¡»§.png").getImage();
-	private Image topBreadImage = new ImageIcon("src/images/À­»§.png").getImage();
-	private Image lettuceImage = new ImageIcon("src/images/Ã¤¼Ò.png").getImage();
-	private Image tomatoImage = new ImageIcon("src/images/Åä¸¶Åä.png").getImage();
-	private Image pattyImage = new ImageIcon("src/images/ÆĞÆ¼.png").getImage();
-	private Image cheeseImage = new ImageIcon("src/images/Ä¡Áî.png").getImage();
+	// ë§Œë“¤ë•Œ ì‚¬ìš©í•˜ëŠ” ë²„ê±°
+	private Image belowBreadImage = new ImageIcon("src/images/ì•„ë˜ë¹µ.png").getImage();
+	private Image topBreadImage = new ImageIcon("src/images/ìœ—ë¹µ.png").getImage();
+	private Image lettuceImage = new ImageIcon("src/images/ì±„ì†Œ.png").getImage();
+	private Image tomatoImage = new ImageIcon("src/images/í† ë§ˆí† .png").getImage();
+	private Image pattyImage = new ImageIcon("src/images/íŒ¨í‹°.png").getImage();
+	private Image cheeseImage = new ImageIcon("src/images/ì¹˜ì¦ˆ.png").getImage();
 	public Image[] MakeBurgerImageArray = { cheeseImage, pattyImage, tomatoImage, lettuceImage, topBreadImage,
 			belowBreadImage };
 
-	public LinkedList<Integer> MakeBurgerIntArray = new LinkedList<Integer>(); // ¸¸µå´Â ¹ö°Å int
-//	public LinkedList<Object> MakeBurgerObjectArray = new LinkedList<Object>(); // ¸¸µå´Â ¹ö°Å ÀÌ¹ÌÁö, À§Ä¡
-	public LinkedList<Object> burgerIngredient = new LinkedList<Object>(); // ³»·Á¿À´Â ¹ö°Å
+	public LinkedList<Integer> MakeBurgerIntArray = new LinkedList<Integer>(); // ë§Œë“œëŠ” ë²„ê±° int
+//	public LinkedList<Object> MakeBurgerObjectArray = new LinkedList<Object>(); // ë§Œë“œëŠ” ë²„ê±° ì´ë¯¸ì§€, ìœ„ì¹˜
+	public LinkedList<Object> burgerIngredient = new LinkedList<Object>(); // ë‚´ë ¤ì˜¤ëŠ” ë²„ê±°
 	public LinkedList<Object> Ingredient;
 	public LinkedList<Integer> i = new LinkedList<Integer>();
-	int x, y; // ÇÜ¹ö°Å x, y, i ÁÂÇ¥
+	int x, y; // í–„ë²„ê±° x, y, i ì¢Œí‘œ
 
 	boolean key = false;
 
@@ -41,35 +41,35 @@ public class Burger {
 		y = 540 - 25 * (MakeBurgerIntArray.size());
 
 		switch (m) {
-		case 0: // Ä¡Áî
+		case 0: // ì¹˜ì¦ˆ
 			x = 485;
 			y -= 30;
-//			System.out.println("Ä¡Áî");
+//			System.out.println("ì¹˜ì¦ˆ");
 			break;
-		case 1: // ÆĞÆ¼
+		case 1: // íŒ¨í‹°
 			x = 490;
 //			y -= 5;
-//			System.out.println("ÆĞÆ¼");
+//			System.out.println("íŒ¨í‹°");
 			break;
-		case 2: // Åä¸¶Åä
+		case 2: // í† ë§ˆí† 
 			x = 503;
 //			y -= 5;
-//			System.out.println("Åä¸¶Åä");
+//			System.out.println("í† ë§ˆí† ");
 			break;
-		case 3: // Ã¤¼Ò
+		case 3: // ì±„ì†Œ
 			x = 485;
 			y -= 40;
-//			System.out.println("Ã¤¼Ò");
+//			System.out.println("ì±„ì†Œ");
 			break;
-		case 4: // À­»§
+		case 4: // ìœ—ë¹µ
 			x = 495;
 			y -= 60;
-//			System.out.println("À­»§");
+//			System.out.println("ìœ—ë¹µ");
 			break;
-		case 5: // ¾Æ·§»§
+		case 5: // ì•„ë«ë¹µ
 			x = 510;
 			y -= 20;
-//			System.out.println("¹Ø»§");
+//			System.out.println("ë°‘ë¹µ");
 			break;
 		}
 		Ingredient.add(x);
@@ -88,7 +88,7 @@ public class Burger {
 
 		public BurgerThread(LinkedList<Object> Ingredient, int i) {
 			IngredientBurger = Ingredient;
-			j = i-1;
+			j = i - 1;
 		}
 
 		public void run() {

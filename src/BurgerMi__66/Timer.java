@@ -10,23 +10,24 @@ public class Timer extends Thread {
 	public JLabel time = new JLabel(Time[0] + ":" + Time[1]);
 
 	Timer() {
-		time.setFont(new Font("³ª´®½ºÄù¾î¶ó¿îµå ExtraBold", Font.ITALIC, 50)); // ÆùÆ® ¼³Á¤
-		time.setSize(500, 500); // Å©Å° ¼³Á¤
-		time.setLocation(1140, -200); // À§Ä¡ ¼³Á¤
-		
+		time.setFont(new Font("ë‚˜ëˆ”ìŠ¤í€˜ì–´ë¼ìš´ë“œ ExtraBold", Font.ITALIC, 50)); // í°íŠ¸ ì„¤ì •
+		time.setSize(500, 500); // í¬í‚¤ ì„¤ì •
+		time.setLocation(1140, -200); // ìœ„ì¹˜ ì„¤ì •
+
 //		BurgerMi.game.add(time);
 		this.start();
 	}
 
 	public void run() {
 		try {
-			while(true) {
-				Time[1]-=1;					
-				time.setText(Time[0]+":"+Time[1]);
-				if(Time[1]==0) {
-					if(Time[0]==0) break;
-					Time[0]-=1;
-					Time[1]=60;
+			while (true) {
+				Time[1] -= 1;
+				time.setText(Time[0] + ":" + Time[1]);
+				if (Time[1] == 0) {
+					if (Time[0] == 0)
+						break;
+					Time[0] -= 1;
+					Time[1] = 60;
 				}
 				Thread.sleep(1000);
 			}

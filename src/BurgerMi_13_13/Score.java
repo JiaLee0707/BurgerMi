@@ -8,53 +8,57 @@ import javax.swing.JLabel;
 public class Score {
 	Order order;
 	Burger burger;
-	
+
 	int score = 0;
 	int scoreArray[] = { 10, 20, -5 };
-	public JLabel scoreLabel = new JLabel(score + "Á¡");
+	public JLabel scoreLabel = new JLabel(score + "ì ");
 	Music musicOX;
 
 	public Score() {
-		scoreLabel.setFont(new Font("³ª´®½ºÄù¾î¶ó¿îµå ExtraBold", Font.ITALIC, 50)); // ÆùÆ® ¼³Á¤
-		scoreLabel.setSize(500, 500); // Å©Å° ¼³Á¤
-		scoreLabel.setLocation(1160, -150); // À§Ä¡ ¼³Á¤
+		scoreLabel.setFont(new Font("ë‚˜ëˆ”ìŠ¤í€˜ì–´ë¼ìš´ë“œ ExtraBold", Font.ITALIC, 50)); // í°íŠ¸ ì„¤ì •
+		scoreLabel.setSize(500, 500); // í¬í‚¤ ì„¤ì •
+		scoreLabel.setLocation(1160, -150); // ìœ„ì¹˜ ì„¤ì •
 		Main.burgermi.game.add(scoreLabel);
 	}
+
 	public void Score() {
 		order = Main.burgermi.game.order;
 		burger = Main.burgermi.game.keyListener.burger;
 
 		boolean OX = Discriminate();
-		
-		//Á¡¼ö °è»ê
-		if(OX == true) {
+
+		// ì ìˆ˜ ê³„ì‚°
+		if (OX == true) {
 			musicOX = new Music("tpir-sdclock.mp3", false);
-			if(order.who != 4) {
+			if (order.who != 4) {
 				score += scoreArray[0];
-				System.out.println("¼º°ø");
-			} else { score += scoreArray[1]; 
-			System.out.println("Áø»ó ¼º°ø");}
+				System.out.println("ì„±ê³µ");
+			} else {
+				score += scoreArray[1];
+				System.out.println("ì§„ìƒ ì„±ê³µ");
+			}
 		} else {
-			musicOX = new Music("¶ì-À¸-À¸.mp3", false);
-			System.out.println("½ÇÆĞ");
-			if(order.who == 4) {
+			musicOX = new Music("ë -ìœ¼-ìœ¼.mp3", false);
+			System.out.println("ì‹¤íŒ¨");
+			if (order.who == 4) {
 				score += scoreArray[2];
-				System.out.println("Áø»ó ½ÇÆĞ");
+				System.out.println("ì§„ìƒ ì‹¤íŒ¨");
 			}
 		}
 		musicOX.start();
-		
-		scoreLabel.setText(score + "Á¡");
+
+		scoreLabel.setText(score + "ì ");
 //		Main.burgermi.game.getParent().repaint();
-		
+
 		this.burger.MakeBurgerObjectArray.clear();
 		this.burger.MakeBurgerIntArray.clear();
 		this.burger.burgerIngredient = new LinkedList<Object>();
 		this.burger.burgerIngredient.add(null);
 		this.burger.burgerIngredient.add(0);
 		this.burger.burgerIngredient.add(0);
-		order.orderBurgerArray = new int[5];;
-		
+		order.orderBurgerArray = new int[5];
+		;
+
 		Main.burgermi.game.order = new Order();
 		Main.burgermi.game.ReGame();
 //		Main.burgermi.game.revalidate();
@@ -64,27 +68,29 @@ public class Score {
 
 	public boolean Discriminate() {
 		boolean OX = true;
-		
+
 		int orderSize = Main.burgermi.game.order.orderBurgerArray.length;
 		int makeSize = Main.burgermi.game.keyListener.burger.MakeBurgerIntArray.size();
 
 		System.out.println("\n\n\n\n\n" + orderSize + " " + makeSize);
 
-		// ¹ö°Å »çÀÌÁî ºñ±³
+		// ë²„ê±° ì‚¬ì´ì¦ˆ ë¹„êµ
 		if (orderSize != makeSize) {
 			OX = false;
 		} else {
-			// ¹ö°Å Àç·á ºñ±³
+			// ë²„ê±° ì¬ë£Œ ë¹„êµ
 			for (int i = 0; i < orderSize; i++) {
-				System.out.println(Main.burgermi.game.order.orderBurgerArray[i] + "----" + Main.burgermi.game.keyListener.burger.MakeBurgerIntArray.get(i));
-				// ¹ö°Å Àç·á°¡ ´Ù¸£¸é
-				if (Main.burgermi.game.order.orderBurgerArray[i] != Main.burgermi.game.keyListener.burger.MakeBurgerIntArray.get(i)) {
+				System.out.println(Main.burgermi.game.order.orderBurgerArray[i] + "----"
+						+ Main.burgermi.game.keyListener.burger.MakeBurgerIntArray.get(i));
+				// ë²„ê±° ì¬ë£Œê°€ ë‹¤ë¥´ë©´
+				if (Main.burgermi.game.order.orderBurgerArray[i] != Main.burgermi.game.keyListener.burger.MakeBurgerIntArray
+						.get(i)) {
 					OX = false;
 					break;
 				}
 			}
 		}
-		
+
 		return OX;
 	}
 

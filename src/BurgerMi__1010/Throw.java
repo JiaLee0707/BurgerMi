@@ -8,25 +8,25 @@ import javax.swing.JLabel;
 public class Throw extends Thread {
 	public void run() {
 		try {
-			int i = 0; // Àï¹İ, (´øÁ®Áö´Â)ÇÜ¹ö°Å ¹è¿­ ÀÎµ¦½ºº¯¼ö
-			BurgerMi.game.throwburger = true; // ÇÜ¹ö°Å ´øÁö±â
+			int i = 0; // ìŸë°˜, (ë˜ì ¸ì§€ëŠ”)í–„ë²„ê±° ë°°ì—´ ì¸ë±ìŠ¤ë³€ìˆ˜
+			BurgerMi.game.throwburger = true; // í–„ë²„ê±° ë˜ì§€ê¸°
 			while (i < 3) {
-				BurgerMi.game.TrayBasicImage = BurgerMi.game.ImageTrayArray[i]; // Àï¹İ ÀÌ¹ÌÁö
+				BurgerMi.game.TrayBasicImage = BurgerMi.game.ImageTrayArray[i]; // ìŸë°˜ ì´ë¯¸ì§€
 				if (i == 0) {
-					BurgerMi.game.ThrowImage = BurgerMi.game.ImageThrow[i]; // ÇÜ¹ö°Å ÀÌ¹ÌÁö
+					BurgerMi.game.ThrowImage = BurgerMi.game.ImageThrow[i]; // í–„ë²„ê±° ì´ë¯¸ì§€
 				} else if (i == 1) {
-					BurgerMi.game.ThrowImage = BurgerMi.game.ImageThrow[i]; // ÇÜ¹ö°Å ÀÌ¹ÌÁö
+					BurgerMi.game.ThrowImage = BurgerMi.game.ImageThrow[i]; // í–„ë²„ê±° ì´ë¯¸ì§€
 				}
-				BurgerMi.game.repaint(); // È­¸é ´Ù½Ã±×¸®±â
+				BurgerMi.game.repaint(); // í™”ë©´ ë‹¤ì‹œê·¸ë¦¬ê¸°
 
 				Thread.sleep(250);
 //				Thread.sleep(1000);
 				i++;
 			}
-			BurgerMi.game.TrayBasicImage = BurgerMi.game.ImageTrayArray[2]; // Àï¹İ ÀÌ¹ÌÁö ÃÊ±âÈ­
-			BurgerMi.game.throwburger = false; // ÇÜ¹ö°Å ´øÁö±â ³¡
-			BurgerMi.game.order = new Order(); // ÁÖ¹® ´Ù½Ã¹Ş±â
-			BurgerMi.game.order.start(); // ¼Õ´Ô ¾²·¹µå
+			BurgerMi.game.TrayBasicImage = BurgerMi.game.ImageTrayArray[2]; // ìŸë°˜ ì´ë¯¸ì§€ ì´ˆê¸°í™”
+			BurgerMi.game.throwburger = false; // í–„ë²„ê±° ë˜ì§€ê¸° ë
+			BurgerMi.game.order = new Order(); // ì£¼ë¬¸ ë‹¤ì‹œë°›ê¸°
+			BurgerMi.game.order.start(); // ì†ë‹˜ ì“°ë ˆë“œ
 		} catch (Exception e) {
 //			e.printStackTrace();
 			e.getMessage();

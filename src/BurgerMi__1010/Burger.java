@@ -4,13 +4,13 @@ import java.awt.Image;
 import java.util.ArrayList;
 import java.util.List;
 
-//ÇÜ¹ö°Å ³»·Á¿À´Â ¾²·¹µå
+//í–„ë²„ê±° ë‚´ë ¤ì˜¤ëŠ” ì“°ë ˆë“œ
 public class Burger extends Thread {
-	int x, y; // ÇÜ¹ö°Å x,y ÁÂÇ¥
-	String StringIngeredients; // ÇÜ¹ö°Å Àç·á ÀÌ¸§
-	Image ingredients; // ÇÜ¹ö°Å Àç·á ÀÌ¹ÌÁö
+	int x, y; // í–„ë²„ê±° x,y ì¢Œí‘œ
+	String StringIngeredients; // í–„ë²„ê±° ì¬ë£Œ ì´ë¦„
+	Image ingredients; // í–„ë²„ê±° ì¬ë£Œ ì´ë¯¸ì§€
 
-	// ÇÜ¹ö°Å Àç·á, ÁÂÇ¥ ÃÊ±âÈ­
+	// í–„ë²„ê±° ì¬ë£Œ, ì¢Œí‘œ ì´ˆê¸°í™”
 	Burger(int x, int y, Image ingredients, String string) {
 		this.x = x;
 		this.y = y;
@@ -19,30 +19,30 @@ public class Burger extends Thread {
 	}
 
 	public void run() {
-		int i = 0; // ³»·Á¿À´Â Àç·áÀÇ yÁÂÇ¥
-		boolean bool = true; // ÇÜ¹ö°Å ³»·Á¿À³Ä/¾È³»·Á¿À³Ä
+		int i = 0; // ë‚´ë ¤ì˜¤ëŠ” ì¬ë£Œì˜ yì¢Œí‘œ
+		boolean bool = true; // í–„ë²„ê±° ë‚´ë ¤ì˜¤ëƒ/ì•ˆë‚´ë ¤ì˜¤ëƒ
 		try {
-			// i°¡ y°¡ ¾Æ´Ò¶§±îÁö ½º·¹µå ½ÇÇà
+			// iê°€ yê°€ ì•„ë‹ë•Œê¹Œì§€ ìŠ¤ë ˆë“œ ì‹¤í–‰
 			while (i != y) {
 				i = i + 1;
-				BurgerMi.game.Thread(ingredients, x, i, bool); // È­¸é¿¡ ±×¸®±â À§ÇØ
-																// Game Å¬·¡½º¿¡ º¯¼ö ÃÊ±âÈ­
-				BurgerMi.game.repaint(); // È­¸é ´Ù½Ã±×¸®±â
-				Thread.sleep(1); // ÇÜ¹ö°Å Àç·á ³»·Á¿À´Â ¼Óµµ
+				BurgerMi.game.Thread(ingredients, x, i, bool); // í™”ë©´ì— ê·¸ë¦¬ê¸° ìœ„í•´
+																// Game í´ë˜ìŠ¤ì— ë³€ìˆ˜ ì´ˆê¸°í™”
+				BurgerMi.game.repaint(); // í™”ë©´ ë‹¤ì‹œê·¸ë¦¬ê¸°
+				Thread.sleep(1); // í–„ë²„ê±° ì¬ë£Œ ë‚´ë ¤ì˜¤ëŠ” ì†ë„
 			}
 
-			// MakeBurger¿¡ Ãß°¡
-			List<Object> BurgerArray = new ArrayList<Object>(); // ÇÜ¹ö°Å Àç·á ÇÏ³ªÀÇ ÀÌ¹ÌÁö, À§Ä¡ List
+			// MakeBurgerì— ì¶”ê°€
+			List<Object> BurgerArray = new ArrayList<Object>(); // í–„ë²„ê±° ì¬ë£Œ í•˜ë‚˜ì˜ ì´ë¯¸ì§€, ìœ„ì¹˜ List
 			BurgerArray.add(this.StringIngeredients);
 			BurgerArray.add(this.ingredients);
 			BurgerArray.add(this.x);
 			BurgerArray.add(this.y);
-			// ÇÜ¹ö°Å¿¡ Àç·á Ãß°¡
+			// í–„ë²„ê±°ì— ì¬ë£Œ ì¶”ê°€
 			BurgerMi.game.order.MakeBurger.add((List<Object>) BurgerArray);
 			System.out.println("");
-			bool = false; // ÇÜ¹ö°Å ³»·Á¿À±â ³¡
-		}catch (InterruptedException e) {
-		    return;
+			bool = false; // í–„ë²„ê±° ë‚´ë ¤ì˜¤ê¸° ë
+		} catch (InterruptedException e) {
+			return;
 		}
 	}
 }

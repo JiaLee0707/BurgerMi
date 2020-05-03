@@ -20,10 +20,10 @@ public class BurgerMi extends JFrame {
 		background = new Background();
 		setContentPane(background);
 		setSize(1280, 720);
-		setResizable(false); // Ã¢ Å©±â º¯°æX
+		setResizable(false); // ì°½ í¬ê¸° ë³€ê²½X
 		setLayout(null);
 		setVisible(true);
-		setLocationRelativeTo(null); // Ã¢À§Ä¡ °¡¿îµ¥
+		setLocationRelativeTo(null); // ì°½ìœ„ì¹˜ ê°€ìš´ë°
 	}
 	
 	public void JPanelChange(String panel) {
@@ -52,17 +52,17 @@ class Background extends JPanel {
 	private JButton StartBtn = new JButton(mouse.StartBasicImage);
 	private JButton QuitBtn = new JButton(mouse.QuitBasicImage);
 	
-	private Image ImageBackground = new ImageIcon("src/images/BurgerMiº¹»çº».png").getImage();
-	private Image MenuImage = new ImageIcon("src/images/¸Ş´ºÈ­¸é.png").getImage();
+	private Image ImageBackground = new ImageIcon("src/images/BurgerMië³µì‚¬ë³¸.png").getImage();
+	private Image MenuImage = new ImageIcon("src/images/ë©”ë‰´í™”ë©´.png").getImage();
 
 
 	public Background() {
 		setLayout(null);
 		
-		introMusic = new Music("BurgerMi Å¸ÀÌÆ² À½¾Ç.mp3", true);
+		introMusic = new Music("BurgerMi íƒ€ì´í‹€ ìŒì•….mp3", true);
 		introMusic.start();
 
-		// ½ÃÀÛ¹öÆ°
+		// ì‹œì‘ë²„íŠ¼
 		StartBtn.setBounds(10, 350, 340, 120);
 		StartBtn.setBorderPainted(false);
 		StartBtn.setContentAreaFilled(false);
@@ -71,7 +71,7 @@ class Background extends JPanel {
 		StartBtn.setVisible(true);
 		this.add(StartBtn);
 
-		// Á¾·á¹öÆ°
+		// ì¢…ë£Œë²„íŠ¼
 		QuitBtn.setBounds(10, 470, 340, 120);
 		QuitBtn.setBorderPainted(false);
 		QuitBtn.setContentAreaFilled(false);
@@ -81,7 +81,7 @@ class Background extends JPanel {
 		this.add(QuitBtn);
 	}
 
-	// È­¸é ±×¸®±â
+	// í™”ë©´ ê·¸ë¦¬ê¸°
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawImage(ImageBackground, 0, 0, this);

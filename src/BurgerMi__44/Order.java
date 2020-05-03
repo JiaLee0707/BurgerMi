@@ -8,89 +8,88 @@ public class Order {
 	Random random = new Random();
 	private List<Integer> orderIngredients = new ArrayList<Integer>();
 	private List<Integer> orderMake = new ArrayList<Integer>();
-	
+
 	Order() {
 //		BurgerMi.game.revalidate();
 //		BurgerMi.game.repaint();
 		Burger burger1 = new Burger();
-		
+
 		System.out.println("order");
-		while(orderIngredients.size()!=5) {
-			int orderSheet = (int)((Math.random() * 86) + 65);
+		while (orderIngredients.size() != 5) {
+			int orderSheet = (int) ((Math.random() * 86) + 65);
 			switch (orderSheet) {
-			case 65: //ÆĞÆ¼
-				System.out.println("ÆĞÆ¼");
-				burger1.orderBurger(orderSheet);
-				orderIngredients.add(orderSheet); 
-				break;
-			case 68: //»óÃß
-				System.out.println("»óÃß");
-				burger1.orderBurger(orderSheet);
-				orderIngredients.add(orderSheet); 
-				break;
-			case 69: //Ä¡Áî
-				System.out.println("Ä¡Áî");
-				burger1.orderBurger(orderSheet);
-				orderIngredients.add(orderSheet); 
-				break;
-			case 81: //Åä¸¶Åä
-				System.out.println("Åä¸¶Åä");
+			case 65: // íŒ¨í‹°
+				System.out.println("íŒ¨í‹°");
 				burger1.orderBurger(orderSheet);
 				orderIngredients.add(orderSheet);
 				break;
-			case 83: //¹Ø»§
-				System.out.println("¹Ø»§");
+			case 68: // ìƒì¶”
+				System.out.println("ìƒì¶”");
 				burger1.orderBurger(orderSheet);
-				orderIngredients.add(orderSheet); 
+				orderIngredients.add(orderSheet);
 				break;
-			case 87: //À­»§
-				System.out.println("À­»§");
+			case 69: // ì¹˜ì¦ˆ
+				System.out.println("ì¹˜ì¦ˆ");
 				burger1.orderBurger(orderSheet);
-				orderIngredients.add(orderSheet); 
+				orderIngredients.add(orderSheet);
+				break;
+			case 81: // í† ë§ˆí† 
+				System.out.println("í† ë§ˆí† ");
+				burger1.orderBurger(orderSheet);
+				orderIngredients.add(orderSheet);
+				break;
+			case 83: // ë°‘ë¹µ
+				System.out.println("ë°‘ë¹µ");
+				burger1.orderBurger(orderSheet);
+				orderIngredients.add(orderSheet);
+				break;
+			case 87: // ìœ—ë¹µ
+				System.out.println("ìœ—ë¹µ");
+				burger1.orderBurger(orderSheet);
+				orderIngredients.add(orderSheet);
 				break;
 			}
 //			System.out.println(orderIngredients.get(i));
 		}
 	}
+
 	public void Make(int make) {
-		int size=0;
-		if(make==10) {
-			for(int i=0; i<orderIngredients.size(); i++) {
+		int size = 0;
+		if (make == 10) {
+			for (int i = 0; i < orderIngredients.size(); i++) {
 //				System.out.print(orderIngredients.get(i)+ " ");
 //				System.out.println(orderMake.get(i)+ " ");
 				System.out.println(orderMake.size());
-				if(size==orderIngredients.size()) {
-					System.out.println("¼º°ø");
-				}
-				else if((orderMake.size() == 0) || (orderIngredients.get(i) != orderMake.get(i))){
-					System.out.println("½ÇÆĞ");
+				if (size == orderIngredients.size()) {
+					System.out.println("ì„±ê³µ");
+				} else if ((orderMake.size() == 0) || (orderIngredients.get(i) != orderMake.get(i))) {
+					System.out.println("ì‹¤íŒ¨");
 					break;
-				}
-				else if(orderIngredients.get(i) == orderMake.get(i)) {
+				} else if (orderIngredients.get(i) == orderMake.get(i)) {
 					size++;
 					continue;
 				}
 			}
-			
+
 			BurgerMi.game.BurgerArray.clear();
 			BurgerMi.game.ListImage.clear();
 			BurgerMi.game.ListX.clear();
 			BurgerMi.game.ListY.clear();
 			orderIngredients.clear();
 			orderMake.clear();
-			
+
 			System.out.println("");
 			BurgerMi.game.revalidate();
 //			BurgerMi.game.invalidate();
 			BurgerMi.game.repaint();
 			System.out.println("Order");
-			for(int i=0; i<BurgerMi.game.BurgerArray.size(); i++) {
+			for (int i = 0; i < BurgerMi.game.BurgerArray.size(); i++) {
 				System.out.println(BurgerMi.game.BurgerArray.get(i));
 			}
 			System.out.println("");
-			
+
 			BurgerMi.game.order = new Order();
-		}
-		else orderMake.add(make);
+		} else
+			orderMake.add(make);
 	}
 }

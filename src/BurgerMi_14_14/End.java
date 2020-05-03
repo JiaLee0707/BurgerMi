@@ -17,8 +17,8 @@ public class End {
 	Image EndGame = new ImageIcon("src/images/EndGame.png").getImage();
 
 	KeyListener keyListener = Main.burgermi.game.keyListener;
-	
-	// °ÔÀÓ½ÃÀÛ ¹öÆ°
+
+	// ê²Œì„ì‹œì‘ ë²„íŠ¼
 	MouseListener mouse = new MouseListener();
 	private JButton replayBtn = new JButton(mouse.ReplayBasicImage);
 	private JButton QuitBtn = new JButton(mouse.QuitBasicImage);
@@ -33,7 +33,7 @@ public class End {
 		time.setVisible(false);
 		allGrade.setBounds(540, -100, 800, 800);
 
-		// ´Ù½Ã½ÃÀÛ ¹öÆ°
+		// ë‹¤ì‹œì‹œì‘ ë²„íŠ¼
 		replayBtn.setBounds(280, 470, 340, 120);
 		replayBtn.setBorderPainted(false);
 		replayBtn.setContentAreaFilled(false);
@@ -42,7 +42,7 @@ public class End {
 		replayBtn.setVisible(true);
 		Main.burgermi.game.add(replayBtn);
 
-		// Á¾·á¹öÆ°
+		// ì¢…ë£Œë²„íŠ¼
 		QuitBtn.setBounds(630, 470, 340, 120);
 		QuitBtn.setBorderPainted(false);
 		QuitBtn.setContentAreaFilled(false);

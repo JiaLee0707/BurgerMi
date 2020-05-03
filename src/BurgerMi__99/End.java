@@ -12,12 +12,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class End {
-	public Image EndGame = new ImageIcon("src/images/°á°úÈ­¸é.png").getImage();
+	public Image EndGame = new ImageIcon("src/images/ê²°ê³¼í™”ë©´.png").getImage();
 	private ImageIcon ReplayBasicImage = new ImageIcon("src/images/replayButtonBasic.png");
 	private ImageIcon ReplayEnteredImage = new ImageIcon("src/images/replayButtonEntered.png");
 	private ImageIcon QuitBasicImage = new ImageIcon("src/images/quitButtonBasic.png");
 	private ImageIcon QuitEnteredImage = new ImageIcon("src/images/quitButtonEntered.png");
-	public JLabel allGrade = new JLabel("ÃÑÁ¡ : " + BurgerMi.game.score.score + "Á¡");
+	public JLabel allGrade = new JLabel("ì´ì  : " + BurgerMi.game.score.score + "ì ");
 	private JButton replayBtn = new JButton(ReplayBasicImage);
 	private JButton QuitBtn = new JButton(QuitBasicImage);
 
@@ -25,8 +25,8 @@ public class End {
 		BurgerMi.game.grade.setVisible(false);
 		BurgerMi.game.timer.time.setVisible(false);
 
-		// ÇÜ¹ö°Å°¡ ³»·Á¿À´ø Áß ³¡³µÀ» ¼öµµ ÀÖ¾î¼­
-		// ÇÑ¹ø ´õ ÃÊ±âÈ­
+		// í–„ë²„ê±°ê°€ ë‚´ë ¤ì˜¤ë˜ ì¤‘ ëë‚¬ì„ ìˆ˜ë„ ìˆì–´ì„œ
+		// í•œë²ˆ ë” ì´ˆê¸°í™”
 		BurgerMi.game.order.orderBurger.clear();
 		BurgerMi.game.order.MakeBurger.clear();
 		BurgerMi.game.ingredients = null;
@@ -43,7 +43,7 @@ public class End {
 		replayBtn.setVisible(true);
 		BurgerMi.game.add(replayBtn);
 
-		// Á¾·á¹öÆ°
+		// ì¢…ë£Œë²„íŠ¼
 		QuitBtn.setBounds(620, 470, 340, 120);
 		QuitBtn.setBorderPainted(false);
 		QuitBtn.setContentAreaFilled(false);
@@ -54,9 +54,9 @@ public class End {
 
 		BurgerMi.game.End = true;
 
-		allGrade.setFont(new Font("³ª´®½ºÄù¾î¶ó¿îµå ExtraBold", Font.ITALIC, 50)); // ÆùÆ® ¼³Á¤
-		allGrade.setSize(700, 700); // Å©Å° ¼³Á¤
-		allGrade.setLocation(540, 30); // À§Ä¡ ¼³Á¤
+		allGrade.setFont(new Font("ë‚˜ëˆ”ìŠ¤í€˜ì–´ë¼ìš´ë“œ ExtraBold", Font.ITALIC, 50)); // í°íŠ¸ ì„¤ì •
+		allGrade.setSize(700, 700); // í¬í‚¤ ì„¤ì •
+		allGrade.setLocation(540, 30); // ìœ„ì¹˜ ì„¤ì •
 		BurgerMi.game.add(allGrade);
 		allGrade.setVisible(true);
 
@@ -66,7 +66,7 @@ public class End {
 		return;
 	}
 
-	// ¸¶¿ì½º ¸®½º³Ê
+	// ë§ˆìš°ìŠ¤ ë¦¬ìŠ¤ë„ˆ
 	class MouseListener extends MouseAdapter {
 		ImageIcon Basic;
 		ImageIcon Entered;
@@ -76,14 +76,14 @@ public class End {
 			Entered = EnteredImageIcon;
 		}
 
-		// ±âº»¹öÆ°
+		// ê¸°ë³¸ë²„íŠ¼
 		@Override
 		public void mouseExited(MouseEvent e) {
 			JButton button = (JButton) e.getSource();
 			button.setIcon(Basic);
 		}
 
-		// Å¬¸¯¹öÆ°
+		// í´ë¦­ë²„íŠ¼
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			JButton button = (JButton) e.getSource();
@@ -113,7 +113,7 @@ public class End {
 //			return;
 		}
 
-		// ¹öÆ° À§¿¡ ¿Ã¸®¸é
+		// ë²„íŠ¼ ìœ„ì— ì˜¬ë¦¬ë©´
 		@Override
 		public void mouseEntered(MouseEvent e) {
 			JButton button = (JButton) e.getSource();

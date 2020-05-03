@@ -8,13 +8,13 @@ import java.util.Random;
 import javax.swing.ImageIcon;
 
 public class Order {
-	private Image TrayImage = new ImageIcon("src/images/Àï¹İ111.png").getImage();
-	private Image belowBreadImage = new ImageIcon("src/images/¾Æ·¡»§.png").getImage();
-	private Image topBreadImage = new ImageIcon("src/images/À­»§.png").getImage();
-	private Image lettuceImage = new ImageIcon("src/images/Ã¤¼Ò.png").getImage();
-	private Image tomatoImage = new ImageIcon("src/images/Åä¸¶Åä.png").getImage();
-	private Image pattyImage = new ImageIcon("src/images/ÆĞÆ¼.png").getImage();
-	private Image cheeseImage = new ImageIcon("src/images/Ä¡Áî.png").getImage();
+	private Image TrayImage = new ImageIcon("src/images/ìŸë°˜111.png").getImage();
+	private Image belowBreadImage = new ImageIcon("src/images/ì•„ë˜ë¹µ.png").getImage();
+	private Image topBreadImage = new ImageIcon("src/images/ìœ—ë¹µ.png").getImage();
+	private Image lettuceImage = new ImageIcon("src/images/ì±„ì†Œ.png").getImage();
+	private Image tomatoImage = new ImageIcon("src/images/í† ë§ˆí† .png").getImage();
+	private Image pattyImage = new ImageIcon("src/images/íŒ¨í‹°.png").getImage();
+	private Image cheeseImage = new ImageIcon("src/images/ì¹˜ì¦ˆ.png").getImage();
 
 	private Image orderTrayImage = TrayImage.getScaledInstance(TrayImage.getWidth(null) - 50,
 			TrayImage.getHeight(null) - 50, TrayImage.SCALE_SMOOTH);
@@ -32,9 +32,9 @@ public class Order {
 			cheeseImage.getHeight(null) - 50, cheeseImage.SCALE_SMOOTH);
 
 	Random random = new Random();
-	// ÁÖ¹®¹ŞÀº ¹ö°Å
+	// ì£¼ë¬¸ë°›ì€ ë²„ê±°
 	List<Object> orderBurger = new ArrayList<Object>();
-	// ¸¸µç ¹ö°Å
+	// ë§Œë“  ë²„ê±°
 	List<Object> MakeBurger = new ArrayList<Object>();
 
 	Order() {
@@ -46,65 +46,65 @@ public class Order {
 			int i = 0;
 			int orderSheet = (int) ((Math.random() * 86) + 65);
 
-			// ÇÜ¹ö°Å Àç·á À§Ä¡ ÃÊ±âÈ­
+			// í–„ë²„ê±° ì¬ë£Œ ìœ„ì¹˜ ì´ˆê¸°í™”
 			int xx = 0, yy = 150;
 
 			for (i = 0; i < keySheet.length; i++) {
 				if (orderSheet == keySheet[i]) {
 					switch (orderSheet) {
-					case 65: // ÆĞÆ¼
-						System.out.println("ÆĞÆ¼");
-						ingredients.add("patty"); // ÇÜ¹ö°Å Àç·á ÀÌ¹ÌÁö
-						ingredients.add(orderpattyImage); // ÇÜ¹ö°Å Àç·á ÀÌ¹ÌÁö
-						xx = 500; // ÇÜ¹ö°Å Àç·á xÁÂÇ¥
+					case 65: // íŒ¨í‹°
+						System.out.println("íŒ¨í‹°");
+						ingredients.add("patty"); // í–„ë²„ê±° ì¬ë£Œ ì´ë¯¸ì§€
+						ingredients.add(orderpattyImage); // í–„ë²„ê±° ì¬ë£Œ ì´ë¯¸ì§€
+						xx = 500; // í–„ë²„ê±° ì¬ë£Œ xì¢Œí‘œ
 						break;
-					case 68: // »óÃß
-						System.out.println("»óÃß");
-						ingredients.add("lettuce"); // ÇÜ¹ö°Å Àç·á ÀÌ¹ÌÁö
-						ingredients.add(orderlettuceImage); // ÇÜ¹ö°Å Àç·á ÀÌ¹ÌÁö
-						xx = 495; // ÇÜ¹ö°Å Àç·á xÁÂÇ¥
+					case 68: // ìƒì¶”
+						System.out.println("ìƒì¶”");
+						ingredients.add("lettuce"); // í–„ë²„ê±° ì¬ë£Œ ì´ë¯¸ì§€
+						ingredients.add(orderlettuceImage); // í–„ë²„ê±° ì¬ë£Œ ì´ë¯¸ì§€
+						xx = 495; // í–„ë²„ê±° ì¬ë£Œ xì¢Œí‘œ
 						break;
-					case 69: // Ä¡Áî
-						System.out.println("Ä¡Áî");
-						ingredients.add("cheese"); // ÇÜ¹ö°Å Àç·á ÀÌ¹ÌÁö
-						ingredients.add(ordercheeseImage); // ÇÜ¹ö°Å Àç·á ÀÌ¹ÌÁö
-						xx = 495; // ÇÜ¹ö°Å Àç·á xÁÂÇ¥
+					case 69: // ì¹˜ì¦ˆ
+						System.out.println("ì¹˜ì¦ˆ");
+						ingredients.add("cheese"); // í–„ë²„ê±° ì¬ë£Œ ì´ë¯¸ì§€
+						ingredients.add(ordercheeseImage); // í–„ë²„ê±° ì¬ë£Œ ì´ë¯¸ì§€
+						xx = 495; // í–„ë²„ê±° ì¬ë£Œ xì¢Œí‘œ
 						break;
-					case 81: // Åä¸¶Åä
-						System.out.println("Åä¸¶Åä");
-						ingredients.add("tomato"); // ÇÜ¹ö°Å Àç·á ÀÌ¹ÌÁö
-						ingredients.add(ordertomatoImage); // ÇÜ¹ö°Å Àç·á ÀÌ¹ÌÁö
-						xx = 510; // ÇÜ¹ö°Å Àç·á xÁÂÇ¥
+					case 81: // í† ë§ˆí† 
+						System.out.println("í† ë§ˆí† ");
+						ingredients.add("tomato"); // í–„ë²„ê±° ì¬ë£Œ ì´ë¯¸ì§€
+						ingredients.add(ordertomatoImage); // í–„ë²„ê±° ì¬ë£Œ ì´ë¯¸ì§€
+						xx = 510; // í–„ë²„ê±° ì¬ë£Œ xì¢Œí‘œ
 						break;
-					case 83: // ¹Ø»§
-						System.out.println("¹Ø»§");
-						ingredients.add("belowBread"); // ÇÜ¹ö°Å Àç·á ÀÌ¹ÌÁö
-						ingredients.add(orderbelowBreadImage);// ÇÜ¹ö°Å Àç·á ÀÌ¹ÌÁö
-						xx = 520; // ÇÜ¹ö°Å Àç·á xÁÂÇ¥
+					case 83: // ë°‘ë¹µ
+						System.out.println("ë°‘ë¹µ");
+						ingredients.add("belowBread"); // í–„ë²„ê±° ì¬ë£Œ ì´ë¯¸ì§€
+						ingredients.add(orderbelowBreadImage);// í–„ë²„ê±° ì¬ë£Œ ì´ë¯¸ì§€
+						xx = 520; // í–„ë²„ê±° ì¬ë£Œ xì¢Œí‘œ
 						break;
-					case 87: // À­»§
-						System.out.println("À­»§");
-						ingredients.add("topBread"); // ÇÜ¹ö°Å Àç·á ÀÌ¹ÌÁö
-						ingredients.add(ordertopBreadImage); // ÇÜ¹ö°Å Àç·á ÀÌ¹ÌÁö
-						xx = 500; // ÇÜ¹ö°Å Àç·á xÁÂÇ¥
+					case 87: // ìœ—ë¹µ
+						System.out.println("ìœ—ë¹µ");
+						ingredients.add("topBread"); // í–„ë²„ê±° ì¬ë£Œ ì´ë¯¸ì§€
+						ingredients.add(ordertopBreadImage); // í–„ë²„ê±° ì¬ë£Œ ì´ë¯¸ì§€
+						xx = 500; // í–„ë²„ê±° ì¬ë£Œ xì¢Œí‘œ
 						break;
 					}
-					
-					// Àç·á ¼ø¼­¿¡ µû¸¥ yÁÂÇ¥
+
+					// ì¬ë£Œ ìˆœì„œì— ë”°ë¥¸ yì¢Œí‘œ
 					if (orderBurger.size() + 1 > 1) {
 						yy = yy - (20 * (orderBurger.size() + 1));
-						// Åä¸¶Åä ¶Ç´Â ÆĞÆ¼¸é 30 ´õ ¹ØÀ¸·Î
+						// í† ë§ˆí†  ë˜ëŠ” íŒ¨í‹°ë©´ 30 ë” ë°‘ìœ¼ë¡œ
 						if ((orderSheet == 81) || (orderSheet == 65)) {
 							// .equals("tomato") || ingredients.equals("patty")) {
 							yy = yy + 20;
 						}
-						// À­»§ÀÌ¸é 50 ´õ À§·Î
+						// ìœ—ë¹µì´ë©´ 50 ë” ìœ„ë¡œ
 						else if (orderSheet == 87) {
 							yy = yy - 60;
 						}
 					}
 
-					// x, yÁÂÇ¥ Ãß°¡
+					// x, yì¢Œí‘œ ì¶”ê°€
 					ingredients.add(xx);
 					ingredients.add(yy);
 
@@ -125,11 +125,11 @@ public class Order {
 	public void Make(String key) {
 		new Music("203.mp3", false).start();
 
-		// ÇÜ¹ö°Å Àç·á À§Ä¡ ÃÊ±âÈ­
+		// í–„ë²„ê±° ì¬ë£Œ ìœ„ì¹˜ ì´ˆê¸°í™”
 		int xx = 0, yy = 500;
 		Image ingredients = null;
 
-		// ÇÜ¹ö°Å Àç·á xÁÂÇ¥, ÀÌ¹ÌÁö
+		// í–„ë²„ê±° ì¬ë£Œ xì¢Œí‘œ, ì´ë¯¸ì§€
 		switch (key) {
 		case "belowBread":
 			xx = 500;
@@ -158,14 +158,14 @@ public class Order {
 		}
 
 //		System.out.println(BurgerArray.size());
-		// Àç·á ¼ø¼­¿¡ µû¸¥ yÁÂÇ¥
+		// ì¬ë£Œ ìˆœì„œì— ë”°ë¥¸ yì¢Œí‘œ
 		if (MakeBurger.size() + 1 > 1) {
 			yy = yy - (20 * (MakeBurger.size() + 1));
-			// Åä¸¶Åä ¶Ç´Â ÆĞÆ¼¸é 30 ´õ ¹ØÀ¸·Î
+			// í† ë§ˆí†  ë˜ëŠ” íŒ¨í‹°ë©´ 30 ë” ë°‘ìœ¼ë¡œ
 			if (key.equals("tomato") || key.equals("patty")) {
 				yy = yy + 30;
 			}
-			// À­»§ÀÌ¸é 50 ´õ À§·Î
+			// ìœ—ë¹µì´ë©´ 50 ë” ìœ„ë¡œ
 			else if (key.equals("topBread")) {
 				yy = yy - 50;
 			}

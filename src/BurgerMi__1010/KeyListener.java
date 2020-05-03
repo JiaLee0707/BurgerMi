@@ -9,28 +9,28 @@ class KeyListener extends KeyAdapter {
 	public void keyReleased(KeyEvent e) {
 		int keyCode = e.getKeyCode();
 		switch (keyCode) {
-		case KeyEvent.VK_S: // ¹Ø»§
-			System.out.print("¹Ø»§");
+		case KeyEvent.VK_S: // ë°‘ë¹µ
+			System.out.print("ë°‘ë¹µ");
 			BurgerMi.game.order.Make("belowBread");
 			break;
-		case KeyEvent.VK_W: // À­»§
-			System.out.print("À­»§");
+		case KeyEvent.VK_W: // ìœ—ë¹µ
+			System.out.print("ìœ—ë¹µ");
 			BurgerMi.game.order.Make("topBread");
 			break;
-		case KeyEvent.VK_A: // ÆĞÆ¼
-			System.out.print("ÆĞÆ¼");
+		case KeyEvent.VK_A: // íŒ¨í‹°
+			System.out.print("íŒ¨í‹°");
 			BurgerMi.game.order.Make("patty");
 			break;
-		case KeyEvent.VK_D: // »óÃß
-			System.out.print("»óÃß");
+		case KeyEvent.VK_D: // ìƒì¶”
+			System.out.print("ìƒì¶”");
 			BurgerMi.game.order.Make("lettuce");
 			break;
-		case KeyEvent.VK_Q: // Åä¸¶Åä
-			System.out.print("Åä¸¶Åä");
+		case KeyEvent.VK_Q: // í† ë§ˆí† 
+			System.out.print("í† ë§ˆí† ");
 			BurgerMi.game.order.Make("tomato");
 			break;
-		case KeyEvent.VK_E: // Ä¡Áî
-			System.out.print("Ä¡Áî");
+		case KeyEvent.VK_E: // ì¹˜ì¦ˆ
+			System.out.print("ì¹˜ì¦ˆ");
 			BurgerMi.game.order.Make("cheese");
 			break;
 //		case KeyEvent.VK_SPACE:
@@ -38,28 +38,29 @@ class KeyListener extends KeyAdapter {
 //        	 BurgerMi.game.dropBurger(); 
 //			break;
 		case KeyEvent.VK_ENTER:
-			if(BurgerMi.Menu) break;
-			System.out.println("\n¿£ÅÍ");
+			if (BurgerMi.Menu)
+				break;
+			System.out.println("\nì—”í„°");
 			BurgerMi.game.ingredients = null;
 			BurgerMi.game.burger.interrupt();
 			BurgerMi.game.score.Score();
 			break;
 		case KeyEvent.VK_ESCAPE:
 			System.out.println("ESC");
-			
-			//¸Ş´º È­¸é
+
+			// ë©”ë‰´ í™”ë©´
 			BurgerMi.Menu = !BurgerMi.Menu;
-			
-			// ¹öÆ° Ãß°¡ÇÏ±â
-			// °è¼ÓÇÏ±â
-			// µµ¿ò¸»
-			// ³ª°¡±â
-			
+
+			// ë²„íŠ¼ ì¶”ê°€í•˜ê¸°
+			// ê³„ì†í•˜ê¸°
+			// ë„ì›€ë§
+			// ë‚˜ê°€ê¸°
+
 			BurgerMi.game.timer.pause = !BurgerMi.game.timer.pause;
 			BurgerMi.game.revalidate();
 			BurgerMi.game.repaint();
 			BurgerMi.game.getParent().repaint();
 		}
 	}
-	
+
 }

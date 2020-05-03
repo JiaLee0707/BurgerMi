@@ -20,7 +20,7 @@ public class DB {
 		try {
 			Class.forName("org.gjt.mm.mysql.Driver").newInstance();
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/burgermi", "root", "apmsetup");
-			System.out.println("DB ø¨∞· øœ∑·");
+			System.out.println("DB Ïó∞Í≤∞ ÏôÑÎ£å");
 		} catch (SQLException ex) {
 			System.out.println("SQLException:" + ex);
 		} catch (Exception ex) {
@@ -28,43 +28,67 @@ public class DB {
 		}
 	}
 
+	public void Select() {
+		try {
+			String sql = "SELECT * FROM ranking ORDER BY score ASC";
+			pstmt = conn.prepareStatement(sql);
+			ResultSet srs = pstmt.executeQuery();
+			while(srs.next()) {
+				System.out.print(srs.getString("no")+" ");
+				System.out.print(srs.getString("score")+" ");
+				System.out.print(srs.getString("name")+" ");
+				System.out.print(srs.getString("rank")+" ");
+				System.out.println();
+			}
+		} catch(SQLException ex) {
+			System.out.println("SQLException:" + ex);
+		} catch(Exception ex) {
+		 	System.out.println("Exception:" + ex);
+		} finally {
+			if(conn != null)
+				try {
+					conn.close();
+				}catch(SQLException sqle) {}
+			if(pstmt != null) 
+				try {
+					pstmt.close();
+				}catch(SQLException sqle) {}
+		}
+	}
+	
 	public void Insert(int s) {
 		String rank = null;
 		String score = Integer.toString(s);
 		
-		name = JOptionPane.showInputDialog("¿Ã∏ß¿ª ¿‘∑¬«œººø‰.");
+		name = JOptionPane.showInputDialog("Ïù¥Î¶ÑÏùÑ ÏûÖÎ†•ÌïòÏÑ∏Ïöî.");
 		
-		try {
-			String sql = "SELECT * FROM ranking ORDER BY score ASC;";
-			
-			int num = 0;
-//			ResultSet rs = pstmt.executeQuery("SELECT COUNT(*) FROM test_tbl");
-			ResultSet rs = pstmt.executeQuery("SELECT * FROM ranking;");
-//	        if(rs.next()) {
-//	        	num = rs.getInt(1);
-//	        	System.out.println("Total rows : " + num);
-//	        }
-			rs.last();
-			num = rs.getRow();
-	        	
+		try {			
+			Statement stmt = conn.createStatement();
+			ResultSet srs = stmt.executeQuery("SELECT * FROM ranking");
+	        srs.last();     
+	        int num = srs.getRow();
+	        srs.beforeFirst();
+	        
 			String no = Integer.toString(num+1);
 			System.out.println(no);
-			
+
+			String sql = "SELECT * FROM ranking ORDER BY score ASC";
 			pstmt = conn.prepareStatement(sql);
-			ResultSet srs = pstmt.executeQuery();
+			srs = pstmt.executeQuery();
 			do {
-				int dbScore = Integer.parseInt((srs.getString("score")));
 				if (Integer.parseInt(no) <= 1) {
 					rank = "1";
-				} else if(s > dbScore) {
-					rank = Integer.toString(Integer.parseInt(srs.getString("rank"))-1);
-				} else if (s == dbScore) {
-					rank = Integer.toString(Integer.parseInt(srs.getString("rank")));
+				} else {
+					int dbScore = Integer.parseInt((srs.getString("score")));
+					if(s > dbScore) {
+						rank = Integer.toString(Integer.parseInt(srs.getString("rank"))-1);
+					} else if (s == dbScore) {
+						rank = Integer.toString(Integer.parseInt(srs.getString("rank")));
+					} else {
+						rank = Integer.toString(Integer.parseInt(srs.getString("rank"))+1);
+					}
 				}
-				break;
 			}while(srs.next());
-			
-			System.out.println(no + ", " + score + ", " + name + ", " + rank);
 			
 			sql = "insert into ranking (no, score, name, rank) values (?, ?, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
@@ -76,29 +100,12 @@ public class DB {
 		
 			pstmt.executeUpdate();
 			
-			sql = "select * from ranking";
-			pstmt = conn.prepareStatement(sql);
-			srs = pstmt.executeQuery();
-			while(srs.next()) {
-				System.out.print(srs.getString("no")+" ");
-				System.out.print(srs.getString("score")+" ");
-				System.out.print(srs.getString("name")+" ");
-				System.out.print(srs.getString("rank")+" ");
-				System.out.println();
-			}
+			Select();
+			
 		}catch(SQLException ex) {
 			System.out.println("SQLException:" + ex);
 		}catch(Exception ex) {
 			System.out.println("Exception:" + ex);
-		}finally {
-			if(conn != null)
-				try {
-					conn.close();
-				}catch(SQLException sqle) {}
-			if(pstmt != null) 
-				try {
-					pstmt.close();
-				}catch(SQLException sqle) {}
 		}
 	}
 }

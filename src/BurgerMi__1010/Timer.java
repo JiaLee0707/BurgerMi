@@ -14,22 +14,23 @@ public class Timer extends Thread {
 	public boolean pause = false;
 
 	Timer() {
-		time.setFont(BurgerMi.font); // ∆˘∆Æ º≥¡§
-		time.setSize(500, 500); // ≈©≈∞ º≥¡§
-		time.setLocation(1140, -200); // ¿ßƒ° º≥¡§
+		time.setFont(BurgerMi.font); // Ìè∞Ìä∏ ÏÑ§Ï†ï
+		time.setSize(500, 500); // ÌÅ¨ÌÇ§ ÏÑ§Ï†ï
+		time.setLocation(1140, -200); // ÏúÑÏπò ÏÑ§Ï†ï
 
 		this.start();
 	}
-	
+
 	public void run() {
 		try {
 			while (true) {
 				System.out.println(Time[0] + ":" + Time[1]);
-				if(!pause) {
+				if (!pause) {
 					time.setText(Time[0] + ":" + Time[1]);
 					Time[1] -= 1;
 					if (Time[1] == 0) {
-						if (Time[0] == 0) break;
+						if (Time[0] == 0)
+							break;
 						Time[0] -= 1;
 						Time[1] = 60;
 					}

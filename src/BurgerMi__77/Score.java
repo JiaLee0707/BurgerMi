@@ -12,7 +12,7 @@ public class Score {
 	public void Score() {
 		int size = 0, i = 0;
 
-		// Á¡¼ö °è»ê
+		// ì ìˆ˜ ê³„ì‚°
 		while (true) {
 			if (size == BurgerMi.game.order.orderBurger.size()) {
 
@@ -23,13 +23,13 @@ public class Score {
 				} else {
 					score += 10;
 				}
-				BurgerMi.game.grade.setText(score + "Á¡");
-				System.out.println("¼º°ø");
+				BurgerMi.game.grade.setText(score + "ì ");
+				System.out.println("ì„±ê³µ");
 				break;
 			} else if ((BurgerMi.game.order.MakeBurger.size() == 0)
 					|| !((((List<Object>) BurgerMi.game.order.orderBurger.get(i))
 							.get(0) == ((List<Object>) BurgerMi.game.order.MakeBurger.get(i)).get(0)))) {
-				System.out.println("½ÇÆĞ");
+				System.out.println("ì‹¤íŒ¨");
 
 				break;
 			} else if (((List<Object>) BurgerMi.game.order.orderBurger.get(i))
@@ -39,7 +39,7 @@ public class Score {
 			i++;
 		}
 
-		// ÁÖ¹®¹ö°Å, ¸¸µç¹ö°Å clear
+		// ì£¼ë¬¸ë²„ê±°, ë§Œë“ ë²„ê±° clear
 		BurgerMi.game.order.orderBurger.clear();
 		BurgerMi.game.order.MakeBurger.clear();
 
@@ -47,7 +47,7 @@ public class Score {
 
 		Enter = true;
 
-		// È­¸é ´Ù½Ã±×¸®±â
+		// í™”ë©´ ë‹¤ì‹œê·¸ë¦¬ê¸°
 		BurgerMi.game.revalidate();
 		BurgerMi.game.repaint();
 

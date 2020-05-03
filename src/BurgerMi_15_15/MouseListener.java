@@ -9,15 +9,16 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-public class MouseListener{	
+public class MouseListener {
 	ImageIcon StartBasicImage = new ImageIcon("src/images/startButtonBasic.png");
 	ImageIcon StartEnteredImage = new ImageIcon("src/images/startButtonEntered.png");
 	ImageIcon QuitBasicImage = new ImageIcon("src/images/quitButtonBasic.png");
 	ImageIcon QuitEnteredImage = new ImageIcon("src/images/quitButtonEntered.png");
 	ImageIcon ReplayBasicImage = new ImageIcon("src/images/replayButtonBasic.png");
 	ImageIcon ReplayEnteredImage = new ImageIcon("src/images/replayButtonEntered.png");
-	
-	public MouseListener() {}
+
+	public MouseListener() {
+	}
 
 	class Listener extends MouseAdapter {
 		String panel;
@@ -30,14 +31,14 @@ public class MouseListener{
 			Entered = EnteredImageIcon;
 		}
 
-		// ±âº»¹öÆ°
+		// ê¸°ë³¸ë²„íŠ¼
 		@Override
 		public void mouseExited(MouseEvent e) {
 			JButton button = (JButton) e.getSource();
 			button.setIcon(Basic);
 		}
 
-		// Å¬¸¯¹öÆ°
+		// í´ë¦­ë²„íŠ¼
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			JButton button = (JButton) e.getSource();
@@ -46,18 +47,18 @@ public class MouseListener{
 			Music Button = new Music("buttonPressedMusic.mp3", false);
 			Button.start();
 
-			if (Entered.equals(QuitEnteredImage)) {	// °ÔÀÓ ³¡
+			if (Entered.equals(QuitEnteredImage)) { // ê²Œì„ ë
 				System.exit(0);
-			} else if(panel.equals("Background") && Entered.equals(StartEnteredImage)) {	// Å¸ÀÌÆ²¿¡¼­ °ÔÀÓ ½ÃÀÛ
+			} else if (panel.equals("Background") && Entered.equals(StartEnteredImage)) { // íƒ€ì´í‹€ì—ì„œ ê²Œì„ ì‹œì‘
 				Main.burgermi.JPanelChange("game");
-			} else if(panel.equals("Game") && Entered.equals(StartEnteredImage)) {	// °ÔÀÓ¹æ¹ı ÀÌÈÄ °ÔÀÓ ½ÃÀÛ
+			} else if (panel.equals("Game") && Entered.equals(StartEnteredImage)) { // ê²Œì„ë°©ë²• ì´í›„ ê²Œì„ ì‹œì‘
 				Main.burgermi.game.GameStart();
-			} else if(panel.equals("End") && Entered.equals(ReplayEnteredImage)) {
+			} else if (panel.equals("End") && Entered.equals(ReplayEnteredImage)) {
 				Main.burgermi.JPanelChange("replay");
 			}
 		}
 
-		// ¹öÆ° À§¿¡ ¿Ã¸®¸é
+		// ë²„íŠ¼ ìœ„ì— ì˜¬ë¦¬ë©´
 		@Override
 		public void mouseEntered(MouseEvent e) {
 			JButton button = (JButton) e.getSource();

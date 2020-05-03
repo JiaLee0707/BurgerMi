@@ -5,32 +5,33 @@ import java.awt.Graphics;
 
 import javax.swing.JLabel;
 
-public class Throw extends Thread{
+public class Throw extends Thread {
 
 	boolean Enter = false;
-	public int i=0;
+	public int i = 0;
+
 	public void run() {
 //		System.out.println("asdf");
-		Enter=true;
+		Enter = true;
 		try {
-			i=0;
-			while(Enter) {
+			i = 0;
+			while (Enter) {
 				BurgerMi.game.TrayBasicImage = BurgerMi.game.TrayImage[i];
-				if(i==0) {
-					BurgerMi.game.throwburger=true;
+				if (i == 0) {
+					BurgerMi.game.throwburger = true;
 				}
 				BurgerMi.game.repaint();
-				if(i==2) {
+				if (i == 2) {
 //					interrupt();
 //					join(); 
 //					break;
 //					return;
-					Enter=false;
+					Enter = false;
 				}
 				Thread.sleep(250);
 //				Thread.sleep(1000);
 				i++;
-				BurgerMi.game.throwburger=false;
+				BurgerMi.game.throwburger = false;
 			}
 		} catch (Exception e) {
 //			e.printStackTrace();
@@ -40,7 +41,7 @@ public class Throw extends Thread{
 }
 
 //class MyLabel extends JLabel {
-//	int barSize = 0; // πŸ¿« ≈©±‚
+//	int barSize = 0; // Î∞îÏùò ÌÅ¨Í∏∞
 //	int maxBarSize;
 //	
 //	MyLabel(int maxBarSize) { 
@@ -63,7 +64,7 @@ public class Throw extends Thread{
 //			} catch (InterruptedException e) { return; }
 //		}
 //		barSize++;
-//		repaint(); // πŸ ¥ŸΩ√ ±◊∏Æ±‚
+//		repaint(); // Î∞î Îã§Ïãú Í∑∏Î¶¨Í∏∞
 //		notify(); 
 //	}
 //	synchronized void consume() {
@@ -74,7 +75,7 @@ public class Throw extends Thread{
 //				 { return; }
 //		}
 //		barSize--;
-//		repaint(); // πŸ ¥ŸΩ√ ±◊∏Æ±‚
+//		repaint(); // Î∞î Îã§Ïãú Í∑∏Î¶¨Í∏∞
 //		notify(); 
 //	}	
 //}

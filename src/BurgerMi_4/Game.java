@@ -5,20 +5,21 @@ import java.util.*;
 
 import javax.swing.*;
 
-public class Game extends Thread{
+public class Game extends Thread {
 
-	private Image TrayImage = new ImageIcon(Main.class.getResource("../images/¿Ôπ›.png")).getImage();
-//	private Image belowBreadImage = new ImageIcon(Main.class.getResource("../images/æ∆∑°ªß.png")).getImage();
-//	private Image topBreadImage = new ImageIcon(Main.class.getResource("../images/¿≠ªß.png")).getImage();
-//	private Image lettuceImage = new ImageIcon(Main.class.getResource("../images/√§º“.png")).getImage();
-//	private Image tomatoImage = new ImageIcon(Main.class.getResource("../images/≈‰∏∂≈‰.png")).getImage();
-//	private Image pattyImage = new ImageIcon(Main.class.getResource("../images/∆–∆º.png")).getImage();
-//	private Image cheeseImage = new ImageIcon(Main.class.getResource("../images/ƒ°¡Ó.png")).getImage();
-	
+	private Image TrayImage = new ImageIcon(Main.class.getResource("../images/ÏüÅÎ∞ò.png")).getImage();
+//	private Image belowBreadImage = new ImageIcon(Main.class.getResource("../images/ÏïÑÎûòÎπµ.png")).getImage();
+//	private Image topBreadImage = new ImageIcon(Main.class.getResource("../images/ÏúóÎπµ.png")).getImage();
+//	private Image lettuceImage = new ImageIcon(Main.class.getResource("../images/Ï±ÑÏÜå.png")).getImage();
+//	private Image tomatoImage = new ImageIcon(Main.class.getResource("../images/ÌÜ†ÎßàÌÜ†.png")).getImage();
+//	private Image pattyImage = new ImageIcon(Main.class.getResource("../images/Ìå®Ìã∞.png")).getImage();
+//	private Image cheeseImage = new ImageIcon(Main.class.getResource("../images/ÏπòÏ¶à.png")).getImage();
+
 	ArrayList<burger> burgerList = new ArrayList<burger>();
+
 	public Game() {
 	}
-	
+
 	public void screenDraw(Graphics g) {
 		g.drawImage(TrayImage, 440, 570, null);
 //		g.drawImage(belowBreadImage, 595, 650, null);
@@ -27,38 +28,46 @@ public class Game extends Thread{
 //		g.drawImage(cheeseImage, 567, 587, null);
 //		g.drawImage(tomatoImage, 585, 600, null);
 //		g.drawImage(topBreadImage, 574, 514, null);
-		
-		for(int i=0; i<burgerList.size(); i++){
+
+		for (int i = 0; i < burgerList.size(); i++) {
 			burger burger = burgerList.get(i);
 			burger.screenDraw(g);
 		}
 	}
+
 	public void pressS() {
 		dropburger();
 		new Music("203.mp3", false).start();
 	}
+
 	public void pressW() {
 		new Music("203.mp3", false).start();
 	}
+
 	public void pressA() {
 		new Music("203.mp3", false).start();
 	}
+
 	public void pressD() {
 		new Music("203.mp3", false).start();
 	}
+
 	public void pressQ() {
 		new Music("203.mp3", false).start();
 	}
+
 	public void pressE() {
 		new Music("203.mp3", false).start();
 	}
+
 	public void pressSPACE() {
 		new Music("203.mp3", false).start();
 	}
+
 	public void pressENTER() {
 		new Music("203.mp3", false).start();
 	}
-	
+
 	public void dropburger() {
 //		burgerList.add(new burger(595, 650, "belowBread"));
 //		burgerList.add(new burger(569, 610, "lettuce"));
@@ -66,11 +75,10 @@ public class Game extends Thread{
 //		burgerList.add(new burger(567, 587, "cheese"));
 //		burgerList.add(new burger(585, 600, "tomato"));
 //		burgerList.add(new burger(574, 514, "topBread"));
-		
+
 		burger burger = new burger(595, 0, "belowBread");
 		burger.start();
 		burgerList.add(burger);
 	}
-	
 
 }

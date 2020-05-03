@@ -6,62 +6,71 @@ import java.util.List;
 
 import javax.swing.ImageIcon;
 
-public class Burger extends Thread{
-	private Image TrayImage = new ImageIcon("src/images/Àï¹İ111.png").getImage();
-	private Image belowBreadImage = new ImageIcon("src/images/¾Æ·¡»§.png").getImage();
-	private Image topBreadImage = new ImageIcon("src/images/À­»§.png").getImage();
-	private Image lettuceImage = new ImageIcon("src/images/Ã¤¼Ò.png").getImage();
-	private Image tomatoImage = new ImageIcon("src/images/Åä¸¶Åä.png").getImage();
-	private Image pattyImage = new ImageIcon("src/images/ÆĞÆ¼.png").getImage();
-	private Image cheeseImage = new ImageIcon("src/images/Ä¡Áî.png").getImage();
-	
+public class Burger extends Thread {
+	private Image TrayImage = new ImageIcon("src/images/ìŸë°˜111.png").getImage();
+	private Image belowBreadImage = new ImageIcon("src/images/ì•„ë˜ë¹µ.png").getImage();
+	private Image topBreadImage = new ImageIcon("src/images/ìœ—ë¹µ.png").getImage();
+	private Image lettuceImage = new ImageIcon("src/images/ì±„ì†Œ.png").getImage();
+	private Image tomatoImage = new ImageIcon("src/images/í† ë§ˆí† .png").getImage();
+	private Image pattyImage = new ImageIcon("src/images/íŒ¨í‹°.png").getImage();
+	private Image cheeseImage = new ImageIcon("src/images/ì¹˜ì¦ˆ.png").getImage();
+
 	int x, y;
 	Image ingredients;
+
 	public Burger() {
 		System.out.println("Buger1");
 	}
+
 	Burger(int x, int y, String ingredients) {
-		this.x=x;
-		this.y=y;
+		this.x = x;
+		this.y = y;
 //		System.out.println(x+","+y);
-		
-		switch(ingredients) {
+
+		switch (ingredients) {
 		case "belowBread":
-			this.ingredients=belowBreadImage; break;
+			this.ingredients = belowBreadImage;
+			break;
 		case "topBread":
-			this.ingredients=topBreadImage; break;
+			this.ingredients = topBreadImage;
+			break;
 		case "lettuce":
-			this.ingredients=lettuceImage; break;
+			this.ingredients = lettuceImage;
+			break;
 		case "tomato":
-			this.ingredients=tomatoImage; break;
+			this.ingredients = tomatoImage;
+			break;
 		case "patty":
-			this.ingredients=pattyImage; break;
+			this.ingredients = pattyImage;
+			break;
 		case "cheese":
-			this.ingredients=cheeseImage; break;
+			this.ingredients = cheeseImage;
+			break;
 		}
 	}
+
 	public void run() {
 //		System.out.println("run : "+x+","+y);
-		int i=0;
+		int i = 0;
 		boolean bool = true;
 		try {
-			//i°¡ x°¡ ¾Æ´Ò¶§±îÁö ½º·¹µå ½ÇÇà
-			while(i!=y) {
-				i=i+1;
+			// iê°€ xê°€ ì•„ë‹ë•Œê¹Œì§€ ìŠ¤ë ˆë“œ ì‹¤í–‰
+			while (i != y) {
+				i = i + 1;
 //				System.out.println(i);
 				BurgerMi.game.Thread(ingredients, x, i, bool);
 //				System.out.println(ingredients);
 				BurgerMi.game.repaint();
 				Thread.sleep(1);
 			}
-		
-			//BurgerArray¿¡ Ãß°¡
-			List<Object> Array = new ArrayList<Object>(); //ÇÏ³ªÀÇ ÇÜ¹ö°Å ÀÌ¹ÌÁö, À§Ä¡ List
+
+			// BurgerArrayì— ì¶”ê°€
+			List<Object> Array = new ArrayList<Object>(); // í•˜ë‚˜ì˜ í–„ë²„ê±° ì´ë¯¸ì§€, ìœ„ì¹˜ List
 			Array.add(this.ingredients);
 			Array.add(this.x);
 			Array.add(this.y);
 			BurgerMi.game.BurgerArray.add((List<Object>) Array);
-			for(i=0; i<BurgerMi.game.BurgerArray.size(); i++) {
+			for (i = 0; i < BurgerMi.game.BurgerArray.size(); i++) {
 				System.out.println(BurgerMi.game.BurgerArray.get(i));
 			}
 			System.out.println("");
@@ -70,70 +79,83 @@ public class Burger extends Thread{
 			e.printStackTrace();
 		}
 	}
+
 	public void orderBurger(int orderSheet) {
 //		List<Object> OrderArray = new ArrayList<Object>();
 //		OrderArray.add();
 //		OrderArray.add();
 //		OrderArray.add();
 		System.out.println("orderBurger");
-		
-		//ÇÜ¹ö°Å Àç·á À§Ä¡ ÃÊ±âÈ­
-		int orderX=0, orderY=50;
-				
-		//ÇÜ¹ö°Å Àç·á xÁÂÇ¥
-		switch(orderSheet) {
-		case 83: //¹Ø»§
-			orderX=500; break;
-		case 87: //À­»§
-			orderX=480; break;
-		case 68: //»óÃß
-			orderX=475; break;
-		case 81: //Åä¸¶Åä
-			orderX=490; break;
-		case 65: //ÆĞÆ¼
-			orderX=480; break;
-		case 69: //Ä¡Áî
-			orderX=475; break;
+
+		// í–„ë²„ê±° ì¬ë£Œ ìœ„ì¹˜ ì´ˆê¸°í™”
+		int orderX = 0, orderY = 50;
+
+		// í–„ë²„ê±° ì¬ë£Œ xì¢Œí‘œ
+		switch (orderSheet) {
+		case 83: // ë°‘ë¹µ
+			orderX = 500;
+			break;
+		case 87: // ìœ—ë¹µ
+			orderX = 480;
+			break;
+		case 68: // ìƒì¶”
+			orderX = 475;
+			break;
+		case 81: // í† ë§ˆí† 
+			orderX = 490;
+			break;
+		case 65: // íŒ¨í‹°
+			orderX = 480;
+			break;
+		case 69: // ì¹˜ì¦ˆ
+			orderX = 475;
+			break;
 		}
-				
-		//Àç·á ¼ø¼­¿¡ µû¸¥ yÁÂÇ¥
-		if(BurgerMi.game.OrderBurger.size()+1>1) {
-			orderY = orderY - (20*(BurgerMi.game.OrderBurger.size()+1));
-			//Åä¸¶Åä ¶Ç´Â ÆĞÆ¼¸é 30 ´õ ¹ØÀ¸·Î
-			if(ingredients.equals("tomato") || ingredients.equals("patty")) {
+
+		// ì¬ë£Œ ìˆœì„œì— ë”°ë¥¸ yì¢Œí‘œ
+		if (BurgerMi.game.OrderBurger.size() + 1 > 1) {
+			orderY = orderY - (20 * (BurgerMi.game.OrderBurger.size() + 1));
+			// í† ë§ˆí†  ë˜ëŠ” íŒ¨í‹°ë©´ 30 ë” ë°‘ìœ¼ë¡œ
+			if (ingredients.equals("tomato") || ingredients.equals("patty")) {
 				orderY = orderY + 30;
 			}
-			//À­»§ÀÌ¸é 50 ´õ À§·Î
-			else if(ingredients.equals("topBread")) {
+			// ìœ—ë¹µì´ë©´ 50 ë” ìœ„ë¡œ
+			else if (ingredients.equals("topBread")) {
 				orderY = orderY - 50;
 			}
 		}
-		
-		switch(orderSheet) {
-		case 65: //ÆĞÆ¼
+
+		switch (orderSheet) {
+		case 65: // íŒ¨í‹°
 			BurgerMi.game.OrderBurger.add(pattyImage);
 			BurgerMi.game.OrderBurger.add(orderX);
-			BurgerMi.game.OrderBurger.add(orderY); break;
-		case 68: //»óÃß
+			BurgerMi.game.OrderBurger.add(orderY);
+			break;
+		case 68: // ìƒì¶”
 			BurgerMi.game.OrderBurger.add(lettuceImage);
 			BurgerMi.game.OrderBurger.add(orderX);
-			BurgerMi.game.OrderBurger.add(orderY); break;
-		case 69: //Ä¡Áî
+			BurgerMi.game.OrderBurger.add(orderY);
+			break;
+		case 69: // ì¹˜ì¦ˆ
 			BurgerMi.game.OrderBurger.add(cheeseImage);
 			BurgerMi.game.OrderBurger.add(orderX);
-			BurgerMi.game.OrderBurger.add(orderY); break;
-		case 81: //Åä¸¶Åä
+			BurgerMi.game.OrderBurger.add(orderY);
+			break;
+		case 81: // í† ë§ˆí† 
 			BurgerMi.game.OrderBurger.add(tomatoImage);
 			BurgerMi.game.OrderBurger.add(orderX);
-			BurgerMi.game.OrderBurger.add(orderY); break;
-		case 83: //¹Ø»§
+			BurgerMi.game.OrderBurger.add(orderY);
+			break;
+		case 83: // ë°‘ë¹µ
 			BurgerMi.game.OrderBurger.add(belowBreadImage);
 			BurgerMi.game.OrderBurger.add(orderX);
-			BurgerMi.game.OrderBurger.add(orderY); break;
-		case 87: //À­»§
+			BurgerMi.game.OrderBurger.add(orderY);
+			break;
+		case 87: // ìœ—ë¹µ
 			BurgerMi.game.OrderBurger.add(topBreadImage);
 			BurgerMi.game.OrderBurger.add(orderX);
-			BurgerMi.game.OrderBurger.add(orderY); break;
+			BurgerMi.game.OrderBurger.add(orderY);
+			break;
 		}
 	}
 

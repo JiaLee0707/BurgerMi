@@ -6,9 +6,9 @@ public class Throw extends Thread {
 			Main.burgermi.game.ThrowBurger = true;
 			int i = 0;
 			while (i < 3) {
-				// Àï¹Ý ÀÌ¹ÌÁö
+				// ìŸë°˜ ì´ë¯¸ì§€
 				Main.burgermi.game.TrayBasicImage = Main.burgermi.game.ImageTrayArray[i];
-				// ÇÜ¹ö°Å ÀÌ¹ÌÁö
+				// í–„ë²„ê±° ì´ë¯¸ì§€
 				if (i != 2) {
 					Main.burgermi.game.ThrowImage = Main.burgermi.game.ImageThrow[i];
 				}

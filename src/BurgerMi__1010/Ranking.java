@@ -11,20 +11,20 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 public class Ranking {
-	Scanner sc=new Scanner(System.in);
+	Scanner sc = new Scanner(System.in);
 
-	Connection conn=null;
+	Connection conn = null;
 	PreparedStatement pstmt = null;
-	
+
 	public Select select = new Select();
 	public Insert insert = new Insert();
 	public Update update = new Update();
-	
+
 	Ranking() {
 		try {
 			Class.forName("org.gjt.mm.mysql.Driver").newInstance();
-			conn=DriverManager.getConnection("jdbc:mysql://localhost:3307/burgermi", "root", "mirim2");
-			System.out.println("DB ¿¬°á ¿Ï·á");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/burgermi", "root", "mirim2");
+			System.out.println("DB ì—°ê²° ì™„ë£Œ");
 		} catch (SQLException ex) {
 			System.out.println("SQLException:" + ex);
 		} catch (Exception ex) {
@@ -41,112 +41,109 @@ public class Ranking {
 //				}catch(SQLException sqle) {}
 //		}
 	}
-	
-	// Ãâ·Â (³»ºÎ class)
+
+	// ì¶œë ¥ (ë‚´ë¶€ class)
 	class Select {
 		public void Select() {
 			try {
 //				Class.forName("org.gjt.mm.mysql.Driver").newInstance();
 //				conn=DriverManager.getConnection("jdbc:mysql://localhost:3307/buregrmi", "root", "mirim2");
-//				System.out.println("DB ¿¬°á ¿Ï·á");
-				
+//				System.out.println("DB ì—°ê²° ì™„ë£Œ");
+
 				String sql = "select * from ranking order by score desc;";
 				pstmt = conn.prepareStatement(sql);
 				ResultSet srs = pstmt.executeQuery();
 				int count = 0;
-				while(srs.next()) {
-					if(count < 5) {
-						// È­¸é Ãâ·Â
+				while (srs.next()) {
+					if (count < 5) {
+						// í™”ë©´ ì¶œë ¥
 					}
-					
+
 					count++;
 				}
-			}catch(SQLException ex) {
+			} catch (SQLException ex) {
 				System.out.println("SQLException:" + ex);
-			}catch(Exception ex) {
+			} catch (Exception ex) {
 				System.out.println("Exception:" + ex);
 			}
 		}
 	}
-	
-	// Ãß°¡ (³»ºÎclass)
+
+	// ì¶”ê°€ (ë‚´ë¶€class)
 	class Insert {
 		public void Insert(int score) {
-			String name = JOptionPane.showInputDialog("ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä");
+			String name = JOptionPane.showInputDialog("ì´ë¦„ì„ ìž…ë ¥í•˜ì„¸ìš”");
 
 			try {
 //				Class.forName("org.gjt.mm.mysql.Driver").newInstance();
 //				conn=DriverManager.getConnection("jdbc:mysql://localhost:3307/burgermi", "root", "mirim2");
-//				System.out.println("DB ¿¬°á ¿Ï·á");
-				
-				
+//				System.out.println("DB ì—°ê²° ì™„ë£Œ");
+
 				String sql = "insert into ranking (name, score) values (?, ?)";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, name);
 				pstmt.setString(2, Integer.toString(score));
-				
+
 				pstmt.executeUpdate();
-				
+
 				sql = "select * from ranking";
 				pstmt = conn.prepareStatement(sql);
 				ResultSet srs = pstmt.executeQuery();
-				while(srs.next()) {
-					System.out.print(srs.getString("rank")+" ");
-					System.out.print(srs.getString("name")+" ");
-					System.out.print(srs.getString("score")+" ");
+				while (srs.next()) {
+					System.out.print(srs.getString("rank") + " ");
+					System.out.print(srs.getString("name") + " ");
+					System.out.print(srs.getString("score") + " ");
 					System.out.println();
 				}
-			}catch(SQLException ex) {
+			} catch (SQLException ex) {
 				System.out.println("SQLException:" + ex);
-			}catch(Exception ex) {
+			} catch (Exception ex) {
 				System.out.println("Exception:" + ex);
 			}
 		}
 	}
-	
-	// ¾÷µ¥ÀÌÆ® (³»ºÎclass)
+
+	// ì—…ë°ì´íŠ¸ (ë‚´ë¶€class)
 	class Update {
 		public void Update() {
 			try {
 //				Class.forName("org.gjt.mm.mysql.Driver").newInstance();
 //				conn=DriverManager.getConnection("jdbc:mysql://localhost:3307/buregrmi", "root", "mirim2");
-//				System.out.println("DB ¿¬°á ¿Ï·á");
-				
-				
+//				System.out.println("DB ì—°ê²° ì™„ë£Œ");
+
 //				update ranking set ranking = ? where name = (select name from ranking order by score desc)
-				
+
 				String sql = "select * from ranking order by score desc";
 				pstmt = conn.prepareStatement(sql);
 				ResultSet srs = pstmt.executeQuery();
 				int count = 0;
-				while(srs.next()) {
+				while (srs.next()) {
 					count++;
-					
+
 //					String sql2 = "update ranking set rank = ? where name = (select name from (select * from ranking) as r order by score desc)";
 					pstmt = conn.prepareStatement(sql);
 //					ResultSet srs2 = pstmt.executeQuery();
-					
-					
+
 //					sql = "update ranking set ranking = ? where name = ?";
 					sql = "update ranking set ranking = ? where name = (select name from ranking order by score desc)";
 					pstmt.setString(1, Integer.toString(count));
 //					pstmt.setString(2, srs.getString("name"));
-					pstmt.executeUpdate(); //½ÇÇà½ÃÅ°´Â °Å
-					
-					if(count <= 5) {
-						// È­¸é Ãâ·Â
-						System.out.print(srs.getString("rank")+" ");
-						System.out.print(srs.getString("name")+" ");
-						System.out.print(srs.getString("score")+" ");
+					pstmt.executeUpdate(); // ì‹¤í–‰ì‹œí‚¤ëŠ” ê±°
+
+					if (count <= 5) {
+						// í™”ë©´ ì¶œë ¥
+						System.out.print(srs.getString("rank") + " ");
+						System.out.print(srs.getString("name") + " ");
+						System.out.print(srs.getString("score") + " ");
 						System.out.println();
 					}
 				}
-			}catch(SQLException ex) {
+			} catch (SQLException ex) {
 				System.out.println("SQLException:" + ex);
-			}catch(Exception ex) {
+			} catch (Exception ex) {
 				System.out.println("Exception:" + ex);
 			}
 		}
 	}
-	
+
 }

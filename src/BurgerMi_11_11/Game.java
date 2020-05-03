@@ -10,28 +10,28 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Game extends JPanel {
-	
+
 	public Order order = new Order();
 	private Order.Guest guest = order.new Guest();
 	private Score score;
 	public KeyListener keyListener;
-	
-	// °ÔÀÓÈ­¸é
+
+	// ê²Œì„í™”ë©´
 	private Image ImageGame = new ImageIcon("src/images/GameBackground.png").getImage();
 	private Image ImageRules = new ImageIcon("src/images/GameRules.png").getImage();
-	public Image EndGame = new ImageIcon("src/images/°á°úÈ­¸é.png").getImage();
+	public Image EndGame = new ImageIcon("src/images/ê²°ê³¼í™”ë©´.png").getImage();
 	private Image ImageBackground;
-	
-	// °ÔÀÓ½ÃÀÛ ¹öÆ°
+
+	// ê²Œì„ì‹œì‘ ë²„íŠ¼
 	MouseListener mouse = new MouseListener();
 	private JButton StartBtn = new JButton(mouse.StartBasicImage);
-		
+
 	public void Game() {
 		setLayout(null);
 		ImageBackground = ImageRules;
 		System.out.println(ImageBackground);
-		
-		// ½ÃÀÛ¹öÆ°
+
+		// ì‹œì‘ë²„íŠ¼
 		StartBtn.setBounds(915, 560, 340, 120);
 		StartBtn.setBorderPainted(false);
 		StartBtn.setContentAreaFilled(false);
@@ -40,43 +40,43 @@ public class Game extends JPanel {
 		StartBtn.setVisible(true);
 		this.add(StartBtn);
 	}
-	
+
 	public void GameStart() {
 		ImageBackground = ImageGame;
 		Main.burgermi.background.introMusic.close();
-		Music gameMusic = new Music("¿ä¸®.mp3", true);
+		Music gameMusic = new Music("ìš”ë¦¬.mp3", true);
 		gameMusic.start();
-		
-		// ¹öÆ° ¾Èº¸ÀÌ°Ô
+
+		// ë²„íŠ¼ ì•ˆë³´ì´ê²Œ
 		StartBtn.setVisible(false);
-		
+
 		score = new Score(order);
 		keyListener = new KeyListener(score);
-		
-		// ¼Õ´Ô Label
-		JLabel guestJLabel = new JLabel(order.guestArray[order.guest.who]);	
+
+		// ì†ë‹˜ Label
+		JLabel guestJLabel = new JLabel(order.guestArray[order.guest.who]);
 //		JLabel[] BurgerJLabel = new JLabel[5];
 		guest.Guest(guestJLabel);
 		this.add(guestJLabel);
-		
-		// ÁÖ¹® ¹ö°Å Label
-		for(int i=4; i>-1; i--) {
+
+		// ì£¼ë¬¸ ë²„ê±° Label
+		for (int i = 4; i > -1; i--) {
 			JLabel BurgerJLabel = new JLabel(order.orderBurgerImageArray[order.orderBurgerArray[i]]);
 			order.Order(BurgerJLabel, i);
-			this.add(BurgerJLabel);				
+			this.add(BurgerJLabel);
 		}
 		getParent().repaint();
 
 //		this.setFocusable(true);
-		this.requestFocus(); // ÄÁÅÙÆ®ÆÒ¿¡ Æ÷Ä¿½º ¼³Á¤
+		this.requestFocus(); // ì»¨í…íŠ¸íŒ¬ì— í¬ì»¤ìŠ¤ ì„¤ì •
 		this.addKeyListener(keyListener);
 	}
-	
-	// È­¸é ±×¸®±â
+
+	// í™”ë©´ ê·¸ë¦¬ê¸°
 	public void paintComponent(Graphics g) {
-		super.paintComponent(g);	
-		
-		// ¹è°æÈ­¸é
+		super.paintComponent(g);
+
+		// ë°°ê²½í™”ë©´
 		g.drawImage(ImageBackground, 0, 0, this);
 	}
 }
