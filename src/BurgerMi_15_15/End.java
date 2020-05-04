@@ -38,8 +38,8 @@ public class End {
 		Main.burgermi.game.ImageBackground = EndGame;
 
 		DB db = new DB();
-		//db.Insert(Main.burgermi.game.score.score);
-		db.Select();
+		db.Insert(Main.burgermi.game.score.score);
+		//db.Select();
 		
 		time.setVisible(false);
 		allGrade.setBounds(540, -100, 800, 800);
