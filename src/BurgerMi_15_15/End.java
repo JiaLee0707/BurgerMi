@@ -15,8 +15,6 @@ import javax.swing.JPanel;
 
 public class End {
 
-	Image EndGame = new ImageIcon("src/images/EndGame.png").getImage();
-
 	KeyListener keyListener = Main.burgermi.game.keyListener;
 	Burger burger = Main.burgermi.game.keyListener.burger;
 
@@ -25,6 +23,7 @@ public class End {
 	private JButton replayBtn = new JButton(mouse.ReplayBasicImage);
 	private JButton QuitBtn = new JButton(mouse.QuitBasicImage);
 
+	public JLabel GameResult = new JLabel("게임 결과");
 	public JLabel allGrade = Main.burgermi.game.score.scoreLabel;
 
 	End(JLabel time) {
@@ -35,11 +34,15 @@ public class End {
 		Main.burgermi.game.removeKeyListener(keyListener);
 		Main.burgermi.game.start = false;
 		Main.burgermi.game.gameMusic.close();
-		Main.burgermi.game.ImageBackground = EndGame;
+		Main.burgermi.game.end = true;
+//		Main.burgermi.game.ImageBackground = EndGame;
 
+		
 		DB db = new DB();
 		db.Insert(Main.burgermi.game.score.score);
 		//db.Select();
+		
+		Ranking ranking = new Ranking();
 		
 		time.setVisible(false);
 		allGrade.setBounds(540, -100, 800, 800);

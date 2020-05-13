@@ -43,6 +43,7 @@ public class Game extends JPanel {
 	int TrayY = 450;
 	public boolean start = false;
 	public boolean ThrowBurger = false;
+	public boolean end = false;
 
 	public void Game() {
 		setLayout(null);
@@ -94,6 +95,9 @@ public class Game extends JPanel {
 
 		// 배경화면
 		g.drawImage(ImageBackground, 0, 0, this);
+		if(end) { 
+			g.drawImage(Main.burgermi.background.MenuImage, 0, 0, this);
+		}
 
 		Image burgerIngredient = null;
 		int x = 0;

@@ -53,7 +53,7 @@ class Background extends JPanel {
 	private JButton QuitBtn = new JButton(mouse.QuitBasicImage);
 	
 	private Image ImageBackground = new ImageIcon("src/images/BurgerMi복사본.png").getImage();
-	private Image MenuImage = new ImageIcon("src/images/메뉴화면.png").getImage();
+	public Image MenuImage = new ImageIcon("src/images/메뉴화면.png").getImage();
 
 
 	public Background() {
