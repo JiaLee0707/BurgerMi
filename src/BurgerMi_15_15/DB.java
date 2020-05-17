@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.LinkedList;
 
 import javax.swing.JOptionPane;
 
@@ -29,17 +30,24 @@ public class DB {
 		}
 	}
 
-	public void Select() {
+	public LinkedList Select() {
+//		Ranking ranking = new Ranking();
+		LinkedList<String[]> rankList = new LinkedList<String[]>();
 		try {
 			String sql = "SELECT * FROM ranking ORDER BY rank ASC";
 			pstmt = conn.prepareStatement(sql);
 			ResultSet srs = pstmt.executeQuery();
 			while (srs.next()) {
+				String[] rank = new String[3];
+				rank[0] = srs.getString("score");
+				rank[1] = srs.getString("name");
+				rank[2] = srs.getString("rank");
 				System.out.print(srs.getString("no") + " ");
 				System.out.print(srs.getString("score") + " ");
 				System.out.print(srs.getString("name") + " ");
 				System.out.print(srs.getString("rank") + " ");
 				System.out.println();
+				rankList.add(rank);
 			}
 		} catch (SQLException ex) {
 			System.out.println("Select SQLException:" + ex);
@@ -57,6 +65,8 @@ public class DB {
 				} catch (SQLException sqle) {
 				}
 		}
+//		ranking.Ranking(rankList);
+		return rankList;
 	}
 
 	public void Insert(int s) {
@@ -118,7 +128,7 @@ public class DB {
 
 			pstmt.executeUpdate();
 
-			Select();
+//			Select();
 
 		} catch (SQLException ex) {
 			System.out.println("Insert SQLException:" + ex);

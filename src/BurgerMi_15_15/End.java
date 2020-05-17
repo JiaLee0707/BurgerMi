@@ -1,17 +1,10 @@
 package BurgerMi_15_15;
 
-import java.awt.Cursor;
 import java.awt.Font;
-import java.awt.Image;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.sql.SQLException;
+import java.util.LinkedList;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
 public class End {
 
@@ -24,8 +17,13 @@ public class End {
 	private JButton QuitBtn = new JButton(mouse.QuitBasicImage);
 
 	public JLabel GameResult = new JLabel("게임 결과");
+	public JLabel rank = new JLabel("이름                       점수                       순위");
+	public Font font = new Font("나눔스퀘어라운드 Light", Font.PLAIN, 40);
 	public JLabel allGrade = Main.burgermi.game.score.scoreLabel;
 
+	JLabel[] rankLable = new JLabel[5];
+	LinkedList<String[]> ranking;
+	
 	End(JLabel time) {
 		this.burger.MakeBurgerIntArray.clear();
 		this.burger.burgerIngredient.clear(); // = new LinkedList<Object>();
@@ -35,17 +33,28 @@ public class End {
 		Main.burgermi.game.start = false;
 		Main.burgermi.game.gameMusic.close();
 		Main.burgermi.game.end = true;
-//		Main.burgermi.game.ImageBackground = EndGame;
 
-		
-		DB db = new DB();
-		db.Insert(Main.burgermi.game.score.score);
-		//db.Select();
-		
-		Ranking ranking = new Ranking();
-		
+		// 시간 안보이기
 		time.setVisible(false);
-		allGrade.setBounds(540, -100, 800, 800);
+
+		GameResult.setFont(Main.burgermi.game.score.font);
+		rank.setFont(font);
+		
+		Ranking();
+		End();
+
+	}
+
+	public void End() {
+
+//		// 랭킹
+//		Ranking ranking = new Ranking();
+
+		GameResult.setBounds(530, -270, 800, 800);
+		rank.setBounds(290, -290, 1000, 1000);
+		allGrade.setBounds(1000, -270, 800, 800);
+		Main.burgermi.game.add(GameResult);
+		Main.burgermi.game.add(rank);
 
 		// 다시시작 버튼
 		replayBtn.setBounds(280, 470, 340, 120);
@@ -66,6 +75,30 @@ public class End {
 		Main.burgermi.game.add(QuitBtn);
 
 		Main.burgermi.game.getParent().repaint();
-
+	}
+	
+	public void Ranking() {
+		// DB 점수 추가
+		DB db = new DB();
+		db.Insert(Main.burgermi.game.score.score);
+		ranking = db.Select();
+		
+		int y=-240;
+//		ranking.add(rankList);
+		for(int i=0; i<rankLable.length; i++) {
+//			System.out.println(ranking.get(i)[2]);
+			if(i == ranking.size()) {
+				break;
+			}
+			rankLable[i] = new JLabel((ranking.get(i))[1] + "                   " + (ranking.get(i))[0] + "                           " + (ranking.get(i))[2]);
+			
+			
+			System.out.println(rankLable[i].getText().length());
+			rankLable[i].setBounds(290, y, 1000, 1000);
+			rankLable[i].setFont(font);
+			Main.burgermi.game.add(rankLable[i]);
+			y += 40;
+		}
+		
 	}
 }

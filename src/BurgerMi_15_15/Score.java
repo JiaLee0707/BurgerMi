@@ -14,8 +14,10 @@ public class Score {
 	public JLabel scoreLabel = new JLabel(score + "점");
 	Music musicOX;
 
+	public Font font = new Font("나눔스퀘어라운드 ExtraBold", Font.ITALIC, 50);
+	
 	public Score() {
-		scoreLabel.setFont(new Font("나눔스퀘어라운드 ExtraBold", Font.ITALIC, 50)); // 폰트 설정
+		scoreLabel.setFont(font); // 폰트 설정
 		scoreLabel.setSize(500, 500); // 크키 설정
 		scoreLabel.setLocation(1160, -150); // 위치 설정
 		Main.burgermi.game.add(scoreLabel);
