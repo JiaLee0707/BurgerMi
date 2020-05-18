@@ -5,8 +5,8 @@ import java.awt.Font;
 import javax.swing.JLabel;
 
 public class Timer extends Thread {
-	int[] Time = { 0, 5 };
-//	int[] Time = { 0, 30 } ;
+//	int[] Time = { 0, 5 };
+	int[] Time = { 0, 30 } ;
 //	int[] Time = { 1, 40 };
 
 	public JLabel time = new JLabel(Time[0] + ":" + Time[1]);

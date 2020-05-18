@@ -2,6 +2,7 @@ package BurgerMi_15_15;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Toolkit;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -24,6 +25,11 @@ public class BurgerMi extends JFrame {
 		setLayout(null);
 		setVisible(true);
 		setLocationRelativeTo(null); // 창위치 가운데
+		
+		// 윈도우 창 이미지 변경
+		Toolkit toolkit = Toolkit.getDefaultToolkit();
+		Image icon = toolkit.getImage("src/images/hamburger.png");
+		setIconImage(icon);
 	}
 	
 	public void JPanelChange(String panel) {
@@ -52,8 +58,8 @@ class Background extends JPanel {
 	private JButton StartBtn = new JButton(mouse.StartBasicImage);
 	private JButton QuitBtn = new JButton(mouse.QuitBasicImage);
 	
-	private Image ImageBackground = new ImageIcon("src/images/BurgerMi복사본.png").getImage();
-	public Image MenuImage = new ImageIcon("src/images/메뉴화면.png").getImage();
+	private Image ImageBackground = new ImageIcon("src/images/BurgerMi2.png").getImage();
+	public Image MenuImage = new ImageIcon("src/images/메뉴화면2.png").getImage();
 
 
 	public Background() {

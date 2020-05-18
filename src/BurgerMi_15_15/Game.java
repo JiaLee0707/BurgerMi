@@ -8,6 +8,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import BurgerMi_15_15.MouseListener.Listener;
+
 public class Game extends JPanel {
 
 	public Order order = new Order();
@@ -34,9 +36,10 @@ public class Game extends JPanel {
 	public Image[] ImageThrow = { ImageThrowingBurger, ImageBrokenBurger };
 	public Image ThrowImage;
 
-	// 게임시작 버튼
+	// 버튼
 	MouseListener mouse = new MouseListener();
 	private JButton StartBtn = new JButton(mouse.StartBasicImage);
+	private JButton replayBtn = new JButton(mouse.ReplayBasicImage);
 
 	Music gameMusic = new Music("요리.mp3", true);
 
@@ -50,13 +53,22 @@ public class Game extends JPanel {
 		ImageBackground = ImageRules;
 
 		// 시작버튼
-		StartBtn.setBounds(915, 560, 340, 120);
+		StartBtn.setBounds(915, 565, 340, 120);
 		StartBtn.setBorderPainted(false);
 		StartBtn.setContentAreaFilled(false);
 		StartBtn.setFocusPainted(false);
 		StartBtn.addMouseListener(mouse.new Listener("Game", mouse.StartBasicImage, mouse.StartEnteredImage));
 		StartBtn.setVisible(true);
 		this.add(StartBtn);
+		
+		// 다시시작 버튼
+		replayBtn.setBounds(595, 565, 340, 120);
+		replayBtn.setBorderPainted(false);
+		replayBtn.setContentAreaFilled(false);
+		replayBtn.setFocusPainted(false);
+		replayBtn.addMouseListener(mouse.new Listener("End", mouse.ReplayBasicImage, mouse.ReplayEnteredImage));
+		replayBtn.setVisible(true);
+		this.add(replayBtn);
 	}
 
 	public void GameStart() {
@@ -67,6 +79,7 @@ public class Game extends JPanel {
 
 		// 버튼 안보이게
 		StartBtn.setVisible(false);
+		replayBtn.setVisible(false);
 
 		score = new Score();
 		timer = new Timer();

@@ -39,9 +39,9 @@ public class DB {
 			ResultSet srs = pstmt.executeQuery();
 			while (srs.next()) {
 				String[] rank = new String[3];
-				rank[0] = srs.getString("score");
+				rank[0] = srs.getString("rank");
 				rank[1] = srs.getString("name");
-				rank[2] = srs.getString("rank");
+				rank[2] = srs.getString("score");
 				System.out.print(srs.getString("no") + " ");
 				System.out.print(srs.getString("score") + " ");
 				System.out.print(srs.getString("name") + " ");
@@ -75,7 +75,7 @@ public class DB {
 		String score = Integer.toString(s);
 		boolean update = false;
 
-		name = JOptionPane.showInputDialog("이름을 입력하세요.");
+		name = JOptionPane.showInputDialog("이름을 입력하세요.\n(취소를 누르면 순위에 오르지 못합니다.)");
 
 		try {
 			Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);

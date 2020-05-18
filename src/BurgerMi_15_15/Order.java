@@ -9,12 +9,12 @@ public class Order {
 	Random random = new Random();
 
 	// 손님
-	private Image guest1 = new ImageIcon("src/images/11.png").getImage();
-	private Image guest2 = new ImageIcon("src/images/22.png").getImage();
-	private Image guest3 = new ImageIcon("src/images/33.png").getImage();
-	private Image guest4 = new ImageIcon("src/images/44.png").getImage();
-	private Image guest5 = new ImageIcon("src/images/55.png").getImage();
-	private Image guest6 = new ImageIcon("src/images/66.png").getImage();
+	private Image guest1 = new ImageIcon("src/images/손님1.png").getImage();
+	private Image guest2 = new ImageIcon("src/images/손님2.png").getImage();
+	private Image guest3 = new ImageIcon("src/images/손님3.png").getImage();
+	private Image guest4 = new ImageIcon("src/images/손님4.png").getImage();
+	private Image guest5 = new ImageIcon("src/images/손님5.png").getImage();
+	private Image guest6 = new ImageIcon("src/images/손님6.png").getImage();
 	private Image[] guestArray = { guest1, guest2, guest3, guest4, guest5, guest6 };
 	public Image thisGuest = null;
 
@@ -32,10 +32,20 @@ public class Order {
 	public List<Object> burgerIngredient;
 
 	int[] orderBurgerArray;
-	int who, y;
+	int who, y, level;
 
 	public void Order() {
-		orderBurgerArray = new int[5];
+		if(Main.burgermi.game.score.score < 100) {
+			level = 5;
+		} else if(Main.burgermi.game.score.score < 200) {
+			level = 6;
+		} else if(Main.burgermi.game.score.score < 300) {
+			level = 7;
+		} else if(Main.burgermi.game.score.score < 400) {
+			level = 8;
+		}
+		
+		orderBurgerArray = new int[level];
 		int orderBurger = 0, i = 0, random = 6; // 주문 버거
 
 		// 주문받은 버거
@@ -44,11 +54,11 @@ public class Order {
 			i = 1;
 			random = 4;
 			orderBurgerArray[0] = 5;
-			orderBurgerArray[4] = 4;
+			orderBurgerArray[level-1] = 4;
 		}
 
 		// 주문 랜덤
-		for (int j = i; j < 5 - i; j++) {
+		for (int j = i; j < level - i; j++) {
 			orderBurger = (int) (Math.random() * random);
 			orderBurgerArray[j] = orderBurger;
 		}
@@ -57,7 +67,7 @@ public class Order {
 	public void Burger(int i) {
 		burgerIngredient = new LinkedList<Object>();
 		// 햄버거 재료 위치 조정
-		int y = 160 - 25 * i;
+		int y = (160-(level*-1)) - 25 * i;
 		burgerIngredient.add(orderBurgerImageArray[orderBurgerArray[i]]);
 		switch (orderBurgerArray[i]) {
 		case 0: // 치즈
