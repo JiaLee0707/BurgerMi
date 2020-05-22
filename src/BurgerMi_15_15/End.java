@@ -104,7 +104,7 @@ public class End {
 					rankLable[i][j].setFont(font1);				
 				}
 				Main.burgermi.game.add(rankLable[i][j]);
-				x += 300;
+				x += 280;
 			}
 			y += 40;
 		}
