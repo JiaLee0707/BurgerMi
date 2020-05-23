@@ -62,13 +62,13 @@ public class Game extends JPanel {
 		this.add(StartBtn);
 		
 		// 다시시작 버튼
-		replayBtn.setBounds(595, 565, 340, 120);
-		replayBtn.setBorderPainted(false);
-		replayBtn.setContentAreaFilled(false);
-		replayBtn.setFocusPainted(false);
-		replayBtn.addMouseListener(mouse.new Listener("End", mouse.ReplayBasicImage, mouse.ReplayEnteredImage));
-		replayBtn.setVisible(true);
-		this.add(replayBtn);
+//		replayBtn.setBounds(595, 565, 340, 120);
+//		replayBtn.setBorderPainted(false);
+//		replayBtn.setContentAreaFilled(false);
+//		replayBtn.setFocusPainted(false);
+//		replayBtn.addMouseListener(mouse.new Listener("End", mouse.ReplayBasicImage, mouse.ReplayEnteredImage));
+//		replayBtn.setVisible(true);
+//		this.add(replayBtn);
 	}
 
 	public void GameStart() {
