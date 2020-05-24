@@ -17,8 +17,7 @@ public class MouseListener {
 	ImageIcon ReplayBasicImage = new ImageIcon("src/images/replayButtonBasic.png");
 	ImageIcon ReplayEnteredImage = new ImageIcon("src/images/replayButtonEntered.png");
 
-	public MouseListener() {
-	}
+	ImageIcon NextImage = new ImageIcon("src/화살표.png");
 
 	class Listener extends MouseAdapter {
 		String panel;
@@ -68,6 +67,48 @@ public class MouseListener {
 			Music Button = new Music("buttonEnteredMusic.mp3", false);
 			Button.start();
 
+		}
+	}
+	
+	class ButtonListener extends MouseAdapter {
+//		String panel;
+		ImageIcon Basic;
+		ImageIcon Entered;
+		
+		public ButtonListener(ImageIcon BasicImageIcon, ImageIcon EnteredImageIcon) {
+			Basic = BasicImageIcon;
+			Entered = EnteredImageIcon;
+		}
+		
+		// 기본버튼
+		@Override
+		public void mouseExited(MouseEvent e) {
+			JButton button = (JButton) e.getSource();
+			button.setIcon(Basic);
+		}
+		
+		// 클릭버튼
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			JButton button = (JButton) e.getSource();
+			button.setIcon(Entered);
+			
+			Music Button = new Music("buttonPressedMusic.mp3", false);
+			Button.start();
+			
+			
+		}
+		
+		// 버튼 위에 올리면
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			JButton button = (JButton) e.getSource();
+			button.setIcon(Entered);
+			button.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			
+			Music Button = new Music("buttonEnteredMusic.mp3", false);
+			Button.start();
+			
 		}
 	}
 }

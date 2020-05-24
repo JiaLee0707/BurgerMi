@@ -41,4 +41,8 @@ public class Ranking {
 		}
 		
 	}
+	
+	public void Button() {
+		public ImageIcon
+	}
 }
