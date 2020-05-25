@@ -49,6 +49,11 @@ public class Score {
 		}
 		musicOX.start();
 
+		if(score > 0 || score < 0) {
+			scoreLabel.setLocation(1140, -150); // 위치 설정
+		} else if(score >= 100) {
+			scoreLabel.setLocation(1130, -150); // 위치 설정
+		}
 		scoreLabel.setText(score + "점");
 
 		// this.burger.MakeBurgerObjectArray.clear();

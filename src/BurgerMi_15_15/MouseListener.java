@@ -17,7 +17,8 @@ public class MouseListener {
 	ImageIcon ReplayBasicImage = new ImageIcon("src/images/replayButtonBasic.png");
 	ImageIcon ReplayEnteredImage = new ImageIcon("src/images/replayButtonEntered.png");
 
-	ImageIcon NextImage = new ImageIcon("src/화살표.png");
+	ImageIcon NextBasicImage = new ImageIcon("src/images/화살표.png");
+	ImageIcon NextEnteredImage = new ImageIcon("src/images/화살표2.png");
 
 	class Listener extends MouseAdapter {
 		String panel;
@@ -70,12 +71,12 @@ public class MouseListener {
 		}
 	}
 	
-	class ButtonListener extends MouseAdapter {
+	class NextButton extends MouseAdapter {
 //		String panel;
 		ImageIcon Basic;
 		ImageIcon Entered;
 		
-		public ButtonListener(ImageIcon BasicImageIcon, ImageIcon EnteredImageIcon) {
+		public NextButton(ImageIcon BasicImageIcon, ImageIcon EnteredImageIcon) {
 			Basic = BasicImageIcon;
 			Entered = EnteredImageIcon;
 		}
