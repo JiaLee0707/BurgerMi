@@ -17,8 +17,12 @@ public class MouseListener {
 	ImageIcon ReplayBasicImage = new ImageIcon("src/images/replayButtonBasic.png");
 	ImageIcon ReplayEnteredImage = new ImageIcon("src/images/replayButtonEntered.png");
 
-	ImageIcon NextBasicImage = new ImageIcon("src/images/화살표.png");
-	ImageIcon NextEnteredImage = new ImageIcon("src/images/화살표2.png");
+	ImageIcon rightNextBasicImage = new ImageIcon("src/images/rightArrow.png");
+	ImageIcon rightNextEnteredImage = new ImageIcon("src/images/rightArrow2.png");
+	ImageIcon leftNextBasicImage = new ImageIcon("src/images/leftArrow.png");
+	ImageIcon leftNextEnteredImage = new ImageIcon("src/images/leftArrow2.png");
+	
+	Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
 
 	class Listener extends MouseAdapter {
 		String panel;
@@ -63,7 +67,7 @@ public class MouseListener {
 		public void mouseEntered(MouseEvent e) {
 			JButton button = (JButton) e.getSource();
 			button.setIcon(Entered);
-			button.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			button.setCursor(cursor);
 
 			Music Button = new Music("buttonEnteredMusic.mp3", false);
 			Button.start();
@@ -73,12 +77,19 @@ public class MouseListener {
 	
 	class NextButton extends MouseAdapter {
 //		String panel;
+		Ranking ranking;
 		ImageIcon Basic;
 		ImageIcon Entered;
 		
-		public NextButton(ImageIcon BasicImageIcon, ImageIcon EnteredImageIcon) {
+		int nextI;
+		
+		public NextButton(Ranking ranking, ImageIcon BasicImageIcon, ImageIcon EnteredImageIcon) {
+			this.ranking = ranking;
 			Basic = BasicImageIcon;
 			Entered = EnteredImageIcon;
+			
+			nextI = ranking.getI();
+			ranking.setI(nextI);
 		}
 		
 		// 기본버튼
@@ -94,10 +105,73 @@ public class MouseListener {
 			JButton button = (JButton) e.getSource();
 			button.setIcon(Entered);
 			
+			if (Entered.equals(rightNextEnteredImage)) {
+//				nextI++;
+				for (int i = 0; i < ranking.n; i++, nextI++) {
+					int x = 320;
+//					System.out.println(ranking.get(i)[2]);
+					
+					// 데이터 갯수(rankingList) 갯수 화면에 나타낼 갯수보다 적을 때
+					// 이번에 화면 출력하는 갯수와 데이터 사이즈와 같으면 break; 
+					if (i == ranking.rankingList.size() || nextI == ranking.rankingList.size()) {
+						for (i = i; i < ranking.n; i++) {
+							for (int j = 0; j < ranking.rankLable[i].length; j++) {
+								ranking.rankLable[i][j].setText("");
+							}
+						}
+						break;
+					}
+					
+					for (int j = 0; j < ranking.rankLable[i].length; j++) {
+						ranking.rankLable[i][j].setText(ranking.rankingList.get(nextI)[j]);
+						ranking.rankLable[i][j].setFont(ranking.font2);
+						if (ranking.rankingList.get(i)[1].equals(ranking.db.name)
+								&& ranking.rankingList.get(i)[2].equals(Integer.toString(Main.burgermi.game.score.score))) {
+							System.out.println("동일");
+							ranking.rankLable[i][j].setFont(ranking.font1);
+						}
+					}
+				}
+			}
+			else if (Entered.equals(leftNextEnteredImage)) {
+				nextI = nextI - 5;
+				for (int i = 0; i < ranking.n; i++, nextI++) {
+					int x = 320;
+//					System.out.println(ranking.get(i)[2]);
+					
+					// 데이터 갯수(rankingList) 갯수 화면에 나타낼 갯수보다 적을 때
+					// 이번에 화면 출력하는 갯수와 데이터 사이즈와 같으면 break; 
+					if (i == ranking.rankingList.size() || nextI == ranking.rankingList.size()) {
+						for (i = i; i < ranking.n; i++) {
+							for (int j = 0; j < ranking.rankLable[i].length; j++) {
+								ranking.rankLable[i][j].setText("");
+							}
+						}
+						break;
+					}
+					
+					for (int j = 0; j < ranking.rankLable[i].length; j++) {
+						ranking.rankLable[i][j].setText(ranking.rankingList.get(nextI)[j]);
+						ranking.rankLable[i][j].setFont(ranking.font2);
+						if (ranking.rankingList.get(i)[1].equals(ranking.db.name)
+								&& ranking.rankingList.get(i)[2].equals(Integer.toString(Main.burgermi.game.score.score))) {
+							System.out.println("동일");
+							ranking.rankLable[i][j].setFont(ranking.font1);
+						}
+					}
+				}
+			}
+			
+			
 			Music Button = new Music("buttonPressedMusic.mp3", false);
-			Button.start();
+			Button.start();			
+			if(nextI > 5) {
+				ranking.leftNextBut.setVisible(true);
+			} else {
+				ranking.leftNextBut.setVisible(false);
+			}
 			
-			
+			Main.burgermi.game.getParent().repaint();
 		}
 		
 		// 버튼 위에 올리면
@@ -105,7 +179,7 @@ public class MouseListener {
 		public void mouseEntered(MouseEvent e) {
 			JButton button = (JButton) e.getSource();
 			button.setIcon(Entered);
-			button.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			button.setCursor(cursor);
 			
 			Music Button = new Music("buttonEnteredMusic.mp3", false);
 			Button.start();

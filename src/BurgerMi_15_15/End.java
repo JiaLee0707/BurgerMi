@@ -6,6 +6,8 @@ import java.util.LinkedList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
+import BurgerMi_15_15.MouseListener.NextButton;
+
 public class End {
 
 	KeyListener keyListener = Main.burgermi.game.keyListener;
@@ -35,7 +37,8 @@ public class End {
 		Main.burgermi.game.start = false;
 		Main.burgermi.game.gameMusic.close();
 
-		Ranking ranking = new Ranking(5);
+		Ranking ranking = new Ranking();
+		ranking.Ranking(5, ranking);
 		
 		// 시간 안보이기
 		time.setVisible(false);
@@ -63,7 +66,7 @@ public class End {
 		replayBtn.addMouseListener(mouse.new Listener("End", mouse.ReplayBasicImage, mouse.ReplayEnteredImage));
 		replayBtn.setVisible(true);
 		Main.burgermi.game.add(replayBtn);
-
+		
 		// 종료버튼
 //		QuitBtn.setBounds(630, 470, 340, 120);
 //		QuitBtn.setBorderPainted(false);
