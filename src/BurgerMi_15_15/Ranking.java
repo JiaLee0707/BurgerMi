@@ -6,8 +6,6 @@ import java.util.LinkedList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-import BurgerMi_15_15.MouseListener.Listener;
-
 public class Ranking {
 
 	Ranking ranking;
@@ -90,11 +88,15 @@ public class Ranking {
 			leftNextBut.setBounds(195, 560, 340, 120);						
 		}
 		
+		MouseListener.rightNextButton right = mouse.new rightNextButton(ranking, mouse.rightNextBasicImage, mouse.rightNextEnteredImage);
+		MouseListener.leftNextButton left = mouse.new leftNextButton(ranking, mouse.leftNextBasicImage, mouse.leftNextEnteredImage);
+		
+		
 		// 오른쪽 버튼
 		rightNextBut.setBorderPainted(false);
 		rightNextBut.setContentAreaFilled(false);
 		rightNextBut.setFocusPainted(false);
-		rightNextBut.addMouseListener(mouse.new NextButton(ranking, mouse.rightNextBasicImage, mouse.rightNextEnteredImage));
+		rightNextBut.addMouseListener(right);
 		rightNextBut.setVisible(true);
 		Main.burgermi.game.add(rightNextBut);
 		
@@ -102,7 +104,7 @@ public class Ranking {
 		leftNextBut.setBorderPainted(false);
 		leftNextBut.setContentAreaFilled(false);
 		leftNextBut.setFocusPainted(false);
-		leftNextBut.addMouseListener(mouse.new NextButton(ranking, mouse.leftNextBasicImage, mouse.leftNextEnteredImage));
+		leftNextBut.addMouseListener(left);
 		leftNextBut.setVisible(false);
 		Main.burgermi.game.add(leftNextBut);
 	}

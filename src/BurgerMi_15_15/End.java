@@ -6,8 +6,6 @@ import java.util.LinkedList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-import BurgerMi_15_15.MouseListener.NextButton;
-
 public class End {
 
 	KeyListener keyListener = Main.burgermi.game.keyListener;

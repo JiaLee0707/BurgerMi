@@ -23,6 +23,8 @@ public class MouseListener {
 	ImageIcon leftNextEnteredImage = new ImageIcon("src/images/leftArrow2.png");
 	
 	Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
+	
+	int nextI;
 
 	class Listener extends MouseAdapter {
 		String panel;
@@ -75,21 +77,18 @@ public class MouseListener {
 		}
 	}
 	
-	class NextButton extends MouseAdapter {
+	class rightNextButton extends MouseAdapter {
 //		String panel;
 		Ranking ranking;
 		ImageIcon Basic;
 		ImageIcon Entered;
 		
-		int nextI;
-		
-		public NextButton(Ranking ranking, ImageIcon BasicImageIcon, ImageIcon EnteredImageIcon) {
+		public rightNextButton(Ranking ranking, ImageIcon BasicImageIcon, ImageIcon EnteredImageIcon) {
 			this.ranking = ranking;
 			Basic = BasicImageIcon;
 			Entered = EnteredImageIcon;
 			
 			nextI = ranking.getI();
-			ranking.setI(nextI);
 		}
 		
 		// 기본버튼
@@ -105,7 +104,7 @@ public class MouseListener {
 			JButton button = (JButton) e.getSource();
 			button.setIcon(Entered);
 			
-			if (Entered.equals(rightNextEnteredImage)) {
+//			if (Entered.equals(rightNextEnteredImage)) {
 //				nextI++;
 				for (int i = 0; i < ranking.n; i++, nextI++) {
 					int x = 320;
@@ -132,9 +131,91 @@ public class MouseListener {
 						}
 					}
 				}
+//			}
+//			else if (Entered.equals(leftNextEnteredImage)) {
+//				nextI = nextI - 5;
+//				for (int i = 0; i < ranking.n; i++, nextI++) {
+//					int x = 320;
+////					System.out.println(ranking.get(i)[2]);
+//					
+//					// 데이터 갯수(rankingList) 갯수 화면에 나타낼 갯수보다 적을 때
+//					// 이번에 화면 출력하는 갯수와 데이터 사이즈와 같으면 break; 
+//					if (i == ranking.rankingList.size() || nextI == ranking.rankingList.size()) {
+//						for (i = i; i < ranking.n; i++) {
+//							for (int j = 0; j < ranking.rankLable[i].length; j++) {
+//								ranking.rankLable[i][j].setText("");
+//							}
+//						}
+//						break;
+//					}
+//					
+//					for (int j = 0; j < ranking.rankLable[i].length; j++) {
+//						ranking.rankLable[i][j].setText(ranking.rankingList.get(nextI)[j]);
+//						ranking.rankLable[i][j].setFont(ranking.font2);
+//						if (ranking.rankingList.get(i)[1].equals(ranking.db.name)
+//								&& ranking.rankingList.get(i)[2].equals(Integer.toString(Main.burgermi.game.score.score))) {
+//							System.out.println("동일");
+//							ranking.rankLable[i][j].setFont(ranking.font1);
+//						}
+//					}
+//				}
+//			}
+			
+			
+			Music Button = new Music("buttonPressedMusic.mp3", false);
+			Button.start();			
+			if(nextI > 5) {
+				ranking.leftNextBut.setVisible(true);
+			} else {
+				ranking.leftNextBut.setVisible(false);
 			}
-			else if (Entered.equals(leftNextEnteredImage)) {
-				nextI = nextI - 5;
+			
+			Main.burgermi.game.getParent().repaint();
+		}
+		
+		// 버튼 위에 올리면
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			JButton button = (JButton) e.getSource();
+			button.setIcon(Entered);
+			button.setCursor(cursor);
+			
+			Music Button = new Music("buttonEnteredMusic.mp3", false);
+			Button.start();
+			
+		}
+	}
+	
+	class leftNextButton extends MouseAdapter {
+//		String panel;
+		Ranking ranking;
+		ImageIcon Basic;
+		ImageIcon Entered;
+		
+		public leftNextButton(Ranking ranking, ImageIcon BasicImageIcon, ImageIcon EnteredImageIcon) {
+			this.ranking = ranking;
+			Basic = BasicImageIcon;
+			Entered = EnteredImageIcon;
+			
+			nextI = ranking.getI();
+			ranking.setI(nextI);
+		}
+		
+		// 기본버튼
+		@Override
+		public void mouseExited(MouseEvent e) {
+			JButton button = (JButton) e.getSource();
+			button.setIcon(Basic);
+		}
+		
+		// 클릭버튼
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			JButton button = (JButton) e.getSource();
+			button.setIcon(Entered);
+			
+//			if (Entered.equals(leftNextEnteredImage)) {
+				nextI = nextI - 10;
 				for (int i = 0; i < ranking.n; i++, nextI++) {
 					int x = 320;
 //					System.out.println(ranking.get(i)[2]);
@@ -160,7 +241,7 @@ public class MouseListener {
 						}
 					}
 				}
-			}
+//			}
 			
 			
 			Music Button = new Music("buttonPressedMusic.mp3", false);
@@ -169,6 +250,11 @@ public class MouseListener {
 				ranking.leftNextBut.setVisible(true);
 			} else {
 				ranking.leftNextBut.setVisible(false);
+			}
+			if(nextI == ranking.rankingList.size()) {
+				ranking.rightNextBut.setVisible(false);
+			} else {
+				ranking.rightNextBut.setVisible(true);
 			}
 			
 			Main.burgermi.game.getParent().repaint();
