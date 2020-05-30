@@ -43,7 +43,9 @@ public class Order {
 			level = 7;
 		} else if(Main.burgermi.game.score.score < 400) {
 			level = 8;
-		}
+		} else if(Main.burgermi.game.score.score < 500) {
+			level = 9;
+		} 
 		
 		orderBurgerArray = new int[level];
 		int orderBurger = 0, i = 0, random = 6; // 주문 버거

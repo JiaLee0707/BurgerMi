@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 public class MouseListener {
 	ImageIcon StartBasicImage = new ImageIcon("src/images/startButtonBasic.png");
@@ -137,6 +138,12 @@ public class MouseListener {
 				ranking.rightNextBut.setVisible(true);
 			}
 
+			if (nextI <= 5) {
+				ranking.leftNextBut.setVisible(false);
+			} else {
+				ranking.leftNextBut.setVisible(true);
+			}
+
 			Main.burgermi.game.getParent().repaint();
 		}
 
@@ -181,7 +188,6 @@ public class MouseListener {
 			JButton button = (JButton) e.getSource();
 			button.setIcon(Entered);
 
-//			if (Entered.equals(leftNextEnteredImage)) {
 			nextI = nextI - 10;
 			for (int i = 0; i < ranking.n; i++, nextI++) {
 				int x = 320;
@@ -208,10 +214,16 @@ public class MouseListener {
 					}
 				}
 			}
-//			}
 
 			Music Button = new Music("buttonPressedMusic.mp3", false);
 			Button.start();
+			
+			if (nextI >= ranking.rankingList.size()) {
+				ranking.rightNextBut.setVisible(false);
+			} else {
+				ranking.rightNextBut.setVisible(true);
+			}
+			
 			if (nextI <= 5) {
 				ranking.leftNextBut.setVisible(false);
 			} else {
