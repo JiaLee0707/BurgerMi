@@ -1,4 +1,4 @@
-package BurgerMi_15_15;
+package BurgerMi_ITShow;
 
 import java.awt.Graphics;
 import java.awt.Image;
@@ -17,7 +17,7 @@ public class Game extends JPanel {
 	public Timer timer;
 
 	// 게임화면
-	private Image ImageGame = new ImageIcon("src/images/GameBackground.png").getImage();
+	private Image ImageGame = new ImageIcon("src/images/BurgerMi1.png").getImage();
 	private Image ImageRules = new ImageIcon("src/images/GameRules.png").getImage();
 	public Image ImageBackground;
 
