@@ -9,7 +9,7 @@ public class Score {
 	Order order;
 	Burger burger;
 
-	int score = 400;
+	int score = 0;
 	int scoreArray[] = { 10, 20, -5 };
 	public JLabel scoreLabel = new JLabel(score + "점");
 	Music musicOX;

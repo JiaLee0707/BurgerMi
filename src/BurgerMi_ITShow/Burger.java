@@ -8,7 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 public class Burger {
-
+	
 	// 만들때 사용하는 버거
 	private Image belowBreadImage = new ImageIcon("src/images/아래빵.png").getImage();
 	private Image topBreadImage = new ImageIcon("src/images/윗빵.png").getImage();
@@ -18,6 +18,24 @@ public class Burger {
 	private Image cheeseImage = new ImageIcon("src/images/치즈.png").getImage();
 	public Image[] MakeBurgerImageArray = { cheeseImage, pattyImage, tomatoImage, lettuceImage, topBreadImage,
 			belowBreadImage };
+	
+	// 빵
+	Image RtopBreadImage = topBreadImage.getScaledInstance(70, 60, java.awt.Image.SCALE_SMOOTH);
+	Image RbelowBreadImage = belowBreadImage.getScaledInstance(70, 60, java.awt.Image.SCALE_SMOOTH);
+	
+	public Image[] RBreadArray = { RtopBreadImage, RbelowBreadImage };
+	
+	// 속재료
+	Image RlettuceImage = lettuceImage.getScaledInstance(110, 80, java.awt.Image.SCALE_SMOOTH);
+	Image RtomatoImage = tomatoImage.getScaledInstance(110, 80, java.awt.Image.SCALE_SMOOTH);
+	Image RpattyImage = pattyImage.getScaledInstance(110, 80, java.awt.Image.SCALE_SMOOTH);
+	Image RcheeseImage = cheeseImage.getScaledInstance(110, 80, java.awt.Image.SCALE_SMOOTH);
+	
+	public Image[] RImageArray = { RcheeseImage, RpattyImage, RtomatoImage, RlettuceImage };
+
+	// 재료대 음식
+	public Image[] IngredientsImage;// = RImageArray;
+	
 
 	public LinkedList<Integer> MakeBurgerIntArray = new LinkedList<Integer>(); // 만드는 버거 int
 //	public LinkedList<Object> MakeBurgerObjectArray = new LinkedList<Object>(); // 만드는 버거 이미지, 위치
@@ -28,8 +46,25 @@ public class Burger {
 
 	boolean key = false;
 
-	public void Burger(int m) {
+	public void Ingredients(int ingr) {
 		key = true;
+		switch (ingr) {
+		case 1:
+			//for(int i=0; i<RImageArray.length; i++) {
+				IngredientsImage = RBreadArray;
+			//}
+			break;
+		case 2:
+			//for(int i=0; i<RImageArray.length; i++) {
+				IngredientsImage = RImageArray;
+			//}
+			break;
+		default:
+			break;
+		}
+	}
+	
+	public void Burger(int m) {
 
 		Ingredient = new LinkedList<Object>();
 		Ingredient.add(MakeBurgerImageArray[m]);

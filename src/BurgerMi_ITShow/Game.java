@@ -17,7 +17,7 @@ public class Game extends JPanel {
 	public Timer timer;
 
 	// 게임화면
-	private Image ImageGame = new ImageIcon("src/images/BurgerMi1.png").getImage();
+	private Image ImageGame = new ImageIcon("src/images/gameBackground1.png").getImage();
 	private Image ImageRules = new ImageIcon("src/images/GameRules.png").getImage();
 	public Image ImageBackground;
 
@@ -119,6 +119,21 @@ public class Game extends JPanel {
 		int Makey = 0;
 
 		if (start) {
+			
+			if(keyListener.burger.key) {
+			// 재료 놓는 곳
+			int z = 40;
+			int zz = 480;
+			for(int i=0; i<keyListener.burger.IngredientsImage.length; i++, z+=110) {
+				if(i==3) {
+					zz+=80;
+					z = 40;
+				}
+				g.drawImage(keyListener.burger.IngredientsImage[i], z, zz, this);
+			}
+			// g.drawImage(keyListener.burger.RbelowBreadImage, 19, 19, this);
+			}
+			
 			// 손님 그리기
 			g.drawImage(order.thisGuest, 553, order.y, this);
 
