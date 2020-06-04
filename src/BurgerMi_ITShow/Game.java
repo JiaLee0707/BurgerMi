@@ -17,7 +17,7 @@ public class Game extends JPanel {
 	public Timer timer;
 
 	// 게임화면
-	private Image ImageGame = new ImageIcon("src/images/gameBackground1.png").getImage();
+	private Image ImageGame = new ImageIcon("src/images/BurgerMi_배경1.png").getImage();
 	private Image ImageRules = new ImageIcon("src/images/GameRules.png").getImage();
 	public Image ImageBackground;
 
@@ -91,7 +91,6 @@ public class Game extends JPanel {
 
 	public void ReGame() {
 		Order.Guest guest = order.new Guest();
-		order.Order();
 		for (int i = 0; i < order.orderBurgerArray.length; i++) {
 			order.Burger(i);
 		}
@@ -119,19 +118,17 @@ public class Game extends JPanel {
 		int Makey = 0;
 
 		if (start) {
-			
-			if(keyListener.burger.key) {
-			// 재료 놓는 곳
-			int z = 40;
-			int zz = 480;
-			for(int i=0; i<keyListener.burger.IngredientsImage.length; i++, z+=110) {
-				if(i==3) {
-					zz+=80;
-					z = 40;
+			// 재료대 음식
+			if(keyListener.make.key) {
+				int z = 10;
+				int zz = 400;
+				for(int i=0; i<keyListener.make.IngredientsImage.length; i++, z+=130) {
+					if(i==3) {
+						zz+=100;
+						z = 10;
+					}
+					g.drawImage(keyListener.make.IngredientsImage[i], z, zz, this);
 				}
-				g.drawImage(keyListener.burger.IngredientsImage[i], z, zz, this);
-			}
-			// g.drawImage(keyListener.burger.RbelowBreadImage, 19, 19, this);
 			}
 			
 			// 손님 그리기
@@ -160,23 +157,13 @@ public class Game extends JPanel {
 
 		}
 
-		// 만든 버거
-//		for (int i = 0; i < keyListener.burger.MakeBurgerObjectArray.size(); i++) {
-//			MakeburgerIngredient = (Image) ((List<Object>) keyListener.burger.MakeBurgerObjectArray.get(i)).get(0);
-//			Makex = (int) ((List<Object>) keyListener.burger.MakeBurgerObjectArray.get(i)).get(1);
-//			Makey = (int) ((List<Object>) keyListener.burger.MakeBurgerObjectArray.get(i)).get(2);
-//			g.drawImage(MakeburgerIngredient, Makex, Makey, this);
-//		}
-
 		// 만드는 버거
-//		if (keyListener.burger.key) {
-		for (int i = 0; i < keyListener.burger.burgerIngredient.size(); i++) {
-			MakeburgerIngredient = (Image) ((List<Object>) keyListener.burger.burgerIngredient.get(i)).get(0);
-			Makex = (int) ((List<Object>) keyListener.burger.burgerIngredient.get(i)).get(1);
-			Makey = (int) keyListener.burger.i.get(i);
+		for (int i = 0; i < keyListener.make.burgerIngredient.size(); i++) {
+			MakeburgerIngredient = (Image) ((List<Object>) keyListener.make.burgerIngredient.get(i)).get(0);
+			Makex = (int) ((List<Object>) keyListener.make.burgerIngredient.get(i)).get(1);
+			Makey = (int) keyListener.make.i.get(i);
 			g.drawImage(MakeburgerIngredient, Makex, Makey, this);
 		}
-//		}
 
 	}
 

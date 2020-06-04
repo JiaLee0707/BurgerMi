@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 
 public class Score {
 	Order order;
-	Burger burger;
+	Make burger;
 
 	int score = 0;
 	int scoreArray[] = { 10, 20, -5 };

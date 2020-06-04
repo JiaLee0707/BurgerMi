@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 public class End {
 
 	KeyListener keyListener = Main.burgermi.game.keyListener;
-	Burger burger = Main.burgermi.game.keyListener.burger;
+	Make burger = Main.burgermi.game.keyListener.make;
 
 	// 버튼
 	MouseListener mouse = new MouseListener();

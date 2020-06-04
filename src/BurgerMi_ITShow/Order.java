@@ -32,85 +32,47 @@ public class Order {
 	public List<Object> burgerIngredient;
 
 	int[] orderBurgerArray;
-	int who, y, level;
-
-	public void Order() {
-		if(Main.burgermi.game.score.score < 100) {
-			level = 5;
-		} else if(Main.burgermi.game.score.score < 200) {
-			level = 6;
-		} else if(Main.burgermi.game.score.score < 300) {
-			level = 7;
-		} else if(Main.burgermi.game.score.score < 400) {
-			level = 8;
-		} else if(Main.burgermi.game.score.score < 500) {
-			level = 9;
-		} 
-		
-		orderBurgerArray = new int[level];
-		int orderBurger = 0, i = 0, random = 6; // 주문 버거
-
-		// 주문받은 버거
-		if (who != 4) { // 진상 손님이 아니라면
-			System.out.println("진상X");
-			i = 1;
-			random = 4;
-			orderBurgerArray[0] = 5;
-			orderBurgerArray[level-1] = 4;
-		}
-
-		// 주문 랜덤
-		for (int j = i; j < level - i; j++) {
-			orderBurger = (int) (Math.random() * random);
-			orderBurgerArray[j] = orderBurger;
-		}
-	}
+	int who, menu, y;
 
 	public void Burger(int i) {
 		burgerIngredient = new LinkedList<Object>();
 		// 햄버거 재료 위치 조정
-		int y = (160-(level*-1)) - 25 * i;
+		int y = 160 - 25 * i;
 		burgerIngredient.add(orderBurgerImageArray[orderBurgerArray[i]]);
 		switch (orderBurgerArray[i]) {
-		case 0: // 치즈
+		case 0:
 			burgerIngredient.add(130);
 			burgerIngredient.add(y + 5);
-//			System.out.println("치즈");
 			break;
-		case 1: // 패티
+		case 1:
 			burgerIngredient.add(135);
 			burgerIngredient.add(y + 27);
-//			System.out.println("패티");
 			break;
-		case 2: // 토마토
+		case 2:
 			burgerIngredient.add(146);
 			burgerIngredient.add(y + 28);
-//			System.out.println("토마토");
 			break;
-		case 3: // 채소
+		case 3:
 			burgerIngredient.add(131);
 			burgerIngredient.add(y - 10);
-//			System.out.println("채소");
 			break;
-		case 4: // 윗빵
+		case 4:
 			burgerIngredient.add(137);
 			burgerIngredient.add(y - 20);
-//			System.out.println("윗빵");
 			break;
-		case 5: // 아랫빵
+		case 5:
 			burgerIngredient.add(153);
 			burgerIngredient.add(y);
-//			System.out.println("아랫빵");
 			break;
 		}
 		orderBurger.add((List<Object>) burgerIngredient);
-//		System.out.println(orderBurger.get(i));
 
 	}
 
 	class Guest extends Thread {
 		public Guest() {
 			who = (int) (Math.random() * 6); // 손님 랜덤
+			menu = (int) (Math.random() * 6); // 주문 랜덤
 			thisGuest = guestArray[who];
 			y = 100; // 손님 y좌표
 		}
