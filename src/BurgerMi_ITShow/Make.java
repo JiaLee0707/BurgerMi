@@ -16,8 +16,10 @@ public class Make {
 	private Image belowBreadSesameImage = new ImageIcon("src/images/breadBelowSesame.png").getImage();
 	private Image topBreadImage = new ImageIcon("src/images/breadTop.png").getImage();
 	private Image belowBreadImage = new ImageIcon("src/images/breadBelow.png").getImage();
-	public Image[] makeBreadImageArray = { topBreadSesameImage, belowBreadSesameImage, topBreadImage, belowBreadImage };
-
+	private Image MoringTopBreadImage = new ImageIcon("src/images/MoringTopBread.png").getImage();
+	private Image MoringBelowBreadImage = new ImageIcon("src/images/MoringBelowBread.png").getImage();
+	public Image[] makeBreadImageArray = { topBreadSesameImage, topBreadImage, MoringTopBreadImage, 
+			belowBreadSesameImage, belowBreadImage, MoringBelowBreadImage };
 	// 속재료
 	private Image lettuceImage = new ImageIcon("src/images/lettuce.png").getImage();
 	private Image tomatoImage = new ImageIcon("src/images/tomato.png").getImage();
@@ -27,17 +29,24 @@ public class Make {
 	private Image onionImage = new ImageIcon("src/images/onion.png").getImage();
 	public Image[] makeIngredientImageArray = { lettuceImage, tomatoImage, pattyImage, cheeseImage, eggImage,
 			onionImage };
+	// 사이드메뉴
+	private Image CheeseStick = new ImageIcon("src/images/CheeseStick.png").getImage();
+	private Image ChickenNuggets = new ImageIcon("src/images/ChickenNuggets.png").getImage();
+	private Image FrenchFries = new ImageIcon("src/images/FrenchFries.png").getImage();
+	private Image Icecream = new ImageIcon("src/images/Icecream.png").getImage();
+	
 
 	// 재료대 음식
 	public Image[] IngredientsImage;
 	// 빵
-	private Image smalltopBreadSesameImage = new ImageIcon("src/images/smallbreadTopSesame.png").getImage();
-	private Image smallbelowBreadSesameImage = new ImageIcon("src/images/smallbreadBelowSesame.png").getImage();
-	private Image smalltopBreadImage = new ImageIcon("src/images/smallbreadTop.png").getImage();
-	private Image smallbelowBreadImage = new ImageIcon("src/images/smallbreadBelow.png").getImage();
-	public Image[] ingrdientsBreadImageArray = { smalltopBreadSesameImage, smallbelowBreadSesameImage,
-			smalltopBreadImage, smallbelowBreadImage };
-
+	private Image smallTopBreadSesameImage = new ImageIcon("src/images/smallBreadTopSesame.png").getImage();
+	private Image smallBelowBreadSesameImage = new ImageIcon("src/images/smallBreadBelowSesame.png").getImage();
+	private Image smallTopBreadImage = new ImageIcon("src/images/smallBreadTop.png").getImage();
+	private Image smallBelowBreadImage = new ImageIcon("src/images/smallBreadBelow.png").getImage();
+	private Image smallMorinTopBreadImage = new ImageIcon("src/images/smallMoringBreadTop.png").getImage();
+	private Image smallMorinBelowBreadImage = new ImageIcon("src/images/smallMoringBreadBelow.png").getImage();
+	public Image[] ingrdientsBreadImageArray = { smallTopBreadSesameImage, smallTopBreadImage,
+			smallMorinTopBreadImage, smallBelowBreadSesameImage, smallBelowBreadImage, smallMorinBelowBreadImage };
 	// 속재료
 	private Image smalllettuceImage = new ImageIcon("src/images/smalllettuce.png").getImage();
 	private Image smalltomatoImage = new ImageIcon("src/images/smalltomato.png").getImage();
@@ -47,6 +56,7 @@ public class Make {
 	private Image smallonionImage = new ImageIcon("src/images/smallonion.png").getImage();
 	public Image[] IngredientImageArray = { smalllettuceImage, smalltomatoImage, smallpattyImage, smallcheeseImage,
 			smalleggImage, smallonionImage };
+	
 
 	public LinkedList<Integer> MakeBurgerIntArray = new LinkedList<Integer>(); // 만드는 버거 int
 	public LinkedList<Object> burgerIngredient = new LinkedList<Object>(); // 내려오는 버거

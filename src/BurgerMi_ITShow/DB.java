@@ -30,6 +30,35 @@ public class DB {
 		}
 	}
 
+	public LinkedList RandomOrder(int i) {
+		LinkedList<String[]> menu = new LinkedList<String[]>();
+		try {
+			String sql = "SELECT * FROM menu ORDER BY RAND() LIMIT ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, Integer.toString(i));
+			ResultSet srs = pstmt.executeQuery();
+			
+			while (srs.next()) {
+				String[] rank = new String[4];
+				rank[0] = srs.getString("name");
+				rank[1] = srs.getString("ingredients");
+				rank[2] = srs.getString("price");
+				rank[3] = srs.getString("sort");
+				System.out.print(srs.getString("name") + " ");
+				System.out.print(srs.getString("ingredients") + " ");
+				System.out.print(srs.getString("price") + " ");
+				System.out.print(srs.getString("sort") + " ");
+				System.out.println();
+				menu.add(rank);
+			}
+		}  catch (SQLException ex) {
+			System.out.println("RandomOrder SQLException:" + ex);
+		} catch (Exception ex) {
+			System.out.println("RandomOrder Exception:" + ex);
+		}
+		return menu;
+	}
+	
 	public LinkedList Select() {
 //		Ranking ranking = new Ranking();
 		LinkedList<String[]> rankList = new LinkedList<String[]>();

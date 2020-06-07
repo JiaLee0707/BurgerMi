@@ -10,7 +10,8 @@ import javax.swing.JPanel;
 
 public class Game extends JPanel {
 
-	public Order order = new Order();
+	public DB db = new DB();
+	public Order order = new Order(db);
 //	private Order.Guest guest = order.new Guest();
 	public Score score;
 	public KeyListener keyListener = new KeyListener();
@@ -80,7 +81,7 @@ public class Game extends JPanel {
 		replayBtn.setVisible(false);
 
 		score = new Score();
-		timer = new Timer();
+		//timer = new Timer();
 		keyListener.KeyListener();
 
 		ReGame();
@@ -91,8 +92,8 @@ public class Game extends JPanel {
 
 	public void ReGame() {
 		Order.Guest guest = order.new Guest();
-		for (int i = 0; i < order.orderBurgerArray.length; i++) {
-			order.Burger(i);
+		for (int i = 0; i < order.orderSheet.length; i++) {
+			order.Order(i);
 		}
 		guest.Guest();
 

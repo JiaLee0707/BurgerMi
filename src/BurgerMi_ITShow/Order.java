@@ -6,6 +6,7 @@ import java.util.*;
 import javax.swing.ImageIcon;
 
 public class Order {
+	DB db;
 	Random random = new Random();
 
 	// 손님
@@ -18,28 +19,61 @@ public class Order {
 	private Image[] guestArray = { guest1, guest2, guest3, guest4, guest5, guest6 };
 	public Image thisGuest = null;
 
-	// 주문받은 버거
-	private Image orderbelowBreadImage = new ImageIcon("src/images/Order아래빵.png").getImage(); // 5
-	private Image ordertopBreadImage = new ImageIcon("src/images/Order윗빵.png").getImage(); // 4
-	private Image orderlettuceImage = new ImageIcon("src/images/Order채소.png").getImage(); // 3
-	private Image ordertomatoImage = new ImageIcon("src/images/Order토마토.png").getImage(); // 2
-	private Image orderpattyImage = new ImageIcon("src/images/Order패티.png").getImage(); // 1
-	private Image ordercheeseImage = new ImageIcon("src/images/Order치즈.png").getImage(); // 0
-	public Image[] orderBurgerImageArray = { ordercheeseImage, orderpattyImage, ordertomatoImage, orderlettuceImage,
-			ordertopBreadImage, orderbelowBreadImage };
+	// 주문
+	// 빵
+	private Image OderTopSesameBread = new ImageIcon("src/images/OderTopSesameBread.png").getImage();
+	private Image OrderBelowSesamebread = new ImageIcon("src/images/OrderBelowSesamebread.png").getImage();	
+	private Image OrderTopBread = new ImageIcon("src/images/OrderTopBread.png").getImage();
+	private Image OrderBelowBread = new ImageIcon("src/images/OrderBelowBread.png").getImage();
+	private Image OrderMoringTopBread = new ImageIcon("src/images/OrderMoringTopBread.png").getImage();
+	private Image OrderMoringBelowBread = new ImageIcon("src/images/OrderMoringBelowBread.png").getImage();
+	// 속재료
+	private Image OrderCheese = new ImageIcon("src/images/OrderCheese.png").getImage();
+	private Image OrderPatty = new ImageIcon("src/images/OrderPatty.png").getImage();
+	private Image OrderTomato = new ImageIcon("src/images/OrderTomato.png").getImage();
+	private Image OrderLettuce = new ImageIcon("src/images/OrderLettuce.png").getImage();
+	private Image OrderEgg = new ImageIcon("src/images/OrderEgg.png").getImage();
+	private Image OrderOnion = new ImageIcon("src/images/OrderOnion.png").getImage();
+	// 사이드메뉴
+	private Image CheeseStick = new ImageIcon("src/images/CheeseStick.png").getImage();
+	private Image ChickenNuggets = new ImageIcon("src/images/ChickenNuggets.png").getImage();
+	private Image FrenchFries = new ImageIcon("src/images/FrenchFries.png").getImage();
+	private Image Icecream = new ImageIcon("src/images/Icecream.png").getImage();
+	// 음료
+	private Image Coke = new ImageIcon("src/images/Coke.png").getImage();
+	private Image Sprite = new ImageIcon("src/images/Sprite.png").getImage();
+	private Image Fanta = new ImageIcon("src/images/Fanta.png").getImage();
+	private Image Coffee = new ImageIcon("src/images/Coffee.png").getImage();
+	private Image orangeJuice = new ImageIcon("src/images/orangeJuice.png").getImage();
+	
+	public Image[] orderImageArray =
+		{ OderTopSesameBread, OrderBelowSesamebread, OrderTopBread, 
+		  OrderBelowBread, OrderMoringTopBread, OrderMoringBelowBread, // 빵
+		  OrderCheese, OrderPatty, OrderTomato, OrderLettuce,	OrderEgg, OrderOnion, // 속재료
+		  CheeseStick, ChickenNuggets, FrenchFries, Icecream, // 사이드 메뉴
+		  Coke, Sprite, Fanta, Coffee, orangeJuice // 음료
+		};
 
-	public List<Object> orderBurger = new LinkedList<Object>();
-	public List<Object> burgerIngredient;
+	
+	public List<Object> orderBurger = new LinkedList<Object>(); //주문 버거 이미지, 좌표
+	public List<Object> burgerIngredient; // 햄버거 재료별 임시 이미지, 좌표
 
-	int[] orderBurgerArray;
-	int who, menu, y;
+	int[] orderBurgerArray; // 햄버거 재료 int형
+	int who, y;
+	LinkedList menu;
+	int drink, side;
+	int[] orderSheet = new int[3];
 
-	public void Burger(int i) {
+	public Order(DB db) {
+		this.db = db;
+	}
+	
+	public void Order(int i) {
 		burgerIngredient = new LinkedList<Object>();
 		// 햄버거 재료 위치 조정
 		int y = 160 - 25 * i;
-		burgerIngredient.add(orderBurgerImageArray[orderBurgerArray[i]]);
-		switch (orderBurgerArray[i]) {
+		burgerIngredient.add(orderImageArray[orderSheet[i]]);
+		switch (orderSheet[i]) {
 		case 0:
 			burgerIngredient.add(130);
 			burgerIngredient.add(y + 5);
@@ -72,7 +106,22 @@ public class Order {
 	class Guest extends Thread {
 		public Guest() {
 			who = (int) (Math.random() * 6); // 손님 랜덤
-			menu = (int) (Math.random() * 6); // 주문 랜덤
+			menu = db.RandomOrder(1); // 주문 랜덤
+			
+			if(menu.get(3).equals("단품")) { // 단품일 때
+				int cnt = (int) (Math.random() * 3); // 주문 갯수
+				// 단품 중 주문 갯수만큼 랜덤
+				LinkedList order = db.RandomOrder(cnt);
+				orderSheet[i] = order;
+			} else { // 세트일 때
+				menu = 5; // 1.음료 2.사이드메뉴
+				// 음료, 사이드메뉴 랜덤
+				for(int i=0; i<2; i++, side--) {
+					int order = (int) (Math.random() * menu);
+					orderSheet[i] = order;
+				}
+			}
+			
 			thisGuest = guestArray[who];
 			y = 100; // 손님 y좌표
 		}
