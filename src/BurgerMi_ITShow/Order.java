@@ -55,8 +55,8 @@ public class Order {
 		};
 
 	
-	public List<Object> orderBurger = new LinkedList<Object>(); //주문 버거 이미지, 좌표
-	public List<Object> burgerIngredient; // 햄버거 재료별 임시 이미지, 좌표
+	public List<Object> orderBurger = new LinkedList<Object>(); //주문 이미지, 좌표
+	public List<Object> Ingredient; // 주문 재료별 임시 이미지, 좌표
 
 	int[] orderBurgerArray; // 햄버거 재료 int형
 	int who, y;
@@ -67,6 +67,16 @@ public class Order {
 	public Order(DB db) {
 		this.db = db;
 	}
+	
+	public void Order() {
+		Ingredient = new LinkedList<Object>();
+		if(orderSheet.size()!=1) {
+			
+		} else {
+			
+		}
+	}
+	
 	
 //	public void Order(int i) {
 //		burgerIngredient = new LinkedList<Object>();
@@ -107,6 +117,14 @@ public class Order {
 	class Guest extends Thread {
 		public Guest() {
 			who = (int) (Math.random() * 6); // 손님 랜덤
+			
+			thisGuest = guestArray[who];
+			y = 100; // 손님 y좌표
+		
+			order();	// 주문 랜덤 메소드 호출
+		}
+		
+		public void order() {
 			menu = db.RandomOrder(1); // 주문 랜덤
 			orderSheet = menu;
 			
@@ -115,18 +133,34 @@ public class Order {
 				// 단품 중 주문 갯수만큼 랜덤
 				System.out.println("주문 갯수 : " + cnt);
 				if(cnt!=1)  {
-					menu = db.RandomOrder(cnt);
-				}
-				for(int i=1; i<cnt; i++) {
-					orderSheet.add((String[]) menu.get(i));
+					menu = db.RandomOrder(cnt-1);
+					String[] m = null;
+					for(int i=0; i<cnt-1; i++) {
+//						System.out.println((String[]) menu.get(i));
+//						for(int j=0; j<5; j++) {
+							m = (String[])menu.get(i);
+//						}
+						orderSheet.add(m);							
+					}
 				}
 			} else { // 세트일 때
 				// 1.음료 2.사이드메뉴
 				// 음료, 사이드메뉴 랜덤
-				menu = db.RandomOrder(2);
-				for(int i=0; i<menu.size(); i++) {
-					orderSheet.add((String[]) menu.get(i));
+				String[] kind = { "음료", "사이드 메뉴" };
+				for(int i=0; i<2; i++) {
+					menu = db.RandomOrder(1, kind[i]);
+//					if(((String[])menu.get(i))[4].equals("음료")) {
+//					System.out.println("바꾸기 전 " + orderSheet.get(i)[1]);
+					String changeMenu = (orderSheet.get(0)[1]).replace(kind[i], ((String[])menu.get(0))[0]);
+//					System.out.println(changeMenu);
+					String[] change = new String[4];
+					change[0] = orderSheet.get(0)[0];
+					change[1] = changeMenu;
+					change[2] = orderSheet.get(0)[2];
+					change[3] = orderSheet.get(0)[3];
+					orderSheet.set(0, change);
 				}
+				
 			}
 			System.out.print("총 주문은 : ");
 			for(int i=0; i<orderSheet.size(); i++) {
@@ -134,9 +168,6 @@ public class Order {
 					System.out.println(orderSheet.get(i)[j]);
 				}
 			}
-			
-			thisGuest = guestArray[who];
-			y = 100; // 손님 y좌표
 		}
 
 		public void Guest() {

@@ -70,7 +70,7 @@ public class Score {
 			Throw th = new Throw();
 			th.start();
 		} else {
-			Main.burgermi.game.order = new Order();
+//			Main.burgermi.game.order = new Order();
 			Main.burgermi.game.ReGame();
 		}
 //		Main.burgermi.game.revalidate();

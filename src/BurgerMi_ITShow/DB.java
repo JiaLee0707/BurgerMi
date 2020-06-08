@@ -33,16 +33,11 @@ public class DB {
 	public LinkedList RandomOrder(int i) {
 		LinkedList<Object[]> menu = new LinkedList<Object[]>();
 		try {
-			String sql;
-			if(i<2) {
-				sql = "SELECT * FROM menu ORDER BY RAND() LIMIT ?";
-			} else {
-				sql = "SELECT * FROM menu WHERE name=ANY(SELECT NAME FROM recipes WHERE kind='음료' OR kind='사이드 메뉴')ORDER BY RAND() LIMIT ?";
-			}
+			// 메뉴 전체 랜덤
+			String sql = "SELECT * FROM menu WHERE sort='세트' ORDER BY RAND() LIMIT ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, i);
 			ResultSet srs = pstmt.executeQuery();
-			System.out.println("됨");
 			
 			while (srs.next()) {
 				String[] menu2 = new String[4];
@@ -54,6 +49,42 @@ public class DB {
 				System.out.print(srs.getString("ingredients") + " ");
 				System.out.print(srs.getString("price") + " ");
 				System.out.print(srs.getString("sort") + " ");
+				System.out.println();
+				menu.add(menu2);
+			}
+		}  catch (SQLException ex) {
+			System.out.println("RandomOrder SQLException:" + ex);
+		} catch (Exception ex) {
+			System.out.println("RandomOrder Exception:" + ex);
+		}
+		return menu;
+	}
+	////////////////////////////
+	public LinkedList RandomOrder(int i, String kind) {
+		LinkedList<Object[]> menu = new LinkedList<Object[]>();
+		try {
+			// 음료, 사이드 메뉴 랜덤
+			String sql = "SELECT menu.name, menu.ingredients, menu.price, menu.sort, recipes.kind FROM "
+						+ "menu, recipes WHERE menu.name=recipes.name AND recipes.kind=? "
+						+ "ORDER BY RAND() LIMIT ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, kind);
+			pstmt.setInt(2, i);
+			
+			ResultSet srs = pstmt.executeQuery();
+			
+			while (srs.next()) {
+				String[] menu2 = new String[5];
+				menu2[0] = srs.getString("name");
+				menu2[1] = srs.getString("ingredients");
+				menu2[2] = srs.getString("price");
+				menu2[3] = srs.getString("sort");
+				menu2[4] = srs.getString("kind");
+				System.out.print(srs.getString("name") + " ");
+				System.out.print(srs.getString("ingredients") + " ");
+				System.out.print(srs.getString("price") + " ");
+				System.out.print(srs.getString("sort") + " ");
+				System.out.print(srs.getString("kind") + " ");
 				System.out.println();
 				menu.add(menu2);
 			}
