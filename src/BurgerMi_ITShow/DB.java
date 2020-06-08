@@ -31,25 +31,31 @@ public class DB {
 	}
 
 	public LinkedList RandomOrder(int i) {
-		LinkedList<String[]> menu = new LinkedList<String[]>();
+		LinkedList<Object[]> menu = new LinkedList<Object[]>();
 		try {
-			String sql = "SELECT * FROM menu ORDER BY RAND() LIMIT ?";
+			String sql;
+			if(i<2) {
+				sql = "SELECT * FROM menu ORDER BY RAND() LIMIT ?";
+			} else {
+				sql = "SELECT * FROM menu WHERE name=ANY(SELECT NAME FROM recipes WHERE kind='음료' OR kind='사이드 메뉴')ORDER BY RAND() LIMIT ?";
+			}
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, Integer.toString(i));
+			pstmt.setInt(1, i);
 			ResultSet srs = pstmt.executeQuery();
+			System.out.println("됨");
 			
 			while (srs.next()) {
-				String[] rank = new String[4];
-				rank[0] = srs.getString("name");
-				rank[1] = srs.getString("ingredients");
-				rank[2] = srs.getString("price");
-				rank[3] = srs.getString("sort");
+				String[] menu2 = new String[4];
+				menu2[0] = srs.getString("name");
+				menu2[1] = srs.getString("ingredients");
+				menu2[2] = srs.getString("price");
+				menu2[3] = srs.getString("sort");
 				System.out.print(srs.getString("name") + " ");
 				System.out.print(srs.getString("ingredients") + " ");
 				System.out.print(srs.getString("price") + " ");
 				System.out.print(srs.getString("sort") + " ");
 				System.out.println();
-				menu.add(rank);
+				menu.add(menu2);
 			}
 		}  catch (SQLException ex) {
 			System.out.println("RandomOrder SQLException:" + ex);
@@ -58,6 +64,35 @@ public class DB {
 		}
 		return menu;
 	}
+	
+//	public String[] recipes() {
+//		String[] recipes;
+//		try {
+//			String sql = "SELECT * FROM recipes WHERE ";
+//			pstmt = conn.prepareStatement(sql);
+//			pstmt.setString(1, Integer.toString(i));
+//			ResultSet srs = pstmt.executeQuery();
+//			
+//			while (srs.next()) {
+//				String[] menu2 = new String[4];
+//				menu2[0] = srs.getString("name");
+//				menu2[1] = srs.getString("ingredients");
+//				menu2[2] = srs.getString("price");
+//				menu2[3] = srs.getString("sort");
+//				System.out.print(srs.getString("name") + " ");
+//				System.out.print(srs.getString("ingredients") + " ");
+//				System.out.print(srs.getString("price") + " ");
+//				System.out.print(srs.getString("sort") + " ");
+//				System.out.println();
+//				menu.add(menu2);
+//			}
+//		}  catch (SQLException ex) {
+//			System.out.println("RandomOrder SQLException:" + ex);
+//		} catch (Exception ex) {
+//			System.out.println("RandomOrder Exception:" + ex);
+//		}
+//		return menu;
+//	}
 	
 	public LinkedList Select() {
 //		Ranking ranking = new Ranking();

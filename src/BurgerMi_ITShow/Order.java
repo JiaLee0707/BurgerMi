@@ -62,63 +62,76 @@ public class Order {
 	int who, y;
 	LinkedList menu;
 	int drink, side;
-	int[] orderSheet = new int[3];
+	List<String[]> orderSheet = new LinkedList<String[]>();
 
 	public Order(DB db) {
 		this.db = db;
 	}
 	
-	public void Order(int i) {
-		burgerIngredient = new LinkedList<Object>();
-		// 햄버거 재료 위치 조정
-		int y = 160 - 25 * i;
-		burgerIngredient.add(orderImageArray[orderSheet[i]]);
-		switch (orderSheet[i]) {
-		case 0:
-			burgerIngredient.add(130);
-			burgerIngredient.add(y + 5);
-			break;
-		case 1:
-			burgerIngredient.add(135);
-			burgerIngredient.add(y + 27);
-			break;
-		case 2:
-			burgerIngredient.add(146);
-			burgerIngredient.add(y + 28);
-			break;
-		case 3:
-			burgerIngredient.add(131);
-			burgerIngredient.add(y - 10);
-			break;
-		case 4:
-			burgerIngredient.add(137);
-			burgerIngredient.add(y - 20);
-			break;
-		case 5:
-			burgerIngredient.add(153);
-			burgerIngredient.add(y);
-			break;
-		}
-		orderBurger.add((List<Object>) burgerIngredient);
-
-	}
+//	public void Order(int i) {
+//		burgerIngredient = new LinkedList<Object>();
+//		// 햄버거 재료 위치 조정
+//		int y = 160 - 25 * i;
+//		db.
+//		burgerIngredient.add(orderImageArray[orderSheet[i]]);
+//		switch (orderSheet[i]) {
+//		case 0:
+//			burgerIngredient.add(130);
+//			burgerIngredient.add(y + 5);
+//			break;
+//		case 1:
+//			burgerIngredient.add(135);
+//			burgerIngredient.add(y + 27);
+//			break;
+//		case 2:
+//			burgerIngredient.add(146);
+//			burgerIngredient.add(y + 28);
+//			break;
+//		case 3:
+//			burgerIngredient.add(131);
+//			burgerIngredient.add(y - 10);
+//			break;
+//		case 4:
+//			burgerIngredient.add(137);
+//			burgerIngredient.add(y - 20);
+//			break;
+//		case 5:
+//			burgerIngredient.add(153);
+//			burgerIngredient.add(y);
+//			break;
+//		}
+//		orderBurger.add((List<Object>) burgerIngredient);
+//
+//	}
 
 	class Guest extends Thread {
 		public Guest() {
 			who = (int) (Math.random() * 6); // 손님 랜덤
 			menu = db.RandomOrder(1); // 주문 랜덤
+			orderSheet = menu;
 			
-			if(menu.get(3).equals("단품")) { // 단품일 때
-				int cnt = (int) (Math.random() * 3); // 주문 갯수
+			if(orderSheet.get(0)[3].equals("단품")) { // 단품일 때
+				int cnt = (int) (Math.random() * 2)+1; // 주문 갯수
 				// 단품 중 주문 갯수만큼 랜덤
-				LinkedList order = db.RandomOrder(cnt);
-				orderSheet[i] = order;
+				System.out.println("주문 갯수 : " + cnt);
+				if(cnt!=1)  {
+					menu = db.RandomOrder(cnt);
+				}
+				for(int i=1; i<cnt; i++) {
+					orderSheet.add((String[]) menu.get(i));
+				}
 			} else { // 세트일 때
-				menu = 5; // 1.음료 2.사이드메뉴
+				// 1.음료 2.사이드메뉴
 				// 음료, 사이드메뉴 랜덤
-				for(int i=0; i<2; i++, side--) {
-					int order = (int) (Math.random() * menu);
-					orderSheet[i] = order;
+				menu = db.RandomOrder(2);
+				for(int i=0; i<menu.size(); i++) {
+					orderSheet.add((String[]) menu.get(i));
+				}
+			}
+			System.out.print("총 주문은 : ");
+			for(int i=0; i<orderSheet.size(); i++) {
+				for(int j=0; j<4; j++) {
+					System.out.println(orderSheet.get(i)[j]);
 				}
 			}
 			
