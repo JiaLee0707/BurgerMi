@@ -93,9 +93,9 @@ public class Game extends JPanel {
 	public void ReGame() {
 		Order.Guest guest = order.new Guest();
 //		for (int i = 0; i < order.orderSheet.length; i++) {
-//			order.Order(i);
 //		}
 		guest.Guest();
+		order.Order();
 
 		getParent().repaint();
 	}

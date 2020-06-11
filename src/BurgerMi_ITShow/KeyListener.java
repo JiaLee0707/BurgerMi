@@ -37,22 +37,22 @@ public class KeyListener extends KeyAdapter {
 		// 만들기
 		switch(KeyCode) {
 		case KeyEvent.VK_Q:
-			make.Burger(0);
+			make.Make(0);
 			break;
 		case KeyEvent.VK_W:
-			make.Burger(1);
+			make.Make(1);
 			break;
 		case KeyEvent.VK_E:
-			make.Burger(2);
+			make.Make(2);
 			break;
 		case KeyEvent.VK_A:
-			make.Burger(3);
+			make.Make(3);
 			break;
 		case KeyEvent.VK_S:
-			make.Burger(4);
+			make.Make(4);
 			break;
 		case KeyEvent.VK_D:
-			make.Burger(5);
+			make.Make(5);
 			break;
 		
 			

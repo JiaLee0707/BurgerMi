@@ -54,27 +54,69 @@ public class Order {
 		  Coke, Sprite, Fanta, Coffee, orangeJuice // 음료
 		};
 
+	public HashMap<String, Image> hamMap = new HashMap<String, Image>();
 	
 	public List<Object> orderBurger = new LinkedList<Object>(); //주문 이미지, 좌표
 	public List<Object> Ingredient; // 주문 재료별 임시 이미지, 좌표
 
-	int[] orderBurgerArray; // 햄버거 재료 int형
-	int who, y;
-	LinkedList menu;
-	int drink, side;
-	List<String[]> orderSheet = new LinkedList<String[]>();
+	List<String[]> orderSheet = new LinkedList<String[]>();	// 주문표
+	LinkedList menu; 	// 임시 주문 LinkedList
+	int who, x, y;
 
 	public Order(DB db) {
 		this.db = db;
+		
+		hamMap.put("깨윗빵", OderTopSesameBread);
+		hamMap.put("깨아래빵", OrderBelowSesamebread);
+		hamMap.put("기본윗빵", OrderTopBread);
+		hamMap.put("기본아래빵", OrderBelowBread);
+		hamMap.put("모닝윗빵", OrderMoringTopBread);
+		hamMap.put("모닝아래빵", OrderMoringBelowBread);
+		
+		hamMap.put("치즈", OrderCheese);
+		hamMap.put("패티", OrderPatty);
+		hamMap.put("토마토", OrderTomato);
+		hamMap.put("양상추", OrderLettuce);
+		hamMap.put("계란", OrderEgg);
+		hamMap.put("양파", OrderOnion);
+		
+		hamMap.put("치즈스틱", CheeseStick);
+		hamMap.put("치킨너겟", ChickenNuggets);
+		hamMap.put("감자튀김", FrenchFries);
+		hamMap.put("아이스크림", Icecream);
+		
+		hamMap.put("콜라", Coke);
+		hamMap.put("사이다", Sprite);
+		hamMap.put("환타", Fanta);
+		hamMap.put("커피", Coffee);
+		hamMap.put("오렌지 주스", orangeJuice);
 	}
 	
 	public void Order() {
-		Ingredient = new LinkedList<Object>();
-		if(orderSheet.size()!=1) {
+		System.out.println("Order");
+//		if(orderSheet.size()!=1) {
+			x = 20;
+			y = 20;
+			for(int i=0; i<orderSheet.size(); i++) {
+				String ingredients = orderSheet.get(i)[1];
+				String[] array = ingredients.split(";");
+				
+//				System.out.println(orderSheet.size());
+				for(int j=0; j<array.length; j++, x+=100) {
+					Ingredient = new LinkedList<Object>();
+					System.out.println(array[j]);
+					System.out.println(hamMap.get(array[j]));
+					Ingredient.add(hamMap.get(array[j]));
+					Ingredient.add(x);
+					Ingredient.add(y);
+					orderBurger.add((List<Object>) Ingredient);				
+				}
+			}
 			
-		} else {
-			
-		}
+//		} 
+//		else {
+//			
+//		}
 	}
 	
 	
@@ -165,7 +207,7 @@ public class Order {
 			System.out.print("총 주문은 : ");
 			for(int i=0; i<orderSheet.size(); i++) {
 				for(int j=0; j<4; j++) {
-					System.out.println(orderSheet.get(i)[j]);
+					System.out.print(orderSheet.get(i)[j]+"    ");
 				}
 			}
 		}

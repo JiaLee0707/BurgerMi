@@ -1,6 +1,7 @@
 package BurgerMi_ITShow;
 
 import java.awt.Image;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -57,6 +58,7 @@ public class Make {
 	public Image[] IngredientImageArray = { smalllettuceImage, smalltomatoImage, smallpattyImage, smallcheeseImage,
 			smalleggImage, smallonionImage };
 	
+	public HashMap<String, Image> hamMap = new HashMap<String, Image>();
 
 	public LinkedList<Integer> MakeBurgerIntArray = new LinkedList<Integer>(); // 만드는 버거 int
 	public LinkedList<Object> burgerIngredient = new LinkedList<Object>(); // 내려오는 버거
@@ -66,6 +68,33 @@ public class Make {
 
 	boolean key = false;
 
+	public Make() {
+		hamMap.put("깨윗빵", topBreadSesameImage);
+		hamMap.put("깨아래빵", belowBreadSesameImage);
+		hamMap.put("기본윗빵", topBreadImage);
+		hamMap.put("기본아래빵", belowBreadImage);
+		hamMap.put("모닝윗빵", MoringTopBreadImage);
+		hamMap.put("모닝아래빵", MoringBelowBreadImage);
+		
+		hamMap.put("치즈", cheeseImage);
+		hamMap.put("패티", pattyImage);
+		hamMap.put("토마토", tomatoImage);
+		hamMap.put("양상추", lettuceImage);
+		hamMap.put("계란", OrderEgg);
+		hamMap.put("양파", OrderOnion);
+		
+		hamMap.put("치즈스틱", CheeseStick);
+		hamMap.put("치킨너겟", ChickenNuggets);
+		hamMap.put("감자튀김", FrenchFries);
+		hamMap.put("아이스크림", Icecream);
+		
+		hamMap.put("콜라", Coke);
+		hamMap.put("사이다", Sprite);
+		hamMap.put("환타", Fanta);
+		hamMap.put("커피", Coffee);
+		hamMap.put("오렌지 주스", orangeJuice);
+	}
+	
 	public void Ingredients(int ingr) {
 		key = true;
 		switch (ingr) {
@@ -88,49 +117,53 @@ public class Make {
 		Main.burgermi.game.getParent().repaint();
 	}
 
-	public void Burger(int m) {
+	public void Make() {
 		Ingredient = new LinkedList<Object>();
-		Ingredient.add(makeBurgerArray[m]);
-		MakeBurgerIntArray.add(m);
-		for (int i = 0; i < MakeBurgerIntArray.size(); i++) {
-			System.out.println(MakeBurgerIntArray.get(i));
-		}
-
-		y = 540 - 25 * (MakeBurgerIntArray.size());
-
-		switch (m) {
-		case 0:
-			x = 485;
-			y -= 30;
-			break;
-		case 1:
-			x = 490;
-			break;
-		case 2:
-			x = 503;
-			break;
-		case 3:
-			x = 485;
-			y -= 40;
-			break;
-		case 4:
-			x = 495;
-			y -= 60;
-			break;
-		case 5:
-			x = 510;
-			y -= 20;
-			break;
-		}
-		Ingredient.add(x);
-		Ingredient.add(y);
-		burgerIngredient.add(Ingredient);
-		i.add(0);
-		BurgerThread thread = new BurgerThread(Ingredient, i.size());
-		thread.start();
-
-		Main.burgermi.game.getParent().repaint();
 	}
+	
+//	public void Burger(int m) {
+//		Ingredient = new LinkedList<Object>();
+//		Ingredient.add(makeBurgerArray[m]);
+//		MakeBurgerIntArray.add(m);
+//		for (int i = 0; i < MakeBurgerIntArray.size(); i++) {
+//			System.out.println(MakeBurgerIntArray.get(i));
+//		}
+//
+//		y = 540 - 25 * (MakeBurgerIntArray.size());
+//
+//		switch (m) {
+//		case 0:
+//			x = 485;
+//			y -= 30;
+//			break;
+//		case 1:
+//			x = 490;
+//			break;
+//		case 2:
+//			x = 503;
+//			break;
+//		case 3:
+//			x = 485;
+//			y -= 40;
+//			break;
+//		case 4:
+//			x = 495;
+//			y -= 60;
+//			break;
+//		case 5:
+//			x = 510;
+//			y -= 20;
+//			break;
+//		}
+//		Ingredient.add(x);
+//		Ingredient.add(y);
+//		burgerIngredient.add(Ingredient);
+//		i.add(0);
+//		BurgerThread thread = new BurgerThread(Ingredient, i.size());
+//		thread.start();
+//
+//		Main.burgermi.game.getParent().repaint();
+//	}
 
 	class BurgerThread extends Thread {
 		LinkedList<Object> IngredientBurger;
