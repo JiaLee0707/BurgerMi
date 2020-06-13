@@ -5,6 +5,7 @@ import java.util.LinkedList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 public class Ranking {
 
@@ -37,7 +38,10 @@ public class Ranking {
 		
 		// DB 점수 추가
 		db = new DB();
-		db.Insert(Main.burgermi.game.score.score);
+		String name = JOptionPane.showInputDialog("이름을 입력하세요.\n(취소를 누르면 순위에 오르지 못합니다.)");
+		if(name!=null) {
+			db.Insert(Main.burgermi.game.score.score, name);
+		}
 		rankingList = db.Select();
 		
 		rank.setBounds(310, -330, 1000, 1000);

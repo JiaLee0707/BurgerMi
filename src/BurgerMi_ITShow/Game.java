@@ -120,7 +120,7 @@ public class Game extends JPanel {
 
 		if (start) {
 			// 재료대 음식
-			if(keyListener.make.key) {
+			if(keyListener.make.key!=0) {
 				int z = 10;
 				int zz = 400;
 				for(int i=0; i<keyListener.make.IngredientsImage.length; i++, z+=130) {

@@ -10,12 +10,12 @@ import javax.swing.JLabel;
 public class Burger {
 
 	// 만들때 사용하는 버거
-	private Image belowBreadImage = new ImageIcon("src/images/아래빵.png").getImage();
-	private Image topBreadImage = new ImageIcon("src/images/윗빵.png").getImage();
-	private Image lettuceImage = new ImageIcon("src/images/채소.png").getImage();
-	private Image tomatoImage = new ImageIcon("src/images/토마토.png").getImage();
-	private Image pattyImage = new ImageIcon("src/images/패티.png").getImage();
-	private Image cheeseImage = new ImageIcon("src/images/치즈.png").getImage();
+	private Image belowBreadImage = new ImageIcon("src/images/breadBelowSesame.png").getImage();
+	private Image topBreadImage = new ImageIcon("src/images/breadTopSesame.png").getImage();
+	private Image lettuceImage = new ImageIcon("src/images/lettuce.png").getImage();
+	private Image tomatoImage = new ImageIcon("src/images/tomato.png").getImage();
+	private Image pattyImage = new ImageIcon("src/images/patty.png").getImage();
+	private Image cheeseImage = new ImageIcon("src/images/cheese.png").getImage();
 	public Image[] MakeBurgerImageArray = { cheeseImage, pattyImage, tomatoImage, lettuceImage, topBreadImage,
 			belowBreadImage };
 

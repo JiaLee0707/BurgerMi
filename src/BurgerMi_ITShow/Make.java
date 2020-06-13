@@ -35,7 +35,12 @@ public class Make {
 	private Image ChickenNuggets = new ImageIcon("src/images/ChickenNuggets.png").getImage();
 	private Image FrenchFries = new ImageIcon("src/images/FrenchFries.png").getImage();
 	private Image Icecream = new ImageIcon("src/images/Icecream.png").getImage();
-	
+	// 음료
+	private Image Coke = new ImageIcon("src/images/Coke.png").getImage();
+	private Image Sprite = new ImageIcon("src/images/Sprite.png").getImage();
+	private Image Fanta = new ImageIcon("src/images/Fanta.png").getImage();
+	private Image Coffee = new ImageIcon("src/images/Coffee.png").getImage();
+	private Image orangeJuice = new ImageIcon("src/images/orangeJuice.png").getImage();
 
 	// 재료대 음식
 	public Image[] IngredientsImage;
@@ -66,7 +71,7 @@ public class Make {
 	public LinkedList<Integer> i = new LinkedList<Integer>();
 	int x, y; // 햄버거 x, y, i 좌표
 
-	boolean key = false;
+	int key = 0;
 
 	public Make() {
 		hamMap.put("깨윗빵", topBreadSesameImage);
@@ -80,8 +85,8 @@ public class Make {
 		hamMap.put("패티", pattyImage);
 		hamMap.put("토마토", tomatoImage);
 		hamMap.put("양상추", lettuceImage);
-		hamMap.put("계란", OrderEgg);
-		hamMap.put("양파", OrderOnion);
+		hamMap.put("계란", eggImage);
+		hamMap.put("양파", onionImage);
 		
 		hamMap.put("치즈스틱", CheeseStick);
 		hamMap.put("치킨너겟", ChickenNuggets);
@@ -96,19 +101,15 @@ public class Make {
 	}
 	
 	public void Ingredients(int ingr) {
-		key = true;
-		switch (ingr) {
+		key = ingr;
+		switch (key) {
 		case 1:
-			// for(int i=0; i<RImageArray.length; i++) {
 			makeBurgerArray = makeBreadImageArray;
 			IngredientsImage = ingrdientsBreadImageArray;
-			// }
 			break;
 		case 2:
-			// for(int i=0; i<RImageArray.length; i++) {
 			makeBurgerArray = makeIngredientImageArray;
 			IngredientsImage = IngredientImageArray;
-			// }
 			break;
 		default:
 			break;

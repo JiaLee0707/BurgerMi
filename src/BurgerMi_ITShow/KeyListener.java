@@ -35,35 +35,35 @@ public class KeyListener extends KeyAdapter {
 		}
 		
 		// 만들기
-		switch(KeyCode) {
-		case KeyEvent.VK_Q:
-			make.Make(0);
-			break;
-		case KeyEvent.VK_W:
-			make.Make(1);
-			break;
-		case KeyEvent.VK_E:
-			make.Make(2);
-			break;
-		case KeyEvent.VK_A:
-			make.Make(3);
-			break;
-		case KeyEvent.VK_S:
-			make.Make(4);
-			break;
-		case KeyEvent.VK_D:
-			make.Make(5);
-			break;
+//		switch(KeyCode) {
+//		case KeyEvent.VK_Q:
+//			make.Make(0);
+//			break;
+//		case KeyEvent.VK_W:
+//			make.Make(1);
+//			break;
+//		case KeyEvent.VK_E:
+//			make.Make(2);
+//			break;
+//		case KeyEvent.VK_A:
+//			make.Make(3);
+//			break;
+//		case KeyEvent.VK_S:
+//			make.Make(4);
+//			break;
+//		case KeyEvent.VK_D:
+//			make.Make(5);
+//			break;
 		
 			
-		case KeyEvent.VK_SPACE:
-//        	 order.Make(keyCode);
-//        	 BurgerMi.game.dropBurger(); 
-			break;
-		case KeyEvent.VK_ENTER:
-			System.out.println("\n엔터");
-			score.Score();
-			break;
-		}
+//		case KeyEvent.VK_SPACE:
+////        	 order.Make(keyCode);
+////        	 BurgerMi.game.dropBurger(); 
+//			break;
+//		case KeyEvent.VK_ENTER:
+//			System.out.println("\n엔터");
+//			score.Score();
+//			break;
+//		}
 	}
 }

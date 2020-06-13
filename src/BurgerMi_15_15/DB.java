@@ -69,13 +69,13 @@ public class DB {
 		return rankList;
 	}
 
-	public void Insert(int s) {
+	public void Insert(int s, String name) {
 		int num = 0;
 		String rank = null;
 		String score = Integer.toString(s);
 		boolean update = false;
 
-		name = JOptionPane.showInputDialog("이름을 입력하세요.\n(취소를 누르면 순위에 오르지 못합니다.)");
+		this.name = name;
 
 		try {
 			Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);

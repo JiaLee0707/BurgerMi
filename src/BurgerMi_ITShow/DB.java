@@ -96,34 +96,29 @@ public class DB {
 		return menu;
 	}
 	
-//	public String[] recipes() {
-//		String[] recipes;
-//		try {
-//			String sql = "SELECT * FROM recipes WHERE ";
-//			pstmt = conn.prepareStatement(sql);
-//			pstmt.setString(1, Integer.toString(i));
-//			ResultSet srs = pstmt.executeQuery();
-//			
-//			while (srs.next()) {
-//				String[] menu2 = new String[4];
-//				menu2[0] = srs.getString("name");
-//				menu2[1] = srs.getString("ingredients");
-//				menu2[2] = srs.getString("price");
-//				menu2[3] = srs.getString("sort");
-//				System.out.print(srs.getString("name") + " ");
-//				System.out.print(srs.getString("ingredients") + " ");
-//				System.out.print(srs.getString("price") + " ");
-//				System.out.print(srs.getString("sort") + " ");
+	public String[] recipes(String burger) {
+		String[] ingredients = null;
+		try {
+			String sql = "SELECT * FROM recipes WHERE name=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, burger);
+			ResultSet srs = pstmt.executeQuery();
+			
+			if(srs.next()) {
+				String s = srs.getString("ingredients");
+				ingredients = s.split(";");
+//				for(int i=0; i<ingredients.length; i++) {
+//					System.out.print(ingredients[i] + " ");
+//				}
 //				System.out.println();
-//				menu.add(menu2);
-//			}
-//		}  catch (SQLException ex) {
-//			System.out.println("RandomOrder SQLException:" + ex);
-//		} catch (Exception ex) {
-//			System.out.println("RandomOrder Exception:" + ex);
-//		}
-//		return menu;
-//	}
+			}
+		}  catch (SQLException ex) {
+			System.out.println("RandomOrder SQLException:" + ex);
+		} catch (Exception ex) {
+			System.out.println("RandomOrder Exception:" + ex);
+		}
+		return ingredients;
+	}
 	
 	public LinkedList Select() {
 //		Ranking ranking = new Ranking();

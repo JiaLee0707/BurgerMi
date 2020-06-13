@@ -19,12 +19,12 @@ public class Order {
 	public Image thisGuest = null;
 
 	// 주문받은 버거
-	private Image orderbelowBreadImage = new ImageIcon("src/images/Order아래빵.png").getImage(); // 5
-	private Image ordertopBreadImage = new ImageIcon("src/images/Order윗빵.png").getImage(); // 4
-	private Image orderlettuceImage = new ImageIcon("src/images/Order채소.png").getImage(); // 3
-	private Image ordertomatoImage = new ImageIcon("src/images/Order토마토.png").getImage(); // 2
-	private Image orderpattyImage = new ImageIcon("src/images/Order패티.png").getImage(); // 1
-	private Image ordercheeseImage = new ImageIcon("src/images/Order치즈.png").getImage(); // 0
+	private Image orderbelowBreadImage = new ImageIcon("src/images/OrderBelowSesamebread.png").getImage(); // 5
+	private Image ordertopBreadImage = new ImageIcon("src/images/OderTopSesameBread.png").getImage(); // 4
+	private Image orderlettuceImage = new ImageIcon("src/images/OrderLettuce.png").getImage(); // 3
+	private Image ordertomatoImage = new ImageIcon("src/images/OrderTomato.png").getImage(); // 2
+	private Image orderpattyImage = new ImageIcon("src/images/OrderPatty.png").getImage(); // 1
+	private Image ordercheeseImage = new ImageIcon("src/images/OrderCheese.png").getImage(); // 0
 	public Image[] orderBurgerImageArray = { ordercheeseImage, orderpattyImage, ordertomatoImage, orderlettuceImage,
 			ordertopBreadImage, orderbelowBreadImage };
 
