@@ -69,13 +69,14 @@ public class Make {
 	public HashMap<Image, String> hamMap = new HashMap<Image, String>();
 
 	public LinkedList<Object> MakeInformation = new LinkedList<Object>(); // 만드는 재료의 이미지와 좌표 정보
-	public LinkedList<String> MakeOrderSheetArray = new LinkedList<String>(); // 햄버거 이외의 주문
-	public LinkedList<String> MakeBurgerArray = new LinkedList<String>(); // 햄버거 주문
+	public LinkedList<String> MakeOrderSheetArray = new LinkedList<String>(); // 주문 리스트
+	public LinkedList<String> MakeBurgerArray = new LinkedList<String>(); // 햄버거 재료 리스트
 	public LinkedList<Object> Ingredient;
 	public LinkedList<Integer> i = new LinkedList<Integer>();
 	int x, y; // 햄버거 x, y, i 좌표
 
 	int key = 0;
+	int burgerCount = 0;
 
 	public Make() {
 		hamMap.put(topBreadSesameImage, "깨윗빵");
@@ -110,14 +111,21 @@ public class Make {
 		case 1: // 빵
 			makeBurgerArray = makeBreadImageArray; // 만들 이미지
 			IngredientsImage = ingrdientsBreadImageArray; // 재료대 이미지
+			burgerCount++;
 			break;
 		case 2: // 속재료
 			makeBurgerArray = makeIngredientImageArray;
 			IngredientsImage = IngredientImageArray;
+			burgerCount++;
 			break;
 //		case 3:	// 사이드 메뉴
 //			makeBurgerArray;
 //		case 4: // 음료
+		}
+		
+		if(burgerCount>=3) {
+			MakeOrderSheetArray.add("버거");
+			burgerCount = 0;
 		}
 
 		Main.burgermi.game.getParent().repaint();
