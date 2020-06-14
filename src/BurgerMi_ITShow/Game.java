@@ -13,7 +13,7 @@ public class Game extends JPanel {
 	public DB db = new DB();
 	public Order order = new Order(db);
 //	private Order.Guest guest = order.new Guest();
-	public Score score;
+	public Sales score;
 	public KeyListener keyListener = new KeyListener();
 	public Timer timer;
 
@@ -80,7 +80,7 @@ public class Game extends JPanel {
 		StartBtn.setVisible(false);
 		replayBtn.setVisible(false);
 
-		score = new Score();
+		score = new Sales();
 		//timer = new Timer();
 		keyListener.KeyListener();
 
@@ -159,9 +159,9 @@ public class Game extends JPanel {
 		}
 
 		// 만드는 버거
-		for (int i = 0; i < keyListener.make.burgerIngredient.size(); i++) {
-			MakeburgerIngredient = (Image) ((List<Object>) keyListener.make.burgerIngredient.get(i)).get(0);
-			Makex = (int) ((List<Object>) keyListener.make.burgerIngredient.get(i)).get(1);
+		for (int i = 0; i < keyListener.make.MakeInformation.size(); i++) {
+			MakeburgerIngredient = (Image) ((List<Object>) keyListener.make.MakeInformation.get(i)).get(0);
+			Makex = (int) ((List<Object>) keyListener.make.MakeInformation.get(i)).get(1);
 			Makey = (int) keyListener.make.i.get(i);
 			g.drawImage(MakeburgerIngredient, Makex, Makey, this);
 		}

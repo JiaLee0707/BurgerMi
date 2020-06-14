@@ -5,7 +5,7 @@ import java.util.LinkedList;
 
 import javax.swing.JLabel;
 
-public class Score {
+public class Sales {
 	Order order;
 	Make burger;
 
@@ -16,16 +16,16 @@ public class Score {
 
 	public Font font = new Font("나눔스퀘어라운드 ExtraBold", Font.ITALIC, 50);
 	
-	public Score() {
+	public Sales() {
 		scoreLabel.setFont(font); // 폰트 설정
 		scoreLabel.setSize(500, 500); // 크키 설정
 		scoreLabel.setLocation(1160, -150); // 위치 설정
 		Main.burgermi.game.add(scoreLabel);
 	}
 
-	public void Score() {
+	public void Sales() {
 		order = Main.burgermi.game.order;
-		burger = Main.burgermi.game.keyListener.burger;
+		burger = Main.burgermi.game.keyListener.make;
 
 		boolean OX = Discriminate();
 

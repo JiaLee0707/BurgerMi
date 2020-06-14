@@ -34,7 +34,7 @@ public class DB {
 		LinkedList<Object[]> menu = new LinkedList<Object[]>();
 		try {
 			// 메뉴 전체 랜덤
-			String sql = "SELECT * FROM menu WHERE sort='세트' ORDER BY RAND() LIMIT ?";
+			String sql = "SELECT * FROM menu ORDER BY RAND() LIMIT ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, i);
 			ResultSet srs = pstmt.executeQuery();
