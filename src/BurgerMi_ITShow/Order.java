@@ -57,6 +57,7 @@ public class Order {
 
 	List<String[]> orderSheet = new LinkedList<String[]>(); // 주문표
 	LinkedList<String[]> burgerIngredient = new LinkedList<String[]>(); // 햄버거 레시피
+	public int price = 0;
 
 	int who, x, y;
 
@@ -182,7 +183,7 @@ public class Order {
 		}
 
 		public void order() {
-			LinkedList menu; // 임시 주문 LinkedList
+			LinkedList<String[]> menu; // 임시 주문 LinkedList
 
 			orderSheet = db.RandomOrder(1); // 주문 랜덤
 
@@ -193,16 +194,17 @@ public class Order {
 				if (cnt != 1) {
 					menu = db.RandomOrder(cnt - 1);
 
-					if (orderSheet.get(0)[3].equals("세트")) {
+					if (menu.get(0)[3].equals("세트")) {
 						String[] kind = { "음료", "사이드 메뉴" };
+						LinkedList<String[]> menu2; 
 						for (int i = 0; i < 2; i++) {
-							menu = db.RandomOrder(1, kind[i]);
-							String changeMenu = (orderSheet.get(0)[1]).replace(kind[i], ((String[]) menu.get(0))[0]);
+							menu2 = db.RandomOrder(1, kind[i]);
+							String changeMenu = (menu.get(0)[1]).replace(kind[i], ((String[]) menu2.get(0))[0]);
 							String[] change = new String[4];
-							change[0] = orderSheet.get(0)[0];
+							change[0] = menu.get(0)[0];
 							change[1] = changeMenu;
-							change[2] = orderSheet.get(0)[2];
-							change[3] = orderSheet.get(0)[3];
+							change[2] = menu.get(0)[2];
+							change[3] = menu.get(0)[3];
 							orderSheet.set(0, change);
 						}
 					}
@@ -212,8 +214,12 @@ public class Order {
 						orderSheet.add(m);
 					}
 				}
+				for(int i=0; i<orderSheet.size(); i++) {
+					price += Integer.parseInt(orderSheet.get(i)[2]);
+				}
 			} else { // 세트일 때
 				// 음료, 사이드메뉴 랜덤
+				price += Integer.parseInt(orderSheet.get(0)[2]);
 				String[] kind = { "음료", "사이드 메뉴" };
 				for (int i = 0; i < 2; i++) {
 					menu = db.RandomOrder(1, kind[i]);
@@ -233,6 +239,7 @@ public class Order {
 					System.out.print(orderSheet.get(i)[j] + "    ");
 				}
 			}
+			System.out.println("가격 : " + price);
 		}
 
 		public void Guest() {

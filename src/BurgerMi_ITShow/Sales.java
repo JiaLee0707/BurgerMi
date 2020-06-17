@@ -9,55 +9,65 @@ import javax.swing.JLabel;
 public class Sales {
 	Order order;
 	Make make;
+	DB db;
 
-	int score = 0;
-	int scoreArray[] = { 10, 20, -5 };
-	public JLabel scoreLabel = new JLabel(score + "점");
+	int sales = 0;
+//	int salesArray[] = { 10, 20, -5 };
+	public JLabel salesLabel = new JLabel(sales + "점");
 	Music musicOX;
 
 	public Font font = new Font("나눔스퀘어라운드 ExtraBold", Font.ITALIC, 50);
 	
-	public Sales() {
-		scoreLabel.setFont(font); // 폰트 설정
-		scoreLabel.setSize(500, 500); // 크키 설정
-		scoreLabel.setLocation(1160, -150); // 위치 설정
-		Main.burgermi.game.add(scoreLabel);
+	public Sales(DB db) {
+		this.db = db;
+		salesLabel.setFont(font); // 폰트 설정
+		salesLabel.setSize(500, 500); // 크키 설정
+		salesLabel.setLocation(1160, -150); // 위치 설정
+		Main.burgermi.game.add(salesLabel);
 	}
 
 	public void Sales() {
 		order = Main.burgermi.game.order;
 		make = Main.burgermi.game.keyListener.make;
-
+		
 		boolean OX = Discriminate();
 
 		// 점수 계산
 		if (OX == true) {
+			sales += order.price;
 			musicOX = new Music("tpir-sdclock.mp3", false);
 			if (order.who != 4) {
-				score += scoreArray[0];
 				System.out.println("성공");
 			} else {
-				score += scoreArray[1];
+				sales += 1000;
 				System.out.println("진상 성공");
 			}
 		} else {
 			musicOX = new Music("띠-으-으.mp3", false);
 			System.out.println("실패");
 			if (order.who == 4) {
-				score += scoreArray[2];
+				sales -= 2000;
 				System.out.println("진상 실패");
 			}
 		}
 		musicOX.start();
+		
+		if(sales > 0 || sales < 0) {
+			salesLabel.setLocation(1140, -150); // 위치 설정
+		} else if(sales >= 100) {
+			salesLabel.setLocation(1130, -150); // 위치 설정
+		}
+		salesLabel.setText(sales + "점");
 
-//		if(score > 0 || score < 0) {
-//			scoreLabel.setLocation(1140, -150); // 위치 설정
-//		} else if(score >= 100) {
-//			scoreLabel.setLocation(1130, -150); // 위치 설정
-//		}
-//		scoreLabel.setText(score + "점");
-//
-//		// this.burger.MakeBurgerObjectArray.clear();
+		this.make.MakeInformation.clear();
+		this.make.MakeOrderSheetArray.clear();
+		this.make.MakeBurgerArray.clear();
+		this.make.i.clear();
+		Main.burgermi.game.order = new Order(Main.burgermi.game.db);
+		Main.burgermi.game.ReGame();
+		Main.burgermi.game.getParent().repaint();
+
+		//		// this.burger.MakeBurgerObjectArray.clear();
 //		this.make.MakeBurgerIntArray.clear();
 //		this.make.burgerIngredient.clear(); // = new LinkedList<Object>();
 //		this.make.i.clear();
@@ -121,10 +131,12 @@ public class Sales {
 							break;
 						} else {	// 사이즈가 같으면
 							// 버거 재료 비교
+							int zz=0;
 							for(int j=0; j<order.burgerIngredient.size(); j++) {
-								for(int z=0; z<order.burgerIngredient.get(j).length; z++) {
-									if(!order.burgerIngredient.get(j)[z].equals(make.MakeBurgerArray.get(z))) {
-										System.out.println("버거 재료 : " + order.burgerIngredient.get(j)[z] + "        " + make.MakeBurgerArray.get(z));
+								for(int z=0; z<order.burgerIngredient.get(j).length; z++, zz++) {
+									if(!order.burgerIngredient.get(j)[z].equals(make.MakeBurgerArray.get(zz))) {
+										System.out.println(z + "       " + zz);
+										System.out.println("버거 재료 : " + order.burgerIngredient.get(j)[z] + "        " + make.MakeBurgerArray.get(zz));
 										System.out.println("버거 재료 실패");
 										OX = false;
 										break;

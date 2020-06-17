@@ -76,7 +76,8 @@ public class Make {
 	int x, y; // 햄버거 x, y, i 좌표
 
 	int key = 0;
-	int burgerCount = 0;
+	int[] burgerCountArray = new int[2];
+//	int burgerCo unt = 0;
 
 	public Make() {
 		hamMap.put(topBreadSesameImage, "깨윗빵");
@@ -111,21 +112,14 @@ public class Make {
 		case 1: // 빵
 			makeBurgerArray = makeBreadImageArray; // 만들 이미지
 			IngredientsImage = ingrdientsBreadImageArray; // 재료대 이미지
-			burgerCount++;
 			break;
 		case 2: // 속재료
 			makeBurgerArray = makeIngredientImageArray;
 			IngredientsImage = IngredientImageArray;
-			burgerCount++;
 			break;
 //		case 3:	// 사이드 메뉴
 //			makeBurgerArray;
 //		case 4: // 음료
-		}
-		
-		if(burgerCount>=3) {
-			MakeOrderSheetArray.add("버거");
-			burgerCount = 0;
 		}
 
 		Main.burgermi.game.getParent().repaint();
@@ -136,8 +130,19 @@ public class Make {
 		Ingredient.add(makeBurgerArray[m]);
 		if (key < 3) {
 			MakeBurgerArray.add(hamMap.get(makeBurgerArray[m])); // 햄버거
+			if(key<2 && m>=3) {	//밑빵
+				burgerCountArray[0]++;
+			} else if(key<2) {	// 윗빵
+				burgerCountArray[1]++;
+			}
 		} else {
 			MakeOrderSheetArray.add(hamMap.get(makeBurgerArray[m])); // 사이드메뉴 && 음료
+		}
+		
+		if(burgerCountArray[0] >= 1 && burgerCountArray[1] >= 1) {
+			System.out.println("add 버거");
+			MakeOrderSheetArray.add("버거");
+			burgerCountArray = new int[2];
 		}
 
 		y = 540 - 25 * (MakeInformation.size());

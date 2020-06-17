@@ -12,8 +12,7 @@ public class Game extends JPanel {
 
 	public DB db = new DB();
 	public Order order = new Order(db);
-//	private Order.Guest guest = order.new Guest();
-	public Sales score;
+	public Sales sales;
 	public KeyListener keyListener = new KeyListener();
 	public Timer timer;
 
@@ -80,7 +79,7 @@ public class Game extends JPanel {
 		StartBtn.setVisible(false);
 		replayBtn.setVisible(false);
 
-		score = new Sales();
+		sales = new Sales(db);
 		//timer = new Timer();
 		keyListener.KeyListener();
 
@@ -92,8 +91,6 @@ public class Game extends JPanel {
 
 	public void ReGame() {
 		Order.Guest guest = order.new Guest();
-//		for (int i = 0; i < order.orderSheet.length; i++) {
-//		}
 		guest.Guest();
 		order.Order();
 

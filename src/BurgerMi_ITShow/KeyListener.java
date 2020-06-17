@@ -10,7 +10,7 @@ public class KeyListener extends KeyAdapter {
 	public boolean Keyboolen = false;
 
 	public void KeyListener() {
-		sales = Main.burgermi.game.score;
+		sales = Main.burgermi.game.sales;
 		order = Main.burgermi.game.order;
 		Keyboolen = true;
 	}
@@ -56,13 +56,14 @@ public class KeyListener extends KeyAdapter {
 			break;
 		
 			
-//		case KeyEvent.VK_SPACE:
-//        	 order.Make(keyCode);
-//        	 BurgerMi.game.dropBurger(); 
-//			break;
+		case KeyEvent.VK_SPACE:
+			sales.Sales();
+			break;
 		case KeyEvent.VK_ENTER:
 			System.out.println("\n엔터");
 			sales.Sales();
+			Throw th = new Throw();
+			th.start();
 			break;
 		}
 	}
