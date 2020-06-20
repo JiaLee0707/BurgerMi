@@ -18,7 +18,7 @@ public class KeyListener extends KeyAdapter {
 	public void keyReleased(KeyEvent e) {
 		int KeyCode = e.getKeyCode();
 
-		//재료대 음식
+		// 재료대 음식
 		switch (KeyCode) {
 		case KeyEvent.VK_1:
 			make.Ingredients(1);
@@ -33,38 +33,39 @@ public class KeyListener extends KeyAdapter {
 			make.Ingredients(4);
 			break;
 		}
-		
-		// 만들기
-		switch(KeyCode) {
-		case KeyEvent.VK_Q:
-			make.Make(0);
-			break;
-		case KeyEvent.VK_W:
-			make.Make(1);
-			break;
-		case KeyEvent.VK_E:
-			make.Make(2);
-			break;
-		case KeyEvent.VK_A:
-			make.Make(3);
-			break;
-		case KeyEvent.VK_S:
-			make.Make(4);
-			break;
-		case KeyEvent.VK_D:
-			make.Make(5);
-			break;
-		
-			
-		case KeyEvent.VK_SPACE:
-			sales.Sales();
-			break;
-		case KeyEvent.VK_ENTER:
-			System.out.println("\n엔터");
-			sales.Sales();
-			Throw th = new Throw();
-			th.start();
-			break;
+
+		if (make.key != 0) {
+			// 만들기
+			switch (KeyCode) {
+			case KeyEvent.VK_Q:
+				make.Make(0);
+				break;
+			case KeyEvent.VK_W:
+				make.Make(1);
+				break;
+			case KeyEvent.VK_E:
+				make.Make(2);
+				break;
+			case KeyEvent.VK_A:
+				make.Make(3);
+				break;
+			case KeyEvent.VK_S:
+				make.Make(4);
+				break;
+			case KeyEvent.VK_D:
+				make.Make(5);
+				break;
+
+			case KeyEvent.VK_SPACE:
+				sales.Sales();
+				break;
+			case KeyEvent.VK_ENTER:
+				System.out.println("\n엔터");
+				sales.Sales();
+				Throw th = new Throw();
+				th.start();
+				break;
+			}
 		}
 	}
 }
