@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 public class Timer extends Thread {
 	//int[] Time = { 0, 5 };
 //	int[] Time = { 0, 30 } ;
-	int[] Time = { 1, 40 };
+	int[] Time = { 1, 00 };
 
 	public JLabel time = new JLabel(Time[0] + ":" + Time[1]);
 	public boolean pause = false;
@@ -27,21 +27,21 @@ public class Timer extends Thread {
 			while (true) {
 //				System.out.println(Time[0] + ":" + Time[1]);
 				if (!pause) {
-					time.setText(Time[0] + ":" + Time[1]);
-					Time[1] -= 1;
+//					time.setText(Time[0] + ":" + Time[1]);
 					if (Time[1] == 0) {
 						if (Time[0] == 0) {
-							time.setText(Time[0] + ":" + Time[1]);
+//							time.setText(Time[0] + ":" + Time[1]);
 							break;
 						}
 						Time[0] -= 1;
 						Time[1] = 60;
 					}
+					Time[1] -= 1;
 					Thread.sleep(1000);
 				}
 			}
-//			BurgerMi.game.setFocusable(true);
-			new End(time);
+//			Main.BurgerMi.game.setFocusable(true);
+			new End();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

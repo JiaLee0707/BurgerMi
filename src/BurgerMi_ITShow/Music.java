@@ -38,22 +38,26 @@ public class Music extends Thread {
 	public void close() {
 		isLoop = false;
 		player.close();
-		if(name.equals("in.mp3"))  {
-			Main.burgermi.game.ImageBackground = Main.burgermi.game.ImageRules;
-			Main.burgermi.game.getParent().repaint();
-		}
 		this.interrupt();
 	}
 
 	@Override
 	public void run() {
 		try {
+			if(name.equals("in.mp3")) {
+				sleep(1000);
+			}
 			do {
 				player.play();
 				fis = new FileInputStream(file);
 				bis = new BufferedInputStream(fis);
 				player = new Player(bis);
 			} while (isLoop);
+
+			if(name.equals("in.mp3"))  {
+				System.out.println("close");
+				Main.burgermi.game.GameRules();
+			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

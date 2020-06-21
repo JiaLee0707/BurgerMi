@@ -56,6 +56,9 @@ public class MouseListener {
 				System.exit(0);
 			} else if (panel.equals("Background") && Entered.equals(StartEnteredImage)) { // 타이틀에서 게임 시작
 				Main.burgermi.JPanelChange("game");
+			} else if (panel.equals("GameIntro") && Entered.equals(StartEnteredImage)) { // 인트로 이후 게임방법
+				Main.burgermi.game.ImageBackground = Main.burgermi.game.ImageRules;
+				Main.burgermi.game.GameRules();
 			} else if (panel.equals("Game") && Entered.equals(StartEnteredImage)) { // 게임방법 이후 게임 시작
 				Main.burgermi.game.GameStart();
 			} else if (panel.equals("End") && Entered.equals(ReplayEnteredImage)) {
@@ -122,7 +125,7 @@ public class MouseListener {
 					ranking.rankLable[i][j].setText(ranking.rankingList.get(nextI)[j]);
 					ranking.rankLable[i][j].setFont(ranking.font2);
 					if (ranking.rankingList.get(i)[1].equals(ranking.db.name)
-							&& ranking.rankingList.get(i)[2].equals(Integer.toString(Main.burgermi.game.score.score))) {
+							&& ranking.rankingList.get(i)[2].equals(Integer.toString(Main.burgermi.game.sales.sales))) {
 						System.out.println("동일");
 						ranking.rankLable[i][j].setFont(ranking.font1);
 					}
@@ -208,7 +211,7 @@ public class MouseListener {
 					ranking.rankLable[i][j].setText(ranking.rankingList.get(nextI)[j]);
 					ranking.rankLable[i][j].setFont(ranking.font2);
 					if (ranking.rankingList.get(i)[1].equals(ranking.db.name)
-							&& ranking.rankingList.get(i)[2].equals(Integer.toString(Main.burgermi.game.score.score))) {
+							&& ranking.rankingList.get(i)[2].equals(Integer.toString(Main.burgermi.game.sales.sales))) {
 						System.out.println("동일");
 						ranking.rankLable[i][j].setFont(ranking.font1);
 					}

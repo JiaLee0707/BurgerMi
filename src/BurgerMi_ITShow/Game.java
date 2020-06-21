@@ -17,8 +17,8 @@ public class Game extends JPanel {
 	public Timer timer;
 
 	// 게임화면
-	private Image ImageGame = new ImageIcon("src/images/BurgerMi.gif").getImage();
-	private Image ImageIntro = new ImageIcon("src/images/in.gif").getImage();
+	private Image ImageGame = new ImageIcon("src/images/BurgerMi_3.gif").getImage();
+	private Image ImageIntro = new ImageIcon("src/images/intro.gif").getImage();
 	public Image ImageRules = new ImageIcon("src/images/GameRules.png").getImage();
 	public Image ImageBackground;
 
@@ -40,7 +40,7 @@ public class Game extends JPanel {
 	private JButton StartBtn = new JButton(mouse.StartBasicImage);
 	private JButton replayBtn = new JButton(mouse.ReplayBasicImage);
 
-	Music gameMusic = new Music("요리.mp3", true);
+	Music gameMusic;
 
 	int TrayY = 450;
 	public boolean start = false;
@@ -50,8 +50,6 @@ public class Game extends JPanel {
 	public void Game() {
 		setLayout(null);
 		ImageBackground = ImageIntro;
-		Music introMusic = new Music("in.mp3", false);
-		introMusic.start();
 		Main.burgermi.background.introMusic.close();
 
 		// 시작버튼
@@ -59,23 +57,37 @@ public class Game extends JPanel {
 		StartBtn.setBorderPainted(false);
 		StartBtn.setContentAreaFilled(false);
 		StartBtn.setFocusPainted(false);
+		StartBtn.addMouseListener(mouse.new Listener("GameIntro", mouse.StartBasicImage, mouse.StartEnteredImage));
+		StartBtn.setVisible(true);
+		this.add(StartBtn);
+
+		gameMusic = new Music("in.mp3", false);
+		gameMusic.start();
+	}
+	
+	public void GameRules() {
+		setLayout(null);
+		ImageBackground = ImageRules;
+		gameMusic.close();
+
+		// 시작버튼
+		StartBtn.setBounds(915, 565, 340, 120);
+		StartBtn.setBorderPainted(false);
+		StartBtn.setContentAreaFilled(false);
+		StartBtn.setFocusPainted(false);
+		StartBtn.removeAll();
 		StartBtn.addMouseListener(mouse.new Listener("Game", mouse.StartBasicImage, mouse.StartEnteredImage));
 		StartBtn.setVisible(true);
 		this.add(StartBtn);
 		
-		// 다시시작 버튼
-//		replayBtn.setBounds(595, 565, 340, 120);
-//		replayBtn.setBorderPainted(false);
-//		replayBtn.setContentAreaFilled(false);
-//		replayBtn.setFocusPainted(false);
-//		replayBtn.addMouseListener(mouse.new Listener("End", mouse.ReplayBasicImage, mouse.ReplayEnteredImage));
-//		replayBtn.setVisible(true);
-//		this.add(replayBtn);
+
+		Main.burgermi.game.getParent().repaint();
 	}
 
 	public void GameStart() {
 		start = true;
 		ImageBackground = ImageGame;
+		gameMusic = new Music("요리.mp3", true);
 		gameMusic.start();
 
 		// 버튼 안보이게
@@ -83,7 +95,7 @@ public class Game extends JPanel {
 		replayBtn.setVisible(false);
 
 		sales = new Sales(db);
-		//timer = new Timer();
+		timer = new Timer();
 		keyListener.KeyListener();
 
 		ReGame();

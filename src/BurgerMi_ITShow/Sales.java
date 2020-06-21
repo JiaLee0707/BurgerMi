@@ -13,7 +13,7 @@ public class Sales {
 
 	int sales = 0;
 //	int salesArray[] = { 10, 20, -5 };
-	public JLabel salesLabel = new JLabel(sales + "점");
+	public JLabel salesLabel = new JLabel(sales + "원");
 	Music musicOX;
 
 	public Font font = new Font("나눔스퀘어라운드 ExtraBold", Font.ITALIC, 50);

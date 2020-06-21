@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 public class End {
 
 	KeyListener keyListener = Main.burgermi.game.keyListener;
-	Make burger = Main.burgermi.game.keyListener.make;
+	Make make = Main.burgermi.game.keyListener.make;
 
 	// 버튼
 	MouseListener mouse = new MouseListener();
@@ -20,16 +20,17 @@ public class End {
 	public Font font1 = new Font("나눔스퀘어라운드 Bold", Font.PLAIN, 40);
 	public Font font2 = new Font("나눔스퀘어라운드 Light", Font.PLAIN, 40);
 	public JLabel myResult = new JLabel("나의 결과");
-	public JLabel allGrade = Main.burgermi.game.score.scoreLabel;
+	public JLabel allGrade = Main.burgermi.game.sales.salesLabel;
 
 //	JLabel[][] rankLable = new JLabel[5][3];
 	LinkedList<String[]> ranking;
 	int i=0;
 	
-	End(JLabel time) {
-		this.burger.MakeBurgerIntArray.clear();
-		this.burger.burgerIngredient.clear(); // = new LinkedList<Object>();
-		this.burger.i.clear();
+	End() {
+		this.make.MakeInformation.clear();
+		this.make.MakeOrderSheetArray.clear();
+		this.make.MakeBurgerArray.clear();
+		this.make.i.clear();
 
 		Main.burgermi.game.removeKeyListener(keyListener);
 		Main.burgermi.game.start = false;
@@ -38,12 +39,9 @@ public class End {
 		Ranking ranking = new Ranking();
 		ranking.Ranking(5, ranking);
 		
-		// 시간 안보이기
-		time.setVisible(false);
-		
 		End();
 
-		GameResult.setFont(Main.burgermi.game.score.font);
+		GameResult.setFont(Main.burgermi.game.sales.font);
 		myResult.setFont(font1);
 		allGrade.setFont(font1);
 	}

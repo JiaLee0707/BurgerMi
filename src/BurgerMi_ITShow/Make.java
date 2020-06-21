@@ -36,7 +36,6 @@ public class Make {
 	private Image FrenchFries = new ImageIcon("src/images/FrenchFries.png").getImage();
 	private Image Icecream = new ImageIcon("src/images/Icecream.png").getImage();
 	public Image[] makeSideImageArray = { CheeseStice, ChickenNuggets, FrenchFries, Icecream };
-
 	// 음료
 	private Image Coke = new ImageIcon("src/images/Coke.png").getImage();
 	private Image Sprite = new ImageIcon("src/images/Sprite.png").getImage();
@@ -65,7 +64,22 @@ public class Make {
 	private Image smallonionImage = new ImageIcon("src/images/smallonion.png").getImage();
 	public Image[] IngredientImageArray = { smalllettuceImage, smalltomatoImage, smallpattyImage, smallcheeseImage,
 			smalleggImage, smallonionImage };
-
+	// 사이드메뉴
+	private Image smallCheeseStick = new ImageIcon("src/images/smallCheeseStick.png").getImage();
+	private Image smallChickenNuggets = new ImageIcon("src/images/smallChickenNuggets.png").getImage();
+	private Image smallFrenchFries = new ImageIcon("src/images/smallFrenchFries.png").getImage();
+	private Image smallIcecream = new ImageIcon("src/images/smallIcecream.png").getImage();
+	public Image[] IngredientSideImageArray = { smallCheeseStick, smallChickenNuggets, smallFrenchFries, smallIcecream,
+			smalleggImage, smallonionImage };
+	// 음료
+	private Image smallCoke = new ImageIcon("src/images/smallCoke.png").getImage();
+	private Image smallSprite = new ImageIcon("src/images/smallSprite.png").getImage();
+	private Image smallFanta = new ImageIcon("src/images/smallFanta.png").getImage();
+	private Image smallCoffee = new ImageIcon("src/images/smallCoffee.png").getImage();
+	private Image smallorangeJuice = new ImageIcon("src/images/smallOrangeJuice.png").getImage();
+	public Image[] IngredientDrinkImageArray = { smallCoke, smallSprite, smallFanta, smallCoffee,
+			smallorangeJuice, smallonionImage };
+	
 	public HashMap<Image, String> hamMap = new HashMap<Image, String>();
 
 	public LinkedList<Object> MakeInformation = new LinkedList<Object>(); // 만드는 재료의 이미지와 좌표 정보
@@ -117,9 +131,14 @@ public class Make {
 			makeBurgerArray = makeIngredientImageArray;
 			IngredientsImage = IngredientImageArray;
 			break;
-//		case 3:	// 사이드 메뉴
-//			makeBurgerArray;
-//		case 4: // 음료
+		case 3:	// 사이드 메뉴
+			makeBurgerArray = makeSideImageArray;
+			IngredientsImage = IngredientSideImageArray;
+			break;
+		case 4: // 음료
+			makeBurgerArray = makeDrinkImageArray;
+			IngredientsImage = IngredientDrinkImageArray;
+			break;
 		}
 
 		Main.burgermi.game.getParent().repaint();
@@ -130,16 +149,16 @@ public class Make {
 		Ingredient.add(makeBurgerArray[m]);
 		if (key < 3) {
 			MakeBurgerArray.add(hamMap.get(makeBurgerArray[m])); // 햄버거
-			if(key<2 && m>=3) {	//밑빵
+			if (key < 2 && m >= 3) { // 밑빵
 				burgerCountArray[0]++;
-			} else if(key<2) {	// 윗빵
+			} else if (key < 2) { // 윗빵
 				burgerCountArray[1]++;
 			}
 		} else {
 			MakeOrderSheetArray.add(hamMap.get(makeBurgerArray[m])); // 사이드메뉴 && 음료
 		}
-		
-		if(burgerCountArray[0] >= 1 && burgerCountArray[1] >= 1) {
+
+		if (burgerCountArray[0] >= 1 && burgerCountArray[1] >= 1) {
 			System.out.println("add 버거");
 			MakeOrderSheetArray.add("버거");
 			burgerCountArray = new int[2];
@@ -179,50 +198,6 @@ public class Make {
 		BurgerThread thread = new BurgerThread(Ingredient, i.size());
 		thread.start();
 	}
-
-//	public void Burger(int m) {
-//		Ingredient = new LinkedList<Object>();
-//		Ingredient.add(makeBurgerArray[m]);
-//		MakeBurgerIntArray.add(m);
-//		for (int i = 0; i < MakeBurgerIntArray.size(); i++) {
-//			System.out.println(MakeBurgerIntArray.get(i));
-//		}
-//
-//		y = 540 - 25 * (MakeBurgerIntArray.size());
-//
-//		switch (m) {
-//		case 0:
-//			x = 485;
-//			y -= 30;
-//			break;
-//		case 1:
-//			x = 490;
-//			break;
-//		case 2:
-//			x = 503;
-//			break;
-//		case 3:
-//			x = 485;
-//			y -= 40;
-//			break;
-//		case 4:
-//			x = 495;
-//			y -= 60;
-//			break;
-//		case 5:
-//			x = 510;
-//			y -= 20;
-//			break;
-//		}
-//		Ingredient.add(x);
-//		Ingredient.add(y);
-//		burgerIngredient.add(Ingredient);
-//		i.add(0);
-//		BurgerThread thread = new BurgerThread(Ingredient, i.size());
-//		thread.start();
-//
-//		Main.burgermi.game.getParent().repaint();
-//	}
 
 	class BurgerThread extends Thread {
 		LinkedList<Object> IngredientBurger;

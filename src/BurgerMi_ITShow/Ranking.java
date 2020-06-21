@@ -37,7 +37,7 @@ public class Ranking {
 		
 		// DB 점수 추가
 		db = new DB();
-		db.Insert(Main.burgermi.game.score.score);
+		db.Insert(Main.burgermi.game.sales.sales);
 		rankingList = db.Select();
 		
 		rank.setBounds(310, -330, 1000, 1000);
@@ -59,7 +59,7 @@ public class Ranking {
 				rankLable[i][j].setBounds(x, y, 1000, 1000);
 				rankLable[i][j].setFont(font2);
 				if (rankingList.get(i)[1].equals(db.name)
-						&& rankingList.get(i)[2].equals(Integer.toString(Main.burgermi.game.score.score))) {
+						&& rankingList.get(i)[2].equals(Integer.toString(Main.burgermi.game.sales.sales))) {
 					System.out.println("동일");
 					rankLable[i][j].setFont(font1);
 				}
