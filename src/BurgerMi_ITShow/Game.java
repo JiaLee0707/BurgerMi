@@ -17,8 +17,9 @@ public class Game extends JPanel {
 	public Timer timer;
 
 	// 게임화면
-	private Image ImageGame = new ImageIcon("src/images/BurgerMi_배경1.png").getImage();
-	private Image ImageRules = new ImageIcon("src/images/GameRules.png").getImage();
+	private Image ImageGame = new ImageIcon("src/images/BurgerMi.gif").getImage();
+	private Image ImageIntro = new ImageIcon("src/images/in.gif").getImage();
+	public Image ImageRules = new ImageIcon("src/images/GameRules.png").getImage();
 	public Image ImageBackground;
 
 	// 쟁반
@@ -48,7 +49,10 @@ public class Game extends JPanel {
 
 	public void Game() {
 		setLayout(null);
-		ImageBackground = ImageRules;
+		ImageBackground = ImageIntro;
+		Music introMusic = new Music("in.mp3", false);
+		introMusic.start();
+		Main.burgermi.background.introMusic.close();
 
 		// 시작버튼
 		StartBtn.setBounds(915, 565, 340, 120);
@@ -72,7 +76,6 @@ public class Game extends JPanel {
 	public void GameStart() {
 		start = true;
 		ImageBackground = ImageGame;
-		Main.burgermi.background.introMusic.close();
 		gameMusic.start();
 
 		// 버튼 안보이게

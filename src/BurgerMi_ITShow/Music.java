@@ -13,9 +13,11 @@ public class Music extends Thread {
 	private File file;
 	private FileInputStream fis;
 	private BufferedInputStream bis;
+	private String name;
 
 	public Music(String name, boolean isLoop) {
 		try {
+			this.name = name;
 			this.isLoop = isLoop;
 			file = new File(Main.class.getResource("../music/" + name).toURI());
 			fis = new FileInputStream(file);
@@ -36,6 +38,10 @@ public class Music extends Thread {
 	public void close() {
 		isLoop = false;
 		player.close();
+		if(name.equals("in.mp3"))  {
+			Main.burgermi.game.ImageBackground = Main.burgermi.game.ImageRules;
+			Main.burgermi.game.getParent().repaint();
+		}
 		this.interrupt();
 	}
 
