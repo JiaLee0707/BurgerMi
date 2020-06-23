@@ -71,11 +71,11 @@ public class Game extends JPanel {
 		gameMusic.close();
 
 		// 시작버튼
+		StartBtn.removeAll();
 		StartBtn.setBounds(915, 565, 340, 120);
 		StartBtn.setBorderPainted(false);
 		StartBtn.setContentAreaFilled(false);
 		StartBtn.setFocusPainted(false);
-		StartBtn.removeAll();
 		StartBtn.addMouseListener(mouse.new Listener("Game", mouse.StartBasicImage, mouse.StartEnteredImage));
 		StartBtn.setVisible(true);
 		this.add(StartBtn);
@@ -106,7 +106,6 @@ public class Game extends JPanel {
 
 	public void ReGame() {
 		Order.Guest guest = order.new Guest();
-		guest.Guest();
 		order.Order();
 
 		getParent().repaint();

@@ -93,9 +93,13 @@ public class Order {
 
 	public void Order() {
 		x = 40;
-		y = 55;
+		y = 130;
 //		y = 160 - 25 * i;
 		for (int i = 0; i < orderSheet.size(); i++, x += 10) {
+			
+			if(orderSheet.size()==1) {
+				x = 60;
+			}
 			// 세트일 때
 			if (!orderSheet.get(i)[1].equals("")) {
 
@@ -126,21 +130,24 @@ public class Order {
 							y -= 10;							
 						}
 						
-						for (String ing : (String[]) burgerIngredient.get(burgerIngredient.size() - 1)) {
-							Ingredient = new LinkedList<Object>();
-							Ingredient.add(hamMap.get(ing));
-							Ingredient.add(x);
-							Ingredient.add(y);
-							orderBurger.add((List<Object>) Ingredient);
-							y -= 10;
-						}
+//						for (String ing : (String[]) burgerIngredient.get(burgerIngredient.size() - 1)) {
+//							Ingredient = new LinkedList<Object>();
+//							Ingredient.add(hamMap.get(ing));
+//							Ingredient.add(x);
+//							Ingredient.add(y);
+//							orderBurger.add((List<Object>) Ingredient);
+//							y -= 10;
+//						}
+						
 					} else { // 햄버거가 아니면 그냥 추가
-						System.out.println(hamMap.get(ingredientsArray[j]));
+//						System.out.println(hamMap.get(ingredientsArray[j]));
 						Ingredient.add(hamMap.get(ingredientsArray[j]));
 						Ingredient.add(x);
 						Ingredient.add(y);
 						orderBurger.add((List<Object>) Ingredient);
 					}
+					
+					x += 20;
 				}
 			} else { // 단품일 때
 				String ingredients = orderSheet.get(i)[0];
@@ -154,14 +161,22 @@ public class Order {
 					burgerIngredient.add(array); // 단품으로 햄버거가 여러개일 경우
 													// 햄버거별 재료 목록 저장
 
-					for (String ing : (String[]) burgerIngredient.get(burgerIngredient.size() - 1)) {
+					for(int z=0; z<burgerIngredient.size(); z++) {
 						Ingredient = new LinkedList<Object>();
-						Ingredient.add(hamMap.get(ing));
+						Ingredient.add(hamMap.get(burgerIngredient.get(z)));
 						Ingredient.add(x);
 						Ingredient.add(y);
 						orderBurger.add((List<Object>) Ingredient);
-						y -= 10;
+						y -= 10;							
 					}
+//					for (String ing : (String[]) burgerIngredient.get(burgerIngredient.size() - 1)) {
+//						Ingredient = new LinkedList<Object>();
+//						Ingredient.add(hamMap.get(ing));
+//						Ingredient.add(x);
+//						Ingredient.add(y);
+//						orderBurger.add((List<Object>) Ingredient);
+//						y -= 10;
+//					}
 				} else { // 햄버거가 아니면 그냥 추가
 					System.out.println(hamMap.get(orderSheet.get(i)[0]));
 					Ingredient.add(hamMap.get(orderSheet.get(i)[0]));
@@ -170,16 +185,17 @@ public class Order {
 					orderBurger.add((List<Object>) Ingredient);
 				}
 
+				x += 10;
 			}
 		}
 
-		for (int i = 0; i < burgerIngredient.size(); i++) {
-			System.out.println("burger");
-			for (int j = 0; j < burgerIngredient.get(i).length; j++) {
-				System.out.println(burgerIngredient.get(i)[j]);
-
-			}
-		}
+//		for (int i = 0; i < burgerIngredient.size(); i++) {
+//			System.out.println("burger");
+//			for (int j = 0; j < burgerIngredient.get(i).length; j++) {
+//				System.out.println(burgerIngredient.get(i)[j]);
+//
+//			}
+//		}
 	}
 
 	class Guest extends Thread {

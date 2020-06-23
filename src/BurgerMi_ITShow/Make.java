@@ -69,16 +69,19 @@ public class Make {
 	private Image smallChickenNuggets = new ImageIcon("src/images/smallChickenNuggets.png").getImage();
 	private Image smallFrenchFries = new ImageIcon("src/images/smallFrenchFries.png").getImage();
 	private Image smallIcecream = new ImageIcon("src/images/smallIcecream.png").getImage();
-	public Image[] IngredientSideImageArray = { smallCheeseStick, smallChickenNuggets, smallFrenchFries, smallIcecream,
-			smalleggImage, smallonionImage };
+	private Image smallCheeseBall = new ImageIcon("src/images/smallCheeseBall.png").getImage();
+	private Image smallCorn = new ImageIcon("src/images/smallCorn.png").getImage();
+	public Image[] IngredientSideImageArray = { smallCheeseStick, smallChickenNuggets, smallFrenchFries, 
+			smallIcecream, smallCheeseBall, smallCorn };
 	// 음료
 	private Image smallCoke = new ImageIcon("src/images/smallCoke.png").getImage();
 	private Image smallSprite = new ImageIcon("src/images/smallSprite.png").getImage();
 	private Image smallFanta = new ImageIcon("src/images/smallFanta.png").getImage();
 	private Image smallCoffee = new ImageIcon("src/images/smallCoffee.png").getImage();
 	private Image smallorangeJuice = new ImageIcon("src/images/smallOrangeJuice.png").getImage();
+	private Image smallLemonade = new ImageIcon("src/images/smallLemonade.png").getImage();
 	public Image[] IngredientDrinkImageArray = { smallCoke, smallSprite, smallFanta, smallCoffee,
-			smallorangeJuice, smallonionImage };
+			smallorangeJuice, smallLemonade };
 	
 	public HashMap<Image, String> hamMap = new HashMap<Image, String>();
 
