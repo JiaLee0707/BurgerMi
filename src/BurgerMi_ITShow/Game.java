@@ -2,11 +2,15 @@ package BurgerMi_ITShow;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Toolkit;
+import java.net.MalformedURLException;
 import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+
+import BurgerMi_ITShow.MouseListener.Listener;
 
 public class Game extends JPanel {
 
@@ -17,9 +21,14 @@ public class Game extends JPanel {
 	public Timer timer;
 
 	// 게임화면
-	private Image ImageGame = new ImageIcon("src/images/BurgerMi_3.gif").getImage();
-	private Image ImageIntro = new ImageIcon("src/images/intro.gif").getImage();
-	public Image ImageRules = new ImageIcon("src/images/GameRules.png").getImage();
+//	private Image ImageGame = new ImageIcon("src/images/BurgerMi_3.gif").getImage();
+//	private Image ImageIntro = new ImageIcon("src/images/intro.gif").getImage();
+//	public Image ImageRules = new ImageIcon("src/images/GameRules.png").getImage();
+	Toolkit toolkit = Main.burgermi.getToolkit();
+	private Image ImageGame = toolkit.createImage("src/images/BurgerMi_3.gif");
+	private Image ImageIntro = toolkit.createImage("src/images/intro.gif");
+	public Image ImageRules = toolkit.createImage("src/images/GameRules.png");
+
 	public Image ImageBackground;
 
 	// 쟁반
@@ -37,6 +46,7 @@ public class Game extends JPanel {
 
 	// 버튼
 	MouseListener mouse = new MouseListener();
+	Listener listener;
 	private JButton StartBtn = new JButton(mouse.StartBasicImage);
 	private JButton replayBtn = new JButton(mouse.ReplayBasicImage);
 
@@ -46,7 +56,7 @@ public class Game extends JPanel {
 	public boolean start = false;
 	public boolean ThrowBurger = false;
 	public boolean end = false;
-
+	
 	public void Game() {
 		setLayout(null);
 		ImageBackground = ImageIntro;
@@ -57,7 +67,8 @@ public class Game extends JPanel {
 		StartBtn.setBorderPainted(false);
 		StartBtn.setContentAreaFilled(false);
 		StartBtn.setFocusPainted(false);
-		StartBtn.addMouseListener(mouse.new Listener("GameIntro", mouse.StartBasicImage, mouse.StartEnteredImage));
+		listener = mouse.new Listener("GameIntro", mouse.StartBasicImage, mouse.StartEnteredImage);
+		StartBtn.addMouseListener(listener);
 		StartBtn.setVisible(true);
 		this.add(StartBtn);
 
@@ -71,12 +82,13 @@ public class Game extends JPanel {
 		gameMusic.close();
 
 		// 시작버튼
-		StartBtn.removeAll();
+		StartBtn.removeMouseListener(listener);
 		StartBtn.setBounds(915, 565, 340, 120);
 		StartBtn.setBorderPainted(false);
 		StartBtn.setContentAreaFilled(false);
 		StartBtn.setFocusPainted(false);
-		StartBtn.addMouseListener(mouse.new Listener("Game", mouse.StartBasicImage, mouse.StartEnteredImage));
+		listener = mouse.new Listener("Game", mouse.StartBasicImage, mouse.StartEnteredImage);
+		StartBtn.addMouseListener(listener);
 		StartBtn.setVisible(true);
 		this.add(StartBtn);
 		
@@ -86,6 +98,7 @@ public class Game extends JPanel {
 
 	public void GameStart() {
 		start = true;
+		
 		ImageBackground = ImageGame;
 		gameMusic = new Music("요리.mp3", true);
 		gameMusic.start();

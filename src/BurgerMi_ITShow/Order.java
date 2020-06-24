@@ -39,18 +39,22 @@ public class Order {
 	private Image ChickenNuggets = new ImageIcon("src/images/ChickenNuggets.png").getImage();
 	private Image FrenchFries = new ImageIcon("src/images/FrenchFries.png").getImage();
 	private Image Icecream = new ImageIcon("src/images/Icecream.png").getImage();
+	private Image CheeseBall = new ImageIcon("src/images/CheeseBall.png").getImage();
+	private Image Corn = new ImageIcon("src/images/Corn.png").getImage();
 	// 음료
-	private Image Coke = new ImageIcon("src/images/Coke.png").getImage();
-	private Image Sprite = new ImageIcon("src/images/Sprite.png").getImage();
-	private Image Fanta = new ImageIcon("src/images/Fanta.png").getImage();
-	private Image Coffee = new ImageIcon("src/images/Coffee.png").getImage();
-	private Image orangeJuice = new ImageIcon("src/images/orangeJuice.png").getImage();
+	private Image Coke = new ImageIcon("src/images/OrderCoke.png").getImage();
+	private Image Sprite = new ImageIcon("src/images/OrderSprite.png").getImage();
+	private Image Fanta = new ImageIcon("src/images/OrderFanta.png").getImage();
+	private Image Coffee = new ImageIcon("src/images/OrderCoffee.png").getImage();
+	private Image orangeJuice = new ImageIcon("src/images/OrderOrangeJuice.png").getImage();
+	private Image Lemonade = new ImageIcon("src/images/OrderLemonade.png").getImage();
 
 	// 햄버거 배열
 	public String[] burger = { "계란 머핀", "모닝 머핀", "토마토햄 머핀", "햄모닝 머핀", "계란치즈 버거", "더블치즈 버거", "디폴트 버거", "불고기 버거",
 			"오버플로 버거", "채식 버거", "치즈 버거", "함박 버거" };
 
 	public HashMap<String, Image> hamMap = new HashMap<String, Image>();
+	private HashMap<String, Integer> xyMap = new HashMap<String, Integer>();
 
 	public List<Object> orderBurger = new LinkedList<Object>(); // 주문 이미지, 좌표
 	public List<Object> Ingredient; // 주문 재료별 임시 이미지, 좌표
@@ -89,17 +93,27 @@ public class Order {
 		hamMap.put("환타", Fanta);
 		hamMap.put("커피", Coffee);
 		hamMap.put("오렌지 주스", orangeJuice);
+
+//		xyMap.put("깨윗빵", OderTopSesameBread);
+//		xyMap.put("깨아래빵", OrderBelowSesamebread);
+//		xyMap.put("기본윗빵", OrderTopBread);
+//		xyMap.put("기본아래빵", OrderBelowBread);
+//		xyMap.put("모닝윗빵", OrderMoringTopBread);
+//		xyMap.put("모닝아래빵", OrderMoringBelowBread);
+//		
+//		xyMap.put("치즈", OrderCheese);
+//		xyMap.put("패티", OrderPatty);
+//		xyMap.put("토마토", OrderTomato);
+//		xyMap.put("양상추", OrderLettuce);
+//		xyMap.put("계란", OrderEgg);
+//		xyMap.put("양파", OrderOnion);
 	}
 
 	public void Order() {
-		x = 40;
-		y = 130;
+		x = 35;
+		y = 150;
 //		y = 160 - 25 * i;
 		for (int i = 0; i < orderSheet.size(); i++, x += 10) {
-			
-			if(orderSheet.size()==1) {
-				x = 60;
-			}
 			// 세트일 때
 			if (!orderSheet.get(i)[1].equals("")) {
 
@@ -121,24 +135,17 @@ public class Order {
 						burgerIngredient.add(array); // 단품으로 햄버거가 여러개일 경우
 														// 햄버거별 재료 목록 저장
 
-						for(int z=0; z<burgerIngredient.size(); z++) {
-							Ingredient = new LinkedList<Object>();
-							Ingredient.add(hamMap.get(burgerIngredient.get(z)));
-							Ingredient.add(x);
-							Ingredient.add(y);
-							orderBurger.add((List<Object>) Ingredient);
-							y -= 10;							
+						for (int z = 0; z < burgerIngredient.get(j).length; z++) {
+//							for (int zz = 0; zz < burgerIngredient.get(z).length; zz++) {
+								Ingredient = new LinkedList<Object>();
+								Ingredient.add(hamMap.get(burgerIngredient.get(j)[z]));
+								Ingredient.add(x);
+								Ingredient.add(y);
+								orderBurger.add((List<Object>) Ingredient);
+								y -= 10;
+//							}
+							x += 175;
 						}
-						
-//						for (String ing : (String[]) burgerIngredient.get(burgerIngredient.size() - 1)) {
-//							Ingredient = new LinkedList<Object>();
-//							Ingredient.add(hamMap.get(ing));
-//							Ingredient.add(x);
-//							Ingredient.add(y);
-//							orderBurger.add((List<Object>) Ingredient);
-//							y -= 10;
-//						}
-						
 					} else { // 햄버거가 아니면 그냥 추가
 //						System.out.println(hamMap.get(ingredientsArray[j]));
 						Ingredient.add(hamMap.get(ingredientsArray[j]));
@@ -146,10 +153,15 @@ public class Order {
 						Ingredient.add(y);
 						orderBurger.add((List<Object>) Ingredient);
 					}
-					
+
 					x += 20;
 				}
 			} else { // 단품일 때
+
+				if(orderSheet.size() == 1) {
+					x = 100;
+				}
+				
 				String ingredients = orderSheet.get(i)[0];
 				Ingredient = new LinkedList<Object>();
 
@@ -158,25 +170,36 @@ public class Order {
 					// DB로 주문 레시피 재료 가져오기
 					String array[] = db.recipes(ingredients);
 
+					for (int a = 0; a < array.length; a++) {
+						System.out.println(array[a]);
+					}
+
 					burgerIngredient.add(array); // 단품으로 햄버거가 여러개일 경우
 													// 햄버거별 재료 목록 저장
 
-					for(int z=0; z<burgerIngredient.size(); z++) {
-						Ingredient = new LinkedList<Object>();
-						Ingredient.add(hamMap.get(burgerIngredient.get(z)));
-						Ingredient.add(x);
-						Ingredient.add(y);
-						orderBurger.add((List<Object>) Ingredient);
-						y -= 10;							
-					}
-//					for (String ing : (String[]) burgerIngredient.get(burgerIngredient.size() - 1)) {
-//						Ingredient = new LinkedList<Object>();
-//						Ingredient.add(hamMap.get(ing));
-//						Ingredient.add(x);
-//						Ingredient.add(y);
-//						orderBurger.add((List<Object>) Ingredient);
-//						y -= 10;
+//					for (int z = 0; z < burgerIngredient.size(); z++) {
+//						for (int zz = 0; zz < burgerIngredient.get(z).length; zz++) {
+//							Ingredient = new LinkedList<Object>();
+//							Ingredient.add(hamMap.get(burgerIngredient.get(z)[zz]));
+//							Ingredient.add(x);
+//							Ingredient.add(y);
+//							orderBurger.add((List<Object>) Ingredient);
+//							y -= 10;
+//						}
+//						x += 175;
 //					}
+					
+					for (int z = 0; z < burgerIngredient.get(i).length; z++) {
+//						for (int zz = 0; zz < burgerIngredient.get(z).length; zz++) {
+							Ingredient = new LinkedList<Object>();
+							Ingredient.add(hamMap.get(burgerIngredient.get(i)[z]));
+							Ingredient.add(x);
+							Ingredient.add(y);
+							orderBurger.add((List<Object>) Ingredient);
+							y -= 10;
+//						}
+//						x += 175;
+					}
 				} else { // 햄버거가 아니면 그냥 추가
 					System.out.println(hamMap.get(orderSheet.get(i)[0]));
 					Ingredient.add(hamMap.get(orderSheet.get(i)[0]));
@@ -185,7 +208,7 @@ public class Order {
 					orderBurger.add((List<Object>) Ingredient);
 				}
 
-				x += 10;
+				x += 175;
 			}
 		}
 
@@ -206,6 +229,7 @@ public class Order {
 			y = 100; // 손님 y좌표
 
 			order(); // 주문 랜덤 메소드 호출
+			Guest();
 		}
 
 		public void order() {
@@ -221,6 +245,7 @@ public class Order {
 
 					do {
 						menu = db.RandomOrder(cnt - 1);
+//						if() break; 
 					} while (menu.get(0)[3].equals("세트"));
 
 //					if (menu.get(0)[3].equals("세트")) {
@@ -246,6 +271,7 @@ public class Order {
 				for (int i = 0; i < orderSheet.size(); i++) {
 					price += Integer.parseInt(orderSheet.get(i)[2]);
 				}
+
 			} else { // 세트일 때
 				// 음료, 사이드메뉴 랜덤
 				price += Integer.parseInt(orderSheet.get(0)[2]);

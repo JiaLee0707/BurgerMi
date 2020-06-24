@@ -35,14 +35,17 @@ public class Make {
 	private Image ChickenNuggets = new ImageIcon("src/images/ChickenNuggets.png").getImage();
 	private Image FrenchFries = new ImageIcon("src/images/FrenchFries.png").getImage();
 	private Image Icecream = new ImageIcon("src/images/Icecream.png").getImage();
-	public Image[] makeSideImageArray = { CheeseStice, ChickenNuggets, FrenchFries, Icecream };
+	private Image CheeseBall = new ImageIcon("src/images/CheeseBall.png").getImage();
+	private Image Corn = new ImageIcon("src/images/Corn.png").getImage();
+	public Image[] makeSideImageArray = { CheeseStice, ChickenNuggets, FrenchFries, Icecream, CheeseBall, Corn };
 	// 음료
 	private Image Coke = new ImageIcon("src/images/Coke.png").getImage();
 	private Image Sprite = new ImageIcon("src/images/Sprite.png").getImage();
 	private Image Fanta = new ImageIcon("src/images/Fanta.png").getImage();
 	private Image Coffee = new ImageIcon("src/images/Coffee.png").getImage();
 	private Image orangeJuice = new ImageIcon("src/images/orangeJuice.png").getImage();
-	public Image[] makeDrinkImageArray = { Coke, Sprite, Fanta, Coffee, orangeJuice };
+	private Image Lemonade = new ImageIcon("src/images/Lemonade.png").getImage();
+	public Image[] makeDrinkImageArray = { Coke, Sprite, Fanta, Coffee, orangeJuice, Lemonade };
 
 	// 재료대 음식
 	public Image[] IngredientsImage;
@@ -115,12 +118,15 @@ public class Make {
 		hamMap.put(ChickenNuggets, "치킨너겟");
 		hamMap.put(FrenchFries, "감자튀김");
 		hamMap.put(Icecream, "아이스크림");
+		hamMap.put(CheeseBall, "치즈볼");
+		hamMap.put(Corn, "콘샐러드");
 
 		hamMap.put(Coke, "콜라");
 		hamMap.put(Sprite, "사이다");
 		hamMap.put(Fanta, "환타");
 		hamMap.put(Coffee, "커피");
 		hamMap.put(orangeJuice, "오렌지 주스");
+		hamMap.put(Lemonade, "레모네이드");	
 	}
 
 	public void Ingredients(int ingr) {

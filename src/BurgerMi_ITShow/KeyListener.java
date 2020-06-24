@@ -32,7 +32,7 @@ public class KeyListener extends KeyAdapter {
 		case KeyEvent.VK_4:
 			make.Ingredients(4);
 			break;
-			
+
 		case KeyEvent.VK_SPACE:
 			sales.Sales();
 			break;
@@ -64,16 +64,6 @@ public class KeyListener extends KeyAdapter {
 				break;
 			case KeyEvent.VK_D:
 				make.Make(5);
-				break;
-
-			case KeyEvent.VK_SPACE:
-				sales.Sales();
-				break;
-			case KeyEvent.VK_ENTER:
-				System.out.println("\n엔터");
-				sales.Sales();
-				Throw th = new Throw();
-				th.start();
 				break;
 			}
 		}
