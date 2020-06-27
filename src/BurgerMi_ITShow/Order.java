@@ -97,31 +97,31 @@ public class Order {
 
 		// x좌표
 		xMap.put("깨윗빵", 17);
-		xMap.put("깨아래빵", 17);
+		xMap.put("깨아래빵", 23);
 		xMap.put("기본윗빵", -15);
-		xMap.put("기본아래빵", -5);
-		xMap.put("모닝윗빵", -10);
-		xMap.put("모닝아래빵", -5);
+		xMap.put("기본아래빵", 3);
+		xMap.put("모닝윗빵", -15);
+		xMap.put("모닝아래빵", -3);
 		xMap.put("치즈", 15);
-		xMap.put("패티", 17);
+		xMap.put("패티", 20);
 		xMap.put("토마토", 20);
 		xMap.put("양상추", 15);
 		xMap.put("계란", 1);
-		xMap.put("양파", 1);
+		xMap.put("양파", 15);
 
 		// y좌표
-		yMap.put("깨윗빵", -30);
-		yMap.put("깨아래빵", -10);
-		yMap.put("기본윗빵", -38);
-		yMap.put("기본아래빵", -25);
+		yMap.put("깨윗빵", -43);
+		yMap.put("깨아래빵", -5);
+		yMap.put("기본윗빵", -43);
+		yMap.put("기본아래빵", -15);
 		yMap.put("모닝윗빵", -45);
-		yMap.put("모닝아래빵", -20);
-		yMap.put("치즈", -10);
+		yMap.put("모닝아래빵", -10);
+		yMap.put("치즈", -5);
 		yMap.put("패티", 10);
-		yMap.put("토마토", -5);
-		yMap.put("양상추", -5);
-		yMap.put("계란", -23);
-		yMap.put("양파", 1);
+		yMap.put("토마토", 7);
+		yMap.put("양상추", -15);
+		yMap.put("계란", -20);
+		yMap.put("양파", -13);
 	}
 
 	public void Order() {
@@ -168,6 +168,9 @@ public class Order {
 												// 햄버거별 재료 목록 저장
 
 				for (int z = 0; z < array.length; z++) {
+					if(z!=0 && array[z].equals("깨아래빵")) {
+						y -= 18;
+					}
 					Ingredient = new LinkedList<Object>();
 					Ingredient.add(hamMap.get(array[z]));
 					Ingredient.add(x + xMap.get(array[z]));
