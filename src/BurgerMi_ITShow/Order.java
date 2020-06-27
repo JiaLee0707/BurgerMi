@@ -96,31 +96,31 @@ public class Order {
 		hamMap.put("오렌지 주스", orangeJuice);
 
 		// x좌표
-		xMap.put("깨윗빵", 1);
-		xMap.put("깨아래빵", 1);
-		xMap.put("기본윗빵", 1);
-		xMap.put("기본아래빵", 1);
-		xMap.put("모닝윗빵", 1);
-		xMap.put("모닝아래빵", 1);
-		xMap.put("치즈", 0);
-		xMap.put("패티", 35);
-		xMap.put("토마토", 40);
-		xMap.put("양상추", 10);
+		xMap.put("깨윗빵", 17);
+		xMap.put("깨아래빵", 17);
+		xMap.put("기본윗빵", -15);
+		xMap.put("기본아래빵", -5);
+		xMap.put("모닝윗빵", -10);
+		xMap.put("모닝아래빵", -5);
+		xMap.put("치즈", 15);
+		xMap.put("패티", 17);
+		xMap.put("토마토", 20);
+		xMap.put("양상추", 15);
 		xMap.put("계란", 1);
 		xMap.put("양파", 1);
 
 		// y좌표
-		yMap.put("깨윗빵", 1);
-		yMap.put("깨아래빵", 1);
-		yMap.put("기본윗빵", -30);
-		yMap.put("기본아래빵", 1);
-		yMap.put("모닝윗빵", -30);
-		yMap.put("모닝아래빵", 1);
-		yMap.put("치즈", 10);
+		yMap.put("깨윗빵", -30);
+		yMap.put("깨아래빵", -10);
+		yMap.put("기본윗빵", -38);
+		yMap.put("기본아래빵", -25);
+		yMap.put("모닝윗빵", -45);
+		yMap.put("모닝아래빵", -20);
+		yMap.put("치즈", -10);
 		yMap.put("패티", 10);
-		yMap.put("토마토", 5);
-		yMap.put("양상추", 10);
-		yMap.put("계란", 80);
+		yMap.put("토마토", -5);
+		yMap.put("양상추", -5);
+		yMap.put("계란", -23);
 		yMap.put("양파", 1);
 	}
 
@@ -211,7 +211,7 @@ public class Order {
 			orderSheet = db.RandomOrder(1); // 주문 랜덤
 
 			if (orderSheet.get(0)[3].equals("단품")) { // 단품일 때
-				int cnt = (int) (Math.random() * 2) + 1; // 주문 갯수
+				int cnt = (int) (Math.random() * 3) + 1; // 주문 갯수
 				// 단품 중 주문 갯수만큼 랜덤
 				System.out.println("주문 갯수 : " + cnt);
 				if (cnt != 1) {
@@ -219,7 +219,7 @@ public class Order {
 					do {
 						menu = db.RandomOrder(cnt - 1);
 //						if() break; 
-					} while (menu.get(0)[3].equals("세트"));
+					} while (menu.get(0)[3].equals("세트") || Arrays.stream(burger).anyMatch(menu.get(0)[0]::equals));
 
 //					if (menu.get(0)[3].equals("세트")) {
 //						String[] kind = { "음료", "사이드 메뉴" };
