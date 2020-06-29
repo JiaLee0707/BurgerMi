@@ -34,11 +34,11 @@ public class KeyListener extends KeyAdapter {
 			break;
 
 		case KeyEvent.VK_SPACE:
-			sales.Sales();
+			sales.Sales(false);
 			break;
 		case KeyEvent.VK_ENTER:
 			System.out.println("\n엔터");
-			sales.Sales();
+			sales.Sales(true);
 			Throw th = new Throw();
 			th.start();
 			break;

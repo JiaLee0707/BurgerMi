@@ -61,10 +61,17 @@ public class Order {
 	public List<Object> Ingredient; // 주문 재료별 임시 이미지, 좌표
 
 	List<String[]> orderSheet = new LinkedList<String[]>(); // 주문표
-	LinkedList<String[]> burgerIngredient = new LinkedList<String[]>(); // 햄버거 레시피
+	String[] burgerIngredient; // 햄버거 레시피
+	
+
+	public String ingredients;
+	public String[] ingredientsArray = null;
+	
 	public int price = 0;
 
 	int who, x, y;
+	boolean badCustomer;
+
 
 	public Order(DB db) {
 		this.db = db;
@@ -127,8 +134,8 @@ public class Order {
 	public void Order() {
 		x = 30;
 		y = 150;
-		String ingredients;
-		String[] ingredientsArray = null;
+//		String ingredients;
+//		String[] ingredientsArray = null;
 		
 		// 세트일 때
 		if (!orderSheet.get(0)[1].equals("")) {
@@ -158,23 +165,23 @@ public class Order {
 			// 햄버거인 경우
 			if (Arrays.stream(burger).anyMatch(ingredientsArray[i]::equals)) {
 				// DB로 주문 레시피 재료 가져오기
-				String array[] = db.recipes(ingredientsArray[i]);
+				burgerIngredient = db.recipes(ingredientsArray[i]);
 
-				for (int a = 0; a < array.length; a++) {
-					System.out.println(array[a]);
+				for (int a = 0; a < burgerIngredient.length; a++) {
+					System.out.println(burgerIngredient[a]);
 				}
 
 				// burgerIngredient.add(array); // 단품으로 햄버거가 여러개일 경우
 												// 햄버거별 재료 목록 저장
 
-				for (int z = 0; z < array.length; z++) {
-					if(z!=0 && array[z].equals("깨아래빵")) {
+				for (int z = 0; z < burgerIngredient.length; z++) {
+					if(z!=0 && burgerIngredient[z].equals("깨아래빵")) {
 						y -= 18;
 					}
 					Ingredient = new LinkedList<Object>();
-					Ingredient.add(hamMap.get(array[z]));
-					Ingredient.add(x + xMap.get(array[z]));
-					Ingredient.add(y + yMap.get(array[z]));
+					Ingredient.add(hamMap.get(burgerIngredient[z]));
+					Ingredient.add(x + xMap.get(burgerIngredient[z]));
+					Ingredient.add(y + yMap.get(burgerIngredient[z]));
 					orderBurger.add((List<Object>) Ingredient);
 					y -= 10;
 				}
@@ -212,6 +219,12 @@ public class Order {
 			LinkedList<String[]> menu; // 임시 주문 LinkedList
 
 			orderSheet = db.RandomOrder(1); // 주문 랜덤
+			
+			if(orderSheet.get(0)[3].contains("진상")) {
+				badCustomer = true;
+			} else {
+				badCustomer = false;
+			}
 
 			if (orderSheet.get(0)[3].equals("단품")) { // 단품일 때
 				int cnt = (int) (Math.random() * 3) + 1; // 주문 갯수
