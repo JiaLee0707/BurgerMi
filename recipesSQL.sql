@@ -1,10 +1,10 @@
 USE burgermi;
 -- DROP TABLE recipes;
 
-CREATE TABLE recipes ( NAME VARCHAR(20) NOT NULL, ingredient VARCHAR(50) NOT NULL, kind VARCHAR(10) NOT NULL,
+CREATE TABLE recipes ( NAME VARCHAR(20) NOT NULL, ingredients VARCHAR(50) NOT NULL, kind VARCHAR(10) NOT NULL,
 PRIMARY KEY(NAME), FOREIGN KEY (NAME) REFERENCES menu (NAME));
 
-INSERT INTO recipes (NAME, ingredient, kind) VALUES 
+INSERT INTO recipes (NAME, ingredients, kind) VALUES 
 					  ('디폴트 버거', '기본아래빵;패티;양파;기본윗빵', '햄버거'),
 					  ('함박 버거', '기본아래빵;패티;치즈;기본윗빵', '햄버거'),
 					  ('치즈 버거', '기본아래빵;패티;치즈;토마토;기본윗빵', '햄버거'),
@@ -19,11 +19,11 @@ INSERT INTO recipes (NAME, ingredient, kind) VALUES
 					  ('햄모닝 머핀', '모닝아래빵;패티;치즈;계란;모닝윗빵', '모닝'),
 					  ('토마토햄 머핀', '모닝아래빵;치즈;패티;양상추;토마토;모닝윗빵', '모닝'),
 					  
-					  ('감자튀김', '감자튀김', '사이드 메뉴'),
-					  ('치킨너겟', '치킨너겟', '사이드 메뉴'),
-					  ('치즈스틱', '치즈스틱', '사이드 메뉴'),
-					  ('아이스크림', '아이스크림', '사이드 메뉴'),
-					  ('콘샐러드', '콘샐러드',  '사이드 메뉴'),
+					  ('감자튀김', '감자튀김', '사이드메뉴'),
+					  ('치킨너겟', '치킨너겟', '사이드메뉴'),
+					  ('치즈스틱', '치즈스틱', '사이드메뉴'),
+					  ('아이스크림', '아이스크림', '사이드메뉴'),
+					  ('콘샐러드', '콘샐러드',  '사이드메뉴'),
 					  
 					  ('콜라', '콜라', '음료'),
 					  ('사이다', '사이다', '음료'),

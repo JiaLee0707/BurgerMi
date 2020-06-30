@@ -33,6 +33,7 @@ public class Sales {
 		this.Enter = Enter;
 		
 		boolean OX = Discriminate();
+		
 
 		// 점수 계산
 		if (OX == true) {
@@ -73,29 +74,15 @@ public class Sales {
 		this.make.MakeOrderSheetArray.clear();
 		this.make.MakeBurgerArray.clear();
 		this.make.i.clear();
-		Main.burgermi.game.order = new Order(Main.burgermi.game.db);
-		Main.burgermi.game.ReGame();
-		Main.burgermi.game.getParent().repaint();
 
-		//		// this.burger.MakeBurgerObjectArray.clear();
-//		this.make.MakeBurgerIntArray.clear();
-//		this.make.burgerIngredient.clear(); // = new LinkedList<Object>();
-//		this.make.i.clear();
-////		this.burger.burgerIngredient.add(null);
-////		this.burger.burgerIngredient.add(0);
-////		this.burger.burgerIngredient.add(0);
-//		order.orderBurgerArray = new int[5];
-//
-//		if (order.who == 4) {
-//			Throw th = new Throw();
-//			th.start();
-//		} else {
-////			Main.burgermi.game.order = new Order();
-//			Main.burgermi.game.ReGame();
-//		}
-////		Main.burgermi.game.revalidate();
-////		Main.burgermi.game.repaint();
-//		Main.burgermi.game.getParent().repaint();
+		if(Enter) {
+			Throw th = new Throw();
+			th.start();
+		} else {
+			Main.burgermi.game.order = new Order(Main.burgermi.game.db);
+			Main.burgermi.game.ReGame();			
+		}
+		Main.burgermi.game.getParent().repaint();
 	}
 
 	public boolean Discriminate() {

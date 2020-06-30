@@ -24,8 +24,8 @@ public class Throw extends Thread {
 				i++;
 			}
 			Main.burgermi.game.ThrowBurger = false;
-//			Main.burgermi.game.order = new Order(Main.burgermi.game.db);
-//			Main.burgermi.game.ReGame();
+			Main.burgermi.game.order = new Order(Main.burgermi.game.db);
+			Main.burgermi.game.ReGame();
 			Main.burgermi.game.getParent().repaint();
 		} catch (Exception e) {
 			e.getMessage();

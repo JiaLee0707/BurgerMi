@@ -30,11 +30,18 @@ public class DB {
 		}
 	}
 
-	public LinkedList RandomOrder(int i) {
+	public LinkedList RandomOrder(int i, String who) {
 		LinkedList<Object[]> menu = new LinkedList<Object[]>();
 		try {
 			// 메뉴 전체 랜덤
-			String sql = "SELECT * FROM menu ORDER BY RAND() LIMIT ?";
+			String sql = null;
+			if(who.equals("All")) {	// 메뉴 전체
+				sql = "SELECT * FROM menu ORDER BY RAND() LIMIT ?";
+			} else if(who.equals("badCustomer")) {	// 진상 메뉴
+				sql = "SELECT * FROM menu WHERE sort LIKE '%진상%' ORDER BY RAND() LIMIT ?";				
+			} else {	// 일반 메뉴
+				sql = "SELECT * FROM menu WHERE sort NOT LIKE '%진상%' ORDER BY RAND() LIMIT ?";								
+			}
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, i);
 			ResultSet srs = pstmt.executeQuery();
@@ -60,13 +67,20 @@ public class DB {
 		return menu;
 	}
 	////////////////////////////
-	public LinkedList RandomOrder(int i, String kind) {
+	public LinkedList SideRandomOrder(int i, String kind, String who) {
 		LinkedList<Object[]> menu = new LinkedList<Object[]>();
 		try {
+			String sql = null;
 			// 음료, 사이드 메뉴 랜덤
-			String sql = "SELECT menu.name, menu.ingredients, menu.price, menu.sort, recipes.kind FROM "
-						+ "menu, recipes WHERE menu.name=recipes.name AND recipes.kind=? "
-						+ "ORDER BY RAND() LIMIT ?";
+			if(who.equals("badCustomer")) {
+				sql = "SELECT menu.name, menu.ingredients, menu.price, menu.sort, recipes.kind FROM "
+							+ "menu, recipes WHERE menu.name=recipes.name AND recipes.kind=? AND sort LIKE '%진상%' "
+							+ "ORDER BY RAND() LIMIT ?";
+			} else {
+				sql = "SELECT menu.name, menu.ingredients, menu.price, menu.sort, recipes.kind FROM "
+						+ "menu, recipes WHERE menu.name=recipes.name AND recipes.kind=? AND sort NOT LIKE '%진상%' "
+						+ "ORDER BY RAND() LIMIT ?";				
+			}
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, kind);
 			pstmt.setInt(2, i);

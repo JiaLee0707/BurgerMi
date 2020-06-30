@@ -50,8 +50,8 @@ public class Order {
 	private Image Lemonade = new ImageIcon("src/images/OrderLemonade.png").getImage();
 
 	// 햄버거 배열
-	public String[] burger = { "계란 머핀", "모닝 머핀", "토마토햄 머핀", "햄모닝 머핀", "계란치즈 버거", "더블치즈 버거", "디폴트 버거", "불고기 버거",
-			"오버플로 버거", "채식 버거", "치즈 버거", "함박 버거" };
+	public String[] burger = { "계란 머핀", "모닝 머핀", "토마토햄 머핀", "햄모닝 머핀", "계란치즈 버거", "더블치즈 버거", "디폴트 버거", 
+			"불고기 버거", "오버플로 버거", "채식 버거", "치즈 버거", "함박 버거", "채소없는 채식 버거" };
 
 	public HashMap<String, Image> hamMap = new HashMap<String, Image>();
 	private HashMap<String, Integer> xMap = new HashMap<String, Integer>();
@@ -62,16 +62,14 @@ public class Order {
 
 	List<String[]> orderSheet = new LinkedList<String[]>(); // 주문표
 	String[] burgerIngredient; // 햄버거 레시피
-	
 
 	public String ingredients;
 	public String[] ingredientsArray = null;
-	
+
 	public int price = 0;
 
 	int who, x, y;
 	boolean badCustomer;
-
 
 	public Order(DB db) {
 		this.db = db;
@@ -101,6 +99,9 @@ public class Order {
 		hamMap.put("환타", Fanta);
 		hamMap.put("커피", Coffee);
 		hamMap.put("오렌지 주스", orangeJuice);
+
+		hamMap.put("탄산없는 콜라", Coke);
+		hamMap.put("탄산없는 환타", Fanta);
 
 		// x좌표
 		xMap.put("깨윗빵", 17);
@@ -134,36 +135,35 @@ public class Order {
 	public void Order() {
 		x = 30;
 		y = 150;
-//		String ingredients;
-//		String[] ingredientsArray = null;
-		
+
 		// 세트일 때
 		if (!orderSheet.get(0)[1].equals("")) {
 			for (int i = 0; i < orderSheet.size(); i++) {
 				ingredients = orderSheet.get(i)[1];
 				ingredientsArray = ingredients.split(";"); // 주문표 자르기
 			}
-		} 
+		}
 		// 단품일 때
 		else {
 			ingredientsArray = new String[orderSheet.size()];
 			for (int i = 0; i < orderSheet.size(); i++) {
 				ingredientsArray[i] = orderSheet.get(i)[0];
 			}
-			
+
 			// 단품일 때 주문 1개이면
 			// 위치 가운데
-			if(ingredientsArray.length == 1) {
+			if (ingredientsArray.length == 1) {
 				x = 100;
 			}
 		}
 
 		// 재료 위치좌표
-		for(int i=0; i<ingredientsArray.length; i++) {
+		for (int i = 0; i < ingredientsArray.length; i++) {
 			Ingredient = new LinkedList<Object>();
-			
+
 			// 햄버거인 경우
-			if (Arrays.stream(burger).anyMatch(ingredientsArray[i]::equals)) {
+			if (ingredientsArray[i].contains("버거") || ingredientsArray[i].contains("머핀")) {
+					//Arrays.stream(burger).anyMatch(ingredientsArray[i]::equals)) {
 				// DB로 주문 레시피 재료 가져오기
 				burgerIngredient = db.recipes(ingredientsArray[i]);
 
@@ -172,10 +172,10 @@ public class Order {
 				}
 
 				// burgerIngredient.add(array); // 단품으로 햄버거가 여러개일 경우
-												// 햄버거별 재료 목록 저장
+				// 햄버거별 재료 목록 저장
 
 				for (int z = 0; z < burgerIngredient.length; z++) {
-					if(z!=0 && burgerIngredient[z].equals("깨아래빵")) {
+					if (z != 0 && burgerIngredient[z].equals("깨아래빵")) {
 						y -= 18;
 					}
 					Ingredient = new LinkedList<Object>();
@@ -216,26 +216,50 @@ public class Order {
 		}
 
 		public void order() {
-			LinkedList<String[]> menu; // 임시 주문 LinkedList
+			LinkedList<String[]> menu = null; // 임시 주문 LinkedList
 
-			orderSheet = db.RandomOrder(1); // 주문 랜덤
-			
-			if(orderSheet.get(0)[3].contains("진상")) {
+			orderSheet = db.RandomOrder(1, "All"); // 주문 랜덤
+
+			if (orderSheet.get(0)[3].contains("진상")) {
 				badCustomer = true;
+				System.out.println("진상");
 			} else {
 				badCustomer = false;
+				System.out.println("진상X");
 			}
 
-			if (orderSheet.get(0)[3].equals("단품")) { // 단품일 때
-				int cnt = (int) (Math.random() * 3) + 1; // 주문 갯수
+			if (orderSheet.get(0)[3].contains("단품")) { // 단품일 때
+				int cnt = (int) (Math.random() * 2) + 1; // 주문 갯수
 				// 단품 중 주문 갯수만큼 랜덤
 				System.out.println("주문 갯수 : " + cnt);
 				if (cnt != 1) {
-
+					boolean bool = false;
 					do {
-						menu = db.RandomOrder(cnt - 1);
-//						if() break; 
-					} while (menu.get(0)[3].equals("세트") || Arrays.stream(burger).anyMatch(menu.get(0)[0]::equals));
+						if (badCustomer) {
+							menu = db.RandomOrder(cnt - 1, "badCustomer");
+						} else {
+							menu = db.RandomOrder(cnt - 1, "X");
+						}
+						for (int i = 0; i < menu.size(); i++) {
+							if (!menu.get(i)[0].contains("세트")) {
+								bool = true;								
+							} else {
+								bool = false;
+								break;
+							}
+							if(orderSheet.get(0)[0].contains("버거") || orderSheet.get(0)[0].contains("머핀")) {
+								if(menu.get(i)[0].contains("버거") || menu.get(i)[0].contains("머핀")) { 
+									bool = false;
+									break;
+								}
+							}
+						}
+					} while (!bool);
+				}
+
+//					do {
+//						menu = db.RandomOrder(cnt - 1);
+//					} while (menu.get(0)[3].equals("세트") || Arrays.stream(burger).anyMatch(menu.get(0)[0]::equals));
 
 //					if (menu.get(0)[3].equals("세트")) {
 //						String[] kind = { "음료", "사이드 메뉴" };
@@ -251,22 +275,22 @@ public class Order {
 //							orderSheet.set(0, change);
 //						}
 //					}
-					String[] m = null;
-					for (int i = 0; i < cnt - 1; i++) {
-						m = (String[]) menu.get(i);
-						orderSheet.add(m);
-					}
-				}
-				for (int i = 0; i < orderSheet.size(); i++) {
-					price += Integer.parseInt(orderSheet.get(i)[2]);
+				String[] m = null;
+				for (int i = 0; i < cnt - 1; i++) {
+					m = (String[]) menu.get(i);
+					orderSheet.add(m);
 				}
 
 			} else { // 세트일 때
 				// 음료, 사이드메뉴 랜덤
 				price += Integer.parseInt(orderSheet.get(0)[2]);
-				String[] kind = { "음료", "사이드 메뉴" };
+				String[] kind = { "음료", "사이드메뉴" };
 				for (int i = 0; i < 2; i++) {
-					menu = db.RandomOrder(1, kind[i]);
+					if (badCustomer) {
+						menu = db.SideRandomOrder(1, kind[i], "badCustomer");
+					} else {
+						menu = db.SideRandomOrder(1, kind[i], "X");
+					}
 					String changeMenu = (orderSheet.get(0)[1]).replace(kind[i], ((String[]) menu.get(0))[0]);
 					String[] change = new String[4];
 					change[0] = orderSheet.get(0)[0];
@@ -276,6 +300,9 @@ public class Order {
 					orderSheet.set(0, change);
 				}
 
+			}
+			for (int i = 0; i < orderSheet.size(); i++) {
+				price += Integer.parseInt(orderSheet.get(i)[2]);
 			}
 			System.out.print("총 주문은 : ");
 			for (int i = 0; i < orderSheet.size(); i++) {

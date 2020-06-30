@@ -39,8 +39,6 @@ public class KeyListener extends KeyAdapter {
 		case KeyEvent.VK_ENTER:
 			System.out.println("\n엔터");
 			sales.Sales(true);
-			Throw th = new Throw();
-			th.start();
 			break;
 		}
 

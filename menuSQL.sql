@@ -1,5 +1,6 @@
 USE burgermi;
--- DROP TABLE menu;
+DROP TABLE recipes;
+DROP TABLE menu;
 
 CREATE TABLE menu (NAME VARCHAR(20) NOT NULL, ingredients VARCHAR(20), price INT(5) NOT NULL, sort VARCHAR(10) NOT NULL, PRIMARY KEY(NAME));
 
