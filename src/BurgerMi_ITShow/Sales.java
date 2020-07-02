@@ -13,7 +13,7 @@ public class Sales {
 
 	int sales = 0;
 //	int salesArray[] = { 10, 20, -5 };
-	public JLabel salesLabel = new JLabel(sales + "원");
+//	public JLabel salesLabel = new JLabel(sales + "원");
 	Music musicOX;
 	boolean Enter;
 
@@ -21,10 +21,10 @@ public class Sales {
 	
 	public Sales(DB db) {
 		this.db = db;
-		salesLabel.setFont(font); // 폰트 설정
-		salesLabel.setSize(500, 500); // 크키 설정
-		salesLabel.setLocation(1160, -150); // 위치 설정
-		Main.burgermi.game.add(salesLabel);
+		//salesLabel.setFont(font); // 폰트 설정
+		//salesLabel.setSize(500, 500); // 크키 설정
+		//salesLabel.setLocation(1160, -150); // 위치 설정
+		//Main.burgermi.game.add(salesLabel);
 	}
 
 	public void Sales(boolean Enter) {
@@ -62,13 +62,13 @@ public class Sales {
 			}
 		}
 		musicOX.start();
-		
+		/*
 		if(sales > 0 || sales < 0) {
 			salesLabel.setLocation(1140, -150); // 위치 설정
 		} else if(sales >= 100) {
 			salesLabel.setLocation(1130, -150); // 위치 설정
 		}
-		salesLabel.setText(sales + "점");
+		salesLabel.setText(sales + "점"); */
 
 		this.make.MakeInformation.clear();
 		this.make.MakeOrderSheetArray.clear();

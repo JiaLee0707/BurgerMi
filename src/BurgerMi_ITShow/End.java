@@ -16,13 +16,10 @@ public class End {
 	private JButton replayBtn = new JButton(mouse.ReplayBasicImage);
 //	private JButton QuitBtn = new JButton(mouse.QuitBasicImage);
 
-	public JLabel GameResult = new JLabel("게임 결과");
-	public Font font1 = new Font("나눔스퀘어라운드 Bold", Font.PLAIN, 40);
-	public Font font2 = new Font("나눔스퀘어라운드 Light", Font.PLAIN, 40);
-	public JLabel myResult = new JLabel("나의 결과");
+	public Font font1 = new Font("양라벨도트고딕", Font.PLAIN, 40);
+//	public Font font2 = new Font("나눔스퀘어라운드 Light", Font.PLAIN, 40);
 	public JLabel allGrade = Main.burgermi.game.sales.salesLabel;
 
-//	JLabel[][] rankLable = new JLabel[5][3];
 	LinkedList<String[]> ranking;
 	int i=0;
 	

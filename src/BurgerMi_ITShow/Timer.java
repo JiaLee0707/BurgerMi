@@ -9,15 +9,15 @@ public class Timer extends Thread {
 //	int[] Time = { 0, 30 } ;
 	int[] Time = { 5, 00 };
 
-	public JLabel time = new JLabel(Time[0] + ":" + Time[1]);
+	//public JLabel time = new JLabel(Time[0] + ":" + Time[1]);
 	public boolean pause = false;
 
 	Timer() {
-		time.setFont(new Font("나눔스퀘어라운드 ExtraBold", Font.ITALIC, 50)); // 폰트 설정
-		time.setSize(500, 500); // 크키 설정
-		time.setLocation(1140, -200); // 위치 설정
+		//time.setFont(new Font("나눔스퀘어라운드 ExtraBold", Font.ITALIC, 50)); // 폰트 설정
+		//time.setSize(500, 500); // 크키 설정
+		//time.setLocation(1140, -200); // 위치 설정
 
-		Main.burgermi.game.add(time);
+		//Main.burgermi.game.add(time);
 
 		this.start();
 	}

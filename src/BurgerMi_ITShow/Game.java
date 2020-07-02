@@ -28,6 +28,7 @@ public class Game extends JPanel {
 	private Image ImageGame = toolkit.createImage("src/images/BurgerMi_3.gif");
 	private Image ImageIntro = toolkit.createImage("src/images/intro.gif");
 	public Image ImageRules = toolkit.createImage("src/images/GameRules.png");
+	public Image ImageResult = toolkit.createImage("src/images/GameResult.png");
 
 	public Image ImageBackground;
 
