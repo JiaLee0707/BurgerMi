@@ -16,7 +16,6 @@ public class End {
 	private JButton replayBtn = new JButton(mouse.ReplayBasicImage);
 //	private JButton QuitBtn = new JButton(mouse.QuitBasicImage);
 
-	public Font font1 = new Font("양라벨도트고딕", Font.PLAIN, 40);
 //	public Font font2 = new Font("나눔스퀘어라운드 Light", Font.PLAIN, 40);
 	public JLabel allGrade = Main.burgermi.game.sales.salesLabel;
 

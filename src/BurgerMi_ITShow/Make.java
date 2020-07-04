@@ -1,5 +1,7 @@
 package BurgerMi_ITShow;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Image;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -74,8 +76,8 @@ public class Make {
 	private Image smallIcecream = new ImageIcon("src/images/smallIcecream.png").getImage();
 	private Image smallCheeseBall = new ImageIcon("src/images/smallCheeseBall.png").getImage();
 	private Image smallCorn = new ImageIcon("src/images/smallCorn.png").getImage();
-	public Image[] IngredientSideImageArray = { smallCheeseStick, smallChickenNuggets, smallFrenchFries, 
-			smallIcecream, smallCheeseBall, smallCorn };
+	public Image[] IngredientSideImageArray = { smallCheeseStick, smallChickenNuggets, smallFrenchFries, smallIcecream,
+			smallCheeseBall, smallCorn };
 	// 음료
 	private Image smallCoke = new ImageIcon("src/images/smallCoke.png").getImage();
 	private Image smallSprite = new ImageIcon("src/images/smallSprite.png").getImage();
@@ -83,16 +85,22 @@ public class Make {
 	private Image smallCoffee = new ImageIcon("src/images/smallCoffee.png").getImage();
 	private Image smallorangeJuice = new ImageIcon("src/images/smallOrangeJuice.png").getImage();
 	private Image smallLemonade = new ImageIcon("src/images/smallLemonade.png").getImage();
-	public Image[] IngredientDrinkImageArray = { smallCoke, smallSprite, smallFanta, smallCoffee,
-			smallorangeJuice, smallLemonade };
-	
+	public Image[] IngredientDrinkImageArray = { smallCoke, smallSprite, smallFanta, smallCoffee, smallorangeJuice,
+			smallLemonade };
+
 	public HashMap<Image, String> hamMap = new HashMap<Image, String>();
+
+	public JLabel[] name = new JLabel[6];
+	public Font font1 = new Font("HY얕은샘물M", Font.BOLD, 25);
 
 	public LinkedList<Object> MakeInformation = new LinkedList<Object>(); // 만드는 재료의 이미지와 좌표 정보
 	public LinkedList<String> MakeOrderSheetArray = new LinkedList<String>(); // 주문 리스트
 	public LinkedList<String> MakeBurgerArray = new LinkedList<String>(); // 햄버거 재료 리스트
 	public LinkedList<Object> Ingredient;
 	public LinkedList<Integer> i = new LinkedList<Integer>();
+
+	private HashMap<String, Integer> xMap = new HashMap<String, Integer>();
+	private HashMap<String, Integer> yMap = new HashMap<String, Integer>();
 	int x, y; // 햄버거 x, y, i 좌표
 
 	int key = 0;
@@ -100,6 +108,10 @@ public class Make {
 //	int burgerCo unt = 0;
 
 	public Make() {
+		for (int i = 0; i < name.length; i++) {
+			name[i] = new JLabel();
+		}
+
 		hamMap.put(topBreadSesameImage, "깨윗빵");
 		hamMap.put(belowBreadSesameImage, "깨아래빵");
 		hamMap.put(topBreadImage, "기본윗빵");
@@ -126,11 +138,42 @@ public class Make {
 		hamMap.put(Fanta, "환타");
 		hamMap.put(Coffee, "커피");
 		hamMap.put(orangeJuice, "오렌지 주스");
-		hamMap.put(Lemonade, "레모네이드");	
+		hamMap.put(Lemonade, "레모네이드");
+
+		// x좌표
+		xMap.put("깨윗빵", 17);
+		xMap.put("깨아래빵", 23);
+		xMap.put("기본윗빵", -15);
+		xMap.put("기본아래빵", 3);
+		xMap.put("모닝윗빵", -15);
+		xMap.put("모닝아래빵", -3);
+		xMap.put("치즈", 15);
+		xMap.put("패티", 20);
+		xMap.put("토마토", 20);
+		xMap.put("양상추", 15);
+		xMap.put("계란", 1);
+		xMap.put("양파", 15);
+
+		// y좌표
+		yMap.put("깨윗빵", -43);
+		yMap.put("깨아래빵", -5);
+		yMap.put("기본윗빵", -43);
+		yMap.put("기본아래빵", -15);
+		yMap.put("모닝윗빵", -45);
+		yMap.put("모닝아래빵", -10);
+		yMap.put("치즈", -5);
+		yMap.put("패티", 10);
+		yMap.put("토마토", 7);
+		yMap.put("양상추", -15);
+		yMap.put("계란", -17);
+		yMap.put("양파", -13);
 	}
 
 	public void Ingredients(int ingr) {
 		key = ingr;
+		int xx = 60;
+		int yy = 300;
+
 		switch (key) {
 		case 1: // 빵
 			makeBurgerArray = makeBreadImageArray; // 만들 이미지
@@ -140,7 +183,7 @@ public class Make {
 			makeBurgerArray = makeIngredientImageArray;
 			IngredientsImage = IngredientImageArray;
 			break;
-		case 3:	// 사이드 메뉴
+		case 3: // 사이드 메뉴
 			makeBurgerArray = makeSideImageArray;
 			IngredientsImage = IngredientSideImageArray;
 			break;
@@ -148,6 +191,22 @@ public class Make {
 			makeBurgerArray = makeDrinkImageArray;
 			IngredientsImage = IngredientDrinkImageArray;
 			break;
+		}
+
+		for (int i = 0; i < IngredientsImage.length; i++, xx += 130) {
+			if (i == 3) {
+				xx = 60;
+				yy += 100;
+			}
+			name[i].setText(hamMap.get(makeBurgerArray[i]));
+			name[i].setBounds(xx, yy, 131, 330);
+			name[i].setFont(font1);
+			if (key == 4 && (i == 0 || i == 3)) {
+				name[i].setForeground(Color.white);
+			} else {
+				name[i].setForeground(Color.black);
+			}
+			Main.burgermi.game.add(name[i]);
 		}
 
 		Main.burgermi.game.getParent().repaint();
@@ -173,7 +232,10 @@ public class Make {
 			burgerCountArray = new int[2];
 		}
 
-		y = 540 - 25 * (MakeInformation.size());
+		
+		
+		
+		/*y = 540 - 25 * (MakeInformation.size());
 
 		switch (m) {
 		case 0:
@@ -198,7 +260,7 @@ public class Make {
 			x = 510;
 			y -= 20;
 			break;
-		}
+		}*/
 		Ingredient.add(x);
 		Ingredient.add(y);
 		MakeInformation.add(Ingredient);

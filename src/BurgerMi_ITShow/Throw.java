@@ -14,7 +14,7 @@ public class Throw extends Thread {
 				}
 
 				if (!Main.burgermi.game.ThrowImage.equals(Main.burgermi.game.ImageTrayArray[2])) {
-					Main.burgermi.game.TrayY = 450;
+					Main.burgermi.game.TrayY = 420;
 				}
 
 				Main.burgermi.game.repaint();

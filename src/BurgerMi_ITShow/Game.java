@@ -53,7 +53,7 @@ public class Game extends JPanel {
 
 	Music gameMusic;
 
-	int TrayY = 450;
+	int TrayY = 420;
 	public boolean start = false;
 	public boolean ThrowBurger = false;
 	public boolean end = false;
@@ -146,12 +146,12 @@ public class Game extends JPanel {
 		if (start) {
 			// 재료대 음식
 			if(keyListener.make.key!=0) {
-				int z = 10;
-				int zz = 400;
-				for(int i=0; i<keyListener.make.IngredientsImage.length; i++, z+=130) {
+				int z = 30;
+				int zz = 430;
+				for(int i=0; i<keyListener.make.IngredientsImage.length; i++, z+=120) {
 					if(i==3) {
+						z = 30;
 						zz+=100;
-						z = 10;
 					}
 					g.drawImage(keyListener.make.IngredientsImage[i], z, zz, this);
 				}
@@ -169,7 +169,7 @@ public class Game extends JPanel {
 			}
 
 			// 쟁반
-			g.drawImage(TrayBasicImage, 400, TrayY, this);
+			g.drawImage(TrayBasicImage, 415, TrayY, this);
 
 			if (ThrowBurger) {
 				// 햄버거 던지기
