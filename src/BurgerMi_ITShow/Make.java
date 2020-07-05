@@ -15,31 +15,30 @@ public class Make {
 	// 만들때 사용하는 재료
 	public Image[] makeBurgerArray;
 	// 빵
-	private Image topBreadSesameImage = new ImageIcon("src/images/breadTopSesame.png").getImage();
-	private Image belowBreadSesameImage = new ImageIcon("src/images/breadBelowSesame.png").getImage();
-	private Image topBreadImage = new ImageIcon("src/images/breadTop.png").getImage();
-	private Image belowBreadImage = new ImageIcon("src/images/breadBelow.png").getImage();
-	private Image MoringTopBreadImage = new ImageIcon("src/images/MoringTopBread.png").getImage();
-	private Image MoringBelowBreadImage = new ImageIcon("src/images/MoringBelowBread.png").getImage();
-	public Image[] makeBreadImageArray = { topBreadSesameImage, topBreadImage, MoringTopBreadImage,
-			belowBreadSesameImage, belowBreadImage, MoringBelowBreadImage };
+	private Image TopSesameBread = new ImageIcon("src/images/TopSesameBread.png").getImage();
+	private Image BelowSesamebread = new ImageIcon("src/images/BelowSesamebread.png").getImage();
+	private Image TopBread = new ImageIcon("src/images/TopBread.png").getImage();
+	private Image BelowBread = new ImageIcon("src/images/BelowBread.png").getImage();
+	private Image MoringTopBread = new ImageIcon("src/images/MoringTopBread.png").getImage();
+	private Image MoringBelowBread = new ImageIcon("src/images/MoringBelowBread.png").getImage();
+	public Image[] makeBreadImageArray = { TopSesameBread, TopBread, MoringTopBread,
+			BelowSesamebread, BelowBread, MoringBelowBread };
 	// 속재료
-	private Image lettuceImage = new ImageIcon("src/images/lettuce.png").getImage();
-	private Image tomatoImage = new ImageIcon("src/images/tomato.png").getImage();
-	private Image pattyImage = new ImageIcon("src/images/patty.png").getImage();
-	private Image cheeseImage = new ImageIcon("src/images/cheese.png").getImage();
-	private Image eggImage = new ImageIcon("src/images/egg.png").getImage();
-	private Image onionImage = new ImageIcon("src/images/onion.png").getImage();
-	public Image[] makeIngredientImageArray = { lettuceImage, tomatoImage, pattyImage, cheeseImage, eggImage,
-			onionImage };
+	private Image Cheese = new ImageIcon("src/images/Cheese.png").getImage();
+	private Image Patty = new ImageIcon("src/images/Patty.png").getImage();
+	private Image Tomato = new ImageIcon("src/images/Tomato.png").getImage();
+	private Image Lettuce = new ImageIcon("src/images/Lettuce.png").getImage();
+	private Image Egg = new ImageIcon("src/images/Egg.png").getImage();
+	private Image Onion = new ImageIcon("src/images/Onion.png").getImage();
+	public Image[] makeIngredientImageArray = { Lettuce, Tomato, Patty, Cheese, Egg, Onion };
 	// 사이드메뉴
-	private Image CheeseStice = new ImageIcon("src/images/CheeseStick.png").getImage();
+	private Image CheeseStick = new ImageIcon("src/images/CheeseStick.png").getImage();
 	private Image ChickenNuggets = new ImageIcon("src/images/ChickenNuggets.png").getImage();
 	private Image FrenchFries = new ImageIcon("src/images/FrenchFries.png").getImage();
 	private Image Icecream = new ImageIcon("src/images/Icecream.png").getImage();
 	private Image CheeseBall = new ImageIcon("src/images/CheeseBall.png").getImage();
 	private Image Corn = new ImageIcon("src/images/Corn.png").getImage();
-	public Image[] makeSideImageArray = { CheeseStice, ChickenNuggets, FrenchFries, Icecream, CheeseBall, Corn };
+	public Image[] makeSideImageArray = { CheeseStick, ChickenNuggets, FrenchFries, Icecream, CheeseBall, Corn };
 	// 음료
 	private Image Coke = new ImageIcon("src/images/Coke.png").getImage();
 	private Image Sprite = new ImageIcon("src/images/Sprite.png").getImage();
@@ -101,32 +100,32 @@ public class Make {
 
 	private HashMap<String, Integer> xMap = new HashMap<String, Integer>();
 	private HashMap<String, Integer> yMap = new HashMap<String, Integer>();
-	int x, y; // 햄버거 x, y, i 좌표
+	int x=460, y=470;	// 재료 x, y 좌표
+	int[] temp=new int[2]; // 햄버거 임시 좌표
 
 	int key = 0;
 	int[] burgerCountArray = new int[2];
-//	int burgerCo unt = 0;
+//	int burgerCount = 0;
 
 	public Make() {
 		for (int i = 0; i < name.length; i++) {
 			name[i] = new JLabel();
 		}
+		hamMap.put(TopSesameBread, "깨윗빵");
+		hamMap.put(BelowSesamebread, "깨아래빵");
+		hamMap.put(TopBread, "기본윗빵");
+		hamMap.put(BelowBread, "기본아래빵");
+		hamMap.put(MoringTopBread, "모닝윗빵");
+		hamMap.put(MoringBelowBread, "모닝아래빵");
+		
+		hamMap.put(Cheese, "치즈");
+		hamMap.put(Patty, "패티");
+		hamMap.put(Tomato, "토마토");
+		hamMap.put(Lettuce, "양상추");
+		hamMap.put(Egg, "계란");
+		hamMap.put(Onion, "양파");
 
-		hamMap.put(topBreadSesameImage, "깨윗빵");
-		hamMap.put(belowBreadSesameImage, "깨아래빵");
-		hamMap.put(topBreadImage, "기본윗빵");
-		hamMap.put(belowBreadImage, "기본아래빵");
-		hamMap.put(MoringTopBreadImage, "모닝윗빵");
-		hamMap.put(MoringBelowBreadImage, "모닝아래빵");
-
-		hamMap.put(cheeseImage, "치즈");
-		hamMap.put(pattyImage, "패티");
-		hamMap.put(tomatoImage, "토마토");
-		hamMap.put(lettuceImage, "양상추");
-		hamMap.put(eggImage, "계란");
-		hamMap.put(onionImage, "양파");
-
-		hamMap.put(CheeseStice, "치즈스틱");
+		hamMap.put(CheeseStick, "치즈스틱");
 		hamMap.put(ChickenNuggets, "치킨너겟");
 		hamMap.put(FrenchFries, "감자튀김");
 		hamMap.put(Icecream, "아이스크림");
@@ -216,6 +215,7 @@ public class Make {
 		Ingredient = new LinkedList<Object>();
 		Ingredient.add(makeBurgerArray[m]);
 		if (key < 3) {
+			temp[1]++;	// 햄버거 높이를 위해 갯수 세기
 			MakeBurgerArray.add(hamMap.get(makeBurgerArray[m])); // 햄버거
 			if (key < 2 && m >= 3) { // 밑빵
 				burgerCountArray[0]++;
@@ -232,11 +232,19 @@ public class Make {
 			burgerCountArray = new int[2];
 		}
 
+		if(temp[0]!=0 && key<3) {	// 햄버거 재료가 처음이 아니면
+			x = temp[0] + xMap.get(hamMap.get(makeBurgerArray[m]));
+			y = 470 - 15 * temp[1] + yMap.get(hamMap.get(makeBurgerArray[m])); 
+		} else if(temp[0]==0 && key<3) {	// 햄버거 재료가 처음이염
+			temp[0] = x + xMap.get(hamMap.get(makeBurgerArray[m]));
+		} else {	// 햄버거 재료가 아니면 x좌표 이동
+			x=460+(MakeInformation.size())*50;	
+			y=470;
+		}
 		
 		
 		
 		/*y = 540 - 25 * (MakeInformation.size());
-
 		switch (m) {
 		case 0:
 			x = 485;

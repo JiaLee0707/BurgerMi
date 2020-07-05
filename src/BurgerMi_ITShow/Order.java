@@ -21,33 +21,33 @@ public class Order {
 
 	// 주문
 	// 빵
-	private Image OderTopSesameBread = new ImageIcon("src/images/OderTopSesameBread.png").getImage();
-	private Image OrderBelowSesamebread = new ImageIcon("src/images/OrderBelowSesamebread.png").getImage();
-	private Image OrderTopBread = new ImageIcon("src/images/OrderTopBread.png").getImage();
-	private Image OrderBelowBread = new ImageIcon("src/images/OrderBelowBread.png").getImage();
-	private Image OrderMoringTopBread = new ImageIcon("src/images/OrderMoringTopBread.png").getImage();
-	private Image OrderMoringBelowBread = new ImageIcon("src/images/OrderMoringBelowBread.png").getImage();
+	private Image OderTopSesameBread = new ImageIcon("src/images/TopSesameBread.png").getImage();
+	private Image OrderBelowSesamebread = new ImageIcon("src/images/BelowSesamebread.png").getImage();
+	private Image OrderTopBread = new ImageIcon("src/images/TopBread.png").getImage();
+	private Image OrderBelowBread = new ImageIcon("src/images/BelowBread.png").getImage();
+	private Image OrderMoringTopBread = new ImageIcon("src/images/MoringTopBread.png").getImage();
+	private Image OrderMoringBelowBread = new ImageIcon("src/images/MoringBelowBread.png").getImage();
 	// 속재료
-	private Image OrderCheese = new ImageIcon("src/images/OrderCheese.png").getImage();
-	private Image OrderPatty = new ImageIcon("src/images/OrderPatty.png").getImage();
-	private Image OrderTomato = new ImageIcon("src/images/OrderTomato.png").getImage();
-	private Image OrderLettuce = new ImageIcon("src/images/OrderLettuce.png").getImage();
-	private Image OrderEgg = new ImageIcon("src/images/OrderEgg.png").getImage();
-	private Image OrderOnion = new ImageIcon("src/images/OrderOnion.png").getImage();
+	private Image OrderCheese = new ImageIcon("src/images/Cheese.png").getImage();
+	private Image OrderPatty = new ImageIcon("src/images/Patty.png").getImage();
+	private Image OrderTomato = new ImageIcon("src/images/Tomato.png").getImage();
+	private Image OrderLettuce = new ImageIcon("src/images/Lettuce.png").getImage();
+	private Image OrderEgg = new ImageIcon("src/images/Egg.png").getImage();
+	private Image OrderOnion = new ImageIcon("src/images/Onion.png").getImage();
 	// 사이드메뉴
-	private Image CheeseStick = new ImageIcon("src/images/OrderCheeseStick.png").getImage();
-	private Image ChickenNuggets = new ImageIcon("src/images/OrderChickenNuggets.png").getImage();
-	private Image FrenchFries = new ImageIcon("src/images/OrderFrenchFries.png").getImage();
-	private Image Icecream = new ImageIcon("src/images/OrderIcecream.png").getImage();
-	private Image CheeseBall = new ImageIcon("src/images/OrderCheeseBall.png").getImage();
-	private Image Corn = new ImageIcon("src/images/OrderCorn.png").getImage();
+	private Image CheeseStick = new ImageIcon("src/images/CheeseStick.png").getImage();
+	private Image ChickenNuggets = new ImageIcon("src/images/ChickenNuggets.png").getImage();
+	private Image FrenchFries = new ImageIcon("src/images/FrenchFries.png").getImage();
+	private Image Icecream = new ImageIcon("src/images/Icecream.png").getImage();
+	private Image CheeseBall = new ImageIcon("src/images/CheeseBall.png").getImage();
+	private Image Corn = new ImageIcon("src/images/Corn.png").getImage();
 	// 음료
-	private Image Coke = new ImageIcon("src/images/OrderCoke.png").getImage();
-	private Image Sprite = new ImageIcon("src/images/OrderSprite.png").getImage();
-	private Image Fanta = new ImageIcon("src/images/OrderFanta.png").getImage();
-	private Image Coffee = new ImageIcon("src/images/OrderCoffee.png").getImage();
-	private Image orangeJuice = new ImageIcon("src/images/OrderOrangeJuice.png").getImage();
-	private Image Lemonade = new ImageIcon("src/images/OrderLemonade.png").getImage();
+	private Image Coke = new ImageIcon("src/images/Coke.png").getImage();
+	private Image Sprite = new ImageIcon("src/images/Sprite.png").getImage();
+	private Image Fanta = new ImageIcon("src/images/Fanta.png").getImage();
+	private Image Coffee = new ImageIcon("src/images/Coffee.png").getImage();
+	private Image orangeJuice = new ImageIcon("src/images/OrangeJuice.png").getImage();
+	private Image Lemonade = new ImageIcon("src/images/Lemonade.png").getImage();
 
 	// 햄버거 배열
 	public String[] burger = { "계란 머핀", "모닝 머핀", "토마토햄 머핀", "햄모닝 머핀", "계란치즈 버거", "더블치즈 버거", "디폴트 버거", "불고기 버거",

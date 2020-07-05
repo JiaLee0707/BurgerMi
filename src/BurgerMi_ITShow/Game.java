@@ -20,10 +20,6 @@ public class Game extends JPanel {
 	public KeyListener keyListener = new KeyListener();
 	public Timer timer;
 
-	// 게임화면
-//	private Image ImageGame = new ImageIcon("src/images/BurgerMi_3.gif").getImage();
-//	private Image ImageIntro = new ImageIcon("src/images/intro.gif").getImage();
-//	public Image ImageRules = new ImageIcon("src/images/GameRules.png").getImage();
 	Toolkit toolkit = Main.burgermi.getToolkit();
 	private Image ImageGame = toolkit.createImage("src/images/BurgerMi_3.gif");
 	private Image ImageIntro = toolkit.createImage("src/images/intro.gif");
