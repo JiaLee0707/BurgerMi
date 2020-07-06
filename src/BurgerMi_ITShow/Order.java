@@ -123,7 +123,7 @@ public class Order {
 		yMap.put("깨윗빵", -43);
 		yMap.put("깨아래빵", -5);
 		yMap.put("기본윗빵", -43);
-		yMap.put("기본아래빵", -15);
+		yMap.put("기본아래빵", 0);
 		yMap.put("모닝윗빵", -45);
 		yMap.put("모닝아래빵", -10);
 		yMap.put("치즈", -5);

@@ -16,6 +16,8 @@ public class End {
 	private JButton replayBtn = new JButton(mouse.ReplayBasicImage);
 //	private JButton QuitBtn = new JButton(mouse.QuitBasicImage);
 
+
+	public Font font = new Font("HY얕은샘물M", Font.PLAIN, 40);
 //	public Font font2 = new Font("나눔스퀘어라운드 Light", Font.PLAIN, 40);
 	public JLabel allGrade = Main.burgermi.game.sales.salesLabel;
 
@@ -37,18 +39,16 @@ public class End {
 		
 		End();
 
-		GameResult.setFont(Main.burgermi.game.sales.font);
-		myResult.setFont(font1);
-		allGrade.setFont(font1);
+		allGrade.setFont(font);
 	}
 
 	public void End() {
 
-		GameResult.setBounds(530, -300, 800, 800);
-		myResult.setBounds(290, 80, 800, 800);
+//		GameResult.setBounds(530, -300, 800, 800);
+//		myResult.setBounds(290, 80, 800, 800);
 		allGrade.setBounds(290, 140, 800, 800);
-		Main.burgermi.game.add(GameResult);
-		Main.burgermi.game.add(myResult);
+//		Main.burgermi.game.add(GameResult);
+//		Main.burgermi.game.add(myResult);
 
 		// 다시시작 버튼
 		replayBtn.setBounds(915, 560, 340, 120);

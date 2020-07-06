@@ -90,7 +90,7 @@ public class Make {
 	public HashMap<Image, String> hamMap = new HashMap<Image, String>();
 
 	public JLabel[] name = new JLabel[6];
-	public Font font1 = new Font("HY얕은샘물M", Font.BOLD, 25);
+	public Font font = new Font("HY얕은샘물M", Font.BOLD, 25);
 
 	public LinkedList<Object> MakeInformation = new LinkedList<Object>(); // 만드는 재료의 이미지와 좌표 정보
 	public LinkedList<String> MakeOrderSheetArray = new LinkedList<String>(); // 주문 리스트
@@ -100,8 +100,8 @@ public class Make {
 
 	private HashMap<String, Integer> xMap = new HashMap<String, Integer>();
 	private HashMap<String, Integer> yMap = new HashMap<String, Integer>();
-	int x=460, y=470;	// 재료 x, y 좌표
-	int[] temp=new int[2]; // 햄버거 임시 좌표
+	public int x=480, y=500;	// 재료 x, y 좌표
+	public int[] temp=new int[2]; // 햄버거 임시 좌표
 
 	int key = 0;
 	int[] burgerCountArray = new int[2];
@@ -140,26 +140,26 @@ public class Make {
 		hamMap.put(Lemonade, "레모네이드");
 
 		// x좌표
-		xMap.put("깨윗빵", 17);
-		xMap.put("깨아래빵", 23);
-		xMap.put("기본윗빵", -15);
-		xMap.put("기본아래빵", 3);
-		xMap.put("모닝윗빵", -15);
-		xMap.put("모닝아래빵", -3);
-		xMap.put("치즈", 15);
-		xMap.put("패티", 20);
-		xMap.put("토마토", 20);
-		xMap.put("양상추", 15);
-		xMap.put("계란", 1);
-		xMap.put("양파", 15);
+		xMap.put("깨윗빵", 10);
+		xMap.put("깨아래빵", 30);
+		xMap.put("기본윗빵", -20);
+		xMap.put("기본아래빵", -55);
+		xMap.put("모닝윗빵", -23);
+		xMap.put("모닝아래빵", -8);
+		xMap.put("치즈", 8);
+		xMap.put("패티", 13);
+		xMap.put("토마토", 13);
+		xMap.put("양상추", 8);
+		xMap.put("계란", -6);
+		xMap.put("양파", 8);
 
 		// y좌표
 		yMap.put("깨윗빵", -43);
-		yMap.put("깨아래빵", -5);
+		yMap.put("깨아래빵", -15);
 		yMap.put("기본윗빵", -43);
-		yMap.put("기본아래빵", -15);
+		yMap.put("기본아래빵", -5);
 		yMap.put("모닝윗빵", -45);
-		yMap.put("모닝아래빵", -10);
+		yMap.put("모닝아래빵", -24);
 		yMap.put("치즈", -5);
 		yMap.put("패티", 10);
 		yMap.put("토마토", 7);
@@ -199,7 +199,7 @@ public class Make {
 			}
 			name[i].setText(hamMap.get(makeBurgerArray[i]));
 			name[i].setBounds(xx, yy, 131, 330);
-			name[i].setFont(font1);
+			name[i].setFont(font);
 			if (key == 4 && (i == 0 || i == 3)) {
 				name[i].setForeground(Color.white);
 			} else {
@@ -234,41 +234,24 @@ public class Make {
 
 		if(temp[0]!=0 && key<3) {	// 햄버거 재료가 처음이 아니면
 			x = temp[0] + xMap.get(hamMap.get(makeBurgerArray[m]));
-			y = 470 - 15 * temp[1] + yMap.get(hamMap.get(makeBurgerArray[m])); 
+			y = 500 - 15 * temp[1] + yMap.get(hamMap.get(makeBurgerArray[m])); 
 		} else if(temp[0]==0 && key<3) {	// 햄버거 재료가 처음이염
-			temp[0] = x + xMap.get(hamMap.get(makeBurgerArray[m]));
+			if(MakeInformation.size()!=0) {
+				temp[0] = x + (MakeInformation.size())*93 + xMap.get(hamMap.get(makeBurgerArray[m]));
+			} else {
+				temp[0] = x + xMap.get(hamMap.get(makeBurgerArray[m]));
+			}
+			x = temp[0];
+			y = 500 + yMap.get(hamMap.get(makeBurgerArray[m]));
 		} else {	// 햄버거 재료가 아니면 x좌표 이동
-			x=460+(MakeInformation.size())*50;	
-			y=470;
+			if(temp[0]==0 && key>2) {
+				x=480+(MakeInformation.size())*60;	
+			} else {
+				x=480+(MakeInformation.size())*35;	
+			}
+			y=390;
 		}
 		
-		
-		
-		/*y = 540 - 25 * (MakeInformation.size());
-		switch (m) {
-		case 0:
-			x = 485;
-			y -= 30;
-			break;
-		case 1:
-			x = 490;
-			break;
-		case 2:
-			x = 503;
-			break;
-		case 3:
-			x = 485;
-			y -= 40;
-			break;
-		case 4:
-			x = 495;
-			y -= 60;
-			break;
-		case 5:
-			x = 510;
-			y -= 20;
-			break;
-		}*/
 		Ingredient.add(x);
 		Ingredient.add(y);
 		MakeInformation.add(Ingredient);

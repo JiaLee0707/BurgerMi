@@ -14,13 +14,16 @@ public class Ranking {
 	public JButton rightNextBut = new JButton(mouse.rightNextBasicImage);
 	public JButton leftNextBut = new JButton(mouse.leftNextBasicImage);
 
-	public JLabel rank = new JLabel("순위                    이름                        점수");
-	public Font font1 = new Font("나눔스퀘어라운드 Bold", Font.PLAIN, 40);
-	public Font font2 = new Font("나눔스퀘어라운드 Light", Font.PLAIN, 40);
+//	public JLabel rank = new JLabel("순위                    이름                        점수");
+//	public Font font1 = new Font("나눔스퀘어라운드 Bold", Font.PLAIN, 40);
+//	public Font font2 = new Font("나눔스퀘어라운드 Light", Font.PLAIN, 40);
+
+	public Font font1 = new Font("HY얕은샘물M", Font.PLAIN, 40);
+	public Font font2 = new Font("HY얕은샘물M", Font.BOLD, 50);
 
 	JLabel[][] rankLable;
 	LinkedList<String[]> rankingList;
-	int i, n = 0;
+	int i, n = 0, count = 0;
 
 	public int getI() {
 //		System.out.println("i : " + i);
@@ -39,10 +42,11 @@ public class Ranking {
 		db = new DB();
 		db.Insert(Main.burgermi.game.sales.sales);
 		rankingList = db.Select();
+		count = rankingList.size();
 		
-		rank.setBounds(310, -330, 1000, 1000);
+	/*	rank.setBounds(310, -330, 1000, 1000);
 		Main.burgermi.game.add(rank);
-		rank.setFont(font1);
+		rank.setFont(font1);*/
 		
 
 		rankLable = new JLabel[n][3];
@@ -57,10 +61,12 @@ public class Ranking {
 			for (int j = 0; j < rankLable[i].length; j++) {
 				rankLable[i][j] = new JLabel(rankingList.get(i)[j]);
 				rankLable[i][j].setBounds(x, y, 1000, 1000);
-				rankLable[i][j].setFont(font2);
+				rankLable[i][j].setFont(font1);
 				if (rankingList.get(i)[1].equals(db.name)
 						&& rankingList.get(i)[2].equals(Integer.toString(Main.burgermi.game.sales.sales))) {
 					System.out.println("동일");
+					rankLable[i][j].setFont(font2);
+				} else {
 					rankLable[i][j].setFont(font1);
 				}
 				Main.burgermi.game.add(rankLable[i][j]);
@@ -97,7 +103,11 @@ public class Ranking {
 		rightNextBut.setContentAreaFilled(false);
 		rightNextBut.setFocusPainted(false);
 		rightNextBut.addMouseListener(right);
-		rightNextBut.setVisible(true);
+		if(count > 5) {
+			rightNextBut.setVisible(true);			
+		} else {
+			rightNextBut.setVisible(false);			
+		}
 		Main.burgermi.game.add(rightNextBut);
 		
 		// 왼쪽 버튼

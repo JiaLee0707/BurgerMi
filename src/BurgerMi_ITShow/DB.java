@@ -232,6 +232,8 @@ public class DB {
 
 			pstmt.executeUpdate();
 
+
+			Main.burgermi.game.end = true;
 //			Select();
 
 		} catch (SQLException ex) {

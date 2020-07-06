@@ -25,8 +25,11 @@ public class Game extends JPanel {
 	private Image ImageIntro = toolkit.createImage("src/images/intro.gif");
 	public Image ImageRules = toolkit.createImage("src/images/GameRules.png");
 	public Image ImageResult = toolkit.createImage("src/images/GameResult.png");
+															   
 
 	public Image ImageBackground;
+
+	public Image ImagePost = new ImageIcon("src/images/post.png").getImage();
 
 	// 쟁반
 	public Image ImageTray = new ImageIcon("src/images/쟁반.png").getImage();
@@ -128,7 +131,7 @@ public class Game extends JPanel {
 		// 배경화면
 		g.drawImage(ImageBackground, 0, 0, this);
 		if(end) { 
-			g.drawImage(Main.burgermi.background.MenuImage, 0, 0, this);
+			g.drawImage(ImageResult, 0, 0, this);
 		}
 
 		Image burgerIngredient = null;
@@ -155,6 +158,8 @@ public class Game extends JPanel {
 			
 			// 손님 그리기
 			g.drawImage(order.thisGuest, 553, order.y, this);
+			
+			g.drawImage(ImagePost, 900, 300, this);
 
 			// 주문받은 버거
 			for (int i = 0; i < order.orderBurger.size(); i++) {

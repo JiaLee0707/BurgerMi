@@ -12,19 +12,22 @@ public class Sales {
 	DB db;
 
 	int sales = 0;
-//	int salesArray[] = { 10, 20, -5 };
-//	public JLabel salesLabel = new JLabel(sales + "원");
+	int salesArray[] = { 10, 20, -5 };
+	public JLabel salesLabel = new JLabel(sales + "원");
 	Music musicOX;
 	boolean Enter;
 
-	public Font font = new Font("나눔스퀘어라운드 ExtraBold", Font.ITALIC, 50);
+	//public Font font = new Font("나눔스퀘어라운드 ExtraBold", Font.ITALIC, 50);
+
+	public Font font = new Font("HY얕은샘물M", Font.BOLD, 40);
 	
 	public Sales(DB db) {
 		this.db = db;
-		//salesLabel.setFont(font); // 폰트 설정
-		//salesLabel.setSize(500, 500); // 크키 설정
-		//salesLabel.setLocation(1160, -150); // 위치 설정
-		//Main.burgermi.game.add(salesLabel);
+		salesLabel.setFont(font); // 폰트 설정
+//		salesLabel.setSize(1000, 1000); // 크키 설정
+		salesLabel.setBounds(1020, -35, 800, 800);
+//		salesLabel.setLocation(500, 720); // 위치 설정
+		Main.burgermi.game.add(salesLabel);
 	}
 
 	public void Sales(boolean Enter) {
@@ -67,13 +70,16 @@ public class Sales {
 			salesLabel.setLocation(1140, -150); // 위치 설정
 		} else if(sales >= 100) {
 			salesLabel.setLocation(1130, -150); // 위치 설정
-		}
-		salesLabel.setText(sales + "점"); */
+		}*/
+		salesLabel.setText(sales + "점");
 
 		this.make.MakeInformation.clear();
 		this.make.MakeOrderSheetArray.clear();
 		this.make.MakeBurgerArray.clear();
 		this.make.i.clear();
+		make.temp = new int[2];
+		make.x=480;
+		make.y=500;
 
 		if(Enter) {
 			Throw th = new Throw();
