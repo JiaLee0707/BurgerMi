@@ -1,9 +1,13 @@
 package BurgerMi_ITShow;
 
+import java.awt.Font;
 import java.awt.Image;
 import java.util.*;
 
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
+import com.mysql.jdbc.StringUtils;
 
 public class Order {
 	DB db;
@@ -61,6 +65,7 @@ public class Order {
 	public List<Object> Ingredient; // 주문 재료별 임시 이미지, 좌표
 
 	List<String[]> orderSheet = new LinkedList<String[]>(); // 주문표
+	List<String> orderInfor = new LinkedList<String>(); //주문 정보
 	String[] burgerIngredient; // 햄버거 레시피
 
 	public String ingredients;
@@ -68,7 +73,8 @@ public class Order {
 
 	public int price = 0;
 
-	int who, x, y;
+	int who, whoY;
+	int x, y;
 	boolean badCustomer;
 
 	public Order(DB db) {
@@ -164,11 +170,22 @@ public class Order {
 			Ingredient = new LinkedList<Object>();
 
 			// 햄버거인 경우
-			if (ingredientsArray[i].contains("버거") || ingredientsArray[i].contains("머핀")) {
+//			if (ingredientsArray[i].contains("버거") || ingredientsArray[i].contains("머핀")) {
+//				if(i!=0) x -= 20;
+//				// Arrays.stream(burger).anyMatch(ingredientsArray[i]::equals)) {
+//				// DB로 주문 레시피 재료 가져오기
+//				burgerIngredient = db.recipes(ingredientsArray[i]);
+//
+//				for (int a = 0; a < burgerIngredient.length; a++) {
+//					System.out.println(burgerIngredient[a]);
+//				}
+			
+			// DB로 주문 정보 가져오기
+			orderInfor = db.recipes(ingredientsArray[i]);
+			if (orderInfor.get(1).equals("햄버거") || orderInfor.get(1).equals("모닝")) {
+				burgerIngredient = orderInfor.get(0).split(";");
+				
 				if(i!=0) x -= 20;
-				// Arrays.stream(burger).anyMatch(ingredientsArray[i]::equals)) {
-				// DB로 주문 레시피 재료 가져오기
-				burgerIngredient = db.recipes(ingredientsArray[i]);
 
 				for (int a = 0; a < burgerIngredient.length; a++) {
 					System.out.println(burgerIngredient[a]);
@@ -233,13 +250,14 @@ public class Order {
 			who = (int) (Math.random() * 6); // 손님 랜덤
 
 			thisGuest = guestArray[who];
-			y = 100; // 손님 y좌표
+			whoY = 100; // 손님 y좌표
 
-			order(); // 주문 랜덤 메소드 호출
 			Guest();
+			order(); // 주문 랜덤 메소드 호출
 		}
 
 		public void order() {
+			String[] ob = new String[3];
 			LinkedList<String[]> menu = null; // 임시 주문 LinkedList
 
 			orderSheet = db.RandomOrder(1, "All"); // 주문 랜덤
@@ -271,7 +289,8 @@ public class Order {
 								bool = false;
 								break;
 							}
-							if (orderSheet.get(0)[0].contains("버거") || orderSheet.get(0)[0].contains("머핀")) {
+							orderInfor = db.recipes(orderSheet.get(0)[0]);
+							if (orderInfor.get(1).equals("햄버거") || orderInfor.get(1).equals("모닝")) {
 								if (menu.get(i)[0].contains("버거") || menu.get(i)[0].contains("머핀")) {
 									bool = false;
 									break;
@@ -280,29 +299,18 @@ public class Order {
 						}
 					} while (!bool);
 				}
-
-//					do {
-//						menu = db.RandomOrder(cnt - 1);
-//					} while (menu.get(0)[3].equals("세트") || Arrays.stream(burger).anyMatch(menu.get(0)[0]::equals));
-
-//					if (menu.get(0)[3].equals("세트")) {
-//						String[] kind = { "음료", "사이드 메뉴" };
-//						LinkedList<String[]> menu2; 
-//						for (int i = 0; i < 2; i++) {
-//							menu2 = db.RandomOrder(1, kind[i]);
-//							String changeMenu = (menu.get(0)[1]).replace(kind[i], ((String[]) menu2.get(0))[0]);
-//							String[] change = new String[4];
-//							change[0] = menu.get(0)[0];
-//							change[1] = changeMenu;
-//							change[2] = menu.get(0)[2];
-//							change[3] = menu.get(0)[3];
-//							orderSheet.set(0, change);
-//						}
-//					}
+				for(int i=0; i<orderSheet.size(); i++) {
+					ob[i] = orderSheet.get(i)[0];
+				}
+				
 				String[] m = null;
 				for (int i = 0; i < cnt - 1; i++) {
 					m = (String[]) menu.get(i);
 					orderSheet.add(m);
+				}
+				
+				for (int i = 0; i < orderSheet.size(); i++) {
+					price += Integer.parseInt(orderSheet.get(i)[2]);
 				}
 
 			} else { // 세트일 때
@@ -323,29 +331,39 @@ public class Order {
 					change[3] = orderSheet.get(0)[3];
 					orderSheet.set(0, change);
 				}
-
 			}
-			for (int i = 0; i < orderSheet.size(); i++) {
-				price += Integer.parseInt(orderSheet.get(i)[2]);
-			}
+			
 			System.out.print("총 주문은 : ");
+			ob[0] = orderSheet.get(0)[0];
 			for (int i = 0; i < orderSheet.size(); i++) {
 				for (int j = 0; j < 4; j++) {
 					System.out.print(orderSheet.get(i)[j] + "    ");
 				}
 			}
 			System.out.println("가격 : " + price);
+
+			String str = "<html>";
+//			String str = String.join(",", orderSheet.get(i));
+			for(int i=0; i<orderSheet.size(); i++) {
+				str = str + orderSheet.get(i)[0];
+				if(i<orderSheet.size()-1) {
+					str += ", <br>";
+				}
+			}
+			str += " <br> 주세요.</html>";
+			Main.burgermi.game.ordeBallon.setText(str);
+			Main.burgermi.game.ordeBallon.setBounds(760, -150, 500, 500);
+			Main.burgermi.game.ordeBallon.setFont(Main.burgermi.game.font);
 		}
 
 		public void Guest() {
 			this.start();
-
 		}
 
 		public void run() {
 			try {
-				while (y != 136) {
-					y += 1;
+				while (whoY != 128) {
+					whoY += 1;
 					// Main.burgermi.game.revalidate();
 					Main.burgermi.game.getParent().repaint();
 					Thread.sleep(10);

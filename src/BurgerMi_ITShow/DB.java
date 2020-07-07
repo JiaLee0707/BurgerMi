@@ -110,7 +110,8 @@ public class DB {
 		return menu;
 	}
 	
-	public String[] recipes(String burger) {
+	public LinkedList<String> recipes(String burger) {
+		LinkedList<String> recipes = new LinkedList<String>();
 		String[] ingredients = null;
 		try {
 			String sql = "SELECT * FROM recipes WHERE name=?";
@@ -119,8 +120,12 @@ public class DB {
 			ResultSet srs = pstmt.executeQuery();
 			
 			if(srs.next()) {
-				String s = srs.getString("ingredients");
-				ingredients = s.split(";");
+//				String s = srs.getString("ingredients");
+//				ingredients = s.split(";");
+				recipes.add(srs.getString("ingredients"));
+				recipes.add(srs.getString("kind"));
+				
+				
 //				for(int i=0; i<ingredients.length; i++) {
 //					System.out.print(ingredients[i] + " ");
 //				}
@@ -131,7 +136,7 @@ public class DB {
 		} catch (Exception ex) {
 			System.out.println("RandomOrder Exception:" + ex);
 		}
-		return ingredients;
+		return recipes;
 	}
 	
 	public LinkedList Select() {
@@ -143,13 +148,13 @@ public class DB {
 			ResultSet srs = pstmt.executeQuery();
 			while (srs.next()) {
 				String[] rank = new String[3];
-				rank[0] = srs.getString("rank");
-				rank[1] = srs.getString("name");
-				rank[2] = srs.getString("score");
+				rank[0] = srs.getString("name");
+				rank[1] = srs.getString("score");
+				rank[2] = srs.getString("rank");
 				System.out.print(srs.getString("no") + " ");
-				System.out.print(srs.getString("score") + " ");
-				System.out.print(srs.getString("name") + " ");
 				System.out.print(srs.getString("rank") + " ");
+				System.out.print(srs.getString("name") + " ");
+				System.out.print(srs.getString("score") + " ");
 				System.out.println();
 				rankList.add(rank);
 			}

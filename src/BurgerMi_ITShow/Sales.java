@@ -12,7 +12,6 @@ public class Sales {
 	DB db;
 
 	int sales = 0;
-	int salesArray[] = { 10, 20, -5 };
 	public JLabel salesLabel = new JLabel(sales + "원");
 	Music musicOX;
 	boolean Enter;
@@ -44,18 +43,20 @@ public class Sales {
 				if(Enter) {	// 던졌을 때
 					sales -= order.price;
 					musicOX = new Music("띠-으-으.mp3", false);
-					System.out.println("실패");					
+					System.out.println("실패 : " + sales);					
+				} else {
+					sales += order.price;
+					System.out.println("성공 : " + sales);
+					musicOX = new Music("tpir-sdclock.mp3", false);
 				}
-				sales += order.price;
-				System.out.println("성공");
 			} else {	// 진산 손님
 				sales += order.price;
 				if(Enter) {	// 던졌을 때
 					sales += 1000;					
 				}
-				System.out.println("진상 성공");
+				System.out.println("진상 성공 : " + sales);
+				musicOX = new Music("tpir-sdclock.mp3", false);
 			}
-			musicOX = new Music("tpir-sdclock.mp3", false);
 		} else {
 			musicOX = new Music("띠-으-으.mp3", false);
 			System.out.println("실패");
@@ -63,6 +64,9 @@ public class Sales {
 				sales -= 2000;
 				System.out.println("진상 실패");
 			}
+			if(Enter) {	// 던졌을 때
+				sales -= order.price;					
+			} 
 		}
 		musicOX.start();
 		/*
@@ -71,7 +75,7 @@ public class Sales {
 		} else if(sales >= 100) {
 			salesLabel.setLocation(1130, -150); // 위치 설정
 		}*/
-		salesLabel.setText(sales + "점");
+		salesLabel.setText(sales + "원");
 
 		this.make.MakeInformation.clear();
 		this.make.MakeOrderSheetArray.clear();
@@ -80,6 +84,7 @@ public class Sales {
 		make.temp = new int[2];
 		make.x=480;
 		make.y=500;
+		
 
 		if(Enter) {
 			Throw th = new Throw();

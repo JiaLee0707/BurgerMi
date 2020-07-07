@@ -28,7 +28,7 @@ public class BurgerMi extends JFrame {
 		
 		// 윈도우 창 이미지 변경
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
-		Image icon = toolkit.getImage("src/images/hamburger.png");
+		Image icon = toolkit.getImage("src/images/burger.png");
 		setIconImage(icon);
 	}
 	
@@ -58,8 +58,7 @@ class Background extends JPanel {
 	private JButton StartBtn = new JButton(mouse.StartBasicImage);
 	private JButton QuitBtn = new JButton(mouse.QuitBasicImage);
 	
-	private Image ImageBackground = new ImageIcon("src/images/BurgerMi.png").getImage();
-	public Image MenuImage = new ImageIcon("src/images/메뉴화면2.png").getImage();
+	private Image ImageBackground = new ImageIcon("src/images/Main.jpg").getImage();
 
 
 	public Background() {
@@ -69,7 +68,7 @@ class Background extends JPanel {
 		introMusic.start();
 
 		// 시작버튼
-		StartBtn.setBounds(10, 350, 340, 120);
+		StartBtn.setBounds(60, 350, 340, 120);
 		StartBtn.setBorderPainted(false);
 		StartBtn.setContentAreaFilled(false);
 		StartBtn.setFocusPainted(false);
@@ -78,7 +77,7 @@ class Background extends JPanel {
 		this.add(StartBtn);
 
 		// 종료버튼
-		QuitBtn.setBounds(10, 470, 340, 120);
+		QuitBtn.setBounds(60, 470, 340, 120);
 		QuitBtn.setBorderPainted(false);
 		QuitBtn.setContentAreaFilled(false);
 		QuitBtn.setFocusPainted(false);

@@ -123,11 +123,13 @@ public class MouseListener {
 
 				for (int j = 0; j < ranking.rankLable[i].length; j++) {
 					ranking.rankLable[i][j].setText(ranking.rankingList.get(nextI)[j]);
-					ranking.rankLable[i][j].setFont(ranking.font1);
+					ranking.rankLable[i][j].setFont(ranking.font_1);
 					if (ranking.rankingList.get(i)[1].equals(ranking.db.name)
 							&& ranking.rankingList.get(i)[2].equals(Integer.toString(Main.burgermi.game.sales.sales))) {
 						System.out.println("동일");
-						ranking.rankLable[i][j].setFont(ranking.font2);
+						ranking.rankLable[i][j].setFont(ranking.font_2);
+					} else {
+						ranking.rankLable[i][j].setFont(ranking.font_1);						
 					}
 				}
 			}
@@ -209,11 +211,13 @@ public class MouseListener {
 
 				for (int j = 0; j < ranking.rankLable[i].length; j++) {
 					ranking.rankLable[i][j].setText(ranking.rankingList.get(nextI)[j]);
-					ranking.rankLable[i][j].setFont(ranking.font1);
+					ranking.rankLable[i][j].setFont(ranking.font_1);
 					if (ranking.rankingList.get(i)[1].equals(ranking.db.name)
 							&& ranking.rankingList.get(i)[2].equals(Integer.toString(Main.burgermi.game.sales.sales))) {
 						System.out.println("동일");
-						ranking.rankLable[i][j].setFont(ranking.font2);
+						ranking.rankLable[i][j].setFont(ranking.font_2);
+					} else {
+						ranking.rankLable[i][j].setFont(ranking.font_1);						
 					}
 				}
 			}

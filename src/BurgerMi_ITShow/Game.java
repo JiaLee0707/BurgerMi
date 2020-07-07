@@ -1,5 +1,6 @@
 package BurgerMi_ITShow;
 
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -8,6 +9,7 @@ import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import BurgerMi_ITShow.MouseListener.Listener;
@@ -25,6 +27,8 @@ public class Game extends JPanel {
 	private Image ImageIntro = toolkit.createImage("src/images/intro.gif");
 	public Image ImageRules = toolkit.createImage("src/images/GameRules.png");
 	public Image ImageResult = toolkit.createImage("src/images/GameResult.png");
+	
+	public Image ImageBalloon = new ImageIcon("src/images/Balloon.png").getImage();
 															   
 
 	public Image ImageBackground;
@@ -57,6 +61,12 @@ public class Game extends JPanel {
 	public boolean ThrowBurger = false;
 	public boolean end = false;
 	
+
+	
+	public JLabel ordeBallon = new JLabel("");
+	public Font font = new Font("HY얕은샘물M", Font.PLAIN, 40);
+	
+	
 	public void Game() {
 		setLayout(null);
 		ImageBackground = ImageIntro;
@@ -74,6 +84,8 @@ public class Game extends JPanel {
 
 		gameMusic = new Music("in.mp3", false);
 		gameMusic.start();
+		
+		this.add(ordeBallon);
 	}
 	
 	public void GameRules() {
@@ -157,9 +169,11 @@ public class Game extends JPanel {
 			}
 			
 			// 손님 그리기
-			g.drawImage(order.thisGuest, 553, order.y, this);
-			
+			g.drawImage(order.thisGuest, 553, order.whoY, this);
+			// post
 			g.drawImage(ImagePost, 900, 300, this);
+			// 말풍선
+			g.drawImage(ImageBalloon, 730, 10, this);
 
 			// 주문받은 버거
 			for (int i = 0; i < order.orderBurger.size(); i++) {

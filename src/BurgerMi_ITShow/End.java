@@ -17,7 +17,8 @@ public class End {
 //	private JButton QuitBtn = new JButton(mouse.QuitBasicImage);
 
 
-	public Font font = new Font("HY얕은샘물M", Font.PLAIN, 40);
+//	public Font font = new Font("HY얕은샘물M", Font.PLAIN, 50);
+	public Font font = new Font("HY얕은샘물M", Font.PLAIN, 70);
 //	public Font font2 = new Font("나눔스퀘어라운드 Light", Font.PLAIN, 40);
 	public JLabel allGrade = Main.burgermi.game.sales.salesLabel;
 
@@ -30,12 +31,17 @@ public class End {
 		this.make.MakeBurgerArray.clear();
 		this.make.i.clear();
 
+		Ranking ranking = new Ranking();
+		ranking.Ranking(5, ranking);
+
+		Main.burgermi.game.ordeBallon.setVisible(false);
 		Main.burgermi.game.removeKeyListener(keyListener);
 		Main.burgermi.game.start = false;
 		Main.burgermi.game.gameMusic.close();
-
-		Ranking ranking = new Ranking();
-		ranking.Ranking(5, ranking);
+		
+		for(int i=0; i<make.name.length; i++) {
+			make.name[i].setVisible(false);;			
+		}
 		
 		End();
 
@@ -46,7 +52,7 @@ public class End {
 
 //		GameResult.setBounds(530, -300, 800, 800);
 //		myResult.setBounds(290, 80, 800, 800);
-		allGrade.setBounds(290, 140, 800, 800);
+		allGrade.setBounds(400, 210, 800, 800);
 //		Main.burgermi.game.add(GameResult);
 //		Main.burgermi.game.add(myResult);
 

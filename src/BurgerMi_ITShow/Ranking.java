@@ -18,8 +18,8 @@ public class Ranking {
 //	public Font font1 = new Font("나눔스퀘어라운드 Bold", Font.PLAIN, 40);
 //	public Font font2 = new Font("나눔스퀘어라운드 Light", Font.PLAIN, 40);
 
-	public Font font1 = new Font("HY얕은샘물M", Font.PLAIN, 40);
-	public Font font2 = new Font("HY얕은샘물M", Font.BOLD, 50);
+	public Font font_1 = new Font("HY얕은샘물M", Font.PLAIN, 50);
+	public Font font_2 = new Font("HY얕은샘물M", Font.BOLD, 1000);
 
 	JLabel[][] rankLable;
 	LinkedList<String[]> rankingList;
@@ -53,7 +53,7 @@ public class Ranking {
 
 		int y = -280;
 		for (i = 0; i < n; i++) {
-			int x = 320;
+			int x = 150;
 //			System.out.println(ranking.get(i)[2]);
 			if (i == rankingList.size()) {
 				break;
@@ -61,18 +61,18 @@ public class Ranking {
 			for (int j = 0; j < rankLable[i].length; j++) {
 				rankLable[i][j] = new JLabel(rankingList.get(i)[j]);
 				rankLable[i][j].setBounds(x, y, 1000, 1000);
-				rankLable[i][j].setFont(font1);
-				if (rankingList.get(i)[1].equals(db.name)
-						&& rankingList.get(i)[2].equals(Integer.toString(Main.burgermi.game.sales.sales))) {
+				rankLable[i][j].setFont(font_1);
+				if (rankingList.get(i)[0].equals(db.name)
+						&& rankingList.get(i)[1].equals(Integer.toString(Main.burgermi.game.sales.sales))) {
 					System.out.println("동일");
-					rankLable[i][j].setFont(font2);
+					rankLable[i][j].setFont(font_2);
 				} else {
-					rankLable[i][j].setFont(font1);
+					rankLable[i][j].setFont(font_1);
 				}
 				Main.burgermi.game.add(rankLable[i][j]);
-				x += 280;
+				x += 460;
 			}
-			y += 50;
+			y += 60;
 		}
 
 
@@ -87,11 +87,11 @@ public class Ranking {
 	
 		// 버튼 위치
 		if(n==5) {
-			rightNextBut.setBounds(995, 280, 80, 80);			
-			leftNextBut.setBounds(195, 280, 80, 80);			
+			rightNextBut.setBounds(1120, 280, 80, 80);			
+			leftNextBut.setBounds(50, 280, 80, 80);			
 		} else {
-			rightNextBut.setBounds(995, 560, 340, 120);						
-			leftNextBut.setBounds(195, 560, 340, 120);						
+			rightNextBut.setBounds(1120, 560, 340, 120);						
+			leftNextBut.setBounds(50, 560, 340, 120);						
 		}
 		
 		MouseListener.rightNextButton right = mouse.new rightNextButton(ranking, mouse.rightNextBasicImage, mouse.rightNextEnteredImage);

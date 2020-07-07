@@ -100,7 +100,7 @@ public class Make {
 
 	private HashMap<String, Integer> xMap = new HashMap<String, Integer>();
 	private HashMap<String, Integer> yMap = new HashMap<String, Integer>();
-	public int x=480, y=500;	// 재료 x, y 좌표
+	public int x=485, y=500;	// 재료 x, y 좌표
 	public int[] temp=new int[2]; // 햄버거 임시 좌표
 
 	int key = 0;
@@ -141,11 +141,11 @@ public class Make {
 
 		// x좌표
 		xMap.put("깨윗빵", 10);
-		xMap.put("깨아래빵", 30);
+		xMap.put("깨아래빵", 0);
 		xMap.put("기본윗빵", -20);
-		xMap.put("기본아래빵", -55);
+		xMap.put("기본아래빵", -40);
 		xMap.put("모닝윗빵", -23);
-		xMap.put("모닝아래빵", -8);
+		xMap.put("모닝아래빵", -13);
 		xMap.put("치즈", 8);
 		xMap.put("패티", 13);
 		xMap.put("토마토", 13);
@@ -234,23 +234,38 @@ public class Make {
 
 		if(temp[0]!=0 && key<3) {	// 햄버거 재료가 처음이 아니면
 			x = temp[0] + xMap.get(hamMap.get(makeBurgerArray[m]));
-			y = 500 - 15 * temp[1] + yMap.get(hamMap.get(makeBurgerArray[m])); 
+			y = 500 - 17 * temp[1] + yMap.get(hamMap.get(makeBurgerArray[m])); 
 		} else if(temp[0]==0 && key<3) {	// 햄버거 재료가 처음이염
-			if(MakeInformation.size()!=0) {
-				temp[0] = x + (MakeInformation.size())*93 + xMap.get(hamMap.get(makeBurgerArray[m]));
+			System.out.println("111");
+			if(!hamMap.get(makeBurgerArray[m]).contains("빵")) {
+				temp[0] = 522 + xMap.get(hamMap.get(makeBurgerArray[m]));
+				y += -20;
+			} else if(MakeInformation.size()!=0) {
+				temp[0] = x + (MakeInformation.size())*85 + xMap.get(hamMap.get(makeBurgerArray[m]));
+				y = 500 + yMap.get(hamMap.get(makeBurgerArray[m]));
 			} else {
 				temp[0] = x + xMap.get(hamMap.get(makeBurgerArray[m]));
+				y = 500 + yMap.get(hamMap.get(makeBurgerArray[m]));
 			}
 			x = temp[0];
-			y = 500 + yMap.get(hamMap.get(makeBurgerArray[m]));
 		} else {	// 햄버거 재료가 아니면 x좌표 이동
 			if(temp[0]==0 && key>2) {
-				x=480+(MakeInformation.size())*60;	
+				x=485+(MakeInformation.size())*60;	
 			} else {
-				x=480+(MakeInformation.size())*35;	
+				x=485+(MakeInformation.size())*40;	
 			}
 			y=390;
 		}
+		
+		if(hamMap.get(makeBurgerArray[m]).contains("아래빵")) {
+			x -= 10;
+			if(hamMap.get(makeBurgerArray[m]).equals("깨아래빵")) {
+				x += 25;
+			}
+		}		
+		if(temp[0]==0 && !hamMap.get(makeBurgerArray[m]).contains("빵")) {
+			System.out.println("sadlkjsdlsdkljsdflkj");
+		} 
 		
 		Ingredient.add(x);
 		Ingredient.add(y);
