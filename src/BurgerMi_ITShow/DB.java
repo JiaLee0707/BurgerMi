@@ -72,15 +72,18 @@ public class DB {
 		try {
 			String sql = null;
 			// 음료, 사이드 메뉴 랜덤
-			if(who.equals("badCustomer")) {
-				sql = "SELECT menu.name, menu.ingredients, menu.price, menu.sort, recipes.kind FROM "
-							+ "menu, recipes WHERE menu.name=recipes.name AND recipes.kind=? AND sort LIKE '%진상%' "
-							+ "ORDER BY RAND() LIMIT ?";
-			} else {
-				sql = "SELECT menu.name, menu.ingredients, menu.price, menu.sort, recipes.kind FROM "
-						+ "menu, recipes WHERE menu.name=recipes.name AND recipes.kind=? AND sort NOT LIKE '%진상%' "
-						+ "ORDER BY RAND() LIMIT ?";				
-			}
+//			if(who.equals("badCustomer")) {
+//				sql = "SELECT menu.name, menu.ingredients, menu.price, menu.sort, recipes.kind FROM "
+//							+ "menu, recipes WHERE menu.name=recipes.name AND recipes.kind=? AND sort LIKE '%진상%' "
+//							+ "ORDER BY RAND() LIMIT ?";
+//			} else {
+//				sql = "SELECT menu.name, menu.ingredients, menu.price, menu.sort, recipes.kind FROM "
+//						+ "menu, recipes WHERE menu.name=recipes.name AND recipes.kind=? AND sort NOT LIKE '%진상%' "
+//						+ "ORDER BY RAND() LIMIT ?";				
+//			}
+			sql = "SELECT menu.name, menu.ingredients, menu.price, menu.sort, recipes.kind FROM "
+					+ "menu, recipes WHERE menu.name=recipes.name AND recipes.kind=? "
+					+ "ORDER BY RAND() LIMIT ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, kind);
 			pstmt.setInt(2, i);

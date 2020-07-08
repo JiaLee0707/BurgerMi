@@ -104,7 +104,7 @@ public class Make {
 	public int[] temp=new int[2]; // 햄버거 임시 좌표
 
 	int key = 0;
-	int[] burgerCountArray = new int[2];
+	public int[] burgerCountArray = new int[2];
 //	int burgerCount = 0;
 
 	public Make() {
@@ -137,7 +137,7 @@ public class Make {
 		hamMap.put(Fanta, "환타");
 		hamMap.put(Coffee, "커피");
 		hamMap.put(orangeJuice, "오렌지 주스");
-		hamMap.put(Lemonade, "레모네이드");
+		hamMap.put(Lemonade, "레몬에이드");
 
 		// x좌표
 		xMap.put("깨윗빵", 10);
@@ -236,10 +236,9 @@ public class Make {
 			x = temp[0] + xMap.get(hamMap.get(makeBurgerArray[m]));
 			y = 500 - 17 * temp[1] + yMap.get(hamMap.get(makeBurgerArray[m])); 
 		} else if(temp[0]==0 && key<3) {	// 햄버거 재료가 처음이염
-			System.out.println("111");
 			if(!hamMap.get(makeBurgerArray[m]).contains("빵")) {
-				temp[0] = 522 + xMap.get(hamMap.get(makeBurgerArray[m]));
-				y += -20;
+				temp[0] = 530 + xMap.get(hamMap.get(makeBurgerArray[m]));
+				y = 500 + yMap.get(hamMap.get(makeBurgerArray[m])) - 20;
 			} else if(MakeInformation.size()!=0) {
 				temp[0] = x + (MakeInformation.size())*85 + xMap.get(hamMap.get(makeBurgerArray[m]));
 				y = 500 + yMap.get(hamMap.get(makeBurgerArray[m]));
@@ -252,7 +251,7 @@ public class Make {
 			if(temp[0]==0 && key>2) {
 				x=485+(MakeInformation.size())*60;	
 			} else {
-				x=485+(MakeInformation.size())*40;	
+				x=485+(MakeInformation.size())*30;	
 			}
 			y=390;
 		}

@@ -19,7 +19,7 @@ public class Ranking {
 //	public Font font2 = new Font("나눔스퀘어라운드 Light", Font.PLAIN, 40);
 
 	public Font font_1 = new Font("HY얕은샘물M", Font.PLAIN, 50);
-	public Font font_2 = new Font("HY얕은샘물M", Font.BOLD, 1000);
+	public Font font_2 = new Font("HY얕은샘물M", Font.BOLD, 60);
 
 	JLabel[][] rankLable;
 	LinkedList<String[]> rankingList;

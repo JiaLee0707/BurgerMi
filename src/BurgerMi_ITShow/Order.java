@@ -76,6 +76,7 @@ public class Order {
 	int who, whoY;
 	int x, y;
 	boolean badCustomer;
+	boolean notbread;
 
 	public Order(DB db) {
 		this.db = db;
@@ -107,6 +108,7 @@ public class Order {
 		hamMap.put("환타", Fanta);
 		hamMap.put("커피", Coffee);
 		hamMap.put("오렌지 주스", orangeJuice);
+		hamMap.put("레몬에이드", Lemonade);
 
 		hamMap.put("탄산없는 콜라", Coke);
 		hamMap.put("탄산없는 환타", Fanta);
@@ -261,6 +263,11 @@ public class Order {
 			LinkedList<String[]> menu = null; // 임시 주문 LinkedList
 
 			orderSheet = db.RandomOrder(1, "All"); // 주문 랜덤
+			if(orderSheet.get(0)[0].contains("빵 없는") || orderSheet.get(0)[0].equals("샐러드") || orderSheet.get(0)[0].contains("만")) {
+//				notbread = true;
+				Main.burgermi.game.keyListener.make.burgerCountArray[0]++;
+				Main.burgermi.game.keyListener.make.burgerCountArray[1]++;
+			}
 
 			if (orderSheet.get(0)[3].contains("진상")) {
 				badCustomer = true;
@@ -290,8 +297,9 @@ public class Order {
 								break;
 							}
 							orderInfor = db.recipes(orderSheet.get(0)[0]);
-							if (orderInfor.get(1).equals("햄버거") || orderInfor.get(1).equals("모닝")) {
-								if (menu.get(i)[0].contains("버거") || menu.get(i)[0].contains("머핀")) {
+							if (orderInfor.get(1).contains("햄버거") || orderInfor.get(1).contains("모닝")) {
+								orderInfor = db.recipes(menu.get(0)[0]);
+								if (orderInfor.get(1).contains("햄버거") || orderInfor.get(1).contains("모닝")) {
 									bool = false;
 									break;
 								}
@@ -346,13 +354,19 @@ public class Order {
 //			String str = String.join(",", orderSheet.get(i));
 			for(int i=0; i<orderSheet.size(); i++) {
 				str = str + orderSheet.get(i)[0];
-				if(i<orderSheet.size()-1) {
-					str += ", <br>";
+				if(str.contains("불고기버거에서 불고기만 있는 세트")) {
+					String str1 = "불고기버거에서 불고기만 <br>";
+					String str2 = "있는 세트";
+					str = str1 + str2;
+				} else {
+					if(i<orderSheet.size()-1) {
+						str += ", <br>";
+					}					
 				}
 			}
 			str += " <br> 주세요.</html>";
 			Main.burgermi.game.ordeBallon.setText(str);
-			Main.burgermi.game.ordeBallon.setBounds(760, -150, 500, 500);
+			Main.burgermi.game.ordeBallon.setBounds(753, -155, 500, 500);
 			Main.burgermi.game.ordeBallon.setFont(Main.burgermi.game.font);
 		}
 

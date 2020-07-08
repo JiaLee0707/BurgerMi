@@ -1,5 +1,5 @@
 USE burgermi;
--- DROP TABLE recipes;
+DROP TABLE recipes;
 
 CREATE TABLE recipes ( NAME VARCHAR(20) NOT NULL, ingredients VARCHAR(50) NOT NULL, kind VARCHAR(10) NOT NULL,
 PRIMARY KEY(NAME), FOREIGN KEY (NAME) REFERENCES menu (NAME));
@@ -23,12 +23,14 @@ INSERT INTO recipes (NAME, ingredients, kind) VALUES
 					  ('치즈스틱', '치즈스틱', '사이드메뉴'),
 					  ('아이스크림', '아이스크림', '사이드메뉴'),
 					  ('콘샐러드', '콘샐러드',  '사이드메뉴'),
+					  ('치즈볼', '치즈볼', '사이드메뉴'),
 					  
 					  ('콜라', '콜라', '음료'),
 					  ('사이다', '사이다', '음료'),
 					  ('환타', '환타', '음료'),
 					  ('커피', '커피', '음료'),
 					  ('오렌지 주스', '오렌지 주스', '음료'),
+					  ('레몬에이드', '레몬에이드', '음료'),
 					  
 					  ('오버플로 버거', '깨아래빵;양상추;치즈;패티;양파;깨아래빵;양상추;토마토;패티;깨윗빵', '햄버거'),
 					  ('불고기버거에서 불고기만', '패티;패티;패티;패티;패티', '햄버거'),

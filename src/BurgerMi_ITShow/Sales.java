@@ -112,8 +112,12 @@ public class Sales {
 
 		// 버거 사이즈 비교
 		if (orderSize != makeSize) {
-			System.out.println("사이즈 실패");
-			OX = false;
+//			if(order.notbread) {
+//				OX = false;
+//			} else {
+				System.out.println("사이즈 실패");
+				OX = false;
+//			}
 		} else {
 			// 버거 재료 비교
 			
